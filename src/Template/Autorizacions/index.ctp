@@ -1,6 +1,6 @@
 <?php
 /* @var $this \Cake\View\View */
-$this->extend('../Layout/TwitterBootstrap/dashboard_full');
+$this->extend('../Layout/TwitterBootstrap/dashboard');
 $this->start('tb_actions');
 ?>
     <li><?= $this->Html->link(__('New Autorizacion'), ['action' => 'add']); ?></li>

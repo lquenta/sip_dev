@@ -1,5 +1,5 @@
 <?php
-$this->extend('../Layout/TwitterBootstrap/dashboard_full');
+$this->extend('../Layout/TwitterBootstrap/dashboard');
 
 $this->start('tb_actions');
 ?>

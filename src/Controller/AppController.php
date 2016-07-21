@@ -76,7 +76,7 @@ class AppController extends Controller
     public function beforeFilter(Event $event)
     {
         $this->Auth->loginAction = array('controller'=>'users', 'action'=>'login');
-        $this->Auth->allow(['display']);
+        //$this->Auth->allow(['display']);
     }
 
     /**

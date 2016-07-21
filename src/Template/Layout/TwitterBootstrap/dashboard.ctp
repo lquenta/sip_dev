@@ -25,14 +25,11 @@ $this->start('tb_body_start');
                 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-divider"></li>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Help</a></li>
+                    <li><?= $this->Html->link(__('Nueva Recomendacion'), ['controller'=>'Recomendacions','action' => 'add']) ?><li>
+                    <li><?= $this->Html->link(__('Lista Pendientes Autorizacion'), ['controller'=>'Autorizacions','action' => 'index']) ?></li>
+                    <li><a href="#">Perfil</a></li>
                 </ul>
-                <form class="navbar-form navbar-right">
-                    <input type="text" class="form-control" placeholder="Search...">
-                </form>
+               
                 
             </div>
         </div>
@@ -40,10 +37,10 @@ $this->start('tb_body_start');
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
+            <!--<div class="col-sm-3 col-md-2 sidebar">
                 <?= $this->fetch('tb_sidebar') ?>
-            </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            </div>-->
+            <div class="col-sm-11 col-sm-offset-1 col-md-11 col-md-offset-1 main">
                 
 <?php
 /**

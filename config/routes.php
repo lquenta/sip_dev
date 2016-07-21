@@ -74,6 +74,11 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->fallbacks('DashedRoute');
 });
 
+Router::scope('/', function ($routes) {
+    $routes->extensions(['json']);
+    $routes->resources('Busquedas');
+});
+
 /**
  * Load all plugin routes.  See the Plugin documentation on
  * how to customize the loading of plugin routes.

@@ -40,13 +40,9 @@ $this->end();
             </div>
             <div id="collapse1" class="panel-collapse collapse in">
                 <div class="panel-body">
-                     <div class="form-group">
-                        <label for="inputTitulo">Recomendacion</label>
-                        <input type="text" class="form-control" id="inputTitulo" placeholder="" readonly="readonly" value="<?= h($recomendacion->titulo) ?>">
-                    </div>
                     <div class="form-group">
                         <label for="inputDetalle">Detalle de la recomendacion</label>
-                        <input type="text" class="form-control" id="inputDetalle" placeholder="" readonly="readonly" value="<?= h($recomendacion->descripcion) ?>">
+                        <textarea type="text" class="form-control" id="inputDetalle" placeholder="" readonly="readonly" rows="5"><?= h($recomendacion->descripcion) ?></textarea>
                     </div>
                     <div class="form-group">
                         <div class="row">

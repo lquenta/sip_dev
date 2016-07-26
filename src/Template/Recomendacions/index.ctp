@@ -47,7 +47,7 @@ $this->assign('title', 'Lista de todas las recomendaciones');
     <tbody>
         <?php foreach ($recomendacions as $recomendacion): ?>
         <tr>
-            <td><?= h($recomendacion->descripcion) ?></td>
+            <td><?= wordwrap($recomendacion->descripcion, 100, "<br />\n");?></td>
             <td><?= h($recomendacion->fecha_modificacion) ?></td>
             <td>
                 <?= $recomendacion->has('user') ? $this->Html->link($recomendacion->user->nombre_usuario, ['controller' => 'Users', 'action' => 'view', $recomendacion->user->id]) : '' ?>
@@ -56,7 +56,8 @@ $this->assign('title', 'Lista de todas las recomendaciones');
                 <?= $recomendacion->has('estado') ? $this->Html->link($recomendacion->estado->descripcion, ['controller' => 'Estados', 'action' => 'view', $recomendacion->estado->id]) : '' ?>
             </td>
             <td class="actions">
-                <?= $this->Html->link('', ['action' => 'view', $recomendacion->id], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
+                <?= $this->Html->link('', ['action' => 'view', $recomendacion->id], ['title' => __('Ver Recomendacion'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
+                <?= $this->Html->link('', ['controller'=>'Accions','action' => 'add', $recomendacion->id], ['title' => __('Añadir Accion'), 'class' => 'btn btn-default glyphicon glyphicon-plus']) ?>
                 
             </td>
         </tr>

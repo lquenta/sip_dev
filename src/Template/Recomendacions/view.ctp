@@ -153,7 +153,7 @@ $this->end();
 <div class="panel panel-default">
     <!-- Panel header -->
     <div class="panel-heading">
-        <h3 class="panel-title"><?= __('Adjuntos relacionados a la reocmendacion') ?></h3>
+        <h3 class="panel-title"><?= __('Adjuntos relacionados a la recomendacion') ?></h3>
     </div>
     <?php if (!empty($recomendacion->adjuntos_recomendacions)): ?>
         <table class="table table-striped">

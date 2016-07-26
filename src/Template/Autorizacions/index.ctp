@@ -12,7 +12,7 @@ $this->start('tb_actions');
     <li><?= $this->Html->link(__('New Estado'), ['controller' => ' Estados', 'action' => 'add']); ?></li>
 <?php $this->end(); ?>
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
-<h1 class="page-header">Recomendaciones pendientes de Autorizacion</h1>
+<h1 class="page-header">Acciones pendientes de Autorizacion</h1>
 <table class="table table-striped" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
@@ -27,7 +27,7 @@ $this->start('tb_actions');
         <?php foreach ($autorizacions as $autorizacion): ?>
         <tr>
             <td>
-                <?= $autorizacion->has('recomendacion') ? $this->Html->link($autorizacion->recomendacion->id, ['controller' => 'Recomendacions', 'action' => 'view', $autorizacion->recomendacion->id]) : '' ?>
+                <?= $autorizacion->has('recomendacion') ? $this->Html->link($autorizacion->recomendacion->descripcion, ['controller' => 'Recomendacions', 'action' => 'view', $autorizacion->recomendacion->id]) : '' ?>
             </td>
             <td>
                 <?= $autorizacion->has('estado') ? $this->Html->link($autorizacion->estado->descripcion, ['controller' => 'Estados', 'action' => 'view', $autorizacion->estado->id]) : '' ?>

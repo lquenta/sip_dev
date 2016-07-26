@@ -2,6 +2,7 @@
 /* @var $this \Cake\View\View */
 $this->extend('../Layout/TwitterBootstrap/dashboard');
 $this->start('tb_actions');
+$this->assign('title', 'Lista de todas las recomendaciones');
 ?>
     <li><?= $this->Html->link(__('New Recomendacion'), ['action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']); ?></li>
@@ -36,34 +37,27 @@ $this->start('tb_actions');
 <table class="table table-striped" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
-            <th><?= $this->Paginator->sort('id'); ?></th>
-            <th><?= $this->Paginator->sort('titulo'); ?></th>
             <th><?= $this->Paginator->sort('descripcion'); ?></th>
-            <th><?= $this->Paginator->sort('fecha_creacion'); ?></th>
             <th><?= $this->Paginator->sort('fecha_modificacion'); ?></th>
             <th><?= $this->Paginator->sort('usuario_id'); ?></th>
             <th><?= $this->Paginator->sort('estado_id'); ?></th>
-            <th class="actions"><?= __('Actions'); ?></th>
+            <th class="actions"><?= __('Acceso directo'); ?></th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($recomendacions as $recomendacion): ?>
         <tr>
-            <td><?= $this->Number->format($recomendacion->id) ?></td>
-            <td><?= h($recomendacion->titulo) ?></td>
             <td><?= h($recomendacion->descripcion) ?></td>
-            <td><?= h($recomendacion->fecha_creacion) ?></td>
             <td><?= h($recomendacion->fecha_modificacion) ?></td>
             <td>
-                <?= $recomendacion->has('user') ? $this->Html->link($recomendacion->user->id, ['controller' => 'Users', 'action' => 'view', $recomendacion->user->id]) : '' ?>
+                <?= $recomendacion->has('user') ? $this->Html->link($recomendacion->user->nombre_usuario, ['controller' => 'Users', 'action' => 'view', $recomendacion->user->id]) : '' ?>
             </td>
             <td>
                 <?= $recomendacion->has('estado') ? $this->Html->link($recomendacion->estado->descripcion, ['controller' => 'Estados', 'action' => 'view', $recomendacion->estado->id]) : '' ?>
             </td>
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $recomendacion->id], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                <?= $this->Html->link('', ['action' => 'edit', $recomendacion->id], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
-                <?= $this->Form->postLink('', ['action' => 'delete', $recomendacion->id], ['confirm' => __('Are you sure you want to delete # {0}?', $recomendacion->id), 'title' => __('Delete'), 'class' => 'btn btn-default glyphicon glyphicon-trash']) ?>
+                
             </td>
         </tr>
         <?php endforeach; ?>
@@ -71,9 +65,9 @@ $this->start('tb_actions');
 </table>
 <div class="paginator">
     <ul class="pagination">
-        <?= $this->Paginator->prev('< ' . __('previous')) ?>
+        <?= $this->Paginator->prev('< ' . __('previo')) ?>
         <?= $this->Paginator->numbers(['before' => '', 'after' => '']) ?>
-        <?= $this->Paginator->next(__('next') . ' >') ?>
+        <?= $this->Paginator->next(__('siguiente') . ' >') ?>
     </ul>
     <p><?= $this->Paginator->counter() ?></p>
 </div>

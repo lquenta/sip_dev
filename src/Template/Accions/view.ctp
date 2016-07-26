@@ -1,6 +1,6 @@
 <?php
 $this->extend('../Layout/TwitterBootstrap/dashboard');
-
+$this->assign('title', 'Ver Accion');
 
 $this->start('tb_actions');
 ?>
@@ -86,16 +86,15 @@ $this->end();
 <div class="panel panel-default">
     <!-- Panel header -->
     <div class="panel-heading">
-        <h3 class="panel-title"><?= __('Related AdjuntosAccions') ?></h3>
+        <h3 class="panel-title"><?= __('Archivos adjuntos relacionados') ?></h3>
     </div>
     <?php if (!empty($accion->adjuntos_accions)): ?>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th><?= __('Id') ?></th>
-                <th><?= __('Accion Id') ?></th>
+                <th><?= __('Id Accion') ?></th>
                 <th><?= __('Link') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
             </tr>
             </thead>
             <tbody>
@@ -104,16 +103,11 @@ $this->end();
                     <td><?= h($adjuntosAccions->id) ?></td>
                     <td><?= h($adjuntosAccions->accion_id) ?></td>
                     <td><?= h($adjuntosAccions->link) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link('', ['controller' => 'AdjuntosAccions', 'action' => 'view', $adjuntosAccions->id], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                        <?= $this->Html->link('', ['controller' => 'AdjuntosAccions', 'action' => 'edit', $adjuntosAccions->id], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
-                        <?= $this->Form->postLink('', ['controller' => 'AdjuntosAccions', 'action' => 'delete', $adjuntosAccions->id], ['confirm' => __('Are you sure you want to delete # {0}?', $adjuntosAccions->id), 'title' => __('Delete'), 'class' => 'btn btn-default glyphicon glyphicon-trash']) ?>
-                    </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
         </table>
     <?php else: ?>
-        <p class="panel-body">no related AdjuntosAccions</p>
+        <p class="panel-body">No hay archivos adjuntos relacionados</p>
     <?php endif; ?>
 </div>

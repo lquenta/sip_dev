@@ -7,7 +7,7 @@ $this->start('tb_actions');
     <li><?= $this->Html->link(__('List Recomendacions'), ['controller' => 'Recomendacions', 'action' => 'index']); ?></li>
     <li><?= $this->Html->link(__('New Recomendacion'), ['controller' => ' Recomendacions', 'action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Usuario'), ['controller' => ' Users', 'action' => 'add']); ?></li>
+    <li><?= $this->Html->link(__('New User'), ['controller' => ' Users', 'action' => 'add']); ?></li>
 <?php $this->end(); ?>
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 
@@ -30,7 +30,7 @@ $this->start('tb_actions');
                 <?= $revision->has('recomendacion') ? $this->Html->link($revision->recomendacion->id, ['controller' => 'Recomendacions', 'action' => 'view', $revision->recomendacion->id]) : '' ?>
             </td>
             <td>
-                <?= $revision->has('usuario') ? $this->Html->link($revision->usuario->id, ['controller' => 'Users', 'action' => 'view', $revision->usuario->id]) : '' ?>
+                <?= $revision->has('user') ? $this->Html->link($revision->user->nombre_usuario, ['controller' => 'Users', 'action' => 'view', $revision->user->id]) : '' ?>
             </td>
             <td><?= h($revision->resultado) ?></td>
             <td><?= h($revision->fecha) ?></td>

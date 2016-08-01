@@ -25,7 +25,7 @@ $this->start('tb_actions');
         <tr>
             <td><?= $this->Number->format($institucionRecomendacion->id) ?></td>
             <td>
-                <?= $institucionRecomendacion->has('institucion') ? $this->Html->link($institucionRecomendacion->institucion->id, ['controller' => 'Institucions', 'action' => 'view', $institucionRecomendacion->institucion->id]) : '' ?>
+                <?= $institucionRecomendacion->has('institucion') ? $this->Html->link($institucionRecomendacion->institucion->descripcion, ['controller' => 'Institucions', 'action' => 'view', $institucionRecomendacion->institucion->id]) : '' ?>
             </td>
             <td>
                 <?= $institucionRecomendacion->has('recomendacion') ? $this->Html->link($institucionRecomendacion->recomendacion->id, ['controller' => 'Recomendacions', 'action' => 'view', $institucionRecomendacion->recomendacion->id]) : '' ?>

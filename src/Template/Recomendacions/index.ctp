@@ -1,64 +1,82 @@
 <?php
 /* @var $this \Cake\View\View */
 $this->extend('../Layout/TwitterBootstrap/dashboard');
-$this->start('tb_actions');
 $this->assign('title', 'Lista de todas las recomendaciones');
 ?>
-    <li><?= $this->Html->link(__('New Recomendacion'), ['action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New User'), ['controller' => ' Users', 'action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List Estados'), ['controller' => 'Estados', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Estado'), ['controller' => ' Estados', 'action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List Accions'), ['controller' => 'Accions', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Accion'), ['controller' => ' Accions', 'action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List AdjuntosRecomendacions'), ['controller' => 'AdjuntosRecomendacions', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Adjuntos Recomendacion'), ['controller' => ' AdjuntosRecomendacions', 'action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List Autorizacions'), ['controller' => 'Autorizacions', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Autorizacion'), ['controller' => ' Autorizacions', 'action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List DerechoRecomendacion'), ['controller' => 'DerechoRecomendacion', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Derecho Recomendacion'), ['controller' => ' DerechoRecomendacion', 'action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List InstitucionRecomendacion'), ['controller' => 'InstitucionRecomendacion', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Institucion Recomendacion'), ['controller' => ' InstitucionRecomendacion', 'action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List MecanismoRecomendacion'), ['controller' => 'MecanismoRecomendacion', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Mecanismo Recomendacion'), ['controller' => ' MecanismoRecomendacion', 'action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List Notificacions'), ['controller' => 'Notificacions', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Notificacion'), ['controller' => ' Notificacions', 'action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List PoblacionRecomendacion'), ['controller' => 'PoblacionRecomendacion', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Poblacion Recomendacion'), ['controller' => ' PoblacionRecomendacion', 'action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List RecomendacionParametros'), ['controller' => 'RecomendacionParametros', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Recomendacion Parametro'), ['controller' => ' RecomendacionParametros', 'action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List Revisions'), ['controller' => 'Revisions', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Revision'), ['controller' => ' Revisions', 'action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List Versions'), ['controller' => 'Versions', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Version'), ['controller' => ' Versions', 'action' => 'add']); ?></li>
-<?php $this->end(); ?>
-<?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
+<script>
+$("#search").keyup(function () {
+    var value = this.value.toLowerCase().trim();
 
+    $("table tr").each(function (index) {
+        if (!index) return;
+        $(this).find("td").each(function () {
+            var id = $(this).text().toLowerCase().trim();
+            var not_found = (id.indexOf(value) == -1);
+            $(this).closest('tr').toggle(!not_found);
+            return not_found;
+        });
+    });
+});
+</script>
+<input type="text" id="search" placeholder="  live search"></input>
 <table class="table table-striped" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
+            <th><?= $this->Paginator->sort('codigo'); ?></th>
+            <th><?= h('Mecanismos'); ?></th>
             <th><?= $this->Paginator->sort('descripcion'); ?></th>
+            <th><?= $this->Paginator->sort('año'); ?></th>
+            <th><?= h('Grupo Poblacional'); ?></th>
+            <th><?= h('Derechos'); ?></th>
+            <th><?= h('Instituciones'); ?></th>
             <th><?= $this->Paginator->sort('fecha_modificacion'); ?></th>
+            
             <th><?= $this->Paginator->sort('usuario_id'); ?></th>
             <th><?= $this->Paginator->sort('estado_id'); ?></th>
-            <th class="actions"><?= __('Acceso directo'); ?></th>
+            
+            <th class="actions"><?= __('Accesos Directos'); ?></th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($recomendacions as $recomendacion): ?>
+            <?php 
+            $poblaciones_item_recomendacion='';
+            $mecanismos_item_recomendacion='';
+            $institucion_item_recomendacion='';
+            $derecho_item_recomendacion='';
+            foreach ($recomendacion->poblacion_recomendacion as $item_poblacion) {
+                $poblaciones_item_recomendacion.=' '.$item_poblacion->poblacion->descripcion;
+            }
+            foreach ($recomendacion->mecanismo_recomendacion as $item_mecanismo) {
+                $mecanismos_item_recomendacion.=' '.$item_mecanismo->mecanismo->descripcion;
+            }
+            foreach ($recomendacion->institucion_recomendacion as $item_institucion) {
+                $institucion_item_recomendacion.=' '.$item_institucion->institucion->descripcion;
+            }
+            foreach ($recomendacion->derecho_recomendacion as $item_derecho) {
+                $derecho_item_recomendacion.=' '.$item_derecho->derecho->descripcion;
+            }
+            //debug($recomendacion->poblacion_recomendacion[0]->poblacion->descripcion);?>
         <tr>
-            <td><?= wordwrap($recomendacion->descripcion, 100, "<br />\n");?></td>
+            <td><?= h($recomendacion->codigo) ?></td>
+            <td><?= $mecanismos_item_recomendacion; ?></td>
+            <td><?= h($recomendacion->descripcion) ?></td>
+            <td><?= $this->Number->format($recomendacion->año) ?></td>
+            <td><?= $poblaciones_item_recomendacion; ?></td>
+            <td><?= $derecho_item_recomendacion; ?></td>
+            <td><?= $institucion_item_recomendacion; ?></td>
             <td><?= h($recomendacion->fecha_modificacion) ?></td>
             <td>
                 <?= $recomendacion->has('user') ? $this->Html->link($recomendacion->user->nombre_usuario, ['controller' => 'Users', 'action' => 'view', $recomendacion->user->id]) : '' ?>
             </td>
             <td>
-                <?= $recomendacion->has('estado') ? $this->Html->link($recomendacion->estado->descripcion, ['controller' => 'Estados', 'action' => 'view', $recomendacion->estado->id]) : '' ?>
+                <?= $recomendacion->estado->descripcion; ?>
             </td>
+            
             <td class="actions">
-                <?= $this->Html->link('', ['action' => 'view', $recomendacion->id], ['title' => __('Ver Recomendacion'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                <?= $this->Html->link('', ['controller'=>'Accions','action' => 'add', $recomendacion->id], ['title' => __('Añadir Accion'), 'class' => 'btn btn-default glyphicon glyphicon-plus']) ?>
-                
+                <?= $this->Html->link('', ['action' => 'view', $recomendacion->id], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
+                <?= $this->Html->link('', ['action' => 'edit', $recomendacion->id], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
+               <?= $this->Html->link('', ['controller'=>'Accions','action' => 'add', $recomendacion->id], ['title' => __('Añadir Seguimiento'), 'class' => 'btn btn-default glyphicon glyphicon-plus']) ?>
             </td>
         </tr>
         <?php endforeach; ?>

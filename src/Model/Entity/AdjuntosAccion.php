@@ -4,12 +4,13 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * AdjuntosAccion Entity.
+ * AdjuntosAccion Entity
  *
  * @property int $id
  * @property int $accion_id
- * @property \App\Model\Entity\Accion $accion
  * @property string $link
+ *
+ * @property \App\Model\Entity\Accion $accion
  */
 class AdjuntosAccion extends Entity
 {
@@ -25,6 +26,6 @@ class AdjuntosAccion extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

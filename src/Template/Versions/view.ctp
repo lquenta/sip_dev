@@ -11,7 +11,7 @@ $this->start('tb_actions');
 <li><?= $this->Html->link(__('List Recomendacions'), ['controller' => 'Recomendacions', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Recomendacion'), ['controller' => 'Recomendacions', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Adjuntos Versions'), ['controller' => 'AdjuntosVersions', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Adjuntos Version'), ['controller' => 'AdjuntosVersions', 'action' => 'add']) ?> </li>
 <?php
@@ -27,7 +27,7 @@ $this->start('tb_sidebar');
 <li><?= $this->Html->link(__('List Recomendacions'), ['controller' => 'Recomendacions', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Recomendacion'), ['controller' => 'Recomendacions', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Adjuntos Versions'), ['controller' => 'AdjuntosVersions', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Adjuntos Version'), ['controller' => 'AdjuntosVersions', 'action' => 'add']) ?> </li>
 </ul>
@@ -53,8 +53,8 @@ $this->end();
             <td><?= h($version->descripcion) ?></td>
         </tr>
         <tr>
-            <td><?= __('Usuario') ?></td>
-            <td><?= $version->has('usuario') ? $this->Html->link($version->usuario->id, ['controller' => 'Users', 'action' => 'view', $version->usuario->id]) : '' ?></td>
+            <td><?= __('User') ?></td>
+            <td><?= $version->has('user') ? $this->Html->link($version->user->nombre_usuario, ['controller' => 'Users', 'action' => 'view', $version->user->id]) : '' ?></td>
         </tr>
         <tr>
             <td><?= __('Id') ?></td>

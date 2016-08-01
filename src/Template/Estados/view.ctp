@@ -33,7 +33,7 @@ $this->end();
 <div class="panel panel-default">
     <!-- Panel header -->
     <div class="panel-heading">
-        <h3 class="panel-title"><?= h($estado->id) ?></h3>
+        <h3 class="panel-title"><?= h($estado->descripcion) ?></h3>
     </div>
     <table class="table table-striped" cellpadding="0" cellspacing="0">
         <tr>
@@ -58,10 +58,10 @@ $this->end();
             <tr>
                 <th><?= __('Id') ?></th>
                 <th><?= __('Usuario Id') ?></th>
-                <th><?= __('Recomendacion Id') ?></th>
                 <th><?= __('Estado Id') ?></th>
                 <th><?= __('Fecha Modificacion') ?></th>
                 <th><?= __('Visto Bueno Fisico') ?></th>
+                <th><?= __('Accion Id') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             </thead>
@@ -70,10 +70,10 @@ $this->end();
                 <tr>
                     <td><?= h($autorizacions->id) ?></td>
                     <td><?= h($autorizacions->usuario_id) ?></td>
-                    <td><?= h($autorizacions->recomendacion_id) ?></td>
                     <td><?= h($autorizacions->estado_id) ?></td>
                     <td><?= h($autorizacions->fecha_modificacion) ?></td>
                     <td><?= h($autorizacions->visto_bueno_fisico) ?></td>
+                    <td><?= h($autorizacions->accion_id) ?></td>
                     <td class="actions">
                         <?= $this->Html->link('', ['controller' => 'Autorizacions', 'action' => 'view', $autorizacions->id], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
                         <?= $this->Html->link('', ['controller' => 'Autorizacions', 'action' => 'edit', $autorizacions->id], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
@@ -97,10 +97,9 @@ $this->end();
             <thead>
             <tr>
                 <th><?= __('Id') ?></th>
-                <th><?= __('Titulo') ?></th>
                 <th><?= __('Descripcion') ?></th>
                 <th><?= __('Fecha Creacion') ?></th>
-                <th><?= __('Fecha Recomendacion') ?></th>
+                <th><?= __('Fecha Modificacion') ?></th>
                 <th><?= __('Usuario Id') ?></th>
                 <th><?= __('Estado Id') ?></th>
                 <th><?= __('Año') ?></th>
@@ -111,10 +110,9 @@ $this->end();
             <?php foreach ($estado->recomendacions as $recomendacions): ?>
                 <tr>
                     <td><?= h($recomendacions->id) ?></td>
-                    <td><?= h($recomendacions->titulo) ?></td>
                     <td><?= h($recomendacions->descripcion) ?></td>
                     <td><?= h($recomendacions->fecha_creacion) ?></td>
-                    <td><?= h($recomendacions->fecha_recomendacion) ?></td>
+                    <td><?= h($recomendacions->fecha_modificacion) ?></td>
                     <td><?= h($recomendacions->usuario_id) ?></td>
                     <td><?= h($recomendacions->estado_id) ?></td>
                     <td><?= h($recomendacions->año) ?></td>

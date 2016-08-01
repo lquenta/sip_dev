@@ -50,7 +50,7 @@ class NotificacionsFixture extends TestFixture
             'recomendacion_id' => 1,
             'usuario_id' => 1,
             'mensaje' => 'Lorem ipsum dolor sit amet',
-            'fecha' => '2016-06-25 04:15:20',
+            'fecha' => '2016-07-29 21:31:52',
             'estado' => 'Lorem ipsum dolor sit amet'
         ],
     ];

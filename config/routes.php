@@ -78,7 +78,30 @@ Router::scope('/', function ($routes) {
     $routes->extensions(['json']);
     $routes->resources('Busquedas');
 });
-
+Router::scope('/', function ($routes) {
+    $routes->extensions(['json']);
+    $routes->resources('Busquedas', [
+   'map' => [
+       'simple' => [
+           'action' => 'simple',
+           'method' => 'POST'
+       ],
+       'avanzada' => [
+           'action' => 'avanzada',
+           'method' => 'POST'
+       ]
+   ]]);
+});
+Router::scope('/', function ($routes) {
+    $routes->extensions(['json']);
+    $routes->resources('Noticias', [
+   'map' => [
+       'todas' => [
+           'action' => 'todas',
+           'method' => 'GET'
+       ]
+   ]]);
+});
 /**
  * Load all plugin routes.  See the Plugin documentation on
  * how to customize the loading of plugin routes.

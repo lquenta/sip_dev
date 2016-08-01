@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Estado;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -12,6 +11,14 @@ use Cake\Validation\Validator;
  *
  * @property \Cake\ORM\Association\HasMany $Autorizacions
  * @property \Cake\ORM\Association\HasMany $Recomendacions
+ *
+ * @method \App\Model\Entity\Estado get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Estado newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Estado[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Estado|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Estado patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Estado[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Estado findOrCreate($search, callable $callback = null)
  */
 class EstadosTable extends Table
 {

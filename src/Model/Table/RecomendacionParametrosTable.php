@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\RecomendacionParametro;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -11,6 +10,14 @@ use Cake\Validation\Validator;
  * RecomendacionParametros Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Recomendacions
+ *
+ * @method \App\Model\Entity\RecomendacionParametro get($primaryKey, $options = [])
+ * @method \App\Model\Entity\RecomendacionParametro newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\RecomendacionParametro[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\RecomendacionParametro|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\RecomendacionParametro patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\RecomendacionParametro[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\RecomendacionParametro findOrCreate($search, callable $callback = null)
  */
 class RecomendacionParametrosTable extends Table
 {

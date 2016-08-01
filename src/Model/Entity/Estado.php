@@ -4,10 +4,11 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Estado Entity.
+ * Estado Entity
  *
  * @property int $id
  * @property string $descripcion
+ *
  * @property \App\Model\Entity\Autorizacion[] $autorizacions
  * @property \App\Model\Entity\Recomendacion[] $recomendacions
  */
@@ -25,6 +26,6 @@ class Estado extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

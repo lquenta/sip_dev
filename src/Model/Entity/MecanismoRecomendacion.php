@@ -4,12 +4,13 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * MecanismoRecomendacion Entity.
+ * MecanismoRecomendacion Entity
  *
  * @property int $id
  * @property int $mecanismo_id
- * @property \App\Model\Entity\Mecanismo $mecanismo
  * @property int $recomendacion_id
+ *
+ * @property \App\Model\Entity\Mecanismo $mecanismo
  * @property \App\Model\Entity\Recomendacion $recomendacion
  */
 class MecanismoRecomendacion extends Entity
@@ -26,6 +27,6 @@ class MecanismoRecomendacion extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

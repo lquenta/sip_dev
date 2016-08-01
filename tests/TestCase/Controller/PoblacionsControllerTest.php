@@ -19,7 +19,10 @@ class PoblacionsControllerTest extends IntegrationTestCase
         'app.poblacions',
         'app.poblacion_recomendacion',
         'app.recomendacions',
-        'app.usuarios',
+        'app.users',
+        'app.rols',
+        'app.institucions',
+        'app.institucion_recomendacion',
         'app.estados',
         'app.autorizacions',
         'app.accions',
@@ -28,13 +31,14 @@ class PoblacionsControllerTest extends IntegrationTestCase
         'app.derecho_recomendacion',
         'app.derechos',
         'app.indicadors',
-        'app.institucion_recomendacion',
-        'app.institucions',
+        'app.indicadores_derechos',
         'app.mecanismo_recomendacion',
         'app.mecanismos',
         'app.notificacions',
+        'app.recomendacion_parametros',
         'app.revisions',
-        'app.versions'
+        'app.versions',
+        'app.adjuntos_versions'
     ];
 
     /**

@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Recomendacion;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -14,7 +13,6 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsTo $Estados
  * @property \Cake\ORM\Association\HasMany $Accions
  * @property \Cake\ORM\Association\HasMany $AdjuntosRecomendacions
- * @property \Cake\ORM\Association\HasMany $Autorizacions
  * @property \Cake\ORM\Association\HasMany $DerechoRecomendacion
  * @property \Cake\ORM\Association\HasMany $InstitucionRecomendacion
  * @property \Cake\ORM\Association\HasMany $MecanismoRecomendacion
@@ -23,6 +21,14 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\HasMany $RecomendacionParametros
  * @property \Cake\ORM\Association\HasMany $Revisions
  * @property \Cake\ORM\Association\HasMany $Versions
+ *
+ * @method \App\Model\Entity\Recomendacion get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Recomendacion newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Recomendacion[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Recomendacion|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Recomendacion patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Recomendacion[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Recomendacion findOrCreate($search, callable $callback = null)
  */
 class RecomendacionsTable extends Table
 {
@@ -53,9 +59,6 @@ class RecomendacionsTable extends Table
             'foreignKey' => 'recomendacion_id'
         ]);
         $this->hasMany('AdjuntosRecomendacions', [
-            'foreignKey' => 'recomendacion_id'
-        ]);
-        $this->hasMany('Autorizacions', [
             'foreignKey' => 'recomendacion_id'
         ]);
         $this->hasMany('DerechoRecomendacion', [
@@ -97,10 +100,6 @@ class RecomendacionsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('titulo', 'create')
-            ->notEmpty('titulo');
-
-        $validator
             ->requirePresence('descripcion', 'create')
             ->notEmpty('descripcion');
 
@@ -134,5 +133,20 @@ class RecomendacionsTable extends Table
         $rules->add($rules->existsIn(['usuario_id'], 'Users'));
         $rules->add($rules->existsIn(['estado_id'], 'Estados'));
         return $rules;
+    }
+    public function obtenerUltimoCodigoRecomendacion(){
+        $sql=$this->query('SELECT codigo FROM recomendacions ORDER BY id DESC;');
+        $result = $this->connection()->execute($sql)->fetchAll('assoc');
+        if($result!=null){
+            $result = $result[0]['Recomendacions__id'];    
+            $result = $result + 1;
+        }else{  
+            $result = '1';
+        }
+
+        
+        $codigo_numerico=str_pad($result,5,'0',STR_PAD_LEFT);
+        $result = 'SPREC'.$codigo_numerico;
+        return $result;
     }
 }

@@ -38,7 +38,7 @@ $this->end();
     <table class="table table-striped" cellpadding="0" cellspacing="0">
         <tr>
             <td><?= __('Derecho') ?></td>
-            <td><?= $derechoRecomendacion->has('derecho') ? $this->Html->link($derechoRecomendacion->derecho->id, ['controller' => 'Derechos', 'action' => 'view', $derechoRecomendacion->derecho->id]) : '' ?></td>
+            <td><?= $derechoRecomendacion->has('derecho') ? $this->Html->link($derechoRecomendacion->derecho->descripcion, ['controller' => 'Derechos', 'action' => 'view', $derechoRecomendacion->derecho->id]) : '' ?></td>
         </tr>
         <tr>
             <td><?= __('Recomendacion') ?></td>

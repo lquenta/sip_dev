@@ -4,16 +4,17 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Notificacion Entity.
+ * Notificacion Entity
  *
  * @property int $id
  * @property int $recomendacion_id
- * @property \App\Model\Entity\Recomendacion $recomendacion
  * @property int $usuario_id
- * @property \App\Model\Entity\User $user
  * @property string $mensaje
  * @property \Cake\I18n\Time $fecha
  * @property string $estado
+ *
+ * @property \App\Model\Entity\Recomendacion $recomendacion
+ * @property \App\Model\Entity\User $user
  */
 class Notificacion extends Entity
 {
@@ -29,6 +30,6 @@ class Notificacion extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

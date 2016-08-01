@@ -4,17 +4,18 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Autorizacion Entity.
+ * Autorizacion Entity
  *
  * @property int $id
  * @property int $usuario_id
- * @property \App\Model\Entity\User $user
- * @property int $recomendacion_id
- * @property \App\Model\Entity\Recomendacion $recomendacion
  * @property int $estado_id
- * @property \App\Model\Entity\Estado $estado
  * @property \Cake\I18n\Time $fecha_modificacion
  * @property string $visto_bueno_fisico
+ * @property int $accion_id
+ *
+ * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\Estado $estado
+ * @property \App\Model\Entity\Accion $accion
  */
 class Autorizacion extends Entity
 {
@@ -30,6 +31,6 @@ class Autorizacion extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

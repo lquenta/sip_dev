@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\IndicadoresDerecho;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -12,6 +11,14 @@ use Cake\Validation\Validator;
  *
  * @property \Cake\ORM\Association\BelongsTo $Derechos
  * @property \Cake\ORM\Association\BelongsTo $Indicadors
+ *
+ * @method \App\Model\Entity\IndicadoresDerecho get($primaryKey, $options = [])
+ * @method \App\Model\Entity\IndicadoresDerecho newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\IndicadoresDerecho[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\IndicadoresDerecho|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\IndicadoresDerecho patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\IndicadoresDerecho[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\IndicadoresDerecho findOrCreate($search, callable $callback = null)
  */
 class IndicadoresDerechosTable extends Table
 {

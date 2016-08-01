@@ -25,7 +25,7 @@ $this->start('tb_actions');
         <tr>
             <td><?= $this->Number->format($mecanismoRecomendacion->id) ?></td>
             <td>
-                <?= $mecanismoRecomendacion->has('mecanismo') ? $this->Html->link($mecanismoRecomendacion->mecanismo->id, ['controller' => 'Mecanismos', 'action' => 'view', $mecanismoRecomendacion->mecanismo->id]) : '' ?>
+                <?= $mecanismoRecomendacion->has('mecanismo') ? $this->Html->link($mecanismoRecomendacion->mecanismo->descripcion, ['controller' => 'Mecanismos', 'action' => 'view', $mecanismoRecomendacion->mecanismo->id]) : '' ?>
             </td>
             <td>
                 <?= $mecanismoRecomendacion->has('recomendacion') ? $this->Html->link($mecanismoRecomendacion->recomendacion->id, ['controller' => 'Recomendacions', 'action' => 'view', $mecanismoRecomendacion->recomendacion->id]) : '' ?>

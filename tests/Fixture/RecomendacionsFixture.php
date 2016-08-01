@@ -18,7 +18,6 @@ class RecomendacionsFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'titulo' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         'descripcion' => ['type' => 'string', 'length' => 1000, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         'fecha_creacion' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'fecha_modificacion' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
@@ -49,10 +48,9 @@ class RecomendacionsFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'titulo' => 'Lorem ipsum dolor sit amet',
             'descripcion' => 'Lorem ipsum dolor sit amet',
-            'fecha_creacion' => '2016-06-25 04:32:38',
-            'fecha_modificacion' => '2016-06-25 04:32:38',
+            'fecha_creacion' => '2016-07-29 21:32:53',
+            'fecha_modificacion' => '2016-07-29 21:32:53',
             'usuario_id' => 1,
             'estado_id' => 1,
             'año' => 1

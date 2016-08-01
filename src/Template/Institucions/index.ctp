@@ -6,6 +6,8 @@ $this->start('tb_actions');
     <li><?= $this->Html->link(__('New Institucion'), ['action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List InstitucionRecomendacion'), ['controller' => 'InstitucionRecomendacion', 'action' => 'index']); ?></li>
     <li><?= $this->Html->link(__('New Institucion Recomendacion'), ['controller' => ' InstitucionRecomendacion', 'action' => 'add']); ?></li>
+    <li><?= $this->Html->link(__('List Rols'), ['controller' => 'Rols', 'action' => 'index']); ?></li>
+    <li><?= $this->Html->link(__('New Rol'), ['controller' => ' Rols', 'action' => 'add']); ?></li>
 <?php $this->end(); ?>
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 

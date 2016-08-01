@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Accion;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -13,6 +12,15 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsTo $Users
  * @property \Cake\ORM\Association\BelongsTo $Recomendacions
  * @property \Cake\ORM\Association\HasMany $AdjuntosAccions
+ * @property \Cake\ORM\Association\HasMany $Autorizacions
+ *
+ * @method \App\Model\Entity\Accion get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Accion newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Accion[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Accion|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Accion patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Accion[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Accion findOrCreate($search, callable $callback = null)
  */
 class AccionsTable extends Table
 {
@@ -42,6 +50,9 @@ class AccionsTable extends Table
         $this->hasMany('AdjuntosAccions', [
             'foreignKey' => 'accion_id'
         ]);
+        $this->hasMany('Autorizacions', [
+            'foreignKey' => 'accion_id'
+        ]);
     }
 
     /**
@@ -57,6 +68,10 @@ class AccionsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->requirePresence('codigo', 'create')
+            ->notEmpty('codigo');
+
+        $validator
             ->requirePresence('descripcion', 'create')
             ->notEmpty('descripcion');
 
@@ -66,24 +81,8 @@ class AccionsTable extends Table
             ->notEmpty('fecha');
 
         $validator
-            ->requirePresence('politica', 'create')
-            ->notEmpty('politica');
-
-        $validator
-            ->requirePresence('programa', 'create')
-            ->notEmpty('programa');
-
-        $validator
-            ->requirePresence('direccion', 'create')
-            ->notEmpty('direccion');
-
-        $validator
-            ->requirePresence('reporte', 'create')
-            ->notEmpty('reporte');
-
-        $validator
-            ->requirePresence('desafios', 'create')
-            ->notEmpty('desafios');
+            ->requirePresence('listado', 'create')
+            ->notEmpty('listado');
 
         return $validator;
     }
@@ -100,5 +99,20 @@ class AccionsTable extends Table
         $rules->add($rules->existsIn(['usuario_id'], 'Users'));
         $rules->add($rules->existsIn(['recomendacion_id'], 'Recomendacions'));
         return $rules;
+    }
+     public function obtenerUltimoCodigoAccion($id_segumiento){
+        $sql=$this->query('SELECT codigo FROM accions ORDER BY id DESC;');
+        $result = $this->connection()->execute($sql)->fetchAll('assoc');
+        if($result!=null){
+            $result = $result[0]['Accions__id'];    
+            $result = $result + 1;
+        }else{  
+            $result = '1';
+        }
+        $codigo_numerico=str_pad($id_segumiento,5,'0',STR_PAD_LEFT);
+        $codigo_parcial = 'SPSEG'.$codigo_numerico;
+        $codigo_numerico=str_pad($result,3,'0',STR_PAD_LEFT);
+        $result = $codigo_parcial.'-'.$codigo_numerico;
+        return $result;
     }
 }

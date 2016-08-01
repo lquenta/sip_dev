@@ -33,7 +33,7 @@ $this->end();
 <div class="panel panel-default">
     <!-- Panel header -->
     <div class="panel-heading">
-        <h3 class="panel-title"><?= h($derecho->id) ?></h3>
+        <h3 class="panel-title"><?= h($derecho->descripcion) ?></h3>
     </div>
     <table class="table table-striped" cellpadding="0" cellspacing="0">
         <tr>
@@ -42,7 +42,7 @@ $this->end();
         </tr>
         <tr>
             <td><?= __('Indicador') ?></td>
-            <td><?= $derecho->has('indicador') ? $this->Html->link($derecho->indicador->id, ['controller' => 'Indicadors', 'action' => 'view', $derecho->indicador->id]) : '' ?></td>
+            <td><?= $derecho->has('indicador') ? $this->Html->link($derecho->indicador->nombre, ['controller' => 'Indicadors', 'action' => 'view', $derecho->indicador->id]) : '' ?></td>
         </tr>
         <tr>
             <td><?= __('Id') ?></td>

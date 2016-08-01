@@ -168,7 +168,7 @@ $this->start('tb_body_start');
                                 <?=$this->Html->image('avatars/user.jpg', ['class' => 'msg-photo']);?>
                                 <span class="user-info">
                                     <small>Bienvenido,</small>
-                                    Carlos
+                                    <?= $this->request->session()->read('Auth.User.nombre_usuario')?>
                                 </span>
 
                                 <i class="ace-icon fa fa-caret-down"></i>
@@ -250,43 +250,37 @@ $this->start('tb_body_start');
                             <i class="menu-icon fa fa-tachometer"></i>
                             <span class="menu-text"> Panel de Control </span>
                         </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a href="<?= $this->Url->build(["controller" => "Accions","action" => "index"]); ?>">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            <span class="menu-text"> Acciones</span>
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-                    <li class="">
-                        <a href="<?= $this->Url->build(["controller" => "Autorizacions","action" => "index"]); ?>">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            <span class="menu-text"> Acciones pendientes autorizacion</span>
-                        </a>
-
-                        <b class="arrow"></b>
                     </li>
                     <li class="">
                         <a href="<?= $this->Url->build(["controller" => "Recomendacions","action" => "add"]); ?>">
                             <i class="menu-icon fa fa-caret-right"></i>
                             <span class="menu-text"> Nueva Recomendacion</span>
                         </a>
-
-                        <b class="arrow"></b>
                     </li>
-
-                    <li class="">
+                        <li class="">
                         <a href="<?= $this->Url->build(["controller" => "Recomendacions","action" => "index"]); ?>">
                             <i class="menu-icon fa fa-caret-right"></i>
                             <span class="menu-text"> Lista Recomendaciones</span>
                         </a>
-
-                        <b class="arrow"></b>
                     </li>
+                        
+                    <li class="">
+                        <a href="<?= $this->Url->build(["controller" => "Accions","action" => "index"]); ?>">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            <span class="menu-text"> Seguimientos Iniciados</span>
+                        </a>
+
+                    </li>
+                    <li class="">
+                        <a href="<?= $this->Url->build(["controller" => "Autorizacions","action" => "index"]); ?>">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            <span class="menu-text"> Seguimientos pendientes de autorizacion</span>
+                        </a>
+
+                    </li>
+                    
+
+                    
 
                     
 

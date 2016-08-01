@@ -29,7 +29,7 @@ class RevisionsFixture extends TestFixture
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
             'fk_revisions_1' => ['type' => 'foreign', 'columns' => ['recomendacion_id'], 'references' => ['recomendacions', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
-            'fk_revisions_2' => ['type' => 'foreign', 'columns' => ['usuario_id'], 'references' => ['usuarios', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
+            'fk_revisions_2' => ['type' => 'foreign', 'columns' => ['usuario_id'], 'references' => ['users', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -49,7 +49,7 @@ class RevisionsFixture extends TestFixture
             'recomendacion_id' => 1,
             'usuario_id' => 1,
             'resultado' => 'Lorem ipsum dolor sit amet',
-            'fecha' => '2016-06-22 02:50:43'
+            'fecha' => '2016-07-29 21:33:03'
         ],
     ];
 }

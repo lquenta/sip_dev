@@ -4,16 +4,17 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Version Entity.
+ * Version Entity
  *
  * @property int $id
  * @property int $recomendacion_id
- * @property \App\Model\Entity\Recomendacion $recomendacion
  * @property string $titulo
  * @property string $descripcion
  * @property \Cake\I18n\Time $fecha
  * @property int $usuario_id
- * @property \App\Model\Entity\Usuario $usuario
+ *
+ * @property \App\Model\Entity\Recomendacion $recomendacion
+ * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\AdjuntosVersion[] $adjuntos_versions
  */
 class Version extends Entity
@@ -30,6 +31,6 @@ class Version extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

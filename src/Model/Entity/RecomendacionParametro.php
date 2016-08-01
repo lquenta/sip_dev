@@ -4,13 +4,14 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * RecomendacionParametro Entity.
+ * RecomendacionParametro Entity
  *
  * @property int $id
  * @property int $recomendacion_id
- * @property \App\Model\Entity\Recomendacion $recomendacion
  * @property float $prioridad
  * @property float $tiempo
+ *
+ * @property \App\Model\Entity\Recomendacion $recomendacion
  */
 class RecomendacionParametro extends Entity
 {
@@ -26,6 +27,6 @@ class RecomendacionParametro extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

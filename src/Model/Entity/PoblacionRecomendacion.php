@@ -4,12 +4,13 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * PoblacionRecomendacion Entity.
+ * PoblacionRecomendacion Entity
  *
  * @property int $id
  * @property int $recomendacion_id
- * @property \App\Model\Entity\Recomendacion $recomendacion
  * @property int $poblacion_id
+ *
+ * @property \App\Model\Entity\Recomendacion $recomendacion
  * @property \App\Model\Entity\Poblacion $poblacion
  */
 class PoblacionRecomendacion extends Entity
@@ -26,6 +27,6 @@ class PoblacionRecomendacion extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

@@ -29,7 +29,7 @@ $this->end();
 <div class="panel panel-default">
     <!-- Panel header -->
     <div class="panel-heading">
-        <h3 class="panel-title"><?= h($indicador->id) ?></h3>
+        <h3 class="panel-title"><?= h($indicador->nombre) ?></h3>
     </div>
     <table class="table table-striped" cellpadding="0" cellspacing="0">
         <tr>

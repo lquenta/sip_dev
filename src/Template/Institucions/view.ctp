@@ -10,6 +10,8 @@ $this->start('tb_actions');
 <li><?= $this->Html->link(__('New Institucion'), ['action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Institucion Recomendacion'), ['controller' => 'InstitucionRecomendacion', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Institucion Recomendacion'), ['controller' => 'InstitucionRecomendacion', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('List Rols'), ['controller' => 'Rols', 'action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New Rol'), ['controller' => 'Rols', 'action' => 'add']) ?> </li>
 <?php
 $this->end();
 
@@ -22,6 +24,8 @@ $this->start('tb_sidebar');
 <li><?= $this->Html->link(__('New Institucion'), ['action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Institucion Recomendacion'), ['controller' => 'InstitucionRecomendacion', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Institucion Recomendacion'), ['controller' => 'InstitucionRecomendacion', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('List Rols'), ['controller' => 'Rols', 'action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New Rol'), ['controller' => 'Rols', 'action' => 'add']) ?> </li>
 </ul>
 <?php
 $this->end();
@@ -75,5 +79,39 @@ $this->end();
         </table>
     <?php else: ?>
         <p class="panel-body">no related InstitucionRecomendacion</p>
+    <?php endif; ?>
+</div>
+<div class="panel panel-default">
+    <!-- Panel header -->
+    <div class="panel-heading">
+        <h3 class="panel-title"><?= __('Related Rols') ?></h3>
+    </div>
+    <?php if (!empty($institucion->rols)): ?>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th><?= __('Id') ?></th>
+                <th><?= __('Nombre') ?></th>
+                <th><?= __('Institucion Id') ?></th>
+                <th class="actions"><?= __('Actions') ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($institucion->rols as $rols): ?>
+                <tr>
+                    <td><?= h($rols->id) ?></td>
+                    <td><?= h($rols->nombre) ?></td>
+                    <td><?= h($rols->institucion_id) ?></td>
+                    <td class="actions">
+                        <?= $this->Html->link('', ['controller' => 'Rols', 'action' => 'view', $rols->id], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
+                        <?= $this->Html->link('', ['controller' => 'Rols', 'action' => 'edit', $rols->id], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
+                        <?= $this->Form->postLink('', ['controller' => 'Rols', 'action' => 'delete', $rols->id], ['confirm' => __('Are you sure you want to delete # {0}?', $rols->id), 'title' => __('Delete'), 'class' => 'btn btn-default glyphicon glyphicon-trash']) ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p class="panel-body">no related Rols</p>
     <?php endif; ?>
 </div>

@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Autorizacion;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -11,8 +10,16 @@ use Cake\Validation\Validator;
  * Autorizacions Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Users
- * @property \Cake\ORM\Association\BelongsTo $Recomendacions
  * @property \Cake\ORM\Association\BelongsTo $Estados
+ * @property \Cake\ORM\Association\BelongsTo $Accions
+ *
+ * @method \App\Model\Entity\Autorizacion get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Autorizacion newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Autorizacion[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Autorizacion|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Autorizacion patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Autorizacion[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Autorizacion findOrCreate($search, callable $callback = null)
  */
 class AutorizacionsTable extends Table
 {
@@ -35,12 +42,12 @@ class AutorizacionsTable extends Table
             'foreignKey' => 'usuario_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Recomendacions', [
-            'foreignKey' => 'recomendacion_id',
-            'joinType' => 'INNER'
-        ]);
         $this->belongsTo('Estados', [
             'foreignKey' => 'estado_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('Accions', [
+            'foreignKey' => 'accion_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -79,8 +86,8 @@ class AutorizacionsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['usuario_id'], 'Users'));
-        $rules->add($rules->existsIn(['recomendacion_id'], 'Recomendacions'));
         $rules->add($rules->existsIn(['estado_id'], 'Estados'));
+        $rules->add($rules->existsIn(['accion_id'], 'Accions'));
         return $rules;
     }
 }

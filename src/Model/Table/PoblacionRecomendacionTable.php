@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\PoblacionRecomendacion;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -12,6 +11,14 @@ use Cake\Validation\Validator;
  *
  * @property \Cake\ORM\Association\BelongsTo $Recomendacions
  * @property \Cake\ORM\Association\BelongsTo $Poblacions
+ *
+ * @method \App\Model\Entity\PoblacionRecomendacion get($primaryKey, $options = [])
+ * @method \App\Model\Entity\PoblacionRecomendacion newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\PoblacionRecomendacion[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\PoblacionRecomendacion|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\PoblacionRecomendacion patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\PoblacionRecomendacion[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\PoblacionRecomendacion findOrCreate($search, callable $callback = null)
  */
 class PoblacionRecomendacionTable extends Table
 {

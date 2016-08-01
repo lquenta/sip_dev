@@ -4,10 +4,11 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Poblacion Entity.
+ * Poblacion Entity
  *
  * @property int $id
  * @property string $descripcion
+ *
  * @property \App\Model\Entity\PoblacionRecomendacion[] $poblacion_recomendacion
  */
 class Poblacion extends Entity
@@ -24,6 +25,6 @@ class Poblacion extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

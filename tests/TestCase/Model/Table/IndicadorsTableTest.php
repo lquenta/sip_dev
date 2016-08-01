@@ -28,18 +28,25 @@ class IndicadorsTableTest extends TestCase
         'app.derechos',
         'app.derecho_recomendacion',
         'app.recomendacions',
-        'app.usuarios',
+        'app.users',
+        'app.rols',
+        'app.institucions',
+        'app.institucion_recomendacion',
         'app.estados',
         'app.autorizacions',
         'app.accions',
         'app.adjuntos_accions',
         'app.adjuntos_recomendacions',
-        'app.institucion_recomendacion',
         'app.mecanismo_recomendacion',
+        'app.mecanismos',
         'app.notificacions',
         'app.poblacion_recomendacion',
+        'app.poblacions',
+        'app.recomendacion_parametros',
         'app.revisions',
-        'app.versions'
+        'app.versions',
+        'app.adjuntos_versions',
+        'app.indicadores_derechos'
     ];
 
     /**

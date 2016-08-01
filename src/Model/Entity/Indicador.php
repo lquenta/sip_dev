@@ -4,11 +4,12 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Indicador Entity.
+ * Indicador Entity
  *
  * @property int $id
  * @property string $nombre
  * @property string $link
+ *
  * @property \App\Model\Entity\Derecho[] $derechos
  */
 class Indicador extends Entity
@@ -25,6 +26,6 @@ class Indicador extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

@@ -29,7 +29,7 @@ class InstitucionsControllerTest extends IntegrationTestCase
         'app.derecho_recomendacion',
         'app.derechos',
         'app.indicadors',
-        'app.indicadores_recomendacions',
+        'app.indicadores_derechos',
         'app.mecanismo_recomendacion',
         'app.mecanismos',
         'app.notificacions',

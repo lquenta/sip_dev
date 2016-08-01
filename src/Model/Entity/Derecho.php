@@ -4,11 +4,12 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Derecho Entity.
+ * Derecho Entity
  *
  * @property int $id
  * @property string $descripcion
  * @property int $indicador_id
+ *
  * @property \App\Model\Entity\Indicador $indicador
  * @property \App\Model\Entity\DerechoRecomendacion[] $derecho_recomendacion
  */
@@ -26,6 +27,6 @@ class Derecho extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

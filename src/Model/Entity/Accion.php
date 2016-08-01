@@ -4,20 +4,18 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Accion Entity.
+ * Accion Entity
  *
  * @property int $id
+ * @property string $codigo
  * @property string $descripcion
  * @property \Cake\I18n\Time $fecha
  * @property int $usuario_id
- * @property \App\Model\Entity\Usuario $usuario
  * @property int $recomendacion_id
- * @property \App\Model\Entity\Recomendacion $recomendacion
  * @property string $politica
- * @property string $programa
- * @property string $direccion
- * @property string $reporte
- * @property string $desafios
+ *
+ * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\Recomendacion $recomendacion
  * @property \App\Model\Entity\AdjuntosAccion[] $adjuntos_accions
  */
 class Accion extends Entity
@@ -34,6 +32,6 @@ class Accion extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

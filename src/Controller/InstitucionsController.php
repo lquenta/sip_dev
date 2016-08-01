@@ -34,7 +34,7 @@ class InstitucionsController extends AppController
     public function view($id = null)
     {
         $institucion = $this->Institucions->get($id, [
-            'contain' => ['InstitucionRecomendacion']
+            'contain' => ['InstitucionRecomendacion', 'Rols']
         ]);
 
         $this->set('institucion', $institucion);

@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Derecho;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -12,6 +11,15 @@ use Cake\Validation\Validator;
  *
  * @property \Cake\ORM\Association\BelongsTo $Indicadors
  * @property \Cake\ORM\Association\HasMany $DerechoRecomendacion
+ * @property \Cake\ORM\Association\HasMany $IndicadoresDerechos
+ *
+ * @method \App\Model\Entity\Derecho get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Derecho newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Derecho[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Derecho|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Derecho patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Derecho[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Derecho findOrCreate($search, callable $callback = null)
  */
 class DerechosTable extends Table
 {
@@ -35,6 +43,9 @@ class DerechosTable extends Table
             'joinType' => 'INNER'
         ]);
         $this->hasMany('DerechoRecomendacion', [
+            'foreignKey' => 'derecho_id'
+        ]);
+        $this->hasMany('IndicadoresDerechos', [
             'foreignKey' => 'derecho_id'
         ]);
     }

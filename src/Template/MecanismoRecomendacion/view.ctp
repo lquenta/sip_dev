@@ -38,7 +38,7 @@ $this->end();
     <table class="table table-striped" cellpadding="0" cellspacing="0">
         <tr>
             <td><?= __('Mecanismo') ?></td>
-            <td><?= $mecanismoRecomendacion->has('mecanismo') ? $this->Html->link($mecanismoRecomendacion->mecanismo->id, ['controller' => 'Mecanismos', 'action' => 'view', $mecanismoRecomendacion->mecanismo->id]) : '' ?></td>
+            <td><?= $mecanismoRecomendacion->has('mecanismo') ? $this->Html->link($mecanismoRecomendacion->mecanismo->descripcion, ['controller' => 'Mecanismos', 'action' => 'view', $mecanismoRecomendacion->mecanismo->id]) : '' ?></td>
         </tr>
         <tr>
             <td><?= __('Recomendacion') ?></td>

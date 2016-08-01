@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Institucion;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -12,6 +11,14 @@ use Cake\Validation\Validator;
  *
  * @property \Cake\ORM\Association\HasMany $InstitucionRecomendacion
  * @property \Cake\ORM\Association\HasMany $Rols
+ *
+ * @method \App\Model\Entity\Institucion get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Institucion newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Institucion[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Institucion|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Institucion patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Institucion[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Institucion findOrCreate($search, callable $callback = null)
  */
 class InstitucionsTable extends Table
 {

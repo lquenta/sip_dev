@@ -13,12 +13,19 @@ $this->assign('title', 'Añadir Recomendacion');
             </div>
             <div id="collapse1" class="panel-collapse collapse in">
                 <div class="panel-body">
+                <div class="form-group">
+                    <label for="inputTitulo">Codigo</label>
+                    <input type="text" class="form-control" id="codigo" name='codigo' placeholder="" readonly="readonly" value="<?= h($codigo_recomendacion) ?>">
+                </div>
+                 <div class="form-group">
+                    <label for="inputTitulo">Descripcion</label>
+                    <textarea type="text" class="form-control" id="descripcion" name='descripcion' placeholder="" rows="3" required=""></textarea>
+                </div>
                 <?php
-                    echo $this->Form->input('descripcion');
                     echo $this->Form->input('año');
                     echo $this->Form->input('poblaciones', array('multiple' => 'checkbox', 'options' => $poblaciones));
                     echo $this->Form->input('derecho', array('multiple' => 'checkbox', 'options' => $derecho));
-                    echo $this->Form->input('institucions', array('multiple' => 'checkbox', 'options' => $institucions));
+                    echo $this->Form->input('institucions', array('label'=>'Instituciones','multiple' => 'checkbox', 'options' => $institucions));
                     echo $this->Form->input('mecanismos', array('multiple' => 'checkbox', 'options' => $mecanismos));
                 ?>
                 </div>
@@ -44,5 +51,6 @@ $this->assign('title', 'Añadir Recomendacion');
 
     
 </fieldset>
-<?= $this->Form->button(__("Grabar")); ?>
+<?= $this->Form->button('Grabar',array('name'=>'btnGuardar'));?>
+<?= $this->Form->button('Grabar y Publicar',array('name'=>'btnPublicar'));?>
 <?= $this->Form->end() ?>

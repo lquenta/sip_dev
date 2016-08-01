@@ -4,23 +4,22 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Recomendacion Entity.
+ * Recomendacion Entity
  *
  * @property int $id
- * @property string $titulo
  * @property string $descripcion
  * @property \Cake\I18n\Time $fecha_creacion
  * @property \Cake\I18n\Time $fecha_modificacion
  * @property int $usuario_id
- * @property \App\Model\Entity\User $user
  * @property int $estado_id
- * @property \App\Model\Entity\Estado $estado
  * @property int $año
+ *
+ * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\Estado $estado
  * @property \App\Model\Entity\Accion[] $accions
  * @property \App\Model\Entity\AdjuntosRecomendacion[] $adjuntos_recomendacions
  * @property \App\Model\Entity\Autorizacion[] $autorizacions
  * @property \App\Model\Entity\DerechoRecomendacion[] $derecho_recomendacion
- * @property \App\Model\Entity\IndicadoresRecomendacion[] $indicadores_recomendacions
  * @property \App\Model\Entity\InstitucionRecomendacion[] $institucion_recomendacion
  * @property \App\Model\Entity\MecanismoRecomendacion[] $mecanismo_recomendacion
  * @property \App\Model\Entity\Notificacion[] $notificacions
@@ -43,6 +42,6 @@ class Recomendacion extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

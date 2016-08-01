@@ -4,12 +4,13 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * AdjuntosVersion Entity.
+ * AdjuntosVersion Entity
  *
  * @property int $id
  * @property int $version_id
- * @property \App\Model\Entity\Version $version
  * @property string $link
+ *
+ * @property \App\Model\Entity\Version $version
  */
 class AdjuntosVersion extends Entity
 {
@@ -25,6 +26,6 @@ class AdjuntosVersion extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

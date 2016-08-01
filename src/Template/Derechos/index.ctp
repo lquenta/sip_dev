@@ -26,7 +26,7 @@ $this->start('tb_actions');
             <td><?= $this->Number->format($derecho->id) ?></td>
             <td><?= h($derecho->descripcion) ?></td>
             <td>
-                <?= $derecho->has('indicador') ? $this->Html->link($derecho->indicador->id, ['controller' => 'Indicadors', 'action' => 'view', $derecho->indicador->id]) : '' ?>
+                <?= $derecho->has('indicador') ? $this->Html->link($derecho->indicador->nombre, ['controller' => 'Indicadors', 'action' => 'view', $derecho->indicador->id]) : '' ?>
             </td>
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $derecho->id], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>

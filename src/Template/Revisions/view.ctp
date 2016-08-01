@@ -11,7 +11,7 @@ $this->start('tb_actions');
 <li><?= $this->Html->link(__('List Recomendacions'), ['controller' => 'Recomendacions', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Recomendacion'), ['controller' => 'Recomendacions', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
 <?php
 $this->end();
 
@@ -25,7 +25,7 @@ $this->start('tb_sidebar');
 <li><?= $this->Html->link(__('List Recomendacions'), ['controller' => 'Recomendacions', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Recomendacion'), ['controller' => 'Recomendacions', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
 </ul>
 <?php
 $this->end();
@@ -41,8 +41,8 @@ $this->end();
             <td><?= $revision->has('recomendacion') ? $this->Html->link($revision->recomendacion->id, ['controller' => 'Recomendacions', 'action' => 'view', $revision->recomendacion->id]) : '' ?></td>
         </tr>
         <tr>
-            <td><?= __('Usuario') ?></td>
-            <td><?= $revision->has('usuario') ? $this->Html->link($revision->usuario->id, ['controller' => 'Users', 'action' => 'view', $revision->usuario->id]) : '' ?></td>
+            <td><?= __('User') ?></td>
+            <td><?= $revision->has('user') ? $this->Html->link($revision->user->nombre_usuario, ['controller' => 'Users', 'action' => 'view', $revision->user->id]) : '' ?></td>
         </tr>
         <tr>
             <td><?= __('Resultado') ?></td>

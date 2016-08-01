@@ -27,7 +27,10 @@ class MecanismoRecomendacionTableTest extends TestCase
         'app.mecanismo_recomendacion',
         'app.mecanismos',
         'app.recomendacions',
-        'app.usuarios',
+        'app.users',
+        'app.rols',
+        'app.institucions',
+        'app.institucion_recomendacion',
         'app.estados',
         'app.autorizacions',
         'app.accions',
@@ -36,12 +39,14 @@ class MecanismoRecomendacionTableTest extends TestCase
         'app.derecho_recomendacion',
         'app.derechos',
         'app.indicadors',
-        'app.institucion_recomendacion',
-        'app.institucions',
+        'app.indicadores_derechos',
         'app.notificacions',
         'app.poblacion_recomendacion',
+        'app.poblacions',
+        'app.recomendacion_parametros',
         'app.revisions',
-        'app.versions'
+        'app.versions',
+        'app.adjuntos_versions'
     ];
 
     /**

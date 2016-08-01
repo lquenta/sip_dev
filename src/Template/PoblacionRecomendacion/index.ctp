@@ -28,7 +28,7 @@ $this->start('tb_actions');
                 <?= $poblacionRecomendacion->has('recomendacion') ? $this->Html->link($poblacionRecomendacion->recomendacion->id, ['controller' => 'Recomendacions', 'action' => 'view', $poblacionRecomendacion->recomendacion->id]) : '' ?>
             </td>
             <td>
-                <?= $poblacionRecomendacion->has('poblacion') ? $this->Html->link($poblacionRecomendacion->poblacion->id, ['controller' => 'Poblacions', 'action' => 'view', $poblacionRecomendacion->poblacion->id]) : '' ?>
+                <?= $poblacionRecomendacion->has('poblacion') ? $this->Html->link($poblacionRecomendacion->poblacion->descripcion, ['controller' => 'Poblacions', 'action' => 'view', $poblacionRecomendacion->poblacion->id]) : '' ?>
             </td>
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $poblacionRecomendacion->id], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>

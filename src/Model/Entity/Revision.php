@@ -4,15 +4,16 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Revision Entity.
+ * Revision Entity
  *
  * @property int $id
  * @property int $recomendacion_id
- * @property \App\Model\Entity\Recomendacion $recomendacion
  * @property int $usuario_id
- * @property \App\Model\Entity\Usuario $usuario
  * @property string $resultado
  * @property \Cake\I18n\Time $fecha
+ *
+ * @property \App\Model\Entity\Recomendacion $recomendacion
+ * @property \App\Model\Entity\User $user
  */
 class Revision extends Entity
 {
@@ -28,6 +29,6 @@ class Revision extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

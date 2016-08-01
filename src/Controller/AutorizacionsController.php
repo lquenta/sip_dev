@@ -19,7 +19,7 @@ class AutorizacionsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users', 'Recomendacions', 'Estados']
+            'contain' => ['Users', 'Accions', 'Estados']
         ];
         $autorizacions = $this->Autorizacions->find('all')
             ->where(['Autorizacions.usuario_id ' => $this->Auth->user('id'),'Autorizacions.estado_id'=>'1']);
@@ -38,7 +38,7 @@ class AutorizacionsController extends AppController
     public function view($id = null)
     {
         $autorizacion = $this->Autorizacions->get($id, [
-            'contain' => ['Users', 'Recomendacions', 'Estados']
+            'contain' => ['Users', 'Estados', 'Accions']
         ]);
 
         $this->set('autorizacion', $autorizacion);
@@ -63,9 +63,9 @@ class AutorizacionsController extends AppController
             }
         }
         $users = $this->Autorizacions->Users->find('list', ['limit' => 200]);
-        $recomendacions = $this->Autorizacions->Recomendacions->find('list', ['limit' => 200]);
         $estados = $this->Autorizacions->Estados->find('list', ['limit' => 200]);
-        $this->set(compact('autorizacion', 'users', 'recomendacions', 'estados'));
+        $accions = $this->Autorizacions->Accions->find('list', ['limit' => 200]);
+        $this->set(compact('autorizacion', 'users', 'estados', 'accions'));
         $this->set('_serialize', ['autorizacion']);
     }
 
@@ -91,9 +91,9 @@ class AutorizacionsController extends AppController
             }
         }
         $users = $this->Autorizacions->Users->find('list', ['limit' => 200]);
-        $recomendacions = $this->Autorizacions->Recomendacions->find('list', ['limit' => 200]);
         $estados = $this->Autorizacions->Estados->find('list', ['limit' => 200]);
-        $this->set(compact('autorizacion', 'users', 'recomendacions', 'estados'));
+        $accions = $this->Autorizacions->Accions->find('list', ['limit' => 200]);
+        $this->set(compact('autorizacion', 'users', 'estados', 'accions'));
         $this->set('_serialize', ['autorizacion']);
     }
 
@@ -115,7 +115,7 @@ class AutorizacionsController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
-    public function aprobarRecomendacion($id){
+    public function aprobarAccion($id){
         $this->loadModel('Accions');
         $this->loadModel('Recomendacions');
         $this->loadModel('Poblacions');
@@ -129,22 +129,25 @@ class AutorizacionsController extends AppController
         $this->loadModel('IndicadoresDerechos');
         $this->loadModel('AdjuntosAccions');
         
-
        
+         $accion =$this->Accions->get($id,[
+            'contain' => ['Users', 'Recomendacions', 'AdjuntosAccions']
+        ]);
+         $recomendacion = $this->Recomendacions->get($accion->recomendacion->id, [
+            'contain' => ['Users', 'Estados', 'Accions', 'AdjuntosRecomendacions', 'DerechoRecomendacion', 'InstitucionRecomendacion', 'MecanismoRecomendacion', 'PoblacionRecomendacion', 'RecomendacionParametros']
+        ]);
+         $recomendacions = $this->PoblacionRecomendacion->find('list', ['limit' => 200]);
+         $id_recomendacion = $recomendacion->id;
          $acciones =$this->Accions->find('all',[
             'contain' => ['Users', 'Recomendacions', 'AdjuntosAccions']
         ])
-         ->where(['Accions.recomendacion_id ' => $id])->toArray();
-         $recomendacion = $this->Recomendacions->get($id, [
-            'contain' => ['Users', 'Estados', 'Accions', 'AdjuntosRecomendacions', 'Autorizacions', 'DerechoRecomendacion', 'InstitucionRecomendacion', 'MecanismoRecomendacion', 'Notificacions', 'PoblacionRecomendacion', 'RecomendacionParametros', 'Revisions', 'Versions']
-        ]);
-         $recomendacions = $this->PoblacionRecomendacion->find('list', ['limit' => 200]);
-
+         ->where(['Accions.recomendacion_id ' => $id_recomendacion])->toArray();
          $PoblacionRecomendacion =$this->PoblacionRecomendacion->find('list',[
             'keyField' => 'poblacion_id',
             'valueField' => 'poblacion_id'
         ])
-         ->where(['PoblacionRecomendacion.recomendacion_id ' => $id])->toArray();
+         ->where(['PoblacionRecomendacion.recomendacion_id ' =>$id_recomendacion])->toArray();
+         
         $poblaciones = $this->Poblacions->find('list', ['limit' => 200])
         ->where(['id IN ' => $PoblacionRecomendacion])
         ->toArray();
@@ -152,12 +155,11 @@ class AutorizacionsController extends AppController
             'keyField' => 'derecho_id',
             'valueField' => 'derecho_id'
         ])
-         ->where(['DerechoRecomendacion.recomendacion_id ' => $id])->toArray();
+         ->where(['DerechoRecomendacion.recomendacion_id ' => $id_recomendacion])->toArray();
         
         $derechos=$this->Derechos->find('list', ['limit' => 200])
         ->where(['id IN ' => $derechosRecomendacion])
         ->toArray();
-
         //obtenemos los indicadores por derechos
         $indicadores_derechos = $this->IndicadoresDerechos->find('list', 
             ['keyField' => 'indicador_id',
@@ -165,12 +167,11 @@ class AutorizacionsController extends AppController
         ])
         ->where(['IndicadoresDerechos.derecho_id IN ' => $derechos])
         ->toArray();
-
         $institucionsRecomendacion = $this->InstitucionRecomendacion->find('list',[
             'keyField' => 'institucion_id',
             'valueField' => 'institucion_id'
         ])
-         ->where(['InstitucionRecomendacion.recomendacion_id ' => $id])->toArray();
+         ->where(['InstitucionRecomendacion.recomendacion_id ' => $id_recomendacion])->toArray();
         
         $instituciones=$this->Institucions->find('list', ['limit' => 200])
         ->where(['id IN ' => $institucionsRecomendacion])
@@ -179,23 +180,21 @@ class AutorizacionsController extends AppController
             'keyField' => 'mecanismo_id',
             'valueField' => 'mecanismo_id'
         ])
-         ->where(['MecanismoRecomendacion.recomendacion_id ' => $id])->toArray();
+         ->where(['MecanismoRecomendacion.recomendacion_id ' => $id_recomendacion])->toArray();
         
         $mecanismos=$this->Mecanismos->find('list', ['limit' => 200])
         ->where(['id IN ' => $mecanismoRecomendacion])
         ->toArray();
-
         //debug(json_encode(array_keys($poblaciones), JSON_PRETTY_PRINT));die;
         $all_poblaciones = $this->Poblacions->find('list', ['limit' => 200])->toArray();
         $all_derechos = $this->Derechos->find('list', ['limit' => 200])->toArray();
         $all_instituciones = $this->Institucions->find('list', ['limit' => 200])->toArray();
         $all_mecanismos = $this->Mecanismos->find('list', ['limit' => 200])->toArray();
-
-        $aprobarRecomendacion = $this->Autorizacions->newEntity();
+        $aprobarAccion = $this->Autorizacions->newEntity();
         if ($this->request->is(['patch', 'post', 'put'])) {
             //obtener la autorizacion id a partir del recomendacion id y el id del usuario
             $autorizacion=$this->Autorizacions->find('all', ['limit' => 200])
-                ->where(['recomendacion_id ' => $id,'usuario_id'=>$this->Auth->user('id')])->first();
+                ->where(['accion_id ' => $id,'usuario_id'=>$this->Auth->user('id')])->first();
             if($autorizacion==null){
                 $this->Flash->error(__('Usted no puede autorizar esta recomendacion.'));
             }else{
@@ -229,7 +228,7 @@ class AutorizacionsController extends AppController
         }
         $users = $this->Accions->Users->find('list', ['limit' => 200]);
         $recomendacions = $this->Accions->Recomendacions->find('list', ['limit' => 200]);
-        $this->set(compact('aprobarRecomendacion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos'));
+        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos',''));
         $this->set('_serialize', ['accion']);
     }
 }

@@ -31,7 +31,7 @@ $this->start('tb_actions');
                 <?= $notificacion->has('recomendacion') ? $this->Html->link($notificacion->recomendacion->id, ['controller' => 'Recomendacions', 'action' => 'view', $notificacion->recomendacion->id]) : '' ?>
             </td>
             <td>
-                <?= $notificacion->has('user') ? $this->Html->link($notificacion->user->id, ['controller' => 'Users', 'action' => 'view', $notificacion->user->id]) : '' ?>
+                <?= $notificacion->has('user') ? $this->Html->link($notificacion->user->nombre_usuario, ['controller' => 'Users', 'action' => 'view', $notificacion->user->id]) : '' ?>
             </td>
             <td><?= h($notificacion->mensaje) ?></td>
             <td><?= h($notificacion->fecha) ?></td>

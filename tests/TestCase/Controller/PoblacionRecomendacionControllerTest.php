@@ -18,7 +18,10 @@ class PoblacionRecomendacionControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.poblacion_recomendacion',
         'app.recomendacions',
-        'app.usuarios',
+        'app.users',
+        'app.rols',
+        'app.institucions',
+        'app.institucion_recomendacion',
         'app.estados',
         'app.autorizacions',
         'app.accions',
@@ -27,13 +30,14 @@ class PoblacionRecomendacionControllerTest extends IntegrationTestCase
         'app.derecho_recomendacion',
         'app.derechos',
         'app.indicadors',
-        'app.institucion_recomendacion',
-        'app.institucions',
+        'app.indicadores_derechos',
         'app.mecanismo_recomendacion',
         'app.mecanismos',
         'app.notificacions',
+        'app.recomendacion_parametros',
         'app.revisions',
         'app.versions',
+        'app.adjuntos_versions',
         'app.poblacions'
     ];
 

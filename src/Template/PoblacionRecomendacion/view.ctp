@@ -42,7 +42,7 @@ $this->end();
         </tr>
         <tr>
             <td><?= __('Poblacion') ?></td>
-            <td><?= $poblacionRecomendacion->has('poblacion') ? $this->Html->link($poblacionRecomendacion->poblacion->id, ['controller' => 'Poblacions', 'action' => 'view', $poblacionRecomendacion->poblacion->id]) : '' ?></td>
+            <td><?= $poblacionRecomendacion->has('poblacion') ? $this->Html->link($poblacionRecomendacion->poblacion->descripcion, ['controller' => 'Poblacions', 'action' => 'view', $poblacionRecomendacion->poblacion->id]) : '' ?></td>
         </tr>
         <tr>
             <td><?= __('Id') ?></td>

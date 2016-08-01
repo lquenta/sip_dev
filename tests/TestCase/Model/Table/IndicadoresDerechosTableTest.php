@@ -38,7 +38,6 @@ class IndicadoresDerechosTableTest extends TestCase
         'app.accions',
         'app.adjuntos_accions',
         'app.adjuntos_recomendacions',
-        'app.indicadores_recomendacions',
         'app.mecanismo_recomendacion',
         'app.mecanismos',
         'app.notificacions',

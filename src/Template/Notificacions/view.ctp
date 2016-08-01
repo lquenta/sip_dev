@@ -42,7 +42,7 @@ $this->end();
         </tr>
         <tr>
             <td><?= __('User') ?></td>
-            <td><?= $notificacion->has('user') ? $this->Html->link($notificacion->user->id, ['controller' => 'Users', 'action' => 'view', $notificacion->user->id]) : '' ?></td>
+            <td><?= $notificacion->has('user') ? $this->Html->link($notificacion->user->nombre_usuario, ['controller' => 'Users', 'action' => 'view', $notificacion->user->id]) : '' ?></td>
         </tr>
         <tr>
             <td><?= __('Mensaje') ?></td>

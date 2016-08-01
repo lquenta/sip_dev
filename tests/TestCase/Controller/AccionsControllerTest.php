@@ -17,18 +17,26 @@ class AccionsControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.accions',
-        'app.usuarios',
+        'app.users',
+        'app.rols',
+        'app.institucions',
+        'app.institucion_recomendacion',
         'app.recomendacions',
         'app.estados',
-        'app.adjuntos_recomendacions',
         'app.autorizacions',
+        'app.adjuntos_recomendacions',
         'app.derecho_recomendacion',
-        'app.institucion_recomendacion',
+        'app.derechos',
+        'app.indicadors',
         'app.mecanismo_recomendacion',
+        'app.mecanismos',
         'app.notificacions',
         'app.poblacion_recomendacion',
+        'app.poblacions',
+        'app.recomendacion_parametros',
         'app.revisions',
         'app.versions',
+        'app.adjuntos_versions',
         'app.adjuntos_accions'
     ];
 

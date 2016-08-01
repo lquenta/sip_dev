@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\MecanismoRecomendacion;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -12,6 +11,14 @@ use Cake\Validation\Validator;
  *
  * @property \Cake\ORM\Association\BelongsTo $Mecanismos
  * @property \Cake\ORM\Association\BelongsTo $Recomendacions
+ *
+ * @method \App\Model\Entity\MecanismoRecomendacion get($primaryKey, $options = [])
+ * @method \App\Model\Entity\MecanismoRecomendacion newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\MecanismoRecomendacion[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\MecanismoRecomendacion|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\MecanismoRecomendacion patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\MecanismoRecomendacion[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\MecanismoRecomendacion findOrCreate($search, callable $callback = null)
  */
 class MecanismoRecomendacionTable extends Table
 {

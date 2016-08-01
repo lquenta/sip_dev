@@ -43,7 +43,7 @@ class AccionsController extends AppController
         $this->set('accion', $accion);
         $this->set('_serialize', ['accion']);
     }
-    function sanitize($string, $force_lowercase = true, $anal = false) {
+     function sanitize($string, $force_lowercase = true, $anal = false) {
         $strip = array("~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "=", "+", "[", "{", "]","}", "\\", "|", ";", ":", "\"", "'", "&#8216;", "&#8217;", "&#8220;", "&#8221;", "&#8211;", "&#8212;","â€”", "â€“", ",", "<",">", "/", "?");
         $clean = trim(str_replace($strip, "", strip_tags($string)));
         $clean = preg_replace('/\s+/', "-", $clean);
@@ -61,7 +61,7 @@ class AccionsController extends AppController
      */
     public function add($id)
     {
-        $this->loadModel('Recomendacions');
+         $this->loadModel('Recomendacions');
         $this->loadModel('Poblacions');
         $this->loadModel('PoblacionRecomendacion');
         $this->loadModel('DerechoRecomendacion');
@@ -72,11 +72,14 @@ class AccionsController extends AppController
         $this->loadModel('Mecanismos');
         $this->loadModel('IndicadoresDerechos');
         $this->loadModel('AdjuntosAccions');
+        $this->loadModel('Users');
+        $this->loadModel('Autorizacions');
+        $this->loadModel('Notificacions');
         
-
-
+        
+        
          $recomendacion = $this->Recomendacions->get($id, [
-            'contain' => ['Users', 'Estados', 'Accions', 'AdjuntosRecomendacions', 'Autorizacions', 'DerechoRecomendacion', 'InstitucionRecomendacion', 'MecanismoRecomendacion', 'Notificacions', 'PoblacionRecomendacion', 'RecomendacionParametros', 'Revisions', 'Versions']
+            'contain' => ['Users', 'Estados', 'Accions', 'AdjuntosRecomendacions', 'DerechoRecomendacion', 'InstitucionRecomendacion', 'MecanismoRecomendacion', 'PoblacionRecomendacion', 'RecomendacionParametros', 'Revisions', 'Versions']
         ]);
          $recomendacions = $this->PoblacionRecomendacion->find('list', ['limit' => 200]);
          $PoblacionRecomendacion =$this->PoblacionRecomendacion->find('list',[
@@ -96,7 +99,6 @@ class AccionsController extends AppController
         $derechos=$this->Derechos->find('list', ['limit' => 200])
         ->where(['id IN ' => $derechosRecomendacion])
         ->toArray();
-
         //obtenemos los indicadores por derechos
         $indicadores_derechos = $this->IndicadoresDerechos->find('list', 
             ['keyField' => 'indicador_id',
@@ -104,17 +106,14 @@ class AccionsController extends AppController
         ])
         ->where(['IndicadoresDerechos.derecho_id IN ' => $derechos])
         ->toArray();
-
         $institucionsRecomendacion = $this->InstitucionRecomendacion->find('list',[
             'keyField' => 'institucion_id',
             'valueField' => 'institucion_id'
         ])
          ->where(['InstitucionRecomendacion.recomendacion_id ' => $id])->toArray();
-        
         $instituciones=$this->Institucions->find('list', ['limit' => 200])
         ->where(['id IN ' => $institucionsRecomendacion])
         ->toArray();
-
          $mecanismoRecomendacion = $this->MecanismoRecomendacion->find('list',[
             'keyField' => 'mecanismo_id',
             'valueField' => 'mecanismo_id'
@@ -124,35 +123,65 @@ class AccionsController extends AppController
         $mecanismos=$this->Mecanismos->find('list', ['limit' => 200])
         ->where(['id IN ' => $mecanismoRecomendacion])
         ->toArray();
-
         //debug(json_encode(array_keys($poblaciones), JSON_PRETTY_PRINT));die;
         $all_poblaciones = $this->Poblacions->find('list', ['limit' => 200])->toArray();
         $all_derechos = $this->Derechos->find('list', ['limit' => 200])->toArray();
         $all_instituciones = $this->Institucions->find('list', ['limit' => 200])->toArray();
         $all_mecanismos = $this->Mecanismos->find('list', ['limit' => 200])->toArray();
-
         $accion = $this->Accions->newEntity();
         if ($this->request->is('post')) {
-
             //para recomendacion entity
+            $codigo_accion=$this->Accions->obtenerUltimoCodigoAccion($id);
             $request = $this->request->data;
-
             $accion_req = array(
+                'codigo'=>$codigo_accion,
                 'descripcion'=>$request['descripcion'],
                 'fecha'=>date('Y-m-d H:i:s'),
                 'usuario_id'=>$this->Auth->user('id'),
                 'recomendacion_id'=>$id,
-                'politica' =>$request['politica'],
-                'direccion'=>$request['direccion'],
-                'programa' =>$request['programa'],
-                'reporte' =>$request['reporte'],
-                'desafios' =>$request['desafios']
+                'listado' =>$request['listado'],
                 );
             $accion = $this->Accions->newEntity();
             $accion = $this->Accions->patchEntity($accion, $accion_req);
             $res_save_accion = $this->Accions->save($accion);
             if ($res_save_accion) {
-                $last_id_accion = $res_save_accion->id;
+                 $last_id_accion = $res_save_accion->id;
+                foreach ($institucionsRecomendacion as $institucion) {
+                     debug($institucion);
+                       //obtener todos los usuarios asociados a la institucion+
+                      $query =  $this->Users->find()->matching(
+                          'Rols', function ($q) use ($institucion) {
+                              return $q->where(['Rols.institucion_id' => $institucion]);
+                          }
+                      );
+                      debug($query);die;
+                      foreach ($query  as $usuario) {
+                          //registrar autorizacion para recomendacion
+                          $autorizacion = $this->Autorizacions->newEntity();
+                          $req_autorizacion = array(
+                              'usuario_id'=>$usuario['id'],
+                              'accion_id'=>$last_id_accion,
+                              'estado_id'=>1,
+                              'fecha_modificacion'=>date('Y-m-d H:i:s'),
+                              'visto_bueno_fisico'=>0
+                              );
+                          $autorizacion = $this->Autorizacions->patchEntity($autorizacion,  $req_autorizacion);
+                          $this->Autorizacions->save($autorizacion);
+                          //registrar notificacion
+                          $req_notificacion = array(
+                              'accion_id'=>$last_id_accion,
+                              'usuario_id'=>$usuario['id'],
+                              'mensaje' => 'debe revisar la recomendacion con codigo:'.$codigo_accion,
+                              'fecha'=>date('Y-m-d H:i:s'),
+                              'estado'=>'pendiente'
+                              );
+                          $notificacion = $this->Notificacions->newEntity();
+                          $notificacion = $this->Notificacions->patchEntity($notificacion, $req_notificacion);
+                          $this->Notificacions->save($notificacion);
+                      }
+                       
+                  }
+               
                 $adjuntos_accion = $this->request->data['adjuntos_accion'];
                 foreach ($adjuntos_accion as $adjunto ) {
                     $adjunto_req = [
@@ -181,8 +210,17 @@ class AccionsController extends AppController
             }
         }
         $users = $this->Accions->Users->find('list', ['limit' => 200]);
+        $incidencia_indicadores = [
+           'Derecho 1' => [
+              '0' => 'Indicador 1',
+           ],
+           'Derecho 2' => [
+              '1' => 'Indicador 2'
+           ]
+        ];
+         $codigo_accion=$this->Accions->obtenerUltimoCodigoAccion($id);
         $recomendacions = $this->Accions->Recomendacions->find('list', ['limit' => 200]);
-        $this->set(compact('accion', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos'));
+        $this->set(compact('accion', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos','codigo_accion','incidencia_indicadores'));
         $this->set('_serialize', ['accion']);
     }
 

@@ -17,7 +17,27 @@ class AdjuntosVersionsControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.adjuntos_versions',
-        'app.versions'
+        'app.versions',
+        'app.recomendacions',
+        'app.users',
+        'app.rols',
+        'app.institucions',
+        'app.institucion_recomendacion',
+        'app.estados',
+        'app.autorizacions',
+        'app.accions',
+        'app.adjuntos_accions',
+        'app.adjuntos_recomendacions',
+        'app.derecho_recomendacion',
+        'app.derechos',
+        'app.indicadors',
+        'app.mecanismo_recomendacion',
+        'app.mecanismos',
+        'app.notificacions',
+        'app.poblacion_recomendacion',
+        'app.poblacions',
+        'app.recomendacion_parametros',
+        'app.revisions'
     ];
 
     /**

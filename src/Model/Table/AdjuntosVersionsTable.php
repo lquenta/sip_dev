@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\AdjuntosVersion;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -11,6 +10,14 @@ use Cake\Validation\Validator;
  * AdjuntosVersions Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Versions
+ *
+ * @method \App\Model\Entity\AdjuntosVersion get($primaryKey, $options = [])
+ * @method \App\Model\Entity\AdjuntosVersion newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\AdjuntosVersion[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\AdjuntosVersion|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\AdjuntosVersion patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\AdjuntosVersion[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\AdjuntosVersion findOrCreate($search, callable $callback = null)
  */
 class AdjuntosVersionsTable extends Table
 {

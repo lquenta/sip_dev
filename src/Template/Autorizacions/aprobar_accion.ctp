@@ -1,10 +1,10 @@
 <?php
 $this->extend('../Layout/TwitterBootstrap/dashboard');
-
+$this->assign('title', 'Aprobacion de Accion de Seguimiento ');
 ?>
-<?= $this->Form->create($aprobarRecomendacion,['type' => 'file']); ?>
+<?= $this->Form->create($aprobarAccion,['type' => 'file']); ?>
 <fieldset>
-    <h1 class="page-header"><?= __('Aprobacion Recomendacion - Ejecutores ') ?></h1>
+    <h1 class="page-header"><?= __('Aprobacion Accion de Seguimiento - Ejecutores ') ?></h1>
    
      <div class="panel-group">
         <div class="panel panel-default">
@@ -16,17 +16,17 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
             <div id="collapse1" class="panel-collapse collapse in">
                 <div class="panel-body">
                      <div class="form-group">
-                        <label for="inputTitulo">Recomendacion</label>
-                        <input type="text" class="form-control" id="inputTitulo" placeholder="" readonly="readonly" value="<?= h($recomendacion->titulo) ?>">
+                        <label for="inputTitulo">Codigo</label>
+                        <input type="text" class="form-control" id="inputCodigo" placeholder="" readonly="readonly" value="<?= h($accion->codigo) ?>">
                     </div>
                     <div class="form-group">
                         <label for="inputDetalle">Detalle de la recomendacion</label>
-                        <input type="text" class="form-control" id="inputDetalle" placeholder="" readonly="readonly" value="<?= h($recomendacion->descripcion) ?>">
+                        <input type="text" class="form-control" id="inputDetalle" placeholder="" readonly="readonly" value="<?= h($accion->recomendacion->descripcion) ?>">
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-6"><label for="inputAño">Año</label>
-                                <input type="text" class="form-control" id="inputAño" placeholder="" readonly="readonly" value="<?= h($recomendacion->año) ?>">
+                                <input type="text" class="form-control" id="inputAño" placeholder="" readonly="readonly" value="<?= h($accion->recomendacion->año) ?>">
                             </div>
                             <div class="col-md-6">
                                 <?php echo $this->Form->input('derechos', array('multiple' => 'checkbox', 'options' => $all_derechos,'value'=>array_keys($derechos),'readonly' => 'readonly','disabled'=>'disabled'));
@@ -80,7 +80,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
       <?php foreach ($instituciones as $institucion) : ?>
-             <li role="presentation"><a href="#<?php echo $institucion?>" aria-controls="<?php echo $institucion?>" role="tab" data-toggle="tab"><?php echo $institucion?></a></li>
+             <li role="presentation"><a href="#" aria-controls="<?php echo $institucion?>" role="tab" data-toggle="tab"><?php echo $institucion?></a></li>
       <?php endforeach; ?>
         <li role="presentation"><a href="#respuesta_consolidada" aria-controls="respuesta_consolidada" role="tab" data-toggle="tab">Respuesta Consolidada</a></li>
       </ul>
@@ -90,26 +90,21 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
         <?php foreach ($instituciones as $institucion) : ?>
 
             <div role="tabpanel" class="tab-pane fade in active" id="<?php echo $institucion?>">
-                <?php foreach ($acciones as $accion) : ?>
+                <?php foreach ($acciones as $accion_item) : ?>
                     <div class="panel-group">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                               <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse3">Accion</a>
+                                <a data-toggle="collapse" href="#collapse3">Accion de Seguimiento <?= h($accion_item->codigo) ?></a>
                               </h4>
                             </div>
                             <div id="collapse3" class="panel-collapse collapse in">
                                 <div class="panel-body">
-                                    <label for="inputPolitica">Politica</label>
-                                    <input type="text" class="form-control" id="inputPolitica" placeholder="" readonly="readonly" value="<?= h($accion->politica) ?>">
-                                    <label for="inputPrograma">Programa</label>
-                                    <input type="text" class="form-control" id="inputPrograma" placeholder="" readonly="readonly" value="<?= h($accion->programa) ?>">
-                                    <label for="inputDireccion">Direccion</label>
-                                    <input type="text" class="form-control" id="inputDireccion" placeholder="" readonly="readonly" value="<?= h($accion->direccion) ?>">
-                                    <label for="inputReporte">Reporte</label>
-                                    <input type="text" class="form-control" id="inputReporte" placeholder="" readonly="readonly" value="<?= h($accion->reporte) ?>">
-                                    <label for="inputDesafios">Desafios</label>
-                                    <input type="text" class="form-control" id="inputDesafios" placeholder="" readonly="readonly" value="<?= h($accion->desafios) ?>">
+                                    <label for="inputDescripcion">Descripcion</label>
+                                    <input type="text" class="form-control" id="inputDescripcion" placeholder="" readonly="readonly" value="<?= h($accion_item->descripcion) ?>">
+                                    <label for="inputListado">Listado</label>
+                                    <textarea type="text" class="form-control" id="inputListado" cols=3 rows=4 placeholder="" readonly="readonly"> <?= h($accion_item->listado) ?></textarea>  
+                                   
                                 </div>
                             </div>
                         </div>
@@ -118,12 +113,12 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                         <div class="panel panel-default">
                             <div class="panel-heading">
                               <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse4">Archivos Accion</a>
+                                <a data-toggle="collapse" href="#collapse4">Archivos Accion de seguimiento</a>
                               </h4>
                             </div>
                             <div id="collapse4" class="panel-collapse collapse in">
                                 <div class="panel-body">
-                                <?php foreach ($accion->adjuntos_accions as $adjunto) : 
+                                <?php foreach ($accion_item->adjuntos_accions as $adjunto) : 
                                     echo $this->Html->link(
                                         '<i class="glyphicon glyphicon-save-file">'.$adjunto->link.'</i>',
                                         '/uploads/'.$adjunto->link,
@@ -135,21 +130,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                             </div>
                         </div>
                     </div>
-                    <div class="panel-group">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                              <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse5">Comentarios Version</a>
-                              </h4>
-                            </div>
-                            <div id="collapse5" class="panel-collapse collapse in">
-                                <div class="panel-body">
-                                    <label for="inputDescripcion">Descripcion</label>
-                                    <input type="text" class="form-control" id="inputDescripcion" placeholder="" readonly="readonly" value="<?= h($accion->descripcion) ?>">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
                    
                 
                 <?php endforeach; ?>

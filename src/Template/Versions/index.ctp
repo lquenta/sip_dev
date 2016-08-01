@@ -7,7 +7,7 @@ $this->start('tb_actions');
     <li><?= $this->Html->link(__('List Recomendacions'), ['controller' => 'Recomendacions', 'action' => 'index']); ?></li>
     <li><?= $this->Html->link(__('New Recomendacion'), ['controller' => ' Recomendacions', 'action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Usuario'), ['controller' => ' Users', 'action' => 'add']); ?></li>
+    <li><?= $this->Html->link(__('New User'), ['controller' => ' Users', 'action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List AdjuntosVersions'), ['controller' => 'AdjuntosVersions', 'action' => 'index']); ?></li>
     <li><?= $this->Html->link(__('New Adjuntos Version'), ['controller' => ' AdjuntosVersions', 'action' => 'add']); ?></li>
 <?php $this->end(); ?>
@@ -36,7 +36,7 @@ $this->start('tb_actions');
             <td><?= h($version->descripcion) ?></td>
             <td><?= h($version->fecha) ?></td>
             <td>
-                <?= $version->has('usuario') ? $this->Html->link($version->usuario->id, ['controller' => 'Users', 'action' => 'view', $version->usuario->id]) : '' ?>
+                <?= $version->has('user') ? $this->Html->link($version->user->nombre_usuario, ['controller' => 'Users', 'action' => 'view', $version->user->id]) : '' ?>
             </td>
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $version->id], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>

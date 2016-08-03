@@ -18,11 +18,11 @@ $this->start('tb_actions');
     <thead>
         <tr>
             <th><?= $this->Paginator->sort('id'); ?></th>
-            <th><?= $this->Paginator->sort('codigo'); ?></th>
-            <th><?= $this->Paginator->sort('descripcion'); ?></th>
+            <th><?= $this->Paginator->sort('codigo','Código'); ?></th>
+            <th><?= $this->Paginator->sort('descripcion','Descripción'); ?></th>
             <th><?= $this->Paginator->sort('fecha'); ?></th>
             <th><?= $this->Paginator->sort('usuario_id'); ?></th>
-            <th><?= $this->Paginator->sort('recomendacion_id'); ?></th>
+            <th><?= $this->Paginator->sort('recomendacion_id','Recomendación'); ?></th>
             <th class="actions"><?= __('Acceso Directo'); ?></th>
         </tr>
     </thead>

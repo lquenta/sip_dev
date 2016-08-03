@@ -57,8 +57,8 @@ $this->start('tb_body_start');
                 <div class="navbar-header pull-left">
                     <a href="index.html" class="navbar-brand">
                         <small>
-                            <i class="fa fa-leaf"></i>
-                            SIPLUS
+                             <?=$this->Html->image('imgpsh_fullsize.png', ['class' => 'msg-photo','style'=>'height:50px']);?>
+                            
                         </small>
                     </a>
                 </div>
@@ -85,7 +85,7 @@ $this->start('tb_body_start');
                                                 <div class="clearfix">
                                                     <span class="pull-left">
                                                         <i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
-                                                        Debe autorizar la accion BI1233
+                                                        Debe autorizar la accion SPSEG00001-001
                                                     </span>
                                                     <span class="pull-right badge badge-info">+1</span>
                                                 </div>
@@ -100,7 +100,7 @@ $this->start('tb_body_start');
                                                 <div class="clearfix">
                                                     <span class="pull-left">
                                                         <i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
-                                                        Debe autorizar la accion BI1234
+                                                        Debe autorizar la accion SPSEG00001-002
                                                     </span>
                                                     <span class="pull-right badge badge-info">+1</span>
                                                 </div>
@@ -138,7 +138,7 @@ $this->start('tb_body_start');
                                                 <span class="msg-body">
                                                     <span class="msg-title">
                                                         <span class="blue">Alex:</span>
-                                                        Debes autorizar la accion BI3444
+                                                        Debes autorizar la accion SPSEG00001-001
                                                     </span>
 
                                                     <span class="msg-time">
@@ -253,7 +253,7 @@ $this->start('tb_body_start');
                     <li class="">
                         <a href="<?= $this->Url->build(["controller" => "Recomendacions","action" => "add"]); ?>">
                             <i class="menu-icon fa fa-caret-right"></i>
-                            <span class="menu-text"> Nueva Recomendacion</span>
+                            <span class="menu-text"> Nueva Recomendación</span>
                         </a>
                     </li>
                         <li class="">
@@ -273,7 +273,7 @@ $this->start('tb_body_start');
                     <li class="">
                         <a href="<?= $this->Url->build(["controller" => "Autorizacions","action" => "index"]); ?>">
                             <i class="menu-icon fa fa-caret-right"></i>
-                            <span class="menu-text"> Seguimientos pendientes de autorizacion</span>
+                            <span class="menu-text"> Seguimientos pendientes de autorización</span>
                         </a>
 
                     </li>

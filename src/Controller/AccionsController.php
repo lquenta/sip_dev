@@ -147,14 +147,12 @@ class AccionsController extends AppController
             if ($res_save_accion) {
                  $last_id_accion = $res_save_accion->id;
                 foreach ($institucionsRecomendacion as $institucion) {
-                     debug($institucion);
                        //obtener todos los usuarios asociados a la institucion+
                       $query =  $this->Users->find()->matching(
                           'Rols', function ($q) use ($institucion) {
                               return $q->where(['Rols.institucion_id' => $institucion]);
                           }
                       );
-                      debug($query);die;
                       foreach ($query  as $usuario) {
                           //registrar autorizacion para recomendacion
                           $autorizacion = $this->Autorizacions->newEntity();

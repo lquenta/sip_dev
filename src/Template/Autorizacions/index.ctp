@@ -9,10 +9,10 @@ $this->assign('title', 'Seguimientos pendientes de autorizacion');
 <table class="table table-striped" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
-            <th><?= $this->Paginator->sort('codigo','Codigo'); ?></th>
-            <th><?= $this->Paginator->sort('accion_id','Accion'); ?></th>
+            <th><?= $this->Paginator->sort('codigo','Código'); ?></th>
+            <th><?= $this->Paginator->sort('accion_id','Acción'); ?></th>
             <th><?= $this->Paginator->sort('estado_id','Estado'); ?></th>
-            <th><?= $this->Paginator->sort('fecha_modificacion','Fecha de Modificacion'); ?></th>
+            <th><?= $this->Paginator->sort('fecha_modificacion','Fecha de Modificación'); ?></th>
             <th class="actions"><?= __('Aprobar/Rechazar'); ?></th>
         </tr>
     </thead>

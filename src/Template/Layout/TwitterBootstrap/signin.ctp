@@ -16,7 +16,7 @@ $this->start('tb_body_start');
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><?= Configure::read('App.title') ?></a>
+                <a class="navbar-brand" href="#"><?= 'LOGIN '.Configure::read('App.title') ?></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right visible-xs">

@@ -8,7 +8,7 @@ $this->assign('title', 'Añadir Recomendacion');
         <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a data-toggle="collapse" href="#collapse1">Recomendacion Nueva</a>
+                <a data-toggle="collapse" href="#collapse1">Nueva Recomendación</a>
               </h4>
             </div>
             <div id="collapse1" class="panel-collapse collapse in">
@@ -22,11 +22,12 @@ $this->assign('title', 'Añadir Recomendacion');
                     <textarea type="text" class="form-control" id="descripcion" name='descripcion' placeholder="" rows="3" required=""></textarea>
                 </div>
                 <?php
-                    echo $this->Form->input('año');
+                    echo $this->Form->input('mecanismos', array('multiple' => 'checkbox', 'options' => $mecanismos));
+                    echo $this->Form->input('año',array('min'=>'0','max'=>'9999'));
                     echo $this->Form->input('poblaciones', array('multiple' => 'checkbox', 'options' => $poblaciones));
                     echo $this->Form->input('derecho', array('multiple' => 'checkbox', 'options' => $derecho));
                     echo $this->Form->input('institucions', array('label'=>'Instituciones','multiple' => 'checkbox', 'options' => $institucions));
-                    echo $this->Form->input('mecanismos', array('multiple' => 'checkbox', 'options' => $mecanismos));
+                   
                 ?>
                 </div>
             </div>

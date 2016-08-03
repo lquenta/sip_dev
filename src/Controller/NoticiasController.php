@@ -41,6 +41,13 @@ class NoticiasController extends AppController
                         'estado'=>'1',
                         'link_imagen'=>'https://placebear.com/g/200/300'
                     ),
+                      array('id_noticia'=>4,
+                        'titular'=>'Noticia si publicada 4 solo link',
+                        'contenido'=> 'http://www.boliviaentusmanos.com/noticias/.',
+                        'fecha'=>'09-06-2014',
+                        'estado'=>'1',
+                        'link_imagen'=>'https://placebear.com/g/200/300'
+                    ),
                 ));
         $this->set([
             'resultados' => $resultados,

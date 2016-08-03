@@ -77,7 +77,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 
                                             <div class="infobox-data">
                                                 <span class="infobox-data-number">20</span>
-                                                <div class="infobox-content">Busquedas</div>
+                                                <div class="infobox-content">Búsquedas</div>
                                             </div>
 
                                             <div class="badge badge-success">

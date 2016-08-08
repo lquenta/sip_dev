@@ -22,7 +22,8 @@ class AutorizacionsController extends AppController
             'contain' => ['Users', 'Accions', 'Estados']
         ];
         $autorizacions = $this->Autorizacions->find('all')
-            ->where(['Autorizacions.usuario_id ' => $this->Auth->user('id'),'Autorizacions.estado_id'=>'1']);
+            ->where(['Autorizacions.usuario_id ' => $this->Auth->user('id'),'Autorizacions.estado_id '=>'1']);
+        //debug($autorizacions);
         $autorizacions = $this->paginate($autorizacions);
         $this->set(compact('autorizacions'));
         $this->set('_serialize', ['autorizacions']);
@@ -128,8 +129,9 @@ class AutorizacionsController extends AppController
         $this->loadModel('Mecanismos');
         $this->loadModel('IndicadoresDerechos');
         $this->loadModel('AdjuntosAccions');
+        $this->loadModel('Users');
+        $this->loadModel('Notificacions');
         
-       
          $accion =$this->Accions->get($id,[
             'contain' => ['Users', 'Recomendacions', 'AdjuntosAccions']
         ]);
@@ -193,9 +195,9 @@ class AutorizacionsController extends AppController
         $aprobarAccion = $this->Autorizacions->newEntity();
         if ($this->request->is(['patch', 'post', 'put'])) {
             //obtener la autorizacion id a partir del recomendacion id y el id del usuario
-            $autorizacion=$this->Autorizacions->find('all', ['limit' => 200])
+            $autorizacion_actual=$this->Autorizacions->find('all', ['limit' => 200])
                 ->where(['accion_id ' => $id,'usuario_id'=>$this->Auth->user('id')])->first();
-            if($autorizacion==null){
+            if($autorizacion_actual==null){
                 $this->Flash->error(__('Usted no puede autorizar esta recomendacion.'));
             }else{
                 $autorizacion_req=array();
@@ -205,6 +207,110 @@ class AutorizacionsController extends AppController
                        'visto_bueno_fisico'=>0,
                       'estado_id'=>'3'
                   );
+                   //registrar autorizacion para recomendacion  Min Justicia -> 1 , Procuradoria -> 3 , -> Cancilleria -> 4
+                   //si el estado es 2 entonces estamos en la aprobacion 1ra q es del min de justicia y debemos marcarlo y enviarlo para el 2do ejecutor que es procuradoria
+                   if($recomendacion->estado_id==2){
+                        $recomendacion_req = array(
+                          'id'=>$recomendacion->id,
+                          'descripcion'=>$recomendacion->descripcion,
+                          'fecha_creacion'=>$recomendacion->fecha_creacion,
+                          'fecha_modificacion'=>date('Y-m-d H:i:s'),
+                          'estado_id'=>'3',
+                          'año'=>$recomendacion->año,
+                          'codigo'=>$recomendacion->codigo
+                          );
+                        $recomendacion = $this->Recomendacions->patchEntity($recomendacion, $recomendacion_req);
+                        $res_save_recomendacion = $this->Recomendacions->save($recomendacion);
+                        //buscamos los autorizadores de la procuradoria 
+                        $autorizadores_procuradoria=$this->Users->find()->matching(
+                            'Rols', function ($q) {
+                                return $q->where(['Rols.institucion_id' => '3']);
+                            }
+                        );
+                        foreach ($autorizadores_procuradoria as $autorizador ) {
+                          //registrar autorizacion para recomendacion  Min Justicia -> 1 , Procuradoria -> 3 , -> Cancilleria -> 4
+                          //aca una vez que el min de justicia acepte se envia a procuradoria para su atorizacion
+                          $autorizacion = $this->Autorizacions->newEntity();
+                            $req_autorizacion = array(
+                                'usuario_id'=>$autorizador['id'],
+                                'accion_id'=>$id,
+                                'estado_id'=>1,
+                                'fecha_modificacion'=>date('Y-m-d H:i:s'),
+                                'visto_bueno_fisico'=>0
+                                );
+                            $autorizacion = $this->Autorizacions->patchEntity($autorizacion,  $req_autorizacion);
+                            $this->Autorizacions->save($autorizacion);
+                             $req_notificacion = array(
+                                'accion_id'=>$id,
+                                'usuario_id'=>$autorizador['id'],
+                                'mensaje' => 'debe autorizar la recomendacion con codigo:'.$recomendacion->codigo,
+                                'fecha'=>date('Y-m-d H:i:s'),
+                                'estado'=>'pendiente'
+                                );
+                            $notificacion = $this->Notificacions->newEntity();
+                            $notificacion = $this->Notificacions->patchEntity($notificacion, $req_notificacion);
+                            $this->Notificacions->save($notificacion);
+                        }
+                   }
+                   if($recomendacion->estado_id==3){
+                    //se el estado es 5 quiere decir que la procuradoria ya acepto y debemos enviar a la ultima instancia, a cancilleria
+                        $recomendacion_req = array(
+                          'id'=>$recomendacion->id,
+                          'descripcion'=>$recomendacion->descripcion,
+                          'fecha_creacion'=>$recomendacion->fecha_creacion,
+                          'fecha_modificacion'=>date('Y-m-d H:i:s'),
+                          'estado_id'=>'5',
+                          'año'=>$recomendacion->año,
+                          'codigo'=>$recomendacion->codigo
+                          );
+                        $recomendacion = $this->Recomendacions->patchEntity($recomendacion, $recomendacion_req);
+                        $res_save_recomendacion = $this->Recomendacions->save($recomendacion);
+                        //buscamos los autorizadores de la procuradoria 
+                        $autorizadores_cancilleria=$this->Users->find()->matching(
+                            'Rols', function ($q)  {
+                                return $q->where(['Rols.institucion_id' => '4']);
+                            }
+                        );
+                        foreach ($autorizadores_cancilleria as $autorizador ) {
+                          //registrar autorizacion para recomendacion  Min Justicia -> 1 , Procuradoria -> 3 , -> Cancilleria -> 4
+                          //aca una vez que el min de justicia acepte se envia a procuradoria para su atorizacion
+                          $autorizacion = $this->Autorizacions->newEntity();
+                            $req_autorizacion = array(
+                                'usuario_id'=>$autorizador['id'],
+                                'accion_id'=>$id,
+                                'estado_id'=>1,
+                                'fecha_modificacion'=>date('Y-m-d H:i:s'),
+                                'visto_bueno_fisico'=>0
+                                );
+                            $autorizacion = $this->Autorizacions->patchEntity($autorizacion,  $req_autorizacion);
+                            $this->Autorizacions->save($autorizacion);
+                             $req_notificacion = array(
+                                'accion_id'=>$id,
+                                'usuario_id'=>$autorizador['id'],
+                                'mensaje' => 'debe autorizar la recomendacion con codigo:'.$recomendacion->codigo,
+                                'fecha'=>date('Y-m-d H:i:s'),
+                                'estado'=>'pendiente'
+                                );
+                            $notificacion = $this->Notificacions->newEntity();
+                            $notificacion = $this->Notificacions->patchEntity($notificacion, $req_notificacion);
+                            $this->Notificacions->save($notificacion);
+                        }
+                   }
+                   if($recomendacion->estado_id==5){
+                    //se el estado es 5 quiere decir que la cancilleria ya acepto y debemos marcar la recomendacion como aceptada
+                        $recomendacion_req = array(
+                          'id'=>$recomendacion->id,
+                          'descripcion'=>$recomendacion->descripcion,
+                          'fecha_creacion'=>$recomendacion->fecha_creacion,
+                          'fecha_modificacion'=>date('Y-m-d H:i:s'),
+                          'estado_id'=>'9',
+                          'año'=>$recomendacion->año,
+                          'codigo'=>$recomendacion->codigo
+                          );
+                        $recomendacion = $this->Recomendacions->patchEntity($recomendacion, $recomendacion_req);
+                        $res_save_recomendacion = $this->Recomendacions->save($recomendacion);
+                        
+                   }
                 } else if (isset($this->request->data['btnRechazar'])) {
                    $autorizacion_req = array(
                         'fecha_modificacion'=>date('Y-m-d H:i:s'),
@@ -212,8 +318,10 @@ class AutorizacionsController extends AppController
                        'estado_id'=>'4'
                        );
                 }
-                $autorizacion = $this->Autorizacions->patchEntity($autorizacion, $autorizacion_req);
-                if ($this->Autorizacions->save($autorizacion)) {
+                //$autorizacion_actual = $this->Autorizacions->patchEntity($autorizacion, $autorizacion_req);
+
+                //if ($this->Autorizacions->save($autorizacion_actual)) {
+                    if(true){
                     $this->Flash->success(__('Recomendacion actualizada correctamente.'));
                     return $this->redirect(['action' => 'index']);
                 } else {

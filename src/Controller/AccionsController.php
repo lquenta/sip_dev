@@ -43,17 +43,7 @@ class AccionsController extends AppController
         $this->set('accion', $accion);
         $this->set('_serialize', ['accion']);
     }
-     function sanitize($string, $force_lowercase = true, $anal = false) {
-        $strip = array("~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "=", "+", "[", "{", "]","}", "\\", "|", ";", ":", "\"", "'", "&#8216;", "&#8217;", "&#8220;", "&#8221;", "&#8211;", "&#8212;","â€”", "â€“", ",", "<",">", "/", "?");
-        $clean = trim(str_replace($strip, "", strip_tags($string)));
-        $clean = preg_replace('/\s+/', "-", $clean);
-        $clean = ($anal) ? preg_replace("/[^a-zA-Z0-9]/", "", $clean) : $clean ;
-        return ($force_lowercase) ?
-            (function_exists('mb_strtolower')) ?
-                mb_strtolower($clean, 'UTF-8') :
-                strtolower($clean) :
-            $clean;
-    }
+     
     /**
      * Add method
      *
@@ -146,6 +136,7 @@ class AccionsController extends AppController
             $res_save_accion = $this->Accions->save($accion);
             if ($res_save_accion) {
                  $last_id_accion = $res_save_accion->id;
+                 //autorizadores siempre son 
                 foreach ($institucionsRecomendacion as $institucion) {
                        //obtener todos los usuarios asociados a la institucion+
                       $query =  $this->Users->find()->matching(
@@ -153,11 +144,17 @@ class AccionsController extends AppController
                               return $q->where(['Rols.institucion_id' => $institucion]);
                           }
                       );
-                      foreach ($query  as $usuario) {
-                          //registrar autorizacion para recomendacion
-                          $autorizacion = $this->Autorizacions->newEntity();
+                      $autorizadores_min_justicia=$this->Users->find()->matching(
+                          'Rols', function ($q) use ($institucion) {
+                              return $q->where(['Rols.institucion_id' => '1']);
+                          }
+                      );
+                      foreach ($autorizadores_min_justicia as $autorizador ) {
+                        //registrar autorizacion para recomendacion  Min Justicia -> 1 , Procuradoria -> 3 , -> Cancilleria -> 4
+                        //aca inicia el flujo enviando solicitud de autorizacion al ejecutor del min de justicia
+                        $autorizacion = $this->Autorizacions->newEntity();
                           $req_autorizacion = array(
-                              'usuario_id'=>$usuario['id'],
+                              'usuario_id'=>$autorizador['id'],
                               'accion_id'=>$last_id_accion,
                               'estado_id'=>1,
                               'fecha_modificacion'=>date('Y-m-d H:i:s'),
@@ -165,11 +162,10 @@ class AccionsController extends AppController
                               );
                           $autorizacion = $this->Autorizacions->patchEntity($autorizacion,  $req_autorizacion);
                           $this->Autorizacions->save($autorizacion);
-                          //registrar notificacion
-                          $req_notificacion = array(
+                           $req_notificacion = array(
                               'accion_id'=>$last_id_accion,
-                              'usuario_id'=>$usuario['id'],
-                              'mensaje' => 'debe revisar la recomendacion con codigo:'.$codigo_accion,
+                              'usuario_id'=>$autorizador['id'],
+                              'mensaje' => 'debe autorizar la recomendacion con codigo:'.$codigo_accion,
                               'fecha'=>date('Y-m-d H:i:s'),
                               'estado'=>'pendiente'
                               );
@@ -177,7 +173,34 @@ class AccionsController extends AppController
                           $notificacion = $this->Notificacions->patchEntity($notificacion, $req_notificacion);
                           $this->Notificacions->save($notificacion);
                       }
+                      foreach ($query  as $usuario) {
+                          //aca se registra notificacion de seguimiento para las instituciones
+                          $req_notificacion = array(
+                              'accion_id'=>$last_id_accion,
+                              'usuario_id'=>$usuario['id'],
+                              'mensaje' => 'debe hacer segumiento a la recomendacion con codigo:'.$codigo_accion,
+                              'fecha'=>date('Y-m-d H:i:s'),
+                              'estado'=>'pendiente'
+                              );
+                          $notificacion = $this->Notificacions->newEntity();
+                          $notificacion = $this->Notificacions->patchEntity($notificacion, $req_notificacion);
+                          $this->Notificacions->save($notificacion);
+                      }
+                      //ponemos el estado de la recomendacion "en revision" indicando que esta siendo revisado por los autorizadores, si es que el estado no esta en "en revision"
                        
+                       if($recomendacion->estado_id==1){
+                          $recomendacion_req = array(
+                            'id'=>$recomendacion->id,
+                            'descripcion'=>$recomendacion->descripcion,
+                            'fecha_creacion'=>$recomendacion->fecha_creacion,
+                            'fecha_modificacion'=>date('Y-m-d H:i:s'),
+                            'estado_id'=>'2',
+                            'año'=>$recomendacion->año,
+                            'codigo'=>$recomendacion->codigo
+                            );
+                          $recomendacion = $this->Recomendacions->patchEntity($recomendacion, $recomendacion_req);
+                          $res_save_recomendacion = $this->Recomendacions->save($recomendacion);
+                       }
                   }
                
                 $adjuntos_accion = $this->request->data['adjuntos_accion'];

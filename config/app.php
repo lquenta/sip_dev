@@ -227,9 +227,9 @@ return [
              * the following line and set the port accordingly
              */
             //'port' => 'non_standard_port_number',
-            'username' => 'sx000183_SIPLUS',
-            'password' => 'nokiWA29fi',
-            'database' => 'sx000183_SIPLUS',
+            'username' => 'root',
+            'password' => 'root',
+            'database' => 'SIPLUS',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'flags' => [],

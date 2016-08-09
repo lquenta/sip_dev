@@ -2,6 +2,74 @@
 $this->extend('../Layout/TwitterBootstrap/dashboard');
 
 ?>
+<div class="row">
+<h2>Pendientes</h2>
+<?php if(count($solicitudInformacions)>0){ ?>
+<h2>Pendientes de responder, solicitud de informacion</h2>
+<table class="table table-striped" cellpadding="0" cellspacing="0">
+    <thead>
+        <tr>
+            <th><?= $this->Paginator->sort('id'); ?></th>
+            <th><?= $this->Paginator->sort('codigo'); ?></th>
+            <th><?= $this->Paginator->sort('descripcion'); ?></th>
+            <th><?= $this->Paginator->sort('fecha_modificacion'); ?></th>
+            <th><?= $this->Paginator->sort('usuario_id'); ?></th>
+            <th class="actions"><?= __('Actions'); ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($solicitudInformacions as $solicitudInformacion): ?>
+        <tr>
+            <td><?= $this->Number->format($solicitudInformacion->id) ?></td>
+            <td><?= h($solicitudInformacion->codigo) ?></td>
+            <td><?= h($solicitudInformacion->descripcion) ?></td>
+            <td><?= h($solicitudInformacion->fecha_modificacion) ?></td>
+            <td>
+                <?= $solicitudInformacion->has('user') ? $this->Html->link($solicitudInformacion->user->nombre_usuario, ['controller' => 'Users', 'action' => 'view', $solicitudInformacion->user->id]) : '' ?>
+            </td>
+            
+            <td class="actions">
+                <?= $this->Html->link('', ['action' => 'view', $solicitudInformacion->id], ['title' => __('Ver Detalle'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
+                <?= $this->Html->link('', ['controller'=>'SolicitudRespuestas', 'action' => 'add', $solicitudInformacion->id], ['title' => __('Responder Solicitud'), 'class' => 'btn btn-default glyphicon glyphicon-ok']) ?>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<?php } ?>
+
+<?php if(count($autorizacions)>0){ ?>
+<h2>Pendientes de autorizacion</h2>
+<table class="table table-striped" cellpadding="0" cellspacing="0">
+    <thead>
+        <tr>
+            <th><?= $this->Paginator->sort('codigo','Código'); ?></th>
+            <th><?= $this->Paginator->sort('accion_id','Acción'); ?></th>
+            <th><?= $this->Paginator->sort('estado_id','Estado'); ?></th>
+            <th><?= $this->Paginator->sort('fecha_modificacion','Fecha de Modificación'); ?></th>
+            <th class="actions"><?= __('Aprobar/Rechazar'); ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($autorizacions as $autorizacion): ?>
+        <tr>
+            <td>
+                <?= $autorizacion->has('accion') ? $this->Html->link($autorizacion->accion->codigo, ['controller' => 'Accions', 'action' => 'view', $autorizacion->accion->id]) : '' ?>
+            </td>
+            <td>
+                <?= $autorizacion->has('accion') ? $this->Html->link($autorizacion->accion->descripcion, ['controller' => 'Accions', 'action' => 'view', $autorizacion->accion->id]) : '' ?>
+            </td>
+            <td>
+                <?= $autorizacion->estado->descripcion?>           </td>
+            <td><?= h($autorizacion->fecha_modificacion) ?></td>
+            <td> <?= $this->Html->link('', ['controller'=>'Autorizacions','action' => 'aprobarAccion', $autorizacion->accion->id], ['title' => __('Aprobar/Rechazar'), 'class' => 'btn btn-default glyphicon glyphicon-ok']) ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<?php } ?>
+
+</div>
 <div class="page-header">
                             <h1>
                                 Panel de control

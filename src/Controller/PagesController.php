@@ -62,4 +62,37 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
     }
+    public function home(){
+        $this->loadModel('Autorizacions');
+        $this->loadModel('SolicitudInformacions');
+        $this->loadModel('Institucions');
+        $this->loadModel('Recomendacions');
+        
+        
+        $autorizacions =  $this->Autorizacions->find('all', [
+            'contain' => ['Users', 'Accions', 'Estados']
+        ])
+            ->where(['Autorizacions.usuario_id ' => $this->Auth->user('id'),'Autorizacions.estado_id '=>'1']);
+        //$autorizacions = $this->paginate($autorizacions);
+        $solicitudInformacions=$this->SolicitudInformacions->find('all')->where(['usuario_id'=>$this->Auth->user('id'),'estado_id'=>'1']);
+        //$solicitudInformacions = $this->paginate($solicitudInformacions);
+
+         
+
+        //seguimientos que necesitan complementar informacion de las instituciones reponsables
+        //obtener la institucion asociada al usuario
+
+        $institucion=$this->Institucions->find('all')->where(['id'=>$this->Auth->user('rol_id')])->first();
+        /*$recomendaciones_segumiento = $this->Recomendacions->find('all',[
+            'contain' => ['Users', 'Estados','Accions', 'AdjuntosRecomendacions', 'DerechoRecomendacion.Derechos', 'InstitucionRecomendacion.Institucions', 'MecanismoRecomendacion.Mecanismos', 'PoblacionRecomendacion.Poblacions', 'RecomendacionParametros','InstitucionRecomendacion']
+        ])
+         ->where(['InstitucionRecomendacion.institucion_id ' => $institucion->id]);
+       debug($recomendaciones_segumiento->all());*/
+
+        $this->set(compact('autorizacions','solicitudInformacions'));
+        $this->set('_serialize', ['solicitudInformacions']);
+
+        //$solicitudInstituciones= 
+
+    }
 }

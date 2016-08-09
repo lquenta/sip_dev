@@ -28,6 +28,10 @@ $this->assign('title', 'Añadir Segumiento');
                         <label for="inputDetalle">Recomendacion</label>
                         <textarea type="text" class="form-control" id="inputDetalle" placeholder="" readonly="readonly" rows="5"><?= h($recomendacion->descripcion) ?></textarea>
                     </div>
+                     <div class="form-group">
+                        <?php echo $this->Form->input('mecanismos', array('label'=>'Mecanismos de Protección','multiple' => 'checkbox', 'options' => $all_mecanismos,'value'=>array_keys($mecanismos),'readonly' => 'readonly','disabled'=>'disabled'));
+                          ?>
+                    </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-12"><label for="inputAño">Año</label>
@@ -79,33 +83,18 @@ $this->assign('title', 'Añadir Segumiento');
                         <input type="text" class="form-control" id="codigo" name='codigo' placeholder="" readonly="readonly" value="<?= h($codigo_accion) ?>">
                     </div>
                     <div class="form-group">
-                        <label for="descripcion">Descripcion</label>
+                        <label for="descripcion">Referencia</label>
                         <textarea type="text" class="form-control" id="descripcion" name='descripcion' placeholder="" rows="3" required=""></textarea>
                     </div>
                      <div class="form-group">
-                        <label for="listado">Listado</label>
+                        <label for="listado">Información requerida</label>
                         <textarea type="text" class="form-control" id="listado" name='listado' placeholder="" rows="3" required=""></textarea>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="panel-group">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" href="#collapse4">Archivos Adjuntos Segumiento</a>
-              </h4>
-            </div>
-            <div id="collapse4" class="panel-collapse collapse in">
-                <div class="panel-body">
-                <?php
-                   echo $this->Form->input('adjuntos_accion[]', ['type' => 'file', 'multiple' => 'true', 'label' => 'Añadir Archivos']);
-                ?>
-                </div>
-            </div>
-        </div>
-    </div>
+   
    
     <div class="panel-group">
         <div class="panel panel-default">
@@ -128,6 +117,22 @@ $this->assign('title', 'Añadir Segumiento');
                     ];*/
                     echo $this->Form->input('incidencia_indicadores', array('multiple' => 'checkbox', 'options' => $incidencia_indicadores));
                     //echo $this->Form->input('incidencia_indicadores');
+                ?>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse4">Archivos Adjuntos Segumiento</a>
+              </h4>
+            </div>
+            <div id="collapse4" class="panel-collapse collapse in">
+                <div class="panel-body">
+                <?php
+                   echo $this->Form->input('adjuntos_accion[]', ['type' => 'file', 'multiple' => 'true', 'label' => 'Añadir Archivos']);
                 ?>
                 </div>
             </div>

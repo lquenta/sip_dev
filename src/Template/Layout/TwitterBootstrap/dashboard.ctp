@@ -191,7 +191,7 @@ $this->start('tb_body_start');
                                 <li class="divider"></li>
 
                                 <li>
-                                    <a href="#">
+                                    <a href="<?= $this->Url->build(["controller" => "Users","action" => "logout"]); ?>">
                                         <i class="ace-icon fa fa-power-off"></i>
                                         Salir
                                     </a>
@@ -259,7 +259,7 @@ $this->start('tb_body_start');
                         <li class="">
                         <a href="<?= $this->Url->build(["controller" => "Recomendacions","action" => "index"]); ?>">
                             <i class="menu-icon fa fa-caret-right"></i>
-                            <span class="menu-text"> Lista Recomendaciones</span>
+                            <span class="menu-text"> Nueva acción de seguimiento</span>
                         </a>
                     </li>
                         
@@ -271,11 +271,10 @@ $this->start('tb_body_start');
 
                     </li>
                     <li class="">
-                        <a href="<?= $this->Url->build(["controller" => "Autorizacions","action" => "index"]); ?>">
+                        <a href="<?= $this->Url->build(["controller" => "SolicitudInformacions","action" => "add"]); ?>">
                             <i class="menu-icon fa fa-caret-right"></i>
-                            <span class="menu-text"> Seguimientos pendientes de autorización</span>
+                            <span class="menu-text"> Nueva Solicitud de informacion</span>
                         </a>
-
                     </li>
                     
 

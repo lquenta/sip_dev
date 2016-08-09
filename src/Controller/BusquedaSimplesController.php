@@ -39,7 +39,10 @@ class BusquedasSimpleController extends AppController
                 array( 'id_accion'=>'2',
                     'descripcion'=>'(1)129. Se está revisando el Código Niño, Niña y Adolescentederecvio, incorporando la protección jurídica integral de los derechos de las niñas, niños y adolescentes, resaltando el interés superior del niño/a, el derecho a la familia, al desarrollo integral, la filiación sin  discriminación alguna y el derecho a la identidad. Además, sanciona y prohíbe toda forma de violencia, trabajo forzoso y explotación en contra de niñas, niños y adolescentes y armoniza procedimientos administrativos y judiciales para la adopción, con el fin de garantizarles una familia.',
                     'fecha'=>'21-07-2014',
-                    'indicadores'=>'datos de indicadores,pendiente',
+                    'indicadores'=>array(
+                        'Derecho 1' =>array('indicador 1','indicador 2'),
+                        'Derecho 2' =>array('indicador 3')
+                        ),
                     'informe_estado'=>'cerberus-test.com/upload/archivo3_informe.pdf',
                     'fuente'=>'Informe Bolivia - CERD 2010')                   
                     )),
@@ -54,13 +57,18 @@ class BusquedasSimpleController extends AppController
                     array( 'id_accion'=>'3',
                     'descripcion'=>'(1)129. Se está revisando el Código Niño, Niña y Adolescentederecvio, incorporando la protección jurídica integral de los derechos de las niñas, niños y adolescentes, resaltando el interés superior del niño/a, el derecho a la familia, al desarrollo integral, la filiación sin  discriminación alguna y el derecho a la identidad. Además, sanciona y prohíbe toda forma de violencia, trabajo forzoso y explotación en contra de niñas, niños y adolescentes y armoniza procedimientos administrativos y judiciales para la adopción, con el fin de garantizarles una familia.',
                     'fecha'=>'21-07-2014',
-                    'indicadores'=>'datos de indicadores,pendiente',
+                    'indicadores'=>array(
+                       'Derecho 1' =>array('indicador 3')
+                       ),
                     'informe_estado'=>'cerberus-test.com/upload/archivo4_informe.pdf',
                     'fuente'=>'Informe Bolivia - CERD 2010'),
                 array( 'id_accion'=>'4',
                     'descripcion'=>'(1)129. Se está revisando el Código Niño, Niña y Adolescentederecvio, incorporando la protección jurídica integral de los derechos de las niñas, niños y adolescentes, resaltando el interés superior del niño/a, el derecho a la familia, al desarrollo integral, la filiación sin  discriminación alguna y el derecho a la identidad. Además, sanciona y prohíbe toda forma de violencia, trabajo forzoso y explotación en contra de niñas, niños y adolescentes y armoniza procedimientos administrativos y judiciales para la adopción, con el fin de garantizarles una familia.',
                     'fecha'=>'21-07-2014',
-                    'indicadores'=>'datos de indicadores,pendiente',
+                    'indicadores'=>'indicadores'=>array(
+                       'Derecho 1' =>array('indicador 1'),
+                       'Derecho 2' =>array('indicador 4')
+                       ),
                     'informe_estado'=>'cerberus-test.com/upload/archivo5_informe.pdf',
                     'fuente'=>'Informe Bolivia - CERD 2010')                   
                     ))

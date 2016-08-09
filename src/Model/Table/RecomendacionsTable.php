@@ -135,7 +135,7 @@ class RecomendacionsTable extends Table
         return $rules;
     }
     public function obtenerUltimoCodigoRecomendacion(){
-        $sql=$this->query('SELECT codigo FROM recomendacions ORDER BY id DESC;');
+        $sql=$this->query('SELECT id FROM recomendacions ORDER BY id DESC LIMIT 1');
         $result = $this->connection()->execute($sql)->fetchAll('assoc');
         if($result!=null){
             $result = $result[0]['Recomendacions__id'];    
@@ -149,4 +149,5 @@ class RecomendacionsTable extends Table
         $result = 'SPREC'.$codigo_numerico;
         return $result;
     }
+
 }

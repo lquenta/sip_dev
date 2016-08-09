@@ -158,9 +158,10 @@ class AccionsController extends AppController
                               'accion_id'=>$last_id_accion,
                               'estado_id'=>1,
                               'fecha_modificacion'=>date('Y-m-d H:i:s'),
-                              'visto_bueno_fisico'=>0
+                              'visto_bueno_fisico'=>'0'
                               );
                           $autorizacion = $this->Autorizacions->patchEntity($autorizacion,  $req_autorizacion);
+                          //debug($autorizacion);die;
                           $this->Autorizacions->save($autorizacion);
                            $req_notificacion = array(
                               'accion_id'=>$last_id_accion,

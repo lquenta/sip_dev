@@ -18,11 +18,11 @@ $this->assign('title', 'Añadir Solicitud de informacion');
                     <input type="text" class="form-control" id="codigo" name='codigo' placeholder="" readonly="readonly" value="<?= h($codigo_solicitud) ?>">
                 </div>
                  <div class="form-group">
-                    <label for="inputTitulo">Descripcion</label>
+                    <label for="inputTitulo">Referencia</label>
                     <textarea type="text" class="form-control" id="descripcion" name='descripcion' placeholder="" rows="3" required=""></textarea>
                 </div>
                 <?php
-                    echo $this->Form->input('institucions', array('label'=>'Instituciones Asignadas','multiple' => 'checkbox', 'options' => $institucions));
+                    echo $this->Form->input('institucions', array('label'=>'Instituciones Responsables','multiple' => 'checkbox', 'options' => $institucions));
                    
                 ?>
                 </div>

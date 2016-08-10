@@ -139,5 +139,5 @@ $this->assign('title', 'Añadir Segumiento');
         </div>
     </div>
 </fieldset>
-<?= $this->Form->button(__("Grabar")); ?>
+<?= $this->Form->button(__("Grabar y Enviar")); ?>
 <?= $this->Form->end() ?>

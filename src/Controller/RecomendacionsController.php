@@ -21,7 +21,8 @@ class RecomendacionsController extends AppController
         $this->paginate = [
             'contain' => ['Users', 'Estados','Accions', 'AdjuntosRecomendacions', 'DerechoRecomendacion.Derechos', 'InstitucionRecomendacion.Institucions', 'MecanismoRecomendacion.Mecanismos', 'PoblacionRecomendacion.Poblacions', 'RecomendacionParametros']
         ];
-        $recomendacions = $this->paginate($this->Recomendacions);
+
+        $recomendacions = $this->paginate($this->Recomendacions->find()->order(['Recomendacions.id' => 'DESC']));
 
         $this->set(compact('recomendacions'));
         $this->set('_serialize', ['recomendacions']);

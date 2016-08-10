@@ -103,8 +103,9 @@ class AccionsTable extends Table
      public function obtenerUltimoCodigoAccion($id_segumiento){
         $sql=$this->query('SELECT codigo FROM accions ORDER BY id DESC;');
         $result = $this->connection()->execute($sql)->fetchAll('assoc');
+        $ultimo_indice=$result[count($result)-1]['Accions__id'];
         if($result!=null){
-            $result = $result[0]['Accions__id'];    
+            $result = $ultimo_indice;    
             $result = $result + 1;
         }else{  
             $result = '1';

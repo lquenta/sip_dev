@@ -264,13 +264,6 @@ $this->start('tb_body_start');
                     </li>
                         
                     <li class="">
-                        <a href="<?= $this->Url->build(["controller" => "Accions","action" => "index"]); ?>">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            <span class="menu-text"> Seguimientos Iniciados</span>
-                        </a>
-
-                    </li>
-                    <li class="">
                         <a href="<?= $this->Url->build(["controller" => "SolicitudInformacions","action" => "add"]); ?>">
                             <i class="menu-icon fa fa-caret-right"></i>
                             <span class="menu-text"> Nueva Solicitud de informacion</span>

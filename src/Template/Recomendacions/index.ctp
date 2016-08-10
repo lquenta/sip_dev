@@ -86,7 +86,7 @@ $this->assign('title', 'Lista de todas las recomendaciones');
         <tr>
             <td><?= h($recomendacion->codigo) ?></td>
             <td><?= $mecanismos_item_recomendacion; ?></td>
-            <td><?= h($recomendacion->descripcion) ?></td>
+            <td><?= $this->Text->tail(h($recomendacion->descripcion),70,['ellipsis' => '...','exact' => false]); ?></td>
             <td><?= $this->Number->format($recomendacion->año) ?></td>
             <td><?= $poblaciones_item_recomendacion; ?></td>
             <td><?= $derecho_item_recomendacion; ?></td>

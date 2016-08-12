@@ -2,74 +2,6 @@
 $this->extend('../Layout/TwitterBootstrap/dashboard');
 
 ?>
-<div class="row">
-<h2>Pendientes</h2>
-<?php if(count($solicitudInformacions)>0){ ?>
-<h2>Pendientes de responder, solicitud de informacion</h2>
-<table class="table table-striped" cellpadding="0" cellspacing="0">
-    <thead>
-        <tr>
-            <th><?= $this->Paginator->sort('id'); ?></th>
-            <th><?= $this->Paginator->sort('codigo'); ?></th>
-            <th><?= $this->Paginator->sort('descripcion'); ?></th>
-            <th><?= $this->Paginator->sort('fecha_modificacion'); ?></th>
-            <th><?= $this->Paginator->sort('usuario_id'); ?></th>
-            <th class="actions"><?= __('Actions'); ?></th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($solicitudInformacions as $solicitudInformacion): ?>
-        <tr>
-            <td><?= $this->Number->format($solicitudInformacion->id) ?></td>
-            <td><?= h($solicitudInformacion->codigo) ?></td>
-            <td><?= h($solicitudInformacion->descripcion) ?></td>
-            <td><?= h($solicitudInformacion->fecha_modificacion) ?></td>
-            <td>
-                <?= $solicitudInformacion->has('user') ? $this->Html->link($solicitudInformacion->user->nombre_usuario, ['controller' => 'Users', 'action' => 'view', $solicitudInformacion->user->id]) : '' ?>
-            </td>
-            
-            <td class="actions">
-                <?= $this->Html->link('', ['action' => 'view', $solicitudInformacion->id], ['title' => __('Ver Detalle'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                <?= $this->Html->link('', ['controller'=>'SolicitudRespuestas', 'action' => 'add', $solicitudInformacion->id], ['title' => __('Responder Solicitud'), 'class' => 'btn btn-default glyphicon glyphicon-ok']) ?>
-            </td>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
-<?php } ?>
-
-<?php if(count($autorizacions)>0){ ?>
-<h2>Pendientes de autorizacion</h2>
-<table class="table table-striped" cellpadding="0" cellspacing="0">
-    <thead>
-        <tr>
-            <th><?= $this->Paginator->sort('codigo','Código'); ?></th>
-            <th><?= $this->Paginator->sort('accion_id','Acción'); ?></th>
-            <th><?= $this->Paginator->sort('estado_id','Estado'); ?></th>
-            <th><?= $this->Paginator->sort('fecha_modificacion','Fecha de Modificación'); ?></th>
-            <th class="actions"><?= __('Aprobar/Rechazar'); ?></th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($autorizacions as $autorizacion): ?>
-        <tr>
-            <td>
-                <?= $autorizacion->has('accion') ? $this->Html->link($autorizacion->accion->codigo, ['controller' => 'Accions', 'action' => 'view', $autorizacion->accion->id]) : '' ?>
-            </td>
-            <td>
-                <?= $autorizacion->has('accion') ? $this->Html->link($autorizacion->accion->descripcion, ['controller' => 'Accions', 'action' => 'view', $autorizacion->accion->id]) : '' ?>
-            </td>
-            <td>
-                <?= $autorizacion->estado->descripcion?>           </td>
-            <td><?= h($autorizacion->fecha_modificacion) ?></td>
-            <td> <?= $this->Html->link('', ['controller'=>'Autorizacions','action' => 'aprobarAccion', $autorizacion->accion->id], ['title' => __('Aprobar/Rechazar'), 'class' => 'btn btn-default glyphicon glyphicon-ok']) ?></td>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
-<?php } ?>
-
-</div>
 <div class="page-header">
                             <h1>
                                 Panel de control
@@ -178,299 +110,149 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                     <i class="ace-icon fa fa-rss orange"></i>Reciente
                                                 </h4>
 
-                                                <div class="widget-toolbar no-border">
-                                                    <ul class="nav nav-tabs" id="recent-tab">
-                                                        <li class="active">
-                                                            <a data-toggle="tab" href="#task-tab">Acciones</a>
-                                                        </li>
-
-                                                        <li>
-                                                            <a data-toggle="tab" href="#member-tab">Autorizadores</a>
-                                                        </li>
-
-                                                        <li>
-                                                            <a data-toggle="tab" href="#comment-tab">Seguimiento</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                                
                                             </div>
 
                                             <div class="widget-body">
                                                 <div class="widget-main padding-4">
                                                     <div class="tab-content padding-8">
-                                                        <div id="task-tab" class="tab-pane active">
-                                                            <h4 class="smaller lighter green">
-                                                                <i class="ace-icon fa fa-list"></i>
-                                                                Lista de Acciones pendientes
-                                                            </h4>
+                                                        <div>
 
-                                                            <ul id="tasks" class="item-list">
-                                                              
+                                                          <!-- Nav tabs -->
+                                                          <ul class="nav nav-tabs" role="tablist">
+                                                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Pendientes</a></li>
+                                                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Seguimientos sin responder</a></li>
+                                                            
+                                                          </ul>
 
-                                                                <li class="item-red clearfix">
-                                                                    <label class="inline">
-                                                                        <input type="checkbox" class="ace" />
-                                                                        <span class="lbl"> El Comité destaca la función decisiva que desempeña el poder legislativo para velar por la plena aplicación de la Convención</span>
-                                                                    </label>
+                                                          <!-- Tab panes -->
+                                                          <div class="tab-content">
+                                                            <div role="tabpanel" class="tab-pane active" id="home">
+                                                                <?php if($solicitudInformacions->count()>0){ ?>
+                                                                <h2>Pendientes de responder, solicitud de informacion</h2>
+                                                                <table class="table table-striped" cellpadding="0" cellspacing="0">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th><?= $this->Paginator->sort('id'); ?></th>
+                                                                            <th><?= $this->Paginator->sort('codigo'); ?></th>
+                                                                            <th><?= $this->Paginator->sort('descripcion'); ?></th>
+                                                                            <th><?= $this->Paginator->sort('fecha_modificacion'); ?></th>
+                                                                            <th><?= $this->Paginator->sort('usuario_id'); ?></th>
+                                                                            <th class="actions"><?= __('Actions'); ?></th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <?php foreach ($solicitudInformacions as $solicitudInformacion): ?>
+                                                                        <tr>
+                                                                            <td><?= $this->Number->format($solicitudInformacion->id) ?></td>
+                                                                            <td><?= h($solicitudInformacion->codigo) ?></td>
+                                                                            <td><?= h($solicitudInformacion->descripcion) ?></td>
+                                                                            <td><?= h($solicitudInformacion->fecha_modificacion) ?></td>
+                                                                            <td>
+                                                                                <?= $solicitudInformacion->has('user') ? $this->Html->link($solicitudInformacion->user->nombre_usuario, ['controller' => 'Users', 'action' => 'view', $solicitudInformacion->user->id]) : '' ?>
+                                                                            </td>
+                                                                            
+                                                                            <td class="actions">
+                                                                                <?= $this->Html->link('', ['action' => 'view', $solicitudInformacion->id], ['title' => __('Ver Detalle'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
+                                                                                <?= $this->Html->link('', ['controller'=>'SolicitudRespuestas', 'action' => 'add', $solicitudInformacion->id], ['title' => __('Responder Solicitud'), 'class' => 'btn btn-default glyphicon glyphicon-ok']) ?>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <?php endforeach; ?>
+                                                                    </tbody>
+                                                                </table>
+                                                                <?php } ?>
 
-                                                                    <div class="pull-right action-buttons">
-                                                                        <a href="#" class="blue">
-                                                                            <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                                        </a>
-
-                                                                        <span class="vbar"></span>
-
-                                                                        <a href="#" class="red">
-                                                                            <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                                        </a>
-
-                                                                        <span class="vbar"></span>
-
-                                                                        <a href="#" class="green">
-                                                                            <i class="ace-icon fa fa-flag bigger-130"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </li>
-
+                                                                <?php if($autorizacions->count()>0){ ?>
+                                                                <h2>Pendientes de autorizacion</h2>
+                                                                <table class="table table-striped" cellpadding="0" cellspacing="0">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th><?= $this->Paginator->sort('codigo','Código'); ?></th>
+                                                                            <th><?= $this->Paginator->sort('accion_id','Acción'); ?></th>
+                                                                            <th><?= $this->Paginator->sort('estado_id','Estado'); ?></th>
+                                                                            <th><?= $this->Paginator->sort('fecha_modificacion','Fecha de Modificación'); ?></th>
+                                                                            <th class="actions"><?= __('Aprobar/Rechazar'); ?></th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <?php foreach ($autorizacions as $autorizacion): ?>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <?= $autorizacion->has('accion') ? $this->Html->link($autorizacion->accion->codigo, ['controller' => 'Accions', 'action' => 'view', $autorizacion->accion->id]) : '' ?>
+                                                                            </td>
+                                                                            <td>
+                                                                                <?= $autorizacion->has('accion') ? $this->Html->link($autorizacion->accion->descripcion, ['controller' => 'Accions', 'action' => 'view', $autorizacion->accion->id]) : '' ?>
+                                                                            </td>
+                                                                            <td>
+                                                                                <?= $autorizacion->estado->descripcion?>           </td>
+                                                                            <td><?= h($autorizacion->fecha_modificacion) ?></td>
+                                                                            <td> <?= $this->Html->link('', ['controller'=>'Autorizacions','action' => 'aprobarAccion', $autorizacion->accion->id], ['title' => __('Aprobar/Rechazar'), 'class' => 'btn btn-default glyphicon glyphicon-ok']) ?></td>
+                                                                        </tr>
+                                                                        <?php endforeach; ?>
+                                                                    </tbody>
+                                                                </table>
+                                                                <?php } ?>
+                                                                <?php if($accionSolicitud->count()>0){?>
+                                                                    <h2>Pendientes de respuesta</h2>
+                                                                    <table class="table table-striped" cellpadding="0" cellspacing="0">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th><?= $this->Paginator->sort('id'); ?></th>
+                                                                                <th><?= $this->Paginator->sort('accion_id','Accion'); ?></th>
+                                                                                <th><?= $this->Paginator->sort('fecha'); ?></th>
+                                                                                <th class="actions"><?= __('Responder'); ?></th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <?php foreach ($accionSolicitud as $accion_sol): ?>
+                                                                            <tr>
+                                                                                <td><?= $this->Number->format($accion_sol->id) ?></td>
+                                                                                <td>
+                                                                                    <?= $accion_sol->has('accion') ? $this->Html->link($accion_sol->accion->descripcion, ['controller' => 'Accions', 'action' => 'view', $accion_sol->accion->id]) : '' ?>
+                                                                                </td>
+                                                                               
+                                                                                <td><?= h($accion_sol->fecha) ?></td>
+                                                                               
+                                                                                <td class="actions">
+                                                                                    <?= $this->Html->link('', ['action' => 'responderSolicitud', $accion_sol->id], ['title' => __('Responder'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <?php endforeach; ?>
+                                                                        </tbody>
+                                                                    </table>
                                                                
-                                                            </ul>
-                                                        </div>
+                                                                <?php } ?>
 
-                                                        <div id="member-tab" class="tab-pane">
-                                                            <div class="clearfix">
-                                                                <div class="itemdiv memberdiv">
-                                                                    <div class="user">
-                                                                    <?=$this->Html->image('avatars/user.jpg', ['class' => 'msg-photo']);?>
-                                                                    </div>
-
-                                                                    <div class="body">
-                                                                        <div class="name">
-                                                                            <a href="#">Carlos Encinas</a>
-                                                                        </div>
-
-                                                                        <div class="time">
-                                                                            <i class="ace-icon fa fa-clock-o"></i>
-                                                                            <span class="green">20 min</span>
-                                                                        </div>
-
-                                                                        <div>
-                                                                            <span class="label label-warning label-sm">pendientes</span>
-
-                                                                            <div class="inline position-relative">
-                                                                                <button class="btn btn-minier btn-yellow btn-no-border dropdown-toggle" data-toggle="dropdown" data-position="auto">
-                                                                                    <i class="ace-icon fa fa-angle-down icon-only bigger-120"></i>
-                                                                                </button>
-
-                                                                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                                                                    <li>
-                                                                                        <a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">
-                                                                                            <span class="green">
-                                                                                                <i class="ace-icon fa fa-check bigger-110"></i>
-                                                                                            </span>
-                                                                                        </a>
-                                                                                    </li>
-
-                                                                                    <li>
-                                                                                        <a href="#" class="tooltip-warning" data-rel="tooltip" title="Reject">
-                                                                                            <span class="orange">
-                                                                                                <i class="ace-icon fa fa-times bigger-110"></i>
-                                                                                            </span>
-                                                                                        </a>
-                                                                                    </li>
-
-                                                                                    <li>
-                                                                                        <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-                                                                                            <span class="red">
-                                                                                                <i class="ace-icon fa fa-trash-o bigger-110"></i>
-                                                                                            </span>
-                                                                                        </a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="itemdiv memberdiv">
-                                                                    <div class="user">
-                                                                         <?=$this->Html->image('avatars/avatar2.png', ['class' => 'msg-photo']);?>
-                                                                    </div>
-
-                                                                    <div class="body">
-                                                                        <div class="name">
-                                                                            <a href="#">Luis Zudañes</a>
-                                                                        </div>
-
-                                                                        <div class="time">
-                                                                            <i class="ace-icon fa fa-clock-o"></i>
-                                                                            <span class="green">1 hora</span>
-                                                                        </div>
-
-                                                                        <div>
-                                                                            <span class="label label-warning label-sm">pendiente</span>
-
-                                                                            <div class="inline position-relative">
-                                                                                <button class="btn btn-minier btn-yellow btn-no-border dropdown-toggle" data-toggle="dropdown" data-position="auto">
-                                                                                    <i class="ace-icon fa fa-angle-down icon-only bigger-120"></i>
-                                                                                </button>
-
-                                                                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                                                                    <li>
-                                                                                        <a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">
-                                                                                            <span class="green">
-                                                                                                <i class="ace-icon fa fa-check bigger-110"></i>
-                                                                                            </span>
-                                                                                        </a>
-                                                                                    </li>
-
-                                                                                    <li>
-                                                                                        <a href="#" class="tooltip-warning" data-rel="tooltip" title="Reject">
-                                                                                            <span class="orange">
-                                                                                                <i class="ace-icon fa fa-times bigger-110"></i>
-                                                                                            </span>
-                                                                                        </a>
-                                                                                    </li>
-
-                                                                                    <li>
-                                                                                        <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-                                                                                            <span class="red">
-                                                                                                <i class="ace-icon fa fa-trash-o bigger-110"></i>
-                                                                                            </span>
-                                                                                        </a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                               
-
-                                                               
                                                             </div>
+                                                            <div role="tabpanel" class="tab-pane" id="profile">
+                                                                <table class="table table-striped" cellpadding="0" cellspacing="0">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th><?= $this->Paginator->sort('codigo','Código'); ?></th>
+                                                                            <th><?= $this->Paginator->sort('descripcion','Descripción'); ?></th>
+                                                                            <th><?= $this->Paginator->sort('fecha'); ?></th>
+                                                                            <th class="actions"><?= __('Acceso Directo'); ?></th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <?php foreach ($accions_sin_responder_entidades as $accion_sin_resp_min): ?>
+                                                                        <tr>
+                                                                            <td><?= h($accion_sin_resp_min->codigo) ?></td>
+                                                                            <td><?= h($accion_sin_resp_min->descripcion) ?></td>
+                                                                            <td><?= h($accion_sin_resp_min->fecha) ?></td>
+                                                                            
+                                                                            <td class="actions">
+                                                                                <?= $this->Html->link('', ['controller'=>'Accions','action' => 'view', $accion_sin_resp_min->id], ['title' => __('Ver'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>               
+                                                                            </td>
+                                                                        </tr>
+                                                                        <?php endforeach; ?>
+                                                                    </tbody>
+                                                                </table>
 
-                                                            <div class="space-4"></div>
-
-                                                            <div class="center">
-                                                                <i class="ace-icon fa fa-users fa-2x green middle"></i>
-
-                                                                &nbsp;
-                                                                <a href="#" class="btn btn-sm btn-white btn-info">
-                                                                    Ver Todos los miembros &nbsp;
-                                                                    <i class="ace-icon fa fa-arrow-right"></i>
-                                                                </a>
                                                             </div>
+                                                          
+                                                          </div>
 
-                                                            <div class="hr hr-double hr8"></div>
-                                                        </div><!-- /.#member-tab -->
-
-                                                        <div id="comment-tab" class="tab-pane">
-                                                            <div class="comments">
-                                                                <div class="itemdiv commentdiv">
-                                                                    <div class="user">
-                                                                     <?=$this->Html->image('avatars/avatar.png', ['class' => 'msg-photo']);?>
-                                                                    </div>
-
-                                                                    <div class="body">
-                                                                        <div class="name">
-                                                                            <a href="#">Luis Zudañes</a>
-                                                                        </div>
-
-                                                                        <div class="time">
-                                                                            <i class="ace-icon fa fa-clock-o"></i>
-                                                                            <span class="green">6 min</span>
-                                                                        </div>
-
-                                                                        <div class="text">
-                                                                            <i class="ace-icon fa fa-quote-left"></i>
-                                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="tools">
-                                                                        <div class="inline position-relative">
-                                                                            <button class="btn btn-minier bigger btn-yellow dropdown-toggle" data-toggle="dropdown">
-                                                                                <i class="ace-icon fa fa-angle-down icon-only bigger-120"></i>
-                                                                            </button>
-
-                                                                            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                                                                <li>
-                                                                                    <a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">
-                                                                                        <span class="green">
-                                                                                            <i class="ace-icon fa fa-check bigger-110"></i>
-                                                                                        </span>
-                                                                                    </a>
-                                                                                </li>
-
-                                                                                <li>
-                                                                                    <a href="#" class="tooltip-warning" data-rel="tooltip" title="Reject">
-                                                                                        <span class="orange">
-                                                                                            <i class="ace-icon fa fa-times bigger-110"></i>
-                                                                                        </span>
-                                                                                    </a>
-                                                                                </li>
-
-                                                                                <li>
-                                                                                    <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-                                                                                        <span class="red">
-                                                                                            <i class="ace-icon fa fa-trash-o bigger-110"></i>
-                                                                                        </span>
-                                                                                    </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="itemdiv commentdiv">
-                                                                    <div class="user">
-                                                                         <?=$this->Html->image('avatars/avatar2.png', ['class' => 'msg-photo']);?>
-                                                                    </div>
-
-                                                                    <div class="body">
-                                                                        <div class="name">
-                                                                            <a href="#">Carla Salinas</a>
-                                                                        </div>
-
-                                                                        <div class="time">
-                                                                            <i class="ace-icon fa fa-clock-o"></i>
-                                                                            <span class="blue">15 min</span>
-                                                                        </div>
-
-                                                                        <div class="text">
-                                                                            <i class="ace-icon fa fa-quote-left"></i>
-                                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="tools">
-                                                                        <div class="action-buttons bigger-125">
-                                                                            <a href="#">
-                                                                                <i class="ace-icon fa fa-pencil blue"></i>
-                                                                            </a>
-
-                                                                            <a href="#">
-                                                                                <i class="ace-icon fa fa-trash-o red"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                               
-                                                            </div>
-
-                                                            <div class="hr hr8"></div>
-
-                                                            <div class="center">
-                                                                <i class="ace-icon fa fa-comments-o fa-2x green middle"></i>
-
-                                                                &nbsp;
-                                                                <a href="#" class="btn btn-sm btn-white btn-info">
-                                                                    Ver todos los seguimientos &nbsp;
-                                                                    <i class="ace-icon fa fa-arrow-right"></i>
-                                                                </a>
-                                                            </div>
-
-                                                            <div class="hr hr-double hr8"></div>
                                                         </div>
                                                     </div>
                                                 </div><!-- /.widget-main -->

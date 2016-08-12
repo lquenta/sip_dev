@@ -137,10 +137,10 @@ class RecomendacionsTable extends Table
     public function obtenerUltimoCodigoRecomendacion(){
         $sql=$this->query('SELECT id FROM recomendacions ORDER BY id DESC LIMIT 1');
         $result = $this->connection()->execute($sql)->fetchAll('assoc');
+
         //debug(count($result));die;
-        $ultimo_indice=$result[count($result)-1]['Recomendacions__id'];
-        
         if($result!=null){
+             $ultimo_indice=$result[count($result)-1]['Recomendacions__id'];
             $result = $ultimo_indice;    
             $result = $result + 1;
         }else{  

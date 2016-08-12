@@ -67,7 +67,13 @@ class PagesController extends AppController
         $this->loadModel('SolicitudInformacions');
         $this->loadModel('Institucions');
         $this->loadModel('Recomendacions');
+        $this->loadModel('AccionSolicitud');
+        $this->loadModel('Accions');
         
+        
+        if($this->Auth->user('rol_id')=='5'){
+            return $this->redirect(['controller'=>'AccionSolicitud','action' => 'index']);
+        }
         
         $autorizacions =  $this->Autorizacions->find('all', [
             'contain' => ['Users', 'Accions', 'Estados']
@@ -77,7 +83,18 @@ class PagesController extends AppController
         $solicitudInformacions=$this->SolicitudInformacions->find('all')->where(['usuario_id'=>$this->Auth->user('id'),'estado_id'=>'1']);
         //$solicitudInformacions = $this->paginate($solicitudInformacions);
 
-         
+        
+        $accionSolicitud = $this->AccionSolicitud->find('all',[
+            'contain' => ['Accions', 'Institucions', 'Estados', 'Users']
+        ])->where(['AccionSolicitud.estado_id'=>'1','user_id'=>$this->Auth->user('id')]);
+
+
+        $accionSolicitud = $this->paginate($accionSolicitud);
+
+
+        $accions_sin_responder_entidades = $this->Accions->find('all')->where(['estado_id'=>'2']);
+        $accions_sin_responder_entidades = $this->paginate($accions_sin_responder_entidades);
+
 
         //seguimientos que necesitan complementar informacion de las instituciones reponsables
         //obtener la institucion asociada al usuario
@@ -89,7 +106,7 @@ class PagesController extends AppController
          ->where(['InstitucionRecomendacion.institucion_id ' => $institucion->id]);
        debug($recomendaciones_segumiento->all());*/
 
-        $this->set(compact('autorizacions','solicitudInformacions'));
+        $this->set(compact('autorizacions','solicitudInformacions','accionSolicitud','accions_sin_responder_entidades'));
         $this->set('_serialize', ['solicitudInformacions']);
 
         //$solicitudInstituciones= 

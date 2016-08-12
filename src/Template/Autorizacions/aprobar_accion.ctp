@@ -87,23 +87,21 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
 
       <!-- Tab panes -->
       <div class="tab-content">
-        <?php foreach ($instituciones as $institucion) : ?>
+       
 
-            <div role="tabpanel" class="tab-pane fade in active" id="<?php echo $institucion?>">
-                <?php foreach ($acciones as $accion_item) : ?>
                     <div class="panel-group">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                               <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse3">Accion de Seguimiento <?= h($accion_item->codigo) ?></a>
+                                <a data-toggle="collapse" href="#collapse3">Accion de Seguimiento <?= h($accion->codigo) ?></a>
                               </h4>
                             </div>
                             <div id="collapse3" class="panel-collapse collapse in">
                                 <div class="panel-body">
                                     <label for="inputDescripcion">Descripcion</label>
-                                    <input type="text" class="form-control" id="inputDescripcion" placeholder="" readonly="readonly" value="<?= h($accion_item->descripcion) ?>">
+                                    <input type="text" class="form-control" id="inputDescripcion" placeholder="" readonly="readonly" value="<?= h($accion->descripcion) ?>">
                                     <label for="inputListado">Listado</label>
-                                    <textarea type="text" class="form-control" id="inputListado" cols=3 rows=4 placeholder="" readonly="readonly"> <?= h($accion_item->listado) ?></textarea>  
+                                    <textarea type="text" class="form-control" id="inputListado" cols=3 rows=4 placeholder="" readonly="readonly"> <?= h($accion->listado) ?></textarea>  
                                    
                                 </div>
                             </div>
@@ -118,7 +116,7 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                             </div>
                             <div id="collapse4" class="panel-collapse collapse in">
                                 <div class="panel-body">
-                                <?php foreach ($accion_item->adjuntos_accions as $adjunto) : 
+                                <?php foreach ($accion->adjuntos_accions as $adjunto) : 
                                     echo $this->Html->link(
                                         '<i class="glyphicon glyphicon-save-file">'.$adjunto->link.'</i>',
                                         '/uploads/'.$adjunto->link,
@@ -130,13 +128,33 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                             </div>
                         </div>
                     </div>
-                   
-                   
-                
-                <?php endforeach; ?>
-            </div>
-        <?php endforeach; ?>   
-        <div role="tabpanel" class="tab-pane fade" id="respuesta_consolidada">Respuesta Consolidada</div>
+                     <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse5">Respuestas consolidadas</a>
+                              </h4>
+                            </div>
+                            <div id="collapse5" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                   <?php foreach ($accion_solicitudes as $solicitud) : ?>
+                                           <label for="inputDescripcion">Institucion</label>
+                                           <input type="text" class="form-control" id="inputDescripcion" placeholder="" readonly="readonly" value="<?= h($solicitud->institucion->descripcion) ?>">
+                                            <label for="inputRespuesta">Respuesta</label>
+                                           <textarea type="text" class="form-control" id="inputRespuesta" cols=3 rows=4 
+                                           placeholder="" readonly="readonly"> <?= h($solicitud->respuesta) ?></textarea>  
+                                           <label>Archivo Adjunto de indicadores</label>
+                                          <?php  echo $this->Html->link(
+                                            '<i class="glyphicon glyphicon-save-file">'.$solicitud->link_adjunto.'</i>',
+                                            '/uploads/'.$adjunto->link,
+                                            ['class' => 'btn btn-default btn-lg', 'target' => '_blank','escape' => false]
+                                        ); ?>
+                                   <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
       </div>
 
     </div>

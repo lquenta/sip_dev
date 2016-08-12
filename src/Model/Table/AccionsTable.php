@@ -53,6 +53,9 @@ class AccionsTable extends Table
         $this->hasMany('Autorizacions', [
             'foreignKey' => 'accion_id'
         ]);
+        $this->hasMany('Estados', [
+            'foreignKey' => 'estado_id'
+        ]);
     }
 
     /**
@@ -103,8 +106,9 @@ class AccionsTable extends Table
      public function obtenerUltimoCodigoAccion($id_segumiento){
         $sql=$this->query('SELECT codigo FROM accions ORDER BY id DESC;');
         $result = $this->connection()->execute($sql)->fetchAll('assoc');
-        $ultimo_indice=$result[count($result)-1]['Accions__id'];
+        
         if($result!=null){
+            $ultimo_indice=$result[count($result)-1]['Accions__id'];
             $result = $ultimo_indice;    
             $result = $result + 1;
         }else{  

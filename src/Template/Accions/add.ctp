@@ -90,6 +90,7 @@ $this->assign('title', 'Añadir Segumiento');
                         <label for="listado">Información requerida</label>
                         <textarea type="text" class="form-control" id="listado" name='listado' placeholder="" rows="3" required=""></textarea>
                     </div>
+                    <?php echo $this->Form->input('institucions', array('label'=>'Instituciones Responsables de la información','multiple' => 'checkbox', 'options' => $all_instituciones));?>
                 </div>
             </div>
         </div>

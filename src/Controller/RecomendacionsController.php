@@ -205,13 +205,13 @@ class RecomendacionsController extends AppController
             }
            
         }
-        $users = $this->Recomendacions->Users->find('list', ['limit' => 200]);
-        $estados = $this->Recomendacions->Estados->find('list', ['limit' => 200]);
+        $users = $this->Recomendacions->Users->find('list', ['limit' => 5]);
+        $estados = $this->Recomendacions->Estados->find('list', ['limit' => 5]);
        
-        $poblaciones = $this->Poblacions->find('list', ['limit' => 200])->toArray();
-        $derecho = $this->Derechos->find('list', ['limit' => 200])->toArray();
-        $institucions = $this->Institucions->find('list', ['limit' => 200])->toArray();
-        $mecanismos = $this->Mecanismos->find('list', ['limit' => 200])->toArray();
+        $poblaciones = $this->Poblacions->find('list', ['limit' => 5])->toArray();
+        $derecho = $this->Derechos->find('list', ['limit' => 5])->toArray();
+        $institucions = $this->Institucions->find('list', ['limit' => 5])->toArray();
+        $mecanismos = $this->Mecanismos->find('list', ['limit' => 5])->toArray();
         $codigo_recomendacion=$this->Recomendacions->obtenerUltimoCodigoRecomendacion();
         $this->set(compact('recomendacion', 'users', 'estados','poblaciones','derecho','institucions','mecanismos','codigo_recomendacion'));
         $this->set('_serialize', ['recomendacion']);

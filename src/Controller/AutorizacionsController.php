@@ -132,6 +132,8 @@ class AutorizacionsController extends AppController
         $this->loadModel('Users');
         $this->loadModel('Notificacions');
         $this->loadModel('AccionSolicitud');
+        $this->loadModel('Consolidados');
+        $this->loadModel('AdjuntosConsolidados');
         
         
          $accion =$this->Accions->get($id,[
@@ -202,10 +204,13 @@ class AutorizacionsController extends AppController
         $all_instituciones = $this->Institucions->find('list', ['limit' => 5])->toArray();
         $all_mecanismos = $this->Mecanismos->find('list', ['limit' => 5])->toArray();
         $aprobarAccion = $this->Autorizacions->newEntity();
+        $consolidado_datos = $this->Consolidados->find('all',['contain' => ['AdjuntosConsolidados']])
+        ->where(['accion_id'=>$id])->first();
+        $texto_consolidado='';
         if ($this->request->is(['patch', 'post', 'put'])) {
             //obtener la autorizacion id a partir del recomendacion id y el id del usuario
             $autorizacion_actual=$this->Autorizacions->find('all', ['contain' => ['Accions']])
-                ->where(['accion_id ' => $id,'autorizacions.usuario_id'=>$this->Auth->user('id'),'autorizacions.estado_id'=>'1'])->first();
+                ->where(['accion_id ' => $id,'Autorizacions.usuario_id'=>$this->Auth->user('id'),'Autorizacions.estado_id'=>'1'])->first();
             if($autorizacion_actual==null){
                 $this->Flash->error(__('Usted no puede autorizar este segumiento de acción.'));
             }else{
@@ -254,7 +259,10 @@ class AutorizacionsController extends AppController
                             $notificacion = $this->Notificacions->newEntity();
                             $notificacion = $this->Notificacions->patchEntity($notificacion, $req_notificacion);
                             $this->Notificacions->save($notificacion);
+                            
+                            
                         }
+                        
                    }elseif($accion->estado_id==3){
                     //se el estado es 5 quiere decir que la procuradoria ya acepto y debemos enviar a la ultima instancia, a cancilleria
                         $accion->estado_id='5';
@@ -298,7 +306,55 @@ class AutorizacionsController extends AppController
                        
                         
                    }
-                } else if (isset($this->request->data['btnRechazar'])) {
+                   $id_consolidado=0;
+                  if($consolidado_datos==null){
+                    //no hay datos de consolidado se crea consolidado
+                     //grabacion del consolidado este es el q se mostrara a procuraduria
+                        $consolidado = $this->Consolidados->newEntity();
+                        $req_consolidado = array(
+                          'accion_id'=>$id,
+                          'texto_consolidado'=>$this->request->data['texto_consolidado'],
+                          'user_id'=>$this->Auth->user('id'),
+                          'fecha_consolidado'=>date('Y-m-d H:i:s')
+                          );
+                        $consolidado = $this->Consolidados->patchEntity($consolidado,$req_consolidado);
+                        $this->Consolidados->save($consolidado);
+                        $id_consolidado=$consolidado->id;
+                  }else{
+                    $consolidado_datos->texto_consolidado = $this->request->data['texto_consolidado'];
+                    $consolidado_datos->fecha_consolidado =date('Y-m-d H:i:s');
+                    $consolidado_datos->user_id = $this->Auth->user('id');
+                    $test=$this->Consolidados->save($consolidado_datos);
+                    $id_consolidado=$consolidado_datos->id;
+                  }
+                  $texto_consolidado=$this->request->data['texto_consolidado'];
+                  //grabacion de adjuntos
+                  $adjuntos_consolidado = $this->request->data['adjuntos_consolidado'];
+                  if($adjuntos_consolidado[0]['name']!=''){
+                    foreach ($adjuntos_consolidado as $adjunto ) {
+                        $adjunto_req = [
+                            'name' => $adjunto['name'],
+                            'type' => $adjunto['type'],
+                            'tmp_name' => $adjunto['tmp_name'],
+                            'error' => $adjunto['error'],
+                            'size' => $adjunto['size']
+                        ];
+                        $adjunto_req['name']=$this->sanitize($adjunto_req['name']);
+                        //$file_name =  ROOT .DS. 'uploads' .DS. time().'_'.$adjunto_req['name'];
+                        $file_name_part = time().'_'.$adjunto_req['name'];
+                        $file_name =  ROOT .DS. 'webroot'.DS.'uploads'.DS. $file_name_part;
+                        $res=move_uploaded_file($adjunto_req['tmp_name'],$file_name); 
+                        $adj_save = array(
+                            'consolidado_id'=>$id_consolidado,
+                            'link'=>$file_name_part);
+                        $adjuntosConsolidados = $this->AdjuntosConsolidados->newEntity();
+                        $adjuntosConsolidados = $this->AdjuntosConsolidados->patchEntity($adjuntosConsolidados, $adj_save);
+                        $this->AdjuntosConsolidados->save($adjuntosConsolidados);
+                    }
+                  }
+
+                } else if (isset($this->request->data['btnRechazar'])) 
+                {
                    $autorizacion_actual->fecha_modificacion=date('Y-m-d H:i:s');
                    $autorizacion_actual->visto_bueno_fisico='0';
                    $autorizacion_actual->estado_id='4';
@@ -426,30 +482,83 @@ class AutorizacionsController extends AppController
                           $this->Notificacions->save($notificacion);
                       }
                       
-                 }
+                }
 
+                
+                }elseif(isset($this->request->data['btnGuardar'])){
+                  $id_consolidado=0;
+                  if($consolidado_datos==null){
+                    //no hay datos de consolidado se crea consolidado
+                     //grabacion del consolidado este es el q se mostrara a procuraduria
+                        $consolidado = $this->Consolidados->newEntity();
+                        $req_consolidado = array(
+                          'accion_id'=>$id,
+                          'texto_consolidado'=>$this->request->data['texto_consolidado'],
+                          'user_id'=>$this->Auth->user('id'),
+                          'fecha_consolidado'=>date('Y-m-d H:i:s')
+                          );
+                        $consolidado = $this->Consolidados->patchEntity($consolidado,$req_consolidado);
+                        $this->Consolidados->save($consolidado);
+                        $id_consolidado=$consolidado->id;
+                  }else{
+                    $consolidado_datos->texto_consolidado = $this->request->data['texto_consolidado'];
+                    $consolidado_datos->fecha_consolidado =date('Y-m-d H:i:s');
+                    $consolidado_datos->user_id = $this->Auth->user('id');
+                    $test=$this->Consolidados->save($consolidado_datos);
+                    $id_consolidado=$consolidado_datos->id;
+                  }
+                  $texto_consolidado=$this->request->data['texto_consolidado'];
+                  //grabacion de adjuntos
+                  $adjuntos_consolidado = $this->request->data['adjuntos_consolidado'];
+                  if($adjuntos_consolidado[0]['name']!=''){
+                    foreach ($adjuntos_consolidado as $adjunto ) {
+                        $adjunto_req = [
+                            'name' => $adjunto['name'],
+                            'type' => $adjunto['type'],
+                            'tmp_name' => $adjunto['tmp_name'],
+                            'error' => $adjunto['error'],
+                            'size' => $adjunto['size']
+                        ];
+                        $adjunto_req['name']=$this->sanitize($adjunto_req['name']);
+                        //$file_name =  ROOT .DS. 'uploads' .DS. time().'_'.$adjunto_req['name'];
+                        $file_name_part = time().'_'.$adjunto_req['name'];
+                        $file_name =  ROOT .DS. 'webroot'.DS.'uploads'.DS. $file_name_part;
+                        $res=move_uploaded_file($adjunto_req['tmp_name'],$file_name); 
+                        $adj_save = array(
+                            'consolidado_id'=>$id_consolidado,
+                            'link'=>$file_name_part);
+                        $adjuntosConsolidados = $this->AdjuntosConsolidados->newEntity();
+                        $adjuntosConsolidados = $this->AdjuntosConsolidados->patchEntity($adjuntosConsolidados, $adj_save);
+                        $this->AdjuntosConsolidados->save($adjuntosConsolidados);
+                    }
+                  }
+                 
 
-                    
                 }
                 //$autorizacion_actual = $this->Autorizacions->patchEntity($autorizacion, $autorizacion_req);
-
-               if ($this->Autorizacions->save($autorizacion_actual)) {
-               //     if(true){
-                    $todas_autorizaciones_pendientes = $this->Autorizacions->find('all')->where(['accion_id'=>$id,'estado_id'=>'1','id !='=>$autorizacion_actual->id]);
-                    //debug($todas_autorizaciones_pendientes->all());die;
-                    foreach ($todas_autorizaciones_pendientes as $aut_pendiente ) {
-                      $aut_pendiente->fecha_modificacion=date('Y-m-d H:i:s');
-                      $aut_pendiente->estado_id=$autorizacion_actual->estado_id;
-                      //$this->Autorizacions->save($aut_pendiente);
-                    }
-                    $this->Flash->success(__('Accion actualizada correctamente.'));
-                    return $this->redirect(['action' => 'index']);
-                } else {
-                    $this->Flash->error(__('Error en la autorizacion por favor intente de nuevo.'));
+              if(isset($this->request->data['btnGuardar'])==false){
+                if ($this->Autorizacions->save($autorizacion_actual)) {
+                //     if(true){
+                     $todas_autorizaciones_pendientes = $this->Autorizacions->find('all')->where(['accion_id'=>$id,'estado_id'=>'1','id !='=>$autorizacion_actual->id]);
+                     //debug($todas_autorizaciones_pendientes->all());die;
+                     foreach ($todas_autorizaciones_pendientes as $aut_pendiente ) {
+                       $aut_pendiente->fecha_modificacion=date('Y-m-d H:i:s');
+                       $aut_pendiente->estado_id=$autorizacion_actual->estado_id;
+                       //$this->Autorizacions->save($aut_pendiente);
+                     }
+                     $this->Flash->success(__('Accion actualizada correctamente.'));
+                     return $this->redirect(['action' => 'index']);
+                 } else {
+                     $this->Flash->error(__('Error en la autorizacion por favor intente de nuevo.'));
+                 }
+                  $autorizacion_actual->fecha_modificacion=date('Y-m-d H:i:s');
+                    $autorizacion_actual->visto_bueno_fisico='0';
+                    $autorizacion_actual->estado_id='4';
+                }else{
+                   $this->Flash->success(__('Consolidado guardado correctamente.'));
                 }
-                 $autorizacion_actual->fecha_modificacion=date('Y-m-d H:i:s');
-                   $autorizacion_actual->visto_bueno_fisico='0';
-                   $autorizacion_actual->estado_id='4';
+               $consolidado_datos = $this->Consolidados->find('all',['contain' => ['AdjuntosConsolidados']])
+               ->where(['accion_id'=>$id])->first();
 
             }
             
@@ -457,10 +566,19 @@ class AutorizacionsController extends AppController
                 
             //return $this->redirect(['action' => 'index']);
             
+        }else{
+          if($consolidado_datos!=null){
+            $texto_consolidado = $consolidado_datos->texto_consolidado;
+          }
         }
         $users = $this->Accions->Users->find('list', ['limit' => 200]);
         $recomendacions = $this->Accions->Recomendacions->find('list', ['limit' => 200]);
-        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos','accion_solicitudes'));
+        if($this->Auth->user('rol_id')=='4'|| $this->Auth->user('rol_id')=='5'){
+          $en_transito=true;
+        }else{
+          $en_transito=false;
+        }
+        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos','accion_solicitudes','consolidado_datos','texto_consolidado','en_transito'));
         $this->set('_serialize', ['accion']);
     }
 }

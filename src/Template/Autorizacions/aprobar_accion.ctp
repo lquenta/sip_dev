@@ -75,94 +75,122 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
             </div>
         </div>
     </div>
-    <div>
+   <div class="panel-group">
+       <div class="panel panel-default">
+           <div class="panel-heading">
+             <h4 class="panel-title">
+               <a data-toggle="collapse" href="#collapse3">Accion de Seguimiento <?= h($accion->codigo) ?></a>
+             </h4>
+           </div>
+           <div id="collapse3" class="panel-collapse collapse in">
+               <div class="panel-body">
+                   <label for="inputDescripcion">Descripcion</label>
+                   <input type="text" class="form-control" id="inputDescripcion" placeholder="" readonly="readonly" value="<?= h($accion->descripcion) ?>">
+                   <label for="inputListado">Listado</label>
+                   <textarea type="text" class="form-control" id="inputListado" cols=3 rows=4 placeholder="" readonly="readonly"> <?= h($accion->listado) ?></textarea>  
+                  
+               </div>
+           </div>
+       </div>
+   </div>
+   <div class="panel-group">
+       <div class="panel panel-default">
+           <div class="panel-heading">
+             <h4 class="panel-title">
+               <a data-toggle="collapse" href="#collapse4">Archivos Accion de seguimiento</a>
+             </h4>
+           </div>
+           <div id="collapse4" class="panel-collapse collapse in">
+               <div class="panel-body">
+               <?php foreach ($accion->adjuntos_accions as $adjunto) : 
+                   echo $this->Html->link(
+                       '<i class="glyphicon glyphicon-save-file">'.$adjunto->link.'</i>',
+                       '/uploads/'.$adjunto->link,
+                       ['class' => 'btn btn-default btn-lg', 'target' => '_blank','escape' => false]
+                   );
+                           
+               endforeach; ?>
+               </div>
+           </div>
+       </div>
+   </div>
+    <div class="panel-group">
+       <div class="panel panel-default">
+           <div class="panel-heading">
+             <h4 class="panel-title">
+               <a data-toggle="collapse" href="#collapse5">Respuestas de Instituciones</a>
+             </h4>
+           </div>
+           <div id="collapse5" class="panel-collapse collapse in">
+               <div class="panel-body">
+                 <ul class="nav nav-tabs" role="tablist">
+                 <?php foreach ($instituciones as $institucion) : ?>
+                        <li role="presentation"><a href="#" aria-controls="<?php echo $institucion?>" role="tab" data-toggle="tab"><?php echo $institucion?></a></li>
+                 <?php endforeach; ?>
+                 </ul>
 
-      <!-- Nav tabs -->
-      <ul class="nav nav-tabs" role="tablist">
-      <?php foreach ($instituciones as $institucion) : ?>
-             <li role="presentation"><a href="#" aria-controls="<?php echo $institucion?>" role="tab" data-toggle="tab"><?php echo $institucion?></a></li>
-      <?php endforeach; ?>
-        <li role="presentation"><a href="#respuesta_consolidada" aria-controls="respuesta_consolidada" role="tab" data-toggle="tab">Respuesta Consolidada</a></li>
-      </ul>
+                 <!-- Tab panes -->
+                 <div class="tab-content">
+                 <?php foreach ($instituciones as $institucion) : ?>
+                 <div role="tabpanel" class="tab-pane active" id="<?php echo $institucion?>">
+                   <?php foreach ($accion_solicitudes as $solicitud) : ?>
+                            <label for="inputRespuesta">Respuesta</label>
+                           <textarea type="text" class="form-control" id="inputRespuesta" cols=3 rows=4 
+                           placeholder="" readonly="readonly"> <?= h($solicitud->respuesta) ?></textarea>
+                           <?php if($solicitud->link_adjunto!=null){
+                           ?>  
+                             <label>Archivo Adjunto de indicadores</label>
+                            <?php  echo $this->Html->link(
+                              '<i class="glyphicon glyphicon-save-file">'.$solicitud->link_adjunto.'</i>',
+                              '/uploads/'.$solicitud->link_adjunto,
+                              ['class' => 'btn btn-default btn-lg', 'target' => '_blank','escape' => false]
+                          ); ?>
+                            <?php } ?>
+                   <?php endforeach; ?>
+                 </div>
+                  <?php endforeach; ?>
 
-      <!-- Tab panes -->
-      <div class="tab-content">
-       
-
-                    <div class="panel-group">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                              <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse3">Accion de Seguimiento <?= h($accion->codigo) ?></a>
-                              </h4>
-                            </div>
-                            <div id="collapse3" class="panel-collapse collapse in">
-                                <div class="panel-body">
-                                    <label for="inputDescripcion">Descripcion</label>
-                                    <input type="text" class="form-control" id="inputDescripcion" placeholder="" readonly="readonly" value="<?= h($accion->descripcion) ?>">
-                                    <label for="inputListado">Listado</label>
-                                    <textarea type="text" class="form-control" id="inputListado" cols=3 rows=4 placeholder="" readonly="readonly"> <?= h($accion->listado) ?></textarea>  
-                                   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-group">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                              <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse4">Archivos Accion de seguimiento</a>
-                              </h4>
-                            </div>
-                            <div id="collapse4" class="panel-collapse collapse in">
-                                <div class="panel-body">
-                                <?php foreach ($accion->adjuntos_accions as $adjunto) : 
-                                    echo $this->Html->link(
-                                        '<i class="glyphicon glyphicon-save-file">'.$adjunto->link.'</i>',
-                                        '/uploads/'.$adjunto->link,
-                                        ['class' => 'btn btn-default btn-lg', 'target' => '_blank','escape' => false]
-                                    );
-                                            
-                                endforeach; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="panel-group">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                              <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse5">Respuestas consolidadas</a>
-                              </h4>
-                            </div>
-                            <div id="collapse5" class="panel-collapse collapse in">
-                                <div class="panel-body">
-                                   <?php foreach ($accion_solicitudes as $solicitud) : ?>
-                                           <label for="inputDescripcion">Institucion</label>
-                                           <input type="text" class="form-control" id="inputDescripcion" placeholder="" readonly="readonly" value="<?= h($solicitud->institucion->descripcion) ?>">
-                                            <label for="inputRespuesta">Respuesta</label>
-                                           <textarea type="text" class="form-control" id="inputRespuesta" cols=3 rows=4 
-                                           placeholder="" readonly="readonly"> <?= h($solicitud->respuesta) ?></textarea>  
-                                           <label>Archivo Adjunto de indicadores</label>
-                                          <?php  echo $this->Html->link(
-                                            '<i class="glyphicon glyphicon-save-file">'.$solicitud->link_adjunto.'</i>',
-                                            '/uploads/'.$adjunto->link,
-                                            ['class' => 'btn btn-default btn-lg', 'target' => '_blank','escape' => false]
-                                        ); ?>
-                                   <?php endforeach; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            
-      </div>
-
-    </div>
+                 
+                  </div>
+               </div>
+           </div>
+       </div>
+   </div>
+   <div class="panel-group">
+       <div class="panel panel-default">
+           <div class="panel-heading">
+             <h4 class="panel-title">
+               <a data-toggle="collapse" href="#collapse4">Consolidado final</a>
+             </h4>
+           </div>
+           <div id="collapse4" class="panel-collapse collapse in">
+               <div class="panel-body">
+                   <label for="inputTexto">Texto</label>
+                   <textarea type="text" class="form-control" id="texto_consolidado" name="texto_consolidado" cols=3 rows=4 placeholder=""><?=h($texto_consolidado); ?> </textarea> 
+                   <?php if($consolidado_datos!=null){?>
+                      <?php foreach ($consolidado_datos->adjuntos_consolidados as $adjunto) : 
+                         echo $this->Html->link(
+                             '<i class="glyphicon glyphicon-save-file">'.$adjunto->link.'</i>',
+                             '/uploads/'.$adjunto->link,
+                             ['class' => 'btn btn-default btn-lg', 'target' => '_blank','escape' => false]
+                         );
+                         endforeach; ?>
+                     <?php }?>
+                   <?php
+                      echo $this->Form->input('adjuntos_consolidado[]', ['type' => 'file', 'multiple' => 'true', 'label' => 'Añadir Archivos']);
+                   ?>
+               </div>
+           </div>
+       </div>
+   </div>
   
    
 </fieldset>
 
-<?= $this->Form->button('Aprobar',array('name'=>'btnAprobar'));?>
-<?= $this->Form->button('Rechazar',array('name'=>'btnRechazar'));?>
+<?= $this->Form->button('Guardar',array('name'=>'btnGuardar','class'=>'btn btn-primary'));?>
+<?= $this->Form->button('Aprobar y enviar',array('name'=>'btnAprobar','class'=>'btn btn-danger'));?>
+<?php if ($en_transito){?>
+  <?= $this->Form->button('Rechazar',array('name'=>'btnRechazar'));?>
+<?php } ?>
 <!--<?= $this->Form->button(__("Rechazar")); ?> -->
 <?= $this->Form->end() ?>

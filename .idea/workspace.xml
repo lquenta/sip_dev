@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98230c45-2065-4781-9d8c-9a49f959355d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/RecomendacionsController.php" afterPath="$PROJECT_DIR$/src/Controller/RecomendacionsController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Recomendacions/add.ctp" afterPath="$PROJECT_DIR$/src/Template/Recomendacions/add.ctp" />
     </list>
     <ignored path="sip_dev.iws" />
@@ -28,8 +27,8 @@
       <file leaf-file-name="RecomendacionsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/RecomendacionsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.5636363">
-              <caret line="221" column="182" selection-start-line="221" selection-start-column="182" selection-end-line="221" selection-end-column="182" />
+            <state vertical-scroll-proportion="-4.327273">
+              <caret line="215" column="23" selection-start-line="215" selection-start-column="8" selection-end-line="215" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -112,8 +111,8 @@
       <file leaf-file-name="add.ctp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Template/Recomendacions/add.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.09066667">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.68266666">
+              <caret line="100" column="7" selection-start-line="100" selection-start-column="7" selection-end-line="100" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -483,16 +482,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/RecomendacionsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.5636363">
-          <caret line="221" column="182" selection-start-line="221" selection-start-column="182" selection-end-line="221" selection-end-column="182" />
+        <state vertical-scroll-proportion="-4.327273">
+          <caret line="215" column="23" selection-start-line="215" selection-start-column="8" selection-end-line="215" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Recomendacions/add.ctp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09066667">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.68266666">
+          <caret line="100" column="7" selection-start-line="100" selection-start-column="7" selection-end-line="100" selection-end-column="7" />
           <folding />
         </state>
       </provider>

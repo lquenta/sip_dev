@@ -22,13 +22,26 @@ $this->assign('title', 'Añadir Recomendacion');
                     <textarea type="text" class="form-control" id="descripcion" name='descripcion' placeholder="" rows="3" required=""></textarea>
                 </div>
                 <?php
-                    echo $this->Form->input('mecanismos',array('label'=>'Mecanismo de Protección','multiple' => 'checkbox', 'options' => $mecanismos, ));
+                    //mecanismo
+                    foreach($listmecanismos as $item)
+                    {
+                            $mensajeCodigo = "cambiarCodigo('$item->Prefijo')";
+                            echo "<div class='checkbox'>";
+                            echo "<label for = 'institucions-".$item->id."'>";
+                            echo '<input type="checkbox" name="mecanismos[]" value="'.$item->id.'" id="mecanismos-'.$item->id.'" onchange="'.$mensajeCodigo.'">';
+                            echo $item->descripcion;
+                            echo "</label>";
+                            echo "</div>";
+                    }
+                    //echo $this->Form->input('mecanismos',array('label'=>'Mecanismo de Protección','multiple' => 'checkbox', 'options' => $mecanismos, ));
 
                     echo $this->Form->input('año',array('min'=>'0','max'=>'9999'));
                     echo $this->Form->input('poblaciones', array('label'=>'Grupo Poblacional','multiple' => 'checkbox', 'options' => $poblaciones));
                     echo $this->Form->input('derecho', array('label'=>'Derecho(s)','multiple' => 'checkbox', 'options' => $derecho));
                     $indexGrupo = 0;
                     echo $this->Form->label("Instituciones Responsables");
+
+                    //instituciones
                     foreach($gruposInstitucioones as $a)
                     {
                         $nombreGrupo = $a['grupo'];
@@ -85,3 +98,9 @@ $this->assign('title', 'Añadir Recomendacion');
 <?= $this->Form->button('Grabar',array('name'=>'btnGuardar'));?>
 <?= $this->Form->button('Grabar y Publicar',array('name'=>'btnPublicar'));?>
 <?= $this->Form->end() ?>
+<script>
+    var codigoOriginal = $("#codigo").val();
+    function cambiarCodigo(prefijo){
+        $("#codigo").val(prefijo + codigoOriginal);
+    }
+</script>

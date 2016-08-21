@@ -63,4 +63,11 @@ class InstitucionsTable extends Table
 
         return $validator;
     }
+
+    public function obtenerGrupos(){
+        $sql=$this->query('SELECT distinct grupo FROM institucions');
+        $result = $this->connection()->execute($sql)->fetchAll('assoc');
+        debug($result);
+        return $result;
+    }
 }

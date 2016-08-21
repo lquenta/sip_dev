@@ -26,9 +26,30 @@ $this->assign('title', 'Añadir Recomendacion');
                     echo $this->Form->input('año',array('min'=>'0','max'=>'9999'));
                     echo $this->Form->input('poblaciones', array('label'=>'Grupo Poblacional','multiple' => 'checkbox', 'options' => $poblaciones));
                     echo $this->Form->input('derecho', array('label'=>'Derecho(s)','multiple' => 'checkbox', 'options' => $derecho));
-                    echo $this->Form->input('institucions', array('label'=>'Instituciones Responsables','multiple' => 'checkbox', 'options' => $institucions));
-                   
+                    $indexGrupo = 0;
+                    echo $this->Form->label("Instituciones Responsables");
+                    foreach($gruposInstitucioones as $a)
+                    {
+                        $nombreGrupo = $a['grupo'];
+                        $listInstituciones = array();
+                        foreach($institucionesNew as $ins){
+                            if($nombreGrupo == $ins->Grupo ){
+
+                                array_push($listInstituciones, $ins);
+                            }
+                        }
+
+                        $listInstituciones = array_map(create_function('$x', 'return $x->descripcion;'), $listInstituciones);
+                        echo "<div class='panel panel-default'>";
+                        echo "<div class='panel-heading' style='cursor: pointer;' data-toggle='collapse' data-target='#institucionesDiv$indexGrupo'>".$nombreGrupo."</div>";
+                        echo "<div class='collapse panel-body' id='institucionesDiv$indexGrupo'><div>";
+                        echo $this->Form->input('institucions', array('label'=>'','multiple' => 'checkbox', 'options' => $listInstituciones));
+                        echo "</div> </div>";
+                        $indexGrupo = $indexGrupo + 1;
+                    }
+
                 ?>
+
                 </div>
             </div>
         </div>
@@ -55,6 +76,3 @@ $this->assign('title', 'Añadir Recomendacion');
 <?= $this->Form->button('Grabar',array('name'=>'btnGuardar'));?>
 <?= $this->Form->button('Grabar y Publicar',array('name'=>'btnPublicar'));?>
 <?= $this->Form->end() ?>
-<script>
-    //alert('hola');
-</script>

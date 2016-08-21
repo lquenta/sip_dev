@@ -134,7 +134,9 @@ class AutorizacionsController extends AppController
         $this->loadModel('AccionSolicitud');
         $this->loadModel('Consolidados');
         $this->loadModel('AdjuntosConsolidados');
-        
+        $this->loadModel('Indicadors');
+
+        $listIndicadores = $this->Indicadors->find('list', ['limit' => 5])->toArray();
         
          $accion =$this->Accions->get($id,[
             'contain' => ['Users', 'Recomendacions', 'AdjuntosAccions']
@@ -578,7 +580,7 @@ class AutorizacionsController extends AppController
         }else{
           $en_transito=false;
         }
-        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos','accion_solicitudes','consolidado_datos','texto_consolidado','en_transito'));
+        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos','accion_solicitudes','consolidado_datos','texto_consolidado','en_transito','listIndicadores'));
         $this->set('_serialize', ['accion']);
     }
 }

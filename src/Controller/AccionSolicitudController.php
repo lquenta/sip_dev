@@ -12,16 +12,23 @@ class AccionSolicitudController extends AppController
 {
 
     public function responderSolicitud($id){
+
+
          $accionSolicitud = $this->AccionSolicitud->get($id, [
             'contain' => ['Accions', 'Institucions', 'Estados', 'Users']
         ]);
-         $respuestas_anteriores = $this->AccionSolicitud->find('all')->where(['accion_id'=>$accionSolicitud->accion_id,'estado_id !='=>'1']);
+        $this->loadModel('Indicadors');
+
+        $listIndicadores = $this->Indicadors->find('list', ['limit' => 5])->toArray();
+
+        $respuestas_anteriores = $this->AccionSolicitud->find('all')->where(['accion_id'=>$accionSolicitud->accion_id,'estado_id !='=>'1']);
         if ($this->request->is(['patch', 'post', 'put'])) {
              $this->loadModel('Users');
              $this->loadModel('Notificacions');
              $this->loadModel('Accions');
              $this->loadModel('Autorizacions');
-             
+
+
             $adjunto_respuesta = $this->request->data['adjunto_respuesta'];
                 $adjunto_respuesta['name']=$this->sanitize($adjunto_respuesta['name']);
                 //$file_name =  ROOT .DS. 'uploads' .DS. time().'_'.$adjunto_respuesta['name'];
@@ -88,7 +95,8 @@ class AccionSolicitudController extends AppController
                 $this->Flash->error(__('la respuesta no pudo ser grabada, por favor reintente.'));
             }
         }
-        $this->set(compact('accionSolicitud','respuestas_anteriores'));
+
+        $this->set(compact('accionSolicitud','respuestas_anteriores','listIndicadores'));
         $this->set('_serialize', ['accionSolicitud']);
     }
     /**

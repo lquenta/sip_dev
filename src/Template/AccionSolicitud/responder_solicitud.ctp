@@ -1,9 +1,9 @@
+
 <?php
 $this->extend('../Layout/TwitterBootstrap/dashboard_restringido');
 $this->assign('title', 'Responder Solicitud');
 ?>
 <?= $this->Form->create($accionSolicitud,['type' => 'file']); ?>
-
 <fieldset>
     <div class="panel-group">
         <div class="panel panel-default">
@@ -61,7 +61,33 @@ $this->assign('title', 'Responder Solicitud');
             </div>
         </div>
     </div>
-     
+
+     <div class="panel-group">
+             <div class="panel panel-default">
+                 <div class="panel-heading">
+                   <h4 class="panel-title">
+                     <a data-toggle="collapse" href="#collapse5">Indicadores</a>
+                   </h4>
+                 </div>
+                 <div id="collapse5" class="panel-collapse collapse in">
+                     <div class="panel-body">
+                          <?php
+                              echo $this->Form->input('derecho', array('label'=>'','multiple' => 'checkbox', 'options' => $listIndicadores));
+                          ?>
+                     <div class="form-group">
+                                     <label>Descripcion</label>
+                                     <span>
+                                         <input type="text" id="descripcionIndicador" placeholder="Indicador Nuevo">
+                                         <button class="btn-info">Adicionar</button>
+                                     </span>
+                                 </div>
+                     </div>
+
+                 </div>
+             </div>
+         </div>
+
+
    
 </fieldset>
 <?= $this->Form->button(__("Grabar")); ?>

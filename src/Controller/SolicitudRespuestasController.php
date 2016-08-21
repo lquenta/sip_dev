@@ -57,8 +57,6 @@ class SolicitudRespuestasController extends AppController
         $this->loadModel('Institucions');
         $this->loadModel('SolicitudesPendientesRespuestas');
         $this->loadModel('AdjuntosSolicitudRespuestas');
-
-        
        $solicitudInformacion = $this->SolicitudInformacions->get($id, [
             'contain' => ['Users', 'Estados', 'InstitucionSolicitudes', 'SolicitudRespuestas']
         ]);

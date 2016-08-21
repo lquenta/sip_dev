@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="98230c45-2065-4781-9d8c-9a49f959355d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Recomendacions/add.ctp" afterPath="$PROJECT_DIR$/src/Template/Recomendacions/add.ctp" />
-    </list>
+    <list default="true" id="98230c45-2065-4781-9d8c-9a49f959355d" name="Default" comment="" />
     <ignored path="sip_dev.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />

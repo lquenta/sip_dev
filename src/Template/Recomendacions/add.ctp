@@ -55,3 +55,6 @@ $this->assign('title', 'Añadir Recomendacion');
 <?= $this->Form->button('Grabar',array('name'=>'btnGuardar'));?>
 <?= $this->Form->button('Grabar y Publicar',array('name'=>'btnPublicar'));?>
 <?= $this->Form->end() ?>
+<script>
+    //alert('hola');
+</script>

@@ -211,13 +211,15 @@ class RecomendacionsController extends AppController
         $poblaciones = $this->Poblacions->find('list', ['limit' => 5])->toArray();
         $derecho = $this->Derechos->find('list', ['limit' => 5])->toArray();
         $institucions = $this->Institucions->find('list')->toArray();
+
         $mecanismos = $this->Mecanismos->find('list', ['limit' => 5])->toArray();
+        $listmecanismos = $this->Mecanismos->find()->toArray();
         $codigo_recomendacion=$this->Recomendacions->obtenerUltimoCodigoRecomendacion();
         $gruposInstitucioones = $this->Institucions->find();
         $gruposInstitucioones->select(['grupo'])->distinct(['grupo'])->all();
         $institucionesNew = $this->Institucions->find()->toArray();
 
-        $this->set(compact('recomendacion', 'users', 'estados','poblaciones','derecho','institucions','mecanismos','codigo_recomendacion', 'gruposInstitucioones','institucionesNew'));
+        $this->set(compact('recomendacion', 'users', 'estados','poblaciones','derecho','institucions','mecanismos','codigo_recomendacion', 'gruposInstitucioones','institucionesNew','listmecanismos'));
         $this->set('_serialize', ['recomendacion']);
     }
 

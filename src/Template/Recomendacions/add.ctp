@@ -22,7 +22,8 @@ $this->assign('title', 'Añadir Recomendacion');
                     <textarea type="text" class="form-control" id="descripcion" name='descripcion' placeholder="" rows="3" required=""></textarea>
                 </div>
                 <?php
-                    echo $this->Form->input('mecanismos',array('label'=>'Mecanismo de Protección','multiple' => 'checkbox', 'options' => $mecanismos));
+                    echo $this->Form->input('mecanismos',array('label'=>'Mecanismo de Protección','multiple' => 'checkbox', 'options' => $mecanismos, ));
+
                     echo $this->Form->input('año',array('min'=>'0','max'=>'9999'));
                     echo $this->Form->input('poblaciones', array('label'=>'Grupo Poblacional','multiple' => 'checkbox', 'options' => $poblaciones));
                     echo $this->Form->input('derecho', array('label'=>'Derecho(s)','multiple' => 'checkbox', 'options' => $derecho));
@@ -39,11 +40,19 @@ $this->assign('title', 'Añadir Recomendacion');
                             }
                         }
 
-                        $listInstituciones = array_map(create_function('$x', 'return $x->descripcion;'), $listInstituciones);
+                        //$listInstituciones = array_map(create_function('$x', 'return $x->descripcion;'), $listInstituciones);
                         echo "<div class='panel panel-default'>";
                         echo "<div class='panel-heading' style='cursor: pointer;' data-toggle='collapse' data-target='#institucionesDiv$indexGrupo'>".$nombreGrupo."</div>";
                         echo "<div class='collapse panel-body' id='institucionesDiv$indexGrupo'><div>";
-                        echo $this->Form->input('institucions', array('label'=>'','multiple' => 'checkbox', 'options' => $listInstituciones));
+                        foreach($listInstituciones as $insFil)
+                        {
+                            echo "<div class='checkbox'>";
+                            echo "<label for = 'institucions-$indexGrupo'>";
+                            echo '<input type="checkbox" name="institucions[]" value="'.$insFil->id.'" id="institucions-'.$insFil->id.'">';
+                            echo $insFil->descripcion;
+                            echo "</label>";
+                            echo "</div>";
+                        }
                         echo "</div> </div>";
                         $indexGrupo = $indexGrupo + 1;
                     }

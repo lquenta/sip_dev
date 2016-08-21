@@ -66,10 +66,14 @@ class AccionsController extends AppController
         $this->loadModel('Autorizacions');
         $this->loadModel('Notificacions');
         $this->loadModel('AccionSolicitud');
-        
-        
-        
-         $recomendacion = $this->Recomendacions->get($id, [
+
+
+        $gruposInstitucioones = $this->Institucions->find();
+        $gruposInstitucioones->select(['grupo'])->distinct(['grupo'])->all();
+        $institucionesNew = $this->Institucions->find()->toArray();
+
+
+        $recomendacion = $this->Recomendacions->get($id, [
             'contain' => ['Users', 'Estados', 'Accions', 'AdjuntosRecomendacions', 'DerechoRecomendacion', 'InstitucionRecomendacion', 'MecanismoRecomendacion', 'PoblacionRecomendacion', 'RecomendacionParametros', 'Revisions', 'Versions']
         ]);
          $recomendacions = $this->PoblacionRecomendacion->find('list', ['limit' => 5]);
@@ -281,7 +285,7 @@ class AccionsController extends AppController
         ];
          $codigo_accion=$this->Accions->obtenerUltimoCodigoAccion($id);
         $recomendacions = $this->Accions->Recomendacions->find('list', ['limit' => 200]);
-        $this->set(compact('accion', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos','codigo_accion','incidencia_indicadores'));
+        $this->set(compact('accion', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos','codigo_accion','incidencia_indicadores','gruposInstitucioones','institucionesNew'));
         $this->set('_serialize', ['accion']);
     }
 

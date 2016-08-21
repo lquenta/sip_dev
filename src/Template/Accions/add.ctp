@@ -90,7 +90,37 @@ $this->assign('title', 'Añadir Segumiento');
                         <label for="listado">Información requerida</label>
                         <textarea type="text" class="form-control" id="listado" name='listado' placeholder="" rows="3" required=""></textarea>
                     </div>
-                    <?php echo $this->Form->input('institucions', array('label'=>'Instituciones Responsables de la información','multiple' => 'checkbox', 'options' => $all_instituciones));?>
+                    <?php
+                        //instituciones
+                        $indexGrupo = 0;
+                        foreach($gruposInstitucioones as $a)
+                        {
+                            $nombreGrupo = $a['grupo'];
+                            $listInstituciones = array();
+                            foreach($institucionesNew as $ins){
+                                if($nombreGrupo == $ins->Grupo ){
+
+                                    array_push($listInstituciones, $ins);
+                                }
+                            }
+
+                            //$listInstituciones = array_map(create_function('$x', 'return $x->descripcion;'), $listInstituciones);
+                            echo "<div class='panel panel-default'>";
+                            echo "<div class='panel-heading' style='cursor: pointer;' data-toggle='collapse' data-target='#institucionesDiv$indexGrupo'>".$nombreGrupo."</div>";
+                            echo "<div class='collapse panel-body' id='institucionesDiv$indexGrupo'><div>";
+                            foreach($listInstituciones as $insFil)
+                            {
+                                echo "<div class='checkbox'>";
+                                echo "<label for = 'institucions-$indexGrupo'>";
+                                echo '<input type="checkbox" name="institucions[]" value="'.$insFil->id.'" id="institucions-'.$insFil->id.'">';
+                                echo $insFil->descripcion;
+                                echo "</label>";
+                                echo "</div>";
+                            }
+                            echo "</div> </div>";
+                            $indexGrupo = $indexGrupo + 1;
+                        }
+                    ?>
                 </div>
             </div>
         </div>

@@ -6,8 +6,8 @@ body {
     background-color: #e4e6e9;
     min-height: 100%;
     padding-bottom: 0;
-    font-family: 'Open Sans';
-    font-size: 13px;
+    font-family: @font-family-base;
+    font-size: @font-size-base;
     color: #393939;
     line-height: 1.5
 }

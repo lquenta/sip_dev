@@ -135,7 +135,7 @@ class AccionsController extends AppController
                 'fecha'=>date('Y-m-d H:i:s'),
                 'usuario_id'=>$this->Auth->user('id'),
                 'recomendacion_id'=>$id,
-                'listado' =>$request['listado'],
+                'listado' =>' ',
                 );
             $accion = $this->Accions->newEntity();
             $accion = $this->Accions->patchEntity($accion, $accion_req);
@@ -246,7 +246,7 @@ class AccionsController extends AppController
                           $res_save_recomendacion = $this->Recomendacions->save($recomendacion);
                        }
                   }
-               
+               */
                 $adjuntos_accion = $this->request->data['adjuntos_accion'];
                 foreach ($adjuntos_accion as $adjunto ) {
                     $adjunto_req = [
@@ -267,7 +267,7 @@ class AccionsController extends AppController
                     $adjuntosAccions = $this->AdjuntosAccions->newEntity();
                     $adjuntosAccions = $this->AdjuntosAccions->patchEntity($adjuntosAccions, $adj_save);
                     $this->AdjuntosAccions->save($adjuntosAccions);
-                }*/
+                }
                 $this->Flash->success(__('La accion se ha guardado.'));
                 return $this->redirect(['controller'=>'Autorizacions','action' => 'index']);
             } else {

@@ -26,20 +26,20 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-6">
-                                <?php echo $this->Form->input('derechos', array('multiple' => 'checkbox', 'options' => $all_derechos,'value'=>array_keys($derechos),'readonly' => 'readonly','disabled'=>'disabled'));
+                                <?php echo $this->Form->input('derechos', array('multiple' => 'checkbox', 'options' => $derechos,'value'=>array_keys($derechos),'readonly' => 'readonly','disabled'=>'disabled'));
                                   ?>
                             </div>
                             <div class="col-md-12">
-                                <?php echo $this->Form->input('poblaciones', array('multiple' => 'checkbox', 'options' => $all_poblaciones,'value'=>array_keys($poblaciones),'readonly' => 'readonly','disabled'=>'disabled'));
+                                <?php echo $this->Form->input('poblaciones', array('multiple' => 'checkbox', 'options' => $poblaciones,'value'=>array_keys($poblaciones),'readonly' => 'readonly','disabled'=>'disabled'));
                                   ?>
                             </div>
                             <div class="col-md-6">
-                                <?php echo $this->Form->input('instituciones', array('multiple' => 'checkbox', 'options' => $all_instituciones,'value'=>array_keys($instituciones),'readonly' => 'readonly','disabled'=>'disabled'));
+                                <?php echo $this->Form->input('instituciones', array('multiple' => 'checkbox', 'options' => $instituciones,'value'=>array_keys($instituciones),'readonly' => 'readonly','disabled'=>'disabled'));
                                   ?>
                             </div>
                             <div class="col-md-6">
-                                <?php echo $this->Form->input('mecanismos', array('multiple' => 'checkbox', 'options' => $all_mecanismos,'value'=>array_keys($mecanismos),'readonly' => 'readonly','disabled'=>'disabled'));
-                                  ?>
+                                <?php echo $this->Form->input('Comite', array('label'=>'Comite de Protección','multiple' => 'checkbox', 'options' => $comites,'readonly' => 'readonly','disabled'=>'disabled','value'=>array_keys($comites)));?>
+
                             </div>
                         </div>
                     </div>
@@ -217,8 +217,6 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
 
 <?= $this->Form->button('Guardar',array('name'=>'btnGuardar','class'=>'btn btn-primary'));?>
 <?= $this->Form->button('Aprobar y enviar',array('name'=>'btnAprobar','class'=>'btn btn-danger'));?>
-<?php if ($en_transito){?>
-  <?= $this->Form->button('Rechazar',array('name'=>'btnRechazar'));?>
-<?php } ?>
+<?= $this->Form->button('Rechazar',array('class'=>'btn btn-danger','name'=>'btnRechazar'));?>
 <!--<?= $this->Form->button(__("Rechazar")); ?> -->
 <?= $this->Form->end() ?>

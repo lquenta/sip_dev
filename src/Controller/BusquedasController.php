@@ -11,7 +11,7 @@ class BusquedasController extends AppController
     public function beforeFilter(Event $event)
     {
         // allow only login, forgotpassword
-         $this->Auth->allow(['index','view','simple','avanzada']);
+         $this->Auth->allow(['index','view','simple','avanzada','parametrosBusqueda']);
     }
 
     public function initialize()
@@ -20,7 +20,14 @@ class BusquedasController extends AppController
         $this->loadComponent('RequestHandler');
     }
     public function parametrosBusqueda(){
-        
+        $this->Layout=null;
+        $this->loadModel('Recomendacions');
+        $recomendaciones=$this->Recomendacions->find('all',[
+            'contain' => ['Users', 'Estados', 'AdjuntosRecomendacions', 'DerechoRecomendacion.Derechos', 'InstitucionRecomendacion.Institucions', 'MecanismoRecomendacion.Mecanismos', 'PoblacionRecomendacion.Poblacions', 'RecomendacionParametros']
+        ]);
+        debug($recomendaciones->all());
+        $derechos=$recomendaciones->select(['Recomendacions.descripcion'])->distinct(['Recomendacions.descripcion'])->all();
+        debug($derechos);
     }
     public function simple(){
         //buscamos recomendaciones que coincidan con el texto y descripcion

@@ -33,7 +33,7 @@ class ComitesTable extends Table
         parent::initialize($config);
 
         $this->table('comites');
-        $this->displayField('IdComite');
+        $this->displayField('Descripcion');
         $this->primaryKey('IdComite');
 
         $this->belongsTo('Mecanismos', [

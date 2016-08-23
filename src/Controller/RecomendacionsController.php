@@ -67,6 +67,7 @@ class RecomendacionsController extends AppController
         $this->loadModel('Notificacions');
         $this->loadModel('Autorizacions');
         $this->loadModel('Comites');
+        $this->loadModel('ComiteRecomendacions');
 
         
         $recomendacion = $this->Recomendacions->newEntity();
@@ -166,7 +167,16 @@ class RecomendacionsController extends AppController
                      
                      
                 }
-                foreach ($request['mecanismos'] as $mecanismos) {
+                foreach ($request['comites'] as $comite ) {
+                    $comiteRecomendacions = $this->ComiteRecomendacions->newEntity();
+                    $comite_recomendacion_req = array(
+                      'recomendacion_id'=>$last_id_recomendacion,
+                      'comite_id'=>$comite
+                      );
+                    $comiteRecomendacions=$this->ComiteRecomendacions->patchEntity($comiteRecomendacions,$comite_recomendacion_req);
+                    $this->ComiteRecomendacions->save($comiteRecomendacions);
+                }
+                /*foreach ($request['mecanismos'] as $mecanismos) {
                     $mecanismoRecomendacion = $this->MecanismoRecomendacion->newEntity();
                     $mecanismo_recomendacion_req = array(
                         'recomendacion_id'=>$last_id_recomendacion,
@@ -174,7 +184,7 @@ class RecomendacionsController extends AppController
                         );
                     $mecanismoRecomendacion = $this->MecanismoRecomendacion->patchEntity($mecanismoRecomendacion, $mecanismo_recomendacion_req);
                      $res_save_mec_rec=$this->MecanismoRecomendacion->save($mecanismoRecomendacion); 
-                }
+                }*/
                 $adjuntos_recomendacion = $this->request->data['adjuntos_recomendacion'];
                 foreach ($adjuntos_recomendacion as $adjunto ) {
                     $adjunto_req = [
@@ -212,7 +222,8 @@ class RecomendacionsController extends AppController
         $derecho = $this->Derechos->find('list', ['limit' => 5])->toArray();
         $institucions = $this->Institucions->find('list')->toArray();
 
-        $mecanismos = $this->Mecanismos->find('list', ['limit' => 5])->toArray();
+        //$mecanismos = $this->Mecanismos->find('list', ['limit' => 5])->toArray();
+        
         $listmecanismos = $this->Mecanismos->find()->toArray();
         $codigo_recomendacion=$this->Recomendacions->obtenerUltimoCodigoRecomendacion();
         $gruposInstitucioones = $this->Institucions->find();
@@ -220,7 +231,7 @@ class RecomendacionsController extends AppController
         $institucionesNew = $this->Institucions->find()->toArray();
         $comites = $this->Comites->find()->toArray();
 
-        $this->set(compact('recomendacion', 'users', 'estados','poblaciones','derecho','institucions','mecanismos','codigo_recomendacion', 'gruposInstitucioones','institucionesNew','listmecanismos', 'comites'));
+        $this->set(compact('recomendacion', 'users', 'estados','poblaciones','derecho','institucions','codigo_recomendacion', 'gruposInstitucioones','institucionesNew','listmecanismos', 'comites'));
         $this->set('_serialize', ['recomendacion']);
     }
 

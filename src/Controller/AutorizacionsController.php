@@ -135,6 +135,9 @@ class AutorizacionsController extends AppController
         $this->loadModel('Consolidados');
         $this->loadModel('AdjuntosConsolidados');
         $this->loadModel('Indicadors');
+        $this->loadModel('ComiteRecomendacions');
+        $this->loadModel('Comites');
+        
 
         $listIndicadores = $this->Indicadors->find('list', ['limit' => 5])->toArray();
         $listInstitucionAccion = $this->Institucions->obtenerInstitucionAccion($id);
@@ -192,7 +195,15 @@ class AutorizacionsController extends AppController
         $instituciones=$this->Institucions->find('list', ['limit' => 5])
         ->where(['id IN ' => $institucionsAccion])
         ->toArray();
-         $mecanismoRecomendacion = $this->MecanismoRecomendacion->find('list',[
+         $comiteRecomendacion = $this->ComiteRecomendacions->find('list',[
+             'keyField' => 'comite_id',
+             'valueField' => 'comite_id'
+         ])
+          ->where(['ComiteRecomendacions.recomendacion_id ' => $id_recomendacion])->toArray();
+          $comites=$this->Comites->find('list')->where(['idComite IN ' => $comiteRecomendacion])
+         ->toArray();
+
+         /*$mecanismoRecomendacion = $this->MecanismoRecomendacion->find('list',[
             'keyField' => 'mecanismo_id',
             'valueField' => 'mecanismo_id'
         ])
@@ -200,7 +211,8 @@ class AutorizacionsController extends AppController
         
         $mecanismos=$this->Mecanismos->find('list', ['limit' => 5])
         ->where(['id IN ' => $mecanismoRecomendacion])
-        ->toArray();
+        ->toArray();*/
+
         //debug(json_encode(array_keys($poblaciones), JSON_PRETTY_PRINT));die;
         $all_poblaciones = $this->Poblacions->find('list', ['limit' => 5])->toArray();
         $all_derechos = $this->Derechos->find('list', ['limit' => 5])->toArray();
@@ -583,7 +595,7 @@ class AutorizacionsController extends AppController
           $en_transito=false;
         }
         
-        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos','accion_solicitudes','consolidado_datos','texto_consolidado','en_transito','listIndicadores', 'listInstitucionAccion'));
+        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','comites','all_mecanismos','accion_solicitudes','consolidado_datos','texto_consolidado','en_transito','listIndicadores', 'listInstitucionAccion'));
         $this->set('_serialize', ['accion']);
     }
 }

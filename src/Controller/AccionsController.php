@@ -66,6 +66,10 @@ class AccionsController extends AppController
         $this->loadModel('Autorizacions');
         $this->loadModel('Notificacions');
         $this->loadModel('AccionSolicitud');
+        $this->loadModel('ComiteRecomendacions');
+        $this->loadModel('Comites');
+        
+        
 
 
         $gruposInstitucioones = $this->Institucions->find();
@@ -109,7 +113,15 @@ class AccionsController extends AppController
         $instituciones=$this->Institucions->find('list', ['limit' => 5])
         ->where(['id IN ' => $institucionsRecomendacion])
         ->toArray();
-         $mecanismoRecomendacion = $this->MecanismoRecomendacion->find('list',[
+        $comiteRecomendacion = $this->ComiteRecomendacions->find('list',[
+            'keyField' => 'comite_id',
+            'valueField' => 'comite_id'
+        ])
+         ->where(['ComiteRecomendacions.recomendacion_id ' => $id])->toArray();
+         $comites=$this->Comites->find('list')->where(['idComite IN ' => $comiteRecomendacion])
+        ->toArray();
+
+         /*$mecanismoRecomendacion = $this->MecanismoRecomendacion->find('list',[
             'keyField' => 'mecanismo_id',
             'valueField' => 'mecanismo_id'
         ])
@@ -118,7 +130,7 @@ class AccionsController extends AppController
         
         $mecanismos=$this->Mecanismos->find('list', ['limit' => 5])
         ->where(['id IN ' => $mecanismoRecomendacion])
-        ->toArray();
+        ->toArray();*/
         //debug(json_encode(array_keys($poblaciones), JSON_PRETTY_PRINT));die;
         $all_poblaciones = $this->Poblacions->find('list', ['limit' => 5])->toArray();
         $all_derechos = $this->Derechos->find('list', ['limit' => 5])->toArray();
@@ -285,7 +297,7 @@ class AccionsController extends AppController
         ];
          $codigo_accion=$this->Accions->obtenerUltimoCodigoAccion($id);
         $recomendacions = $this->Accions->Recomendacions->find('list', ['limit' => 200]);
-        $this->set(compact('accion', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos','codigo_accion','incidencia_indicadores','gruposInstitucioones','institucionesNew'));
+        $this->set(compact('accion', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos','codigo_accion','incidencia_indicadores','gruposInstitucioones','institucionesNew','comiteRecomendacion','comites'));
         $this->set('_serialize', ['accion']);
     }
 

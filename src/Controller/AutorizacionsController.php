@@ -523,12 +523,24 @@ class AutorizacionsController extends AppController
                         $consolidado = $this->Consolidados->patchEntity($consolidado,$req_consolidado);
                         $this->Consolidados->save($consolidado);
                         $id_consolidado=$consolidado->id;
+                        //borramos los indicadores anteriores del consolidado
+                        $indicadores_consolidado_borrar = $this->ConsolidadoIndicadores->find('all')->where(['consolidado_id'=>$id_consolidado]);
+                        foreach ($indicadores_consolidado_borrar as $indicador_cons_borrar ) {
+                          $this->ConsolidadoIndicadores->delete($indicador_cons_borrar);
+                        }
                   }else{
                     $consolidado_datos->texto_consolidado = $this->request->data['texto_consolidado'];
                     $consolidado_datos->fecha_consolidado =date('Y-m-d H:i:s');
                     $consolidado_datos->user_id = $this->Auth->user('id');
                     $test=$this->Consolidados->save($consolidado_datos);
                     $id_consolidado=$consolidado_datos->id;
+                  }
+                  $indicadores_consolidados=$this->request->data['indicadores_consolidado'];
+                  foreach ($indicadores_consolidado as $indicador_consolidado) {
+                    $indicador_consolidado_req=array('consolidado_id' => $id_consolidado,'indicador_id'=> $indicador_consolidado);
+                    $indicador_consolidado = $this->ConsolidadoIndicadores->newEntity();
+                    $indicador_consolidado = $this->ConsolidadoIndicadores->patchEntity($indicador_consolidado,$indicador_consolidado_req);
+                    $this->ConsolidadoIndicadores->save($indicador_consolidado);
                   }
                   $texto_consolidado=$this->request->data['texto_consolidado'];
                   //grabacion de adjuntos

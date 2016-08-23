@@ -24,7 +24,7 @@ class AccionSolicitudController extends AppController
 
         $respuestas_anteriores = $this->AccionSolicitud->find('all')->where(['accion_id'=>$accionSolicitud->accion_id,'estado_id !='=>'1']);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            //debug( $this->request->data);
+            
              $this->loadModel('Users');
              $this->loadModel('Notificacions');
              $this->loadModel('Accions');
@@ -62,34 +62,38 @@ class AccionSolicitudController extends AppController
                 );
             $accionSolicitud = $this->AccionSolicitud->patchEntity($accionSolicitud,  $req_accion_solicitud);
             if ($this->AccionSolicitud->save($accionSolicitud)) {
+                if($this->request->data['descripcionIndicador']){
+                    //nuevo indicador
+                    $req_nuevo_indicador = array(
+                        'nombre'=>$this->request->data['descripcionIndicador'],
+                        'link'=>' '
+                        );
+                    $nuevo_indicador = $this->Indicadors->newEntity();
+                    $nuevo_indicador = $this->Indicadors->patchEntity($nuevo_indicador,$req_nuevo_indicador);
+                    $this->Indicadors->save($nuevo_indicador);
+                    $id_nuevo_indicador = $nuevo_indicador->id;
+                }
+
+                $indicadores=$this->request->data['indicadores'];
+                if($id_nuevo_indicador!=''){
+                    $indicadores[]=$id_nuevo_indicador;
+                }
+                foreach ($indicadores as $indicador_marcado ) {
+                    $req_indicadores_solicitud = array(
+                        'indicador_id'=> $indicador_marcado,
+                        'accion_solicitud_id'=>$accionSolicitud->accion_id
+                        );
+                    $indicador_solicitud = $this->IndicadoresAccionSolicitud->newEntity();
+                    $indicador_solicitud = $this->IndicadoresAccionSolicitud->patchEntity($indicador_solicitud,$req_indicadores_solicitud);
+                    
+                    $res_save=$this->IndicadoresAccionSolicitud->save($indicador_solicitud);
+                    debug($res_save);die;
+                }
                  $pendientes_respuesta=$this->AccionSolicitud->find('all')->where(['accion_id'=>$accionSolicitud->accion_id,'estado_id'=>'1'])->first();
                  if($pendientes_respuesta==null){
                     //se espera q todos las instituciones revisen antes de mandar notificacion
                     $id_nuevo_indicador='';
-                    if($this->request->data['descripcionIndicador']){
-                        //nuevo indicador
-                        $req_nuevo_indicador = array(
-                            'nombre'=>$this->request->data['descripcionIndicador'],
-                            'link'=>' '
-                            );
-                        $nuevo_indicador = $this->Indicadors->newEntity();
-                        $nuevo_indicador = $this->Indicadors->patchEntity($nuevo_indicador,$req_nuevo_indicador);
-                        $this->Indicadors->save($nuevo_indicador);
-                        $id_nuevo_indicador = $nuevo_indicador->id;
-                    }
-                    $indicadores=$this->request->data['indicadores'];
-                    if($id_nuevo_indicador!=''){
-                        $indicadores[]=$id_nuevo_indicador;
-                    }
-                    foreach ($indicadores as $indicador_marcado ) {
-                        $req_indicadores_solicitud = array(
-                            'indicador_id'=> $indicador_marcado,
-                            'accion_solicitud_id'=>$accionSolicitud->accion_id
-                            );
-                        $indicador_solicitud = $this->IndicadoresAccionSolicitud->newEntity();
-                        $indicador_solicitud = $this->IndicadoresAccionSolicitud->patchEntity($indicador_solicitud,$req_indicadores_solicitud);
-                        $res_save=$this->IndicadoresAccionSolicitud->save($indicador_solicitud);
-                    }
+                   
                     $institucion_responsable=26;
                     $query =  $this->Users->find()->matching(
                       'Rols', function ($q) use ($institucion_responsable) {

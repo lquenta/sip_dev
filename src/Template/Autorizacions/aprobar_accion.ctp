@@ -200,7 +200,7 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                     <div id="collapse5" class="panel-collapse collapse in">
                         <div class="panel-body">
                              <?php
-                                 echo $this->Form->input('derecho', array('label'=>'','multiple' => 'checkbox', 'options' => $listIndicadores));
+                                 echo $this->Form->input('indicadores_consolidado', array('label'=>'','multiple' => 'checkbox', 'options' => $listIndicadores));
                              ?>
                         </div>
                     </div>

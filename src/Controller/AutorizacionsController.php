@@ -118,6 +118,7 @@ class AutorizacionsController extends AppController
     }
     public function aprobarAccion($id){
         $this->loadModel('Accions');
+        $this->loadModel('AccionSolicitud');
         $this->loadModel('Recomendacions');
         $this->loadModel('Poblacions');
         $this->loadModel('PoblacionRecomendacion');
@@ -141,6 +142,12 @@ class AutorizacionsController extends AppController
 
         $listIndicadores = $this->Indicadors->find('list', ['limit' => 5])->toArray();
         $listInstitucionAccion = $this->Institucions->obtenerInstitucionAccion($id);
+        $ListIndicadresInstAccion = array();
+        foreach ($listInstitucionAccion as $itemInsAccion) {
+            $ListIndicadresInstAccion[$itemInsAccion["accion_sol_id"]] = $this->AccionSolicitud->getIndicadores($itemInsAccion['accion_sol_id']);  
+        }
+
+        
                 
          $accion =$this->Accions->get($id,[
             'contain' => ['Users', 'Recomendacions', 'AdjuntosAccions']

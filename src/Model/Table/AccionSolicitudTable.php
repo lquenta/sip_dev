@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Datasource\ConnectionManager;
 
 /**
  * AccionSolicitud Model
@@ -95,4 +96,25 @@ class AccionSolicitudTable extends Table
 
         return $rules;
     }
+
+    public function getIndicadores($id_accion_solicitud)
+    {
+        $strquery = 'select 
+                        accion_ind.accion_solicitud_id,
+                        ind.id indicador_id,
+                        ind.nombre
+                    from
+                        accion_solicitud_indicadors accion_ind
+                            inner join
+                        indicadors ind ON ind.id = accion_ind.indicador_id
+                    where
+                        accion_ind.accion_solicitud_id = '.$id_accion_solicitud; 
+
+        $connAux = ConnectionManager::get('default');
+        $stmt = $connAux->execute($strquery);
+        $results = $stmt ->fetchAll('assoc');
+        
+        return $results;       
+    }
+
 }

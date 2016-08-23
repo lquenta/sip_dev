@@ -93,7 +93,32 @@ class AccionSolicitudController extends AppController
                  if($pendientes_respuesta==null){
                     //se espera q todos las instituciones revisen antes de mandar notificacion
                     $id_nuevo_indicador='';
-                   
+
+                    if($this->request->data['descripcionIndicador']){
+                        //nuevo indicador
+                        $req_nuevo_indicador = array(
+                            'nombre'=>$this->request->data['descripcionIndicador'],
+                            'link'=>' '
+                            );
+                        $nuevo_indicador = $this->Indicadors->newEntity();
+                        $nuevo_indicador = $this->Indicadors->patchEntity($nuevo_indicador,$req_nuevo_indicador);
+                        $this->Indicadors->save($nuevo_indicador);
+                        $id_nuevo_indicador = $nuevo_indicador->id;
+                    }
+                    $indicadores=$this->request->data['indicadores'];
+                    if($id_nuevo_indicador!=''){
+                        $indicadores[]=$id_nuevo_indicador;
+                    }
+                    foreach ($indicadores as $indicador_marcado ) {
+                        $req_indicadores_solicitud = array(
+                            'indicador_id'=> $indicador_marcado,
+                            'accion_solicitud_id'=>$accionSolicitud->id
+                            );
+                        $indicador_solicitud = $this->IndicadoresAccionSolicitud->newEntity();
+                        $indicador_solicitud = $this->IndicadoresAccionSolicitud->patchEntity($indicador_solicitud,$req_indicadores_solicitud);
+                        $res_save=$this->IndicadoresAccionSolicitud->save($indicador_solicitud);
+                    }
+
                     $institucion_responsable=26;
                     $query =  $this->Users->find()->matching(
                       'Rols', function ($q) use ($institucion_responsable) {

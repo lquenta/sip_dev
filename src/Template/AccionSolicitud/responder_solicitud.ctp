@@ -18,17 +18,22 @@ $this->assign('title', 'Responder Solicitud');
                     <input type="text" class="form-control" id="inputCodigo" placeholder="" readonly="readonly" value="<?= h($accionSolicitud->accion->codigo) ?>">
                     <label for="inputDescripcion">Descripcion</label>
                     <input type="text" class="form-control" id="inputDescripcion" placeholder="" readonly="readonly" value="<?= h($accionSolicitud->accion->descripcion) ?>">
-                     <label for="inputDetalle">Archivos Iniciales de Recomendación</label>
-                        <?php foreach ($recomendacion->adjuntos_recomendacions as $adjunto) : 
+                     <div class="form-group">
+                    <label for="inputAdjuntosRecomendacion">Archivos Iniciales de Recomendación</label>
+                     <div class="col-sm-10">
+                        <?php foreach ($accionSolicitud->accion->recomendacion->adjuntos_recomendacions as $adjunto) : 
                             echo $this->Html->link(
                                 '<i class="glyphicon glyphicon-save-file">'.$adjunto->link.'</i>',
                                 '/uploads/'.$adjunto->link,
                                 ['class' => 'btn btn-default btn-lg', 'target' => '_blank','escape' => false]
                             );
-                            
                         endforeach; ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="inputDetalle">Archivos Iniciales de seguimiento de acción</label>
-                        <?php foreach ($accion->adjuntos_accions as $adjunto) : 
+                         <div class="col-sm-10">
+                        <?php foreach ($accionSolicitud->accion->adjuntos_accions as $adjunto) : 
                             echo $this->Html->link(
                                 '<i class="glyphicon glyphicon-save-file">'.$adjunto->link.'</i>',
                                 '/uploads/'.$adjunto->link,
@@ -36,6 +41,8 @@ $this->assign('title', 'Responder Solicitud');
                             );
                                     
                         endforeach; ?>
+                        </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -73,7 +80,7 @@ $this->assign('title', 'Responder Solicitud');
                 <div class="panel-body">
                     <label for="respuesta">Respuesta</label>
                     <textarea type="text" class="form-control" id="respuesta" name="respuesta" cols=3 rows=4 placeholder="Ingrese su respuesta aqui..." > </textarea>  
-                     <?php echo $this->Form->input('adjunto_respuesta', ['type' => 'file', 'label' => 'Añadir Archivo sobre indicadores']);?>
+                     <?php echo $this->Form->input('adjunto_respuesta', ['type' => 'file', 'label' => 'Añadir Archivo adjunto']);?>
                 </div>
             </div>
         </div>
@@ -88,17 +95,17 @@ $this->assign('title', 'Responder Solicitud');
                  </div>
                  <div id="collapse5" class="panel-collapse collapse in">
                      <div class="panel-body">
-                          <?php
-                              echo $this->Form->input('indicadores', array('label'=>'','multiple' => 'checkbox', 'options' => $listIndicadores));
-                          ?>
-                     <div class="form-group">
-                                     <label>Otro Indicador</label>
-                                     <span>
-                                         <input type="text" id="nuevoIndicador" name="nuevoIndicador" placeholder="Indicador Nuevo">
-                                         <button class="btn-info">Adicionar</button>
-                                         <input type="text" id="descripcionIndicador" placeholder="Indicador Nuevo">
-                                     </span>
-                                 </div>
+                              <?php
+                                  echo $this->Form->input('indicadores', array('label'=>'','multiple' => 'checkbox', 'options' => $listIndicadores));
+                              ?>
+                         <div class="form-group">
+                             <label>Otro Indicador</label>
+                             <span>
+                                 <input type="text" id="descripcionIndicador" name="descripcionIndicador" placeholder="Indicador Nuevo">
+                                 <button class="btn-info">Adicionar</button>
+                             </span>
+                         </div>
+                         <?php echo $this->Form->input('adjunto_respuesta_indicadores', ['type' => 'file', 'label' => 'Añadir Archivo adjunto de Indicadores']);?>
                      </div>
 
                  </div>

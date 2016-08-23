@@ -15,25 +15,40 @@ class AccionSolicitudController extends AppController
 
 
          $accionSolicitud = $this->AccionSolicitud->get($id, [
-            'contain' => ['Accions', 'Institucions', 'Estados', 'Users']
+            'contain' => ['Accions', 'Institucions', 'Estados', 'Users','Accions.AdjuntosAccions','Accions.Recomendacions.AdjuntosRecomendacions']
         ]);
+         //debug($accionSolicitud);
         $this->loadModel('Indicadors');
 
         $listIndicadores = $this->Indicadors->find('list', ['limit' => 5])->toArray();
 
         $respuestas_anteriores = $this->AccionSolicitud->find('all')->where(['accion_id'=>$accionSolicitud->accion_id,'estado_id !='=>'1']);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            //debug( $this->request->data);
              $this->loadModel('Users');
              $this->loadModel('Notificacions');
              $this->loadModel('Accions');
              $this->loadModel('Autorizacions');
-
-
+             $this->loadModel('Indicadors');
+             $this->loadModel('IndicadoresAccionSolicitud');
+             
             $adjunto_respuesta = $this->request->data['adjunto_respuesta'];
+            if($adjunto_respuesta!=''){
                 $adjunto_respuesta['name']=$this->sanitize($adjunto_respuesta['name']);
                 //$file_name =  ROOT .DS. 'uploads' .DS. time().'_'.$adjunto_respuesta['name'];
                 $file_name_part = time().'_'.$adjunto_respuesta['name'];
                 $file_name =  ROOT .DS. 'webroot'.DS.'uploads'.DS. $file_name_part;
+                move_uploaded_file($adjunto_respuesta['tmp_name'],$file_name); 
+            }
+                
+            $adjunto_respuesta_indicadores = $this->request->data['adjunto_respuesta_indicadores'];
+            if($adjunto_respuesta_indicadores!=''){
+                $adjunto_respuesta_indicadores['name']=$this->sanitize($adjunto_respuesta_indicadores['name']);
+                //$file_name =  ROOT .DS. 'uploads' .DS. time().'_'.$adjunto_respuesta_indicadores['name'];
+                $file_name_part_adjunto_indicadores = time().'_'.$adjunto_respuesta_indicadores['name'];
+                $file_name_adjunto_indicadores =  ROOT .DS. 'webroot'.DS.'uploads'.DS. $file_name_part_adjunto_indicadores;
+                move_uploaded_file($adjunto_respuesta_indicadores['tmp_name'],$file_name_adjunto_indicadores); 
+            }
             $req_accion_solicitud=array(
                 'id'=>$id,
                 'accion_id'=>$accionSolicitud->accion_id,
@@ -42,15 +57,39 @@ class AccionSolicitudController extends AppController
                 'respuesta'=>$this->request->data['respuesta'],
                 'link_adjunto'=>$file_name_part,
                 'estado_id'=>10,
-                'user_id'=>$this->Auth->user('id')
+                'user_id'=>$this->Auth->user('id'),
+                'link_adjunto_indicadores'=>$file_name_part_adjunto_indicadores
                 );
             $accionSolicitud = $this->AccionSolicitud->patchEntity($accionSolicitud,  $req_accion_solicitud);
             if ($this->AccionSolicitud->save($accionSolicitud)) {
-                 move_uploaded_file($adjunto_respuesta['tmp_name'],$file_name); 
                  $pendientes_respuesta=$this->AccionSolicitud->find('all')->where(['accion_id'=>$accionSolicitud->accion_id,'estado_id'=>'1'])->first();
                  if($pendientes_respuesta==null){
                     //se espera q todos las instituciones revisen antes de mandar notificacion
-                    
+                    $id_nuevo_indicador='';
+                    if($this->request->data['descripcionIndicador']){
+                        //nuevo indicador
+                        $req_nuevo_indicador = array(
+                            'nombre'=>$this->request->data['descripcionIndicador'],
+                            'link'=>' '
+                            );
+                        $nuevo_indicador = $this->Indicadors->newEntity();
+                        $nuevo_indicador = $this->Indicadors->patchEntity($nuevo_indicador,$req_nuevo_indicador);
+                        $this->Indicadors->save($nuevo_indicador);
+                        $id_nuevo_indicador = $nuevo_indicador->id;
+                    }
+                    $indicadores=$this->request->data['indicadores'];
+                    if($id_nuevo_indicador!=''){
+                        $indicadores[]=$id_nuevo_indicador;
+                    }
+                    foreach ($indicadores as $indicador_marcado ) {
+                        $req_indicadores_solicitud = array(
+                            'indicador_id'=> $indicador_marcado,
+                            'accion_solicitud_id'=>$accionSolicitud->accion_id
+                            );
+                        $indicador_solicitud = $this->IndicadoresAccionSolicitud->newEntity();
+                        $indicador_solicitud = $this->IndicadoresAccionSolicitud->patchEntity($indicador_solicitud,$req_indicadores_solicitud);
+                        $res_save=$this->IndicadoresAccionSolicitud->save($indicador_solicitud);
+                    }
                     $institucion_responsable=26;
                     $query =  $this->Users->find()->matching(
                       'Rols', function ($q) use ($institucion_responsable) {

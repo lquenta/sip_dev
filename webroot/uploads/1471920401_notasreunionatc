@@ -1,0 +1,12 @@
+1. Gateway y bus de servicio -> consulta objetivo -> tarjeta y fecha de vencimiento
+
+POS -> INAC ->> GW ->> BUS SERVICIO
+
+INAC -> NII sub 2 se va configurar en el POS para que sea ruteado al gateway
+
+tarea 1) definir el NII sub 2
+
+
+correo
+manuelbarbaran@wposs.com
+manuel_barbaran@t-s.com.co

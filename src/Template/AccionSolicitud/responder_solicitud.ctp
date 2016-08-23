@@ -14,6 +14,8 @@ $this->assign('title', 'Responder Solicitud');
             </div>
             <div id="collapse3" class="panel-collapse collapse in">
                 <div class="panel-body">
+                 <label for="inputCodigo">Codigo</label>
+                    <input type="text" class="form-control" id="inputCodigo" placeholder="" readonly="readonly" value="<?= h($accionSolicitud->accion->codigo) ?>">
                     <label for="inputDescripcion">Descripcion</label>
                     <input type="text" class="form-control" id="inputDescripcion" placeholder="" readonly="readonly" value="<?= h($accionSolicitud->accion->descripcion) ?>">
                     <label for="inputListado">Listado</label>
@@ -72,12 +74,12 @@ $this->assign('title', 'Responder Solicitud');
                  <div id="collapse5" class="panel-collapse collapse in">
                      <div class="panel-body">
                           <?php
-                              echo $this->Form->input('derecho', array('label'=>'','multiple' => 'checkbox', 'options' => $listIndicadores));
+                              echo $this->Form->input('indicadores', array('label'=>'','multiple' => 'checkbox', 'options' => $listIndicadores));
                           ?>
                      <div class="form-group">
                                      <label>Descripcion</label>
                                      <span>
-                                         <input type="text" id="descripcionIndicador" placeholder="Indicador Nuevo">
+                                         <input type="text" id="nuevoIndicador" name="nuevoIndicador" placeholder="Indicador Nuevo">
                                          <button class="btn-info">Adicionar</button>
                                      </span>
                                  </div>

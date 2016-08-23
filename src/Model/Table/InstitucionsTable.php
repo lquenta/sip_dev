@@ -73,10 +73,19 @@ class InstitucionsTable extends Table
 
     public function obtenerInstitucionAccion($accion_id){
 
-        $strquery = 'select *
-                            from institucions ins
-                            inner join accion_solicitud accion on  accion.institucion_id = ins.id
-                            where accion_id = '. $accion_id;
+        $strquery = 'select 
+                        ins.id as id_institucion,
+                        ins.descripcion,
+                        accion.id accion_sol_id,
+                        accion.accion_id,
+                        accion.respuesta,
+                        accion.link_adjunto
+                    from
+                        institucions ins
+                            inner join
+                        accion_solicitud accion ON accion.institucion_id = ins.id
+                    where
+                        accion_id = '. $accion_id;
         $connAux = ConnectionManager::get('default');
         $stmt = $connAux->execute($strquery);
         $results = $stmt ->fetchAll('assoc');

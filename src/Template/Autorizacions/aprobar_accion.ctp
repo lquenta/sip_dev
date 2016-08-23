@@ -123,16 +123,17 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                  <ul class="nav nav-tabs" role="tablist">
                  <?php foreach ($listInstitucionAccion as $institucion) : ?>
                         <li role="presentation"><a href="#" aria-controls="<?php echo $institucion['descripcion']?>" role="tab" data-toggle="tab"
-                        onclick="$('div[name=tabsRespuestas]').hide();$('#tab<?php echo $institucion['id']?>').show();"><?php echo $institucion['descripcion']?></a></li>
+                        onclick="$('div[name=tabsRespuestas]').hide();$('#tab<?php echo $institucion['id_institucion']?>').show();"><?php echo $institucion['descripcion']?></a></li>
                  <?php endforeach; ?>
                  </ul>
 
                  <!-- Tab panes -->
                  <div class="tab-content">
-                 <?php                  
+                 <?php $diplayTab = '';
                  foreach ($listInstitucionAccion as $institucion) : 
                   ?>
-                 <div role="tabpanel" class="tab-pane active" id="tab<?php echo $institucion['id']?>" name="tabsRespuestas" style="display:none">                   
+                 <div role="tabpanel" class="tab-pane active" id="tab<?php echo $institucion['id_institucion']?>" name="tabsRespuestas" style="display:<?php echo $diplayTab?>">                   
+                 <?php $diplayTab = 'none'?>
                           <label for="inputRespuesta">Respuesta</label>
                            <textarea type="text" class="form-control" id="inputRespuesta" cols=3 rows=4 
                            placeholder="" readonly="readonly"> <?= h($institucion['respuesta']) ?></textarea>
@@ -145,6 +146,13 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                               ['class' => 'btn btn-default btn-lg', 'target' => '_blank','escape' => false]
                           ); ?>
                             <?php } ?>                   
+                 <label class="form-control">Indicadores</label>
+                 <ul class="list">
+                  <?php 
+                  foreach ($ListIndicadresInstAccion[$institucion['accion_sol_id']] as $institucionIndicador) :?>
+                    <li class="list-group-item"><?php echo $institucionIndicador['nombre'] ?></li>
+                   <?php endforeach; ?>
+                 </ul>
                  </div>
                   <?php endforeach; ?>
 

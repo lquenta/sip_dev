@@ -66,7 +66,8 @@ class RecomendacionsController extends AppController
         $this->loadModel('Users');
         $this->loadModel('Notificacions');
         $this->loadModel('Autorizacions');
-        
+        $this->loadModel('Comites');
+
         
         $recomendacion = $this->Recomendacions->newEntity();
         if ($this->request->is('post')) {
@@ -217,8 +218,9 @@ class RecomendacionsController extends AppController
         $gruposInstitucioones = $this->Institucions->find();
         $gruposInstitucioones->select(['grupo'])->distinct(['grupo'])->all();
         $institucionesNew = $this->Institucions->find()->toArray();
+        $comites = $this->Comites->find()->toArray();
 
-        $this->set(compact('recomendacion', 'users', 'estados','poblaciones','derecho','institucions','mecanismos','codigo_recomendacion', 'gruposInstitucioones','institucionesNew','listmecanismos'));
+        $this->set(compact('recomendacion', 'users', 'estados','poblaciones','derecho','institucions','mecanismos','codigo_recomendacion', 'gruposInstitucioones','institucionesNew','listmecanismos', 'comites'));
         $this->set('_serialize', ['recomendacion']);
     }
 

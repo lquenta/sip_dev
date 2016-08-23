@@ -196,7 +196,22 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                         </div>
                     </div>
                 </div>
-            </div>
+   </div>
+
+  <div class="panel-group">
+      <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse5">Comentario</a>
+            </h4>
+          </div>
+          <div id="collapse5" class="panel-collapse collapse in">
+              <div class="panel-body">
+                <textarea type="text" class="form-control" id="razon" cols=3 rows=4  name="razon" placeholder="Comentario" > </textarea> 
+              </div>
+          </div>
+      </div>
+  </div>
 </fieldset>
 
 <?= $this->Form->button('Guardar',array('name'=>'btnGuardar','class'=>'btn btn-primary'));?>

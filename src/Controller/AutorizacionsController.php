@@ -137,7 +137,8 @@ class AutorizacionsController extends AppController
         $this->loadModel('Indicadors');
 
         $listIndicadores = $this->Indicadors->find('list', ['limit' => 5])->toArray();
-        
+        $listInstitucionAccion = $this->Institucions->obtenerInstitucionAccion($id);
+                
          $accion =$this->Accions->get($id,[
             'contain' => ['Users', 'Recomendacions', 'AdjuntosAccions']
         ]);
@@ -360,6 +361,7 @@ class AutorizacionsController extends AppController
                    $autorizacion_actual->fecha_modificacion=date('Y-m-d H:i:s');
                    $autorizacion_actual->visto_bueno_fisico='0';
                    $autorizacion_actual->estado_id='4';
+                   $autorizacion_actual->razon=$this->request->data['razon'];
 
                    if($accion->estado_id==10){
                         //se ha recibido un rechazo y se debe volver a las instituciones
@@ -580,7 +582,7 @@ class AutorizacionsController extends AppController
         }else{
           $en_transito=false;
         }
-        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos','accion_solicitudes','consolidado_datos','texto_consolidado','en_transito','listIndicadores'));
+        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos','accion_solicitudes','consolidado_datos','texto_consolidado','en_transito','listIndicadores', 'listInstitucionAccion'));
         $this->set('_serialize', ['accion']);
     }
 }

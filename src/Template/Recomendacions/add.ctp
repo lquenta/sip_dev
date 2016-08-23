@@ -22,20 +22,39 @@ $this->assign('title', 'Añadir Recomendacion');
                     <textarea type="text" class="form-control" id="descripcion" name='descripcion' placeholder="" rows="3" required=""></textarea>
                 </div>
                 <?php
+                    $indexGrupo = 0;
                     //mecanismo
+                    //echo "<div class='panel panel-default'></div>";
                     echo $this->Form->label("Mecanismo de protección");
                     foreach($listmecanismos as $item)
                     {
-                            $mensajeCodigo = "cambiarCodigo('$item->Prefijo')";
-                            echo "<div class='checkbox'>";
-                            echo "<label for = 'institucions-".$item->id."'>";
-                            echo '<input type="checkbox" name="mecanismos[]" value="'.$item->id.'" id="mecanismos-'.$item->id.'" onchange="'.$mensajeCodigo.'">';
-                            echo $item->descripcion;
-                            echo "</label>";
-                            echo "</div>";
+                            
+                            echo "<div class='panel'>";
+                            echo "<div class='panel-heading' style='cursor: pointer; border:1px; background-color:#e4e6e9' data-toggle='collapse' data-target='#mecanismosDiv$indexGrupo'>".$item->descripcion."</div>";
+                                                     
+
+                            echo "<div class='collapse panel-body' id='mecanismosDiv$indexGrupo'><div>";
+                            
+                            ///////////comites
+                            foreach ($comites as $item_comite) {
+                                if ($item_comite->mecanismo_id == $item->id) {
+                                    $mensajeCodigo = "cambiarCodigo('$item->Prefijo$item_comite->Prefijo')";
+                                    echo "<div class='radio'>";
+                                    echo "<label for = 'comites-".$item_comite->id."'>";
+                                    echo '<input type="radio" name="mecanismos[]" value="'.$item_comite->id.'" id="mecanismos-'.$item_comite->id.'" onchange="'.$mensajeCodigo.'">';
+                                    echo $item_comite->Descripcion;
+                                    echo "</label>";
+                                    echo "</div>";
+                                }
+                                
+                            }                            
+                            ////////////fin comites
+
+                            echo "</div> </div>";
+                            $indexGrupo = $indexGrupo + 1;
                     }
                     //echo $this->Form->input('mecanismos',array('label'=>'Mecanismo de Protección','multiple' => 'checkbox', 'options' => $mecanismos, ));
-
+                    
                     echo $this->Form->input('poblaciones', array('label'=>'Grupo Poblacional','multiple' => 'checkbox', 'options' => $poblaciones));
                     echo $this->Form->input('derecho', array('label'=>'Derecho(s)','multiple' => 'checkbox', 'options' => $derecho));
                     $indexGrupo = 0;
@@ -56,7 +75,7 @@ $this->assign('title', 'Añadir Recomendacion');
                         //$listInstituciones = array_map(create_function('$x', 'return $x->descripcion;'), $listInstituciones);
                         echo "<div class='panel panel-default'>";
                         echo "<div class='panel-heading' style='cursor: pointer;' data-toggle='collapse' data-target='#institucionesDiv$indexGrupo'>".$nombreGrupo."</div>";
-                        echo "<div class='collapse panel-body' id='institucionesDiv$indexGrupo'><div>";
+                        echo "<div class='collapse panel-body' id='institucionesDiv$indexGrupo'>";
                         foreach($listInstituciones as $insFil)
                         {
                             echo "<div class='checkbox'>";
@@ -66,7 +85,7 @@ $this->assign('title', 'Añadir Recomendacion');
                             echo "</label>";
                             echo "</div>";
                         }
-                        echo "</div> </div>";
+                        echo "</div>";
                         $indexGrupo = $indexGrupo + 1;
                     }
 

@@ -5,7 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
-
+use Cake\Datasource\ConnectionManager;
 /**
  * Institucions Model
  *
@@ -69,5 +69,18 @@ class InstitucionsTable extends Table
         $result = $this->connection()->execute($sql)->fetchAll('assoc');
         debug($result);
         return $result;
+    }
+
+    public function obtenerInstitucionAccion($accion_id){
+
+        $strquery = 'select *
+                            from institucions ins
+                            inner join accion_solicitud accion on  accion.institucion_id = ins.id
+                            where accion_id = '. $accion_id;
+        $connAux = ConnectionManager::get('default');
+        $stmt = $connAux->execute($strquery);
+        $results = $stmt ->fetchAll('assoc');
+        
+        return $results;
     }
 }

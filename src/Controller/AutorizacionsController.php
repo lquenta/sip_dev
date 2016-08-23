@@ -138,7 +138,7 @@ class AutorizacionsController extends AppController
         $this->loadModel('Indicadors');
         $this->loadModel('ComiteRecomendacions');
         $this->loadModel('Comites');
-        
+        $this->loadModel('ConsolidadoIndicadores');
 
         $listIndicadores = $this->Indicadors->find('list', ['limit' => 5])->toArray();
         $listInstitucionAccion = $this->Institucions->obtenerInstitucionAccion($id);
@@ -538,12 +538,15 @@ class AutorizacionsController extends AppController
                     $id_consolidado=$consolidado_datos->id;
                   }
                   $indicadores_consolidados=$this->request->data['indicadores_consolidado'];
-                  foreach ($indicadores_consolidado as $indicador_consolidado) {
-                    $indicador_consolidado_req=array('consolidado_id' => $id_consolidado,'indicador_id'=> $indicador_consolidado);
-                    $indicador_consolidado = $this->ConsolidadoIndicadores->newEntity();
-                    $indicador_consolidado = $this->ConsolidadoIndicadores->patchEntity($indicador_consolidado,$indicador_consolidado_req);
-                    $this->ConsolidadoIndicadores->save($indicador_consolidado);
+                  if($indicadores_consolidados!=''){
+                    foreach ($indicadores_consolidados as $indicador_consolidado) {
+                      $indicador_consolidado_req=array('consolidado_id' => $id_consolidado,'indicador_id'=> $indicador_consolidado);
+                      $indicador_consolidado = $this->ConsolidadoIndicadores->newEntity();
+                      $indicador_consolidado = $this->ConsolidadoIndicadores->patchEntity($indicador_consolidado,$indicador_consolidado_req);
+                      $res=$this->ConsolidadoIndicadores->save($indicador_consolidado);
+                    }  
                   }
+                  
                   $texto_consolidado=$this->request->data['texto_consolidado'];
                   //grabacion de adjuntos
                   $adjuntos_consolidado = $this->request->data['adjuntos_consolidado'];

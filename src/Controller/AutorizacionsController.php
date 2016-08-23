@@ -144,11 +144,15 @@ class AutorizacionsController extends AppController
         $listInstitucionAccion = $this->Institucions->obtenerInstitucionAccion($id);
         $ListIndicadresInstAccion = array();
 
+
+
+
         foreach ($listInstitucionAccion as $itemInsAccion) {
             $ListIndicadresInstAccion[$itemInsAccion["accion_sol_id"]] = $this->AccionSolicitud->getIndicadores($itemInsAccion['accion_sol_id']);  
         }
         
-                
+         
+
          $accion =$this->Accions->get($id,[
             'contain' => ['Users', 'Recomendacions', 'AdjuntosAccions']
         ]);
@@ -229,7 +233,16 @@ class AutorizacionsController extends AppController
         $consolidado_datos = $this->Consolidados->find('all',['contain' => ['AdjuntosConsolidados']])
         ->where(['accion_id'=>$id])->first();
 
+        
+        $listIndicadoresCheck = array();
 
+        if ($consolidado_datos != null) {
+          $listIndicadoresCheck = $this->Consolidados->getIndicadoresConsolidados($consolidado_datos->id);
+          $listIndicadores = array();
+        }
+
+
+        
         $texto_consolidado='';
         if ($this->request->is(['patch', 'post', 'put'])) {
             //obtener la autorizacion id a partir del recomendacion id y el id del usuario
@@ -619,7 +632,7 @@ class AutorizacionsController extends AppController
           $en_transito=false;
         }
         
-        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','comites','all_mecanismos','accion_solicitudes','consolidado_datos','texto_consolidado','en_transito','listIndicadores', 'listInstitucionAccion','ListIndicadresInstAccion'));
+        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','comites','all_mecanismos','accion_solicitudes','consolidado_datos','texto_consolidado','en_transito','listIndicadores', 'listInstitucionAccion','ListIndicadresInstAccion','listIndicadoresCheck'));
         $this->set('_serialize', ['accion']);
     }
 }

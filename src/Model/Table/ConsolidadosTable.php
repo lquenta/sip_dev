@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Datasource\ConnectionManager;
 
 /**
  * Consolidados Model
@@ -88,5 +89,35 @@ class ConsolidadosTable extends Table
         $rules->add($rules->existsIn(['user_id'], 'Users'));
 
         return $rules;
+    }
+
+    public function getIndicadoresConsolidados($id_consolidado)
+    {
+        $strquery = 'select 
+                        ind.*, 1 as checked
+                    from
+                        consolidado_indicadores ci
+                            inner join
+                        indicadors  ind ON ind.id = ci.indicador_id
+                    where
+                        ci.consolidado_id = '.$id_consolidado.'
+                    union 
+                    select 
+                        ind.*, 0 as checked
+                    from
+                        indicadors ind
+                    where
+                        id not in (select 
+                                indicador_id
+                            from
+                                consolidado_indicadores
+                            where
+                                consolidado_id = '.$id_consolidado.')
+                    limit 5; '; 
+        $connAux = ConnectionManager::get('default');
+        $stmt = $connAux->execute($strquery);
+        $results = $stmt ->fetchAll('assoc');
+        
+        return $results;      
     }
 }

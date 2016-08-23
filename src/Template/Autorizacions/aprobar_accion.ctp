@@ -200,8 +200,17 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                     <div id="collapse5" class="panel-collapse collapse in">
                         <div class="panel-body">
                              <?php
-                                 echo $this->Form->input('indicadores_consolidado', array('label'=>'','multiple' => 'checkbox', 'options' => $listIndicadores));
+                                 echo $this->Form->input('indicadores_consolidado', array('label'=>'','multiple' => 'checkbox', 'options' => $listIndicadores, 'selected' => true));
                              ?>
+                             <?php
+                             foreach ($listIndicadoresCheck as $itemCheck) {
+                              $cheked = $itemCheck['checked'] == 1?'checked':'';
+                               echo '<div class="checkbox"><label for="indicadores-consolidado-'.$itemCheck['id'].'"><input type="checkbox" name="indicadores_consolidado[]" value="'.$itemCheck['id'].'" id="indicadores-consolidado-'.$itemCheck['id'].'" '.$cheked.'>'.$itemCheck['nombre'].'</label></div>';
+                             }
+                             ?>
+                             
+
+                             
                         </div>
                     </div>
                 </div>

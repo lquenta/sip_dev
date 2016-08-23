@@ -18,9 +18,6 @@ $this->assign('title', 'Responder Solicitud');
                     <input type="text" class="form-control" id="inputCodigo" placeholder="" readonly="readonly" value="<?= h($accionSolicitud->accion->codigo) ?>">
                     <label for="inputDescripcion">Descripcion</label>
                     <input type="text" class="form-control" id="inputDescripcion" placeholder="" readonly="readonly" value="<?= h($accionSolicitud->accion->descripcion) ?>">
-                    <label for="inputListado">Listado</label>
-                    <textarea type="text" class="form-control" id="inputListado" cols=3 rows=4 placeholder="" readonly="readonly"> <?= h($accionSolicitud->accion->listado) ?></textarea>  
-                   
                 </div>
             </div>
         </div>
@@ -77,10 +74,11 @@ $this->assign('title', 'Responder Solicitud');
                               echo $this->Form->input('indicadores', array('label'=>'','multiple' => 'checkbox', 'options' => $listIndicadores));
                           ?>
                      <div class="form-group">
-                                     <label>Descripcion</label>
+                                     <label>Otro Indicador</label>
                                      <span>
                                          <input type="text" id="nuevoIndicador" name="nuevoIndicador" placeholder="Indicador Nuevo">
                                          <button class="btn-info">Adicionar</button>
+                                         <input type="text" id="descripcionIndicador" placeholder="Indicador Nuevo">
                                      </span>
                                  </div>
                      </div>

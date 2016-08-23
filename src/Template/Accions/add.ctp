@@ -32,14 +32,6 @@ $this->assign('title', 'Añadir Segumiento');
                         <?php echo $this->Form->input('mecanismos', array('label'=>'Mecanismos de Protección','multiple' => 'checkbox', 'options' => $all_mecanismos,'value'=>array_keys($mecanismos),'readonly' => 'readonly','disabled'=>'disabled'));
                           ?>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-12"><label for="inputAño">Año</label>
-                                <input type="text" class="form-control" id="inputAño" placeholder="" readonly="readonly" value="<?= h($recomendacion->año) ?>">
-                            </div>
-                           
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -86,10 +78,6 @@ $this->assign('title', 'Añadir Segumiento');
                         <label for="descripcion">Referencia</label>
                         <textarea type="text" class="form-control" id="descripcion" name='descripcion' placeholder="" rows="3" required=""></textarea>
                     </div>
-                     <div class="form-group">
-                        <label for="listado">Información requerida</label>
-                        <textarea type="text" class="form-control" id="listado" name='listado' placeholder="" rows="3" required=""></textarea>
-                    </div>
                     <?php
                         //instituciones
                         $indexGrupo = 0;
@@ -121,34 +109,6 @@ $this->assign('title', 'Añadir Segumiento');
                             $indexGrupo = $indexGrupo + 1;
                         }
                     ?>
-                </div>
-            </div>
-        </div>
-    </div>
-   
-   
-    <div class="panel-group">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" href="#collapse5">Incidencia Indicadores</a>
-              </h4>
-            </div>
-            <div id="collapse5" class="panel-collapse collapse in">
-                <div class="panel-body">
-
-                <?php
-                   /*$options = [
-                       'Derecho 1' => [
-                          '0' => 'Indicador 1',
-                       ],
-                       'Derecho 2' => [
-                          '1' => 'Indicador 2'
-                       ]
-                    ];*/
-                    echo $this->Form->input('incidencia_indicadores', array('multiple' => 'checkbox', 'options' => $incidencia_indicadores));
-                    //echo $this->Form->input('incidencia_indicadores');
-                ?>
                 </div>
             </div>
         </div>

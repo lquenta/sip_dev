@@ -23,6 +23,7 @@ $this->assign('title', 'Añadir Recomendacion');
                 </div>
                 <?php
                     //mecanismo
+                    echo $this->Form->label("Mecanismo de protección");
                     foreach($listmecanismos as $item)
                     {
                             $mensajeCodigo = "cambiarCodigo('$item->Prefijo')";
@@ -35,7 +36,6 @@ $this->assign('title', 'Añadir Recomendacion');
                     }
                     //echo $this->Form->input('mecanismos',array('label'=>'Mecanismo de Protección','multiple' => 'checkbox', 'options' => $mecanismos, ));
 
-                    echo $this->Form->input('año',array('min'=>'0','max'=>'9999'));
                     echo $this->Form->input('poblaciones', array('label'=>'Grupo Poblacional','multiple' => 'checkbox', 'options' => $poblaciones));
                     echo $this->Form->input('derecho', array('label'=>'Derecho(s)','multiple' => 'checkbox', 'options' => $derecho));
                     $indexGrupo = 0;

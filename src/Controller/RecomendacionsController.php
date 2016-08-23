@@ -84,7 +84,6 @@ class RecomendacionsController extends AppController
                 'descripcion'=>$request['descripcion'],
                 'fecha_creacion'=>date('Y-m-d H:i:s'),
                 'fecha_modificacion'=>date('Y-m-d H:i:s'),
-                'año'=>$request['año'],
                 'usuario_id'=>$this->Auth->user('id'),
                 'estado_id'=>$estado
                 );

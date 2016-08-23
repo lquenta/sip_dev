@@ -113,11 +113,6 @@ class RecomendacionsTable extends Table
             ->requirePresence('fecha_modificacion', 'create')
             ->notEmpty('fecha_modificacion');
 
-        $validator
-            ->integer('año')
-            ->requirePresence('año', 'create')
-            ->notEmpty('año');
-
         return $validator;
     }
 

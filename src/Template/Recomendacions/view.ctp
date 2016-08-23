@@ -25,10 +25,7 @@ $this->assign('title', 'Ver Recomendacion');
             <td><?= __('Id') ?></td>
             <td><?= $this->Number->format($recomendacion->id) ?></td>
         </tr>
-        <tr>
-            <td><?= __('Año') ?></td>
-            <td><?= $this->Number->format($recomendacion->año) ?></td>
-        </tr>
+       
         <tr>
             <td><?= __('Fecha Creacion') ?></td>
             <td><?= h($recomendacion->fecha_creacion) ?></td>

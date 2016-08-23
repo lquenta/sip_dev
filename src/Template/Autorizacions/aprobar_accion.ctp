@@ -25,9 +25,6 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-6"><label for="inputAño">Año</label>
-                                <input type="text" class="form-control" id="inputAño" placeholder="" readonly="readonly" value="<?= h($accion->recomendacion->año) ?>">
-                            </div>
                             <div class="col-md-6">
                                 <?php echo $this->Form->input('derechos', array('multiple' => 'checkbox', 'options' => $all_derechos,'value'=>array_keys($derechos),'readonly' => 'readonly','disabled'=>'disabled'));
                                   ?>

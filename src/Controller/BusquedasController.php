@@ -25,8 +25,7 @@ class BusquedasController extends AppController
         $recomendaciones=$this->Recomendacions->find('all',[
             'contain' => ['Users', 'Estados', 'AdjuntosRecomendacions', 'DerechoRecomendacion.Derechos', 'InstitucionRecomendacion.Institucions', 'MecanismoRecomendacion.Mecanismos', 'PoblacionRecomendacion.Poblacions', 'RecomendacionParametros']
         ]);
-        debug($recomendaciones->all());
-        $derechos=$recomendaciones->select(['Recomendacions.descripcion'])->distinct(['Recomendacions.descripcion'])->all();
+        $derechos=$recomendaciones->select(['Recomendacions.derecho_recomendacion.derecho.descripcion'])->distinct(['Recomendacions.derecho_recomendacion.derecho.descripcion'])->all();
         debug($derechos);
     }
     public function simple(){

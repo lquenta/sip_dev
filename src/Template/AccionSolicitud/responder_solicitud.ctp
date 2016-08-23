@@ -14,10 +14,28 @@ $this->assign('title', 'Responder Solicitud');
             </div>
             <div id="collapse3" class="panel-collapse collapse in">
                 <div class="panel-body">
-                 <label for="inputCodigo">Codigo</label>
+                 <label for="inputCodigo">Código</label>
                     <input type="text" class="form-control" id="inputCodigo" placeholder="" readonly="readonly" value="<?= h($accionSolicitud->accion->codigo) ?>">
                     <label for="inputDescripcion">Descripcion</label>
                     <input type="text" class="form-control" id="inputDescripcion" placeholder="" readonly="readonly" value="<?= h($accionSolicitud->accion->descripcion) ?>">
+                     <label for="inputDetalle">Archivos Iniciales de Recomendación</label>
+                        <?php foreach ($recomendacion->adjuntos_recomendacions as $adjunto) : 
+                            echo $this->Html->link(
+                                '<i class="glyphicon glyphicon-save-file">'.$adjunto->link.'</i>',
+                                '/uploads/'.$adjunto->link,
+                                ['class' => 'btn btn-default btn-lg', 'target' => '_blank','escape' => false]
+                            );
+                            
+                        endforeach; ?>
+                        <label for="inputDetalle">Archivos Iniciales de seguimiento de acción</label>
+                        <?php foreach ($accion->adjuntos_accions as $adjunto) : 
+                            echo $this->Html->link(
+                                '<i class="glyphicon glyphicon-save-file">'.$adjunto->link.'</i>',
+                                '/uploads/'.$adjunto->link,
+                                ['class' => 'btn btn-default btn-lg', 'target' => '_blank','escape' => false]
+                            );
+                                    
+                        endforeach; ?>
                 </div>
             </div>
         </div>

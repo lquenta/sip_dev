@@ -99,17 +99,16 @@ class AccionSolicitudTable extends Table
 
     public function getIndicadores($id_accion_solicitud)
     {
-        $strquery = 'select 
-                        accion_ind.accion_solicitud_id,
-                        ind.id indicador_id,
-                        ind.nombre
+        $strquery = 'select accion_ind.accion_solicitud_id,
+                           ind.id indicador_id,
+                           ind.nombre
                     from
-                        accion_solicitud_indicadors accion_ind
-                            inner join
-                        indicadors ind ON ind.id = accion_ind.indicador_id
+                        indicadores_accion_solicituds accion_ind
+                        inner join indicadors ind ON ind.id = accion_ind.indicador_id
                     where
-                        accion_ind.accion_solicitud_id = '.$id_accion_solicitud; 
+                        accion_ind.accion_solicitud_id =  '.$id_accion_solicitud; 
 
+        
         $connAux = ConnectionManager::get('default');
         $stmt = $connAux->execute($strquery);
         $results = $stmt ->fetchAll('assoc');

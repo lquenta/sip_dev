@@ -84,7 +84,7 @@ class AccionSolicitudController extends AppController
                     foreach ($indicadores as $indicador_marcado ) {
                         $req_indicadores_solicitud = array(
                             'indicador_id'=> $indicador_marcado,
-                            'accion_solicitud_id'=>$accionSolicitud->accion_id
+                            'accion_solicitud_id'=>$accionSolicitud->id
                             );
                         $indicador_solicitud = $this->IndicadoresAccionSolicitud->newEntity();
                         $indicador_solicitud = $this->IndicadoresAccionSolicitud->patchEntity($indicador_solicitud,$req_indicadores_solicitud);

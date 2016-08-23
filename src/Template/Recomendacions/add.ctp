@@ -41,7 +41,7 @@ $this->assign('title', 'Añadir Recomendacion');
                                     $mensajeCodigo = "cambiarCodigo('$item->Prefijo$item_comite->Prefijo')";
                                     echo "<div class='radio'>";
                                     echo "<label for = 'comites-".$item_comite->id."'>";
-                                    echo '<input type="radio" name="mecanismos[]" value="'.$item_comite->id.'" id="mecanismos-'.$item_comite->id.'" onchange="'.$mensajeCodigo.'">';
+                                    echo '<input type="radio" name="comites[]" value="'.$item_comite->IdComite.'" id="comites-'.$item_comite->IdComite.'" onchange="'.$mensajeCodigo.'">';
                                     echo $item_comite->Descripcion;
                                     echo "</label>";
                                     echo "</div>";

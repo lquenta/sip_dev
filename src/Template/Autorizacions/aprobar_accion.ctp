@@ -121,29 +121,30 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
            <div id="collapse5" class="panel-collapse collapse in">
                <div class="panel-body">
                  <ul class="nav nav-tabs" role="tablist">
-                 <?php foreach ($instituciones as $institucion) : ?>
-                        <li role="presentation"><a href="#" aria-controls="<?php echo $institucion?>" role="tab" data-toggle="tab"><?php echo $institucion?></a></li>
+                 <?php foreach ($listInstitucionAccion as $institucion) : ?>
+                        <li role="presentation"><a href="#" aria-controls="<?php echo $institucion['descripcion']?>" role="tab" data-toggle="tab"
+                        onclick="$('div[name=tabsRespuestas]').hide();$('#tab<?php echo $institucion['id']?>').show();"><?php echo $institucion['descripcion']?></a></li>
                  <?php endforeach; ?>
                  </ul>
 
                  <!-- Tab panes -->
                  <div class="tab-content">
-                 <?php foreach ($instituciones as $institucion) : ?>
-                 <div role="tabpanel" class="tab-pane active" id="<?php echo $institucion?>">
-                   <?php foreach ($accion_solicitudes as $solicitud) : ?>
-                            <label for="inputRespuesta">Respuesta</label>
+                 <?php                  
+                 foreach ($listInstitucionAccion as $institucion) : 
+                  ?>
+                 <div role="tabpanel" class="tab-pane active" id="tab<?php echo $institucion['id']?>" name="tabsRespuestas" style="display:none">                   
+                          <label for="inputRespuesta">Respuesta</label>
                            <textarea type="text" class="form-control" id="inputRespuesta" cols=3 rows=4 
-                           placeholder="" readonly="readonly"> <?= h($solicitud->respuesta) ?></textarea>
-                           <?php if($solicitud->link_adjunto!=null){
+                           placeholder="" readonly="readonly"> <?= h($institucion['respuesta']) ?></textarea>
+                           <?php if($institucion['link_adjunto']!=null){
                            ?>  
                              <label>Archivo Adjunto de indicadores</label>
                             <?php  echo $this->Html->link(
-                              '<i class="glyphicon glyphicon-save-file">'.$solicitud->link_adjunto.'</i>',
-                              '/uploads/'.$solicitud->link_adjunto,
+                              '<i class="glyphicon glyphicon-save-file">'.$institucion['link_adjunto'].'</i>',
+                              '/uploads/'.$institucion['link_adjunto'],
                               ['class' => 'btn btn-default btn-lg', 'target' => '_blank','escape' => false]
                           ); ?>
-                            <?php } ?>
-                   <?php endforeach; ?>
+                            <?php } ?>                   
                  </div>
                   <?php endforeach; ?>
 

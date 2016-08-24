@@ -160,7 +160,7 @@ class BusquedasController extends AppController
         $full_url=Router::url('/', true);;
 
         $resultados=array();
-        $textoBusqueda=$this->request->data('textoBusqueda');
+        $textoBusqueda=$this->request->data('textoBuscar');
         $this->loadModel('Recomendacions');
         $this->loadModel('Accions');
         if($textoBusqueda!=''){
@@ -205,7 +205,7 @@ class BusquedasController extends AppController
                 $observaciones_finales=$full_url.'/uploads/'.$recomendacion->adjuntos_recomendacions[0]->link;
             }
             $recomendacion = $recomendacion->descripcion;
-            $acciones = $this->Accions->find('all',['contain' => ['Users','AdjuntosAccions' ]])->where(['recomendacion_id'=> $id_recomendacion ]);
+            $acciones = $this->Accions->find('all',['contain' => ['Users','AdjuntosAccions' ]])->where(['recomendacion_id'=> $id_recomendacion,'estado_id'=>'9' ]);
             $acciones_recomendacion =array();
             foreach ($acciones as $accion ) {
                 if($accion->adjuntos_accions==null){

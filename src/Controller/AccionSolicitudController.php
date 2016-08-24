@@ -87,7 +87,6 @@ class AccionSolicitudController extends AppController
                     $indicador_solicitud = $this->IndicadoresAccionSolicitud->patchEntity($indicador_solicitud,$req_indicadores_solicitud);
                     
                     $res_save=$this->IndicadoresAccionSolicitud->save($indicador_solicitud);
-                    debug($res_save);die;
                 }
                  $pendientes_respuesta=$this->AccionSolicitud->find('all')->where(['accion_id'=>$accionSolicitud->accion_id,'estado_id'=>'1'])->first();
                  if($pendientes_respuesta==null){

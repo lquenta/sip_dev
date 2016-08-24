@@ -1,0 +1,66 @@
+
+NÚMERO DE TRAMITE: 250000313137
+
+
+
+NÚMERO DE AUTORIZACIÓN: 262401600043321
+LLAVE DE DOSIFICACION: 
+]Ep9F_ZtjBUt3BV=M=N7j=vP(+I2z6#f*KNn)C\j)3GsGvWBI4URTZ-xW8X(fj{K
+
+
+
+
+NÚMERO DE AUTORIZACIÓN: 249401600088125
+LLAVE DE DOSIFICACION: 
+H8S9*5E2H[%9$)=BsRK-YMzWDf6*Nu8yXgdFNPbM@W4sIgj@9hyU)%g6SWW=[2)2
+
+
+
+
+NÚMERO DE AUTORIZACIÓN: 256401600029296
+LLAVE DE DOSIFICACION: 
+j2=Q#+s##IDQRE$N6SGn3G6*4EaySQ5UBdMX=YWDhKIjD@AA=[=)@4-Uf@#dRKTW
+
+
+
+
+NÚMERO DE AUTORIZACIÓN: 257401600021586
+LLAVE DE DOSIFICACION: 
+BhLF6AMS$Mz)DB=$$8+IM\akNuNsIxC4SL+-V=xcD*E59CX6K5ireT[Nb#pCQ(J4
+
+
+
+
+NÚMERO DE AUTORIZACIÓN: 275401600072846
+LLAVE DE DOSIFICACION: 
+R97=FPV97]Ar@viDH4nQAVfTS@d%YSSA(Y9q{*YYn(cu]AH=A%V2W9R4[UA7sKN)
+
+
+
+
+NÚMERO DE AUTORIZACIÓN: 276401600047033
+LLAVE DE DOSIFICACION: 
+-m$#)d+{L-98BIKC8*uDaN)(VW5ARCb@3{hdBN2Nt3gN]t\NJ@H@7D-E[B6X4\65
+
+
+
+
+NÚMERO DE AUTORIZACIÓN: 389401600023610
+LLAVE DE DOSIFICACION: 
+(#=BVPPXZMS4PcMMW=-crYDs53eF%7)M3N5Y%S=67q2W8WQp9YYu3EhDQg4D+T@a
+
+_____________________________________________________________________
+Una vez recabado este dato, proceda con la configuración de su sistema de
+facturación computarizada, ingresando información de dosificación contenida 
+en el Certificado de Activación de Dosificación de Facturas, además de la llave de dosificación recibida.
+Concluido este proceso su sistema de facturación computarizada estará en
+condiciones de emitir las facturas dosificadas por el SIN, generando e 
+imprimiendo en cada una el Código de Control correspondiente.
+Considerando la importancia del proceso de configuración de la dosificación 
+en el Sistema de Facturación Computarizada, este deberá contemplar la doble captura de los siguientes datos:
+- Número de autorización.
+- Número inicial de la factura.
+- Fecha límite de emisión.
+- Llave de dosificación.
+Dada la sensibilidad de este dato (llave de dosificación), su conocimiento
+y divulgación serán de ENTERA Y ABSOLUTA RESPONSABILIDAD DEL CONTRIBUYENTE.

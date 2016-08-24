@@ -92,4 +92,16 @@ class InstitucionsTable extends Table
         
         return $results;
     }
+
+    public function obtenerInstitucionConRol(){
+
+        $strquery = 'select institucion_id
+                        from institucions ins 
+                        inner join rols rol on rol.institucion_id = ins.id';
+        
+        $connAux = ConnectionManager::get('default');
+        $stmt = $connAux->execute($strquery);
+        $results = $stmt ->fetchAll('assoc');        
+        return $results;
+    }
 }

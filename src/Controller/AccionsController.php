@@ -76,6 +76,8 @@ class AccionsController extends AppController
         $gruposInstitucioones->select(['grupo'])->distinct(['grupo'])->all();
         $institucionesNew = $this->Institucions->find()->toArray();
 
+        $institucionesRol = $this->Institucions->obtenerInstitucionConRol();
+
 
         $recomendacion = $this->Recomendacions->get($id, [
             'contain' => ['Users', 'Estados', 'Accions', 'AdjuntosRecomendacions', 'DerechoRecomendacion', 'InstitucionRecomendacion', 'MecanismoRecomendacion', 'PoblacionRecomendacion', 'RecomendacionParametros', 'Revisions', 'Versions']
@@ -297,7 +299,7 @@ class AccionsController extends AppController
         ];
          $codigo_accion=$this->Accions->obtenerUltimoCodigoAccion($id);
         $recomendacions = $this->Accions->Recomendacions->find('list', ['limit' => 200]);
-        $this->set(compact('accion', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos','codigo_accion','incidencia_indicadores','gruposInstitucioones','institucionesNew','comiteRecomendacion','comites'));
+        $this->set(compact('accion', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos','codigo_accion','incidencia_indicadores','gruposInstitucioones','institucionesNew','comiteRecomendacion','comites','institucionesRol'));
         $this->set('_serialize', ['accion']);
     }
 

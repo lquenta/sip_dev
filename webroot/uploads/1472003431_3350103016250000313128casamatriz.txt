@@ -1,0 +1,52 @@
+
+NÚMERO DE TRAMITE: 250000313128
+
+
+
+NÚMERO DE AUTORIZACIÓN: 262401600043299
+LLAVE DE DOSIFICACION: 
+TCG))TTPXB-ISw$hg+$BHbB8)Ta@RIBVGuIcR%K%Cq{_M47Cc4H)=T8NWL2258=u
+
+
+
+
+NÚMERO DE AUTORIZACIÓN: 249401600088118
+LLAVE DE DOSIFICACION: 
+7636UBSI+T[(5)+WJMi3FUP8IG3z4mA@Qg)sPZ$2@y@-8h\aNCH)+ELeH8M$eQDD
+
+
+
+
+NÚMERO DE AUTORIZACIÓN: 257401600021572
+LLAVE DE DOSIFICACION: 
+QEHUA+I#=Lq5gZ8Tm9*Cu3+5*JDXC8AkD*6WPGC*[uA8+X3Mzj74y*@6QZB\QeM6
+
+
+
+
+NÚMERO DE AUTORIZACIÓN: 275401600072833
+LLAVE DE DOSIFICACION: 
+J#93pUcZ@=@-UB[R*kJRDjm)z@Av9(kR@3yC%{vzV5z(zCZ39y-P5X\LNs6=LK(m
+
+
+
+
+NÚMERO DE AUTORIZACIÓN: 276401600047022
+LLAVE DE DOSIFICACION: 
+TB4nZ)I@*=2%=AMU_BBE_{@E4*MMWW7@DDe5D2rvQ+EKVqLfKP6QAhCX9UB=LF[E
+
+_____________________________________________________________________
+Una vez recabado este dato, proceda con la configuración de su sistema de
+facturación computarizada, ingresando información de dosificación contenida 
+en el Certificado de Activación de Dosificación de Facturas, además de la llave de dosificación recibida.
+Concluido este proceso su sistema de facturación computarizada estará en
+condiciones de emitir las facturas dosificadas por el SIN, generando e 
+imprimiendo en cada una el Código de Control correspondiente.
+Considerando la importancia del proceso de configuración de la dosificación 
+en el Sistema de Facturación Computarizada, este deberá contemplar la doble captura de los siguientes datos:
+- Número de autorización.
+- Número inicial de la factura.
+- Fecha límite de emisión.
+- Llave de dosificación.
+Dada la sensibilidad de este dato (llave de dosificación), su conocimiento
+y divulgación serán de ENTERA Y ABSOLUTA RESPONSABILIDAD DEL CONTRIBUYENTE.

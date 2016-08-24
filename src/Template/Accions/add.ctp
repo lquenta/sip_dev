@@ -98,9 +98,15 @@ $this->assign('title', 'Añadir Segumiento');
                             echo "<div class='collapse panel-body' id='institucionesDiv$indexGrupo'><div>";
                             foreach($listInstituciones as $insFil)
                             {
+                                $disabledInsititucion = 'disabled';
+                                foreach ($institucionesRol as $itemInsRol) {
+                                    if ($insFil->id == $itemInsRol['institucion_id']) {
+                                        $disabledInsititucion = '';
+                                    }
+                                }
                                 echo "<div class='checkbox'>";
                                 echo "<label for = 'institucions-$indexGrupo'>";
-                                echo '<input type="checkbox" name="institucions[]" value="'.$insFil->id.'" id="institucions-'.$insFil->id.'">';
+                                echo '<input type="checkbox" name="institucions[]" value="'.$insFil->id.'" id="institucions-'.$insFil->id.'" '.$disabledInsititucion.'>';
                                 echo $insFil->descripcion;
                                 echo "</label>";
                                 echo "</div>";

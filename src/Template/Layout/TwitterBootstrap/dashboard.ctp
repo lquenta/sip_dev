@@ -37,8 +37,8 @@ $this->start('tb_body_start');
 <script src="/js/html5shiv.min.js"></script>
 <script src="/js/respond.min.js"></script>
 <![endif]-->
-    <body class="no_skin" <?= $this->fetch('tb_body_attrs') ?>>
-        <div id="navbar" class="navbar navbar-default">
+      <body class="no_skin" <?= $this->fetch('tb_body_attrs') ?>>
+       <div id="navbar" class="navbar navbar-default">
             <script type="text/javascript">
                 try{ace.settings.check('navbar' , 'fixed')}catch(e){}
             </script>
@@ -200,7 +200,7 @@ $this->start('tb_body_start');
                         </li>
                     </ul>
                 </div>
-            </div><!-- /.navbar-container -->
+            </div><!-- /.navbar-container --> 
         </div>
 
         <div class="main-container" id="main-container">
@@ -213,59 +213,31 @@ $this->start('tb_body_start');
                     try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
                 </script>
 
-                <div class="sidebar-shortcuts" id="sidebar-shortcuts">
-                    <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-                        <button class="btn btn-success">
-                            <i class="ace-icon fa fa-signal"></i>
-                        </button>
+               
 
-                        <button class="btn btn-info">
-                            <i class="ace-icon fa fa-pencil"></i>
-                        </button>
-
-                        <button class="btn btn-warning">
-                            <i class="ace-icon fa fa-users"></i>
-                        </button>
-
-                        <button class="btn btn-danger">
-                            <i class="ace-icon fa fa-cogs"></i>
-                        </button>
-                    </div>
-
-                    <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-                        <span class="btn btn-success"></span>
-
-                        <span class="btn btn-info"></span>
-
-                        <span class="btn btn-warning"></span>
-
-                        <span class="btn btn-danger"></span>
-                    </div>
-                </div><!-- /.sidebar-shortcuts -->
-
-                <ul class="nav nav-list">
+                <ul class="nav nav-pills">
                     <li class="active">
                         <a href="<?= $this->Url->build(["controller" => "Pages","action" => "display","home"]); ?>">
-                            <i class="menu-icon fa fa-tachometer"></i>
+                            
                             <span class="menu-text"> Panel de Control </span>
                         </a>
                     </li>
                     <li class="">
                         <a href="<?= $this->Url->build(["controller" => "Recomendacions","action" => "add"]); ?>">
-                            <i class="menu-icon fa fa-caret-right"></i>
+                            
                             <span class="menu-text"> Nueva Recomendación</span>
                         </a>
                     </li>
                         <li class="">
                         <a href="<?= $this->Url->build(["controller" => "Recomendacions","action" => "index"]); ?>">
-                            <i class="menu-icon fa fa-caret-right"></i>
+                            
                             <span class="menu-text"> Nueva acción de seguimiento</span>
                         </a>
                     </li>
                         
                     <li class="">
                         <a href="<?= $this->Url->build(["controller" => "SolicitudInformacions","action" => "add"]); ?>">
-                            <i class="menu-icon fa fa-caret-right"></i>
+                            
                             <span class="menu-text"> Nueva Solicitud de informacion</span>
                         </a>
                     </li>
@@ -277,9 +249,7 @@ $this->start('tb_body_start');
 
                 </ul><!-- /.nav-list -->
 
-                <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-                    <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
-                </div>
+                <hr>
 
                 <script type="text/javascript">
                     try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}

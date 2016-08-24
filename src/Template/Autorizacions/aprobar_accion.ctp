@@ -20,8 +20,8 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                         <input type="text" class="form-control" id="inputCodigo" placeholder="" readonly="readonly" value="<?= h($accion->codigo) ?>">
                     </div>
                     <div class="form-group">
-                        <label for="inputDetalle">Detalle de la recomendacion</label>
-                        <input type="text" class="form-control" id="inputDetalle" placeholder="" readonly="readonly" value="<?= h($accion->recomendacion->descripcion) ?>">
+                        <label for="inputDetalleRecomandacion">Detalle de la recomendacion</label>
+                        <textarea type="text" class="form-control" id="inputDetalleRecomandacion" name="inputDetalleRecomandacion" cols=3 rows=4 placeholder="" readonly="readonly"> <?= h($accion->recomendacion->descripcion) ?></textarea>
                     </div>
                     <div class="form-group">
                         <div class="row">
@@ -83,9 +83,10 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                <div class="panel-body">
                    <label for="inputDescripcion">Descripcion</label>
                    <input type="text" class="form-control" id="inputDescripcion" placeholder="" readonly="readonly" value="<?= h($accion->descripcion) ?>">
+                   <div style="display:none">
                    <label for="inputListado">Listado</label>
                    <textarea type="text" class="form-control" id="inputListado" cols=3 rows=4 placeholder="" readonly="readonly"> <?= h($accion->listado) ?></textarea>  
-                  
+                  </div>
                </div>
            </div>
        </div>

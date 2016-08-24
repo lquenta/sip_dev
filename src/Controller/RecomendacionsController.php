@@ -219,7 +219,7 @@ class RecomendacionsController extends AppController
         $estados = $this->Recomendacions->Estados->find('list', ['limit' => 5]);
        
         $poblaciones = $this->Poblacions->find('list', ['limit' => 5])->toArray();
-        $derecho = $this->Derechos->find('list', ['limit' => 5])->toArray();
+        $derecho = $this->Derechos->find('list', ['limit' => 200])->toArray();
         $institucions = $this->Institucions->find('list')->toArray();
 
         //$mecanismos = $this->Mecanismos->find('list', ['limit' => 5])->toArray();

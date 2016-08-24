@@ -28,7 +28,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                 <div class="row">
                                     <div class="space-6"></div>
 
-                                    <div class="col-sm-7 infobox-container">
+                                    <div class="col-sm-7 infobox-container" style="display:none">
                                         <div class="infobox infobox-green">
                                             <div class="infobox-icon">
                                                 <i class="ace-icon fa fa-comments"></i>
@@ -95,13 +95,9 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                     <div class="vspace-12-sm"></div>
 
                                    
-                                </div><!-- /.row -->
+                                </div>
 
-                                <div class="hr hr32 hr-dotted"></div>
-
-                               
-                                <div class="hr hr32 hr-dotted"></div>
-
+                                    
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="widget-box transparent" id="recent-box">

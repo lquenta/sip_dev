@@ -1,3 +1,14 @@
+<style type="text/css">
+    .divDerechos {
+        display: block;
+        max-height: 250px;
+        overflow-y: scroll;
+        padding: 5px;
+        border: 1px solid #ddd;
+        margin: 2px;
+    }
+
+</style>
 <?php
 $this->extend('../Layout/TwitterBootstrap/dashboard');
 $this->assign('title', 'Añadir Recomendacion');
@@ -62,7 +73,9 @@ $this->assign('title', 'Añadir Recomendacion');
                     //echo $this->Form->input('mecanismos',array('label'=>'Mecanismo de Protección','multiple' => 'checkbox', 'options' => $mecanismos, ));
                     
                     echo $this->Form->input('poblaciones', array('label'=>'Grupo Poblacional','multiple' => 'checkbox', 'options' => $poblaciones));
+                    echo '<div class="divDerechos">';
                     echo $this->Form->input('derecho', array('label'=>'Derecho(s)','multiple' => 'checkbox', 'options' => $derecho));
+                    echo '</div>';
                     $indexGrupo = 0;
                     echo $this->Form->label("Instituciones Responsables");
 

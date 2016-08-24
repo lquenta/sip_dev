@@ -75,7 +75,8 @@ class AccionSolicitudController extends AppController
                 }
 
                 $indicadores=$this->request->data['indicadores'];
-                if($id_nuevo_indicador!=''){
+
+                if(isset($id_nuevo_indicador) && $id_nuevo_indicador!=''){
                     $indicadores[]=$id_nuevo_indicador;
                 }
                 foreach ($indicadores as $indicador_marcado ) {
@@ -180,6 +181,8 @@ class AccionSolicitudController extends AppController
             'contain' => ['Accions', 'Institucions', 'Estados', 'Users']
         ])->where(['AccionSolicitud.estado_id'=>'1','user_id'=>$this->Auth->user('id')]);
         $accionSolicitud = $this->paginate($accionSolicitud);
+
+        //debug($accionSolicitud);
 
         $this->set(compact('accionSolicitud'));
         $this->set('_serialize', ['accionSolicitud']);

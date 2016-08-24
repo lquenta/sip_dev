@@ -8,6 +8,7 @@ $this->assign('title', 'Responder Solicitud');
     <thead>
         <tr>
             <th><?= $this->Paginator->sort('id'); ?></th>
+            <th><a href="#">Codigo</a></th>
             <th><?= $this->Paginator->sort('accion_id','Accion'); ?></th>
             <th><?= $this->Paginator->sort('fecha'); ?></th>
             <th class="actions"><?= __('Responder'); ?></th>
@@ -17,6 +18,9 @@ $this->assign('title', 'Responder Solicitud');
         <?php foreach ($accionSolicitud as $accionSolicitud): ?>
         <tr>
             <td><?= $this->Number->format($accionSolicitud->id) ?></td>
+            <td>
+                <?= $accionSolicitud->has('accion') ? $accionSolicitud->accion->codigo : '' ?>
+            </td>
             <td>
                 <?= $accionSolicitud->has('accion') ? $this->Html->link($accionSolicitud->accion->descripcion, ['controller' => 'Accions', 'action' => 'view', $accionSolicitud->accion->id]) : '' ?>
             </td>

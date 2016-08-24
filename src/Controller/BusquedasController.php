@@ -25,15 +25,16 @@ class BusquedasController extends AppController
         $recomendaciones=$this->Recomendacions->find('all',[
             'contain' => ['Users', 'Estados', 'AdjuntosRecomendacions', 'DerechoRecomendacion.Derechos', 'InstitucionRecomendacion.Institucions', 'MecanismoRecomendacion.Mecanismos', 'PoblacionRecomendacion.Poblacions', 'RecomendacionParametros']
         ]);
+        debug($recomendaciones->all());
         $derechos=$recomendaciones->select(['Recomendacions.derecho_recomendacion.derecho.descripcion'])->distinct(['Recomendacions.derecho_recomendacion.derecho.descripcion'])->all();
-        debug($derechos);
+        debug($derechos->select['descripcion']);
     }
     public function simple(){
         //buscamos recomendaciones que coincidan con el texto y descripcion
         $full_url=Router::url('/', true);;
 
         $resultados=array();
-        $textoBusqueda=$this->request->data('textoBusqueda');
+        $textoBusqueda=$this->request->data('textoBuscar');
         $this->loadModel('Recomendacions');
         $this->loadModel('Accions');
         if($textoBusqueda!=''){
@@ -78,7 +79,7 @@ class BusquedasController extends AppController
                 $observaciones_finales=$full_url.'/uploads/'.$recomendacion->adjuntos_recomendacions[0]->link;
             }
             $recomendacion = $recomendacion->descripcion;
-            $acciones = $this->Accions->find('all',['contain' => ['Users','AdjuntosAccions' ]])->where(['recomendacion_id'=> $id_recomendacion ]);
+            $acciones = $this->Accions->find('all',['contain' => ['Users','AdjuntosAccions' ]])->where(['recomendacion_id'=> $id_recomendacion,'estado_id'=>'9' ]);
             $acciones_recomendacion =array();
             foreach ($acciones as $accion ) {
                 if($accion->adjuntos_accions==null){

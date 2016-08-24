@@ -82,7 +82,7 @@ class RecomendacionsController extends AppController
             $codigo_recomendacion=$this->Recomendacions->obtenerUltimoCodigoRecomendacion();
             $request = $this->request->data;
             $recomendacion_req = array(
-                'codigo'=>$codigo_recomendacion,
+                'codigo'=>$request['codigo'],
                 'descripcion'=>$request['descripcion'],
                 'fecha_creacion'=>date('Y-m-d H:i:s'),
                 'fecha_modificacion'=>date('Y-m-d H:i:s'),

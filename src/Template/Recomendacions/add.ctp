@@ -21,6 +21,12 @@ $this->assign('title', 'Añadir Recomendacion');
                     <label for="inputTitulo">Descripcion</label>
                     <textarea type="text" class="form-control" id="descripcion" name='descripcion' placeholder="" rows="3" required=""></textarea>
                 </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="fechaRecomendacion">Fecha Recomendacion</label>
+                        <input type="date" class="form-control" id="fechaRecomendacion" name='fechaRecomendacion' placeholder="" required="" />
+                    </div>
+                </div>
                 <?php
                     $indexGrupo = 0;
                     //mecanismo
@@ -79,7 +85,7 @@ $this->assign('title', 'Añadir Recomendacion');
                         foreach($listInstituciones as $insFil)
                         {
                             echo "<div class='checkbox'>";
-                            echo "<label for = 'institucions-$indexGrupo'>";
+                            echo "<label for = 'institucions-$insFil->id'>";
                             echo '<input type="checkbox" name="institucions[]" value="'.$insFil->id.'" id="institucions-'.$insFil->id.'">';
                             echo $insFil->descripcion;
                             echo "</label>";

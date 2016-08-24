@@ -17,7 +17,7 @@ $this->assign('title', 'Responder Solicitud');
                  <label for="inputCodigo">Código</label>
                     <input type="text" class="form-control" id="inputCodigo" placeholder="" readonly="readonly" value="<?= h($accionSolicitud->accion->codigo) ?>">
                     <label for="inputDescripcion">Descripcion</label>
-                    <input type="text" class="form-control" id="inputDescripcion" placeholder="" readonly="readonly" value="<?= h($accionSolicitud->accion->descripcion) ?>">
+                    <textarea type="text" class="form-control" id="inputDescripcion" name='inputDescripcion' placeholder="" rows="3" readonly="readonly"><?= h($accionSolicitud->accion->descripcion) ?></textarea>
                      <div class="form-group">
                     <label for="inputAdjuntosRecomendacion">Archivos Iniciales de Recomendación</label>
                      <div class="col-sm-10">

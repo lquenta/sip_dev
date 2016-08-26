@@ -121,7 +121,7 @@ $this->assign('title', 'Responder Solicitud');
                              <label>Otro Indicador</label>
                              <span>
                                  <input type="text" id="descripcionIndicador" name="descripcionIndicador" placeholder="Indicador Nuevo">
-                                 <button class="btn-info">Adicionar</button>
+                                 
                              </span>
                          </div>
                          <?php echo $this->Form->input('adjunto_respuesta_indicadores', ['type' => 'file', 'label' => 'Añadir Archivo adjunto de Indicadores']);?>

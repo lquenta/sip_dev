@@ -171,9 +171,10 @@ class AccionsController extends AppController
                               'institucion_id'=>$institucion_responsable,
                               'fecha'=>date('Y-m-d H:i:s'),
                               'respuesta'=>'',
-                              'link_adjunto'=>'',
+                              'link_adjunto'=>'' ,
                               'estado_id'=>'1',
-                              'user_id'=>$usuario['id']
+                              'user_id'=>$usuario['id'],
+                              'link_adjunto_indicadores'=>''
                               );
                             $accionSolicitud = $this->AccionSolicitud->newEntity();
                             $accionSolicitud = $this->AccionSolicitud->patchEntity($accionSolicitud, $req_accion_solicitud_req);

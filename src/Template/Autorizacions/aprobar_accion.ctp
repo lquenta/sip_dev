@@ -140,7 +140,7 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                            placeholder="" readonly="readonly"> <?= h($institucion['respuesta']) ?></textarea>
                            <?php if($institucion['link_adjunto']!=null){
                            ?>  
-                             <label>Archivo Adjunto de indicadores</label>
+                             <label>Archivo Adjunto de respuesta</label>
                             <?php  echo $this->Html->link(
                               '<i class="glyphicon glyphicon-save-file">'.$institucion['link_adjunto'].'</i>',
                               '/uploads/'.$institucion['link_adjunto'],
@@ -153,6 +153,12 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                   foreach ($ListIndicadresInstAccion[$institucion['accion_sol_id']] as $institucionIndicador) :?>
                     <li class="list-group-item"><?php echo $institucionIndicador['nombre'] ?></li>
                    <?php endforeach; ?>
+                   <label>Archivo Adjunto de indicadores</label>
+                     <?php echo $this->Html->link(
+                       '<i class="glyphicon glyphicon-save-file">'.$institucion['link_adjunto_indicadores'].'</i>',
+                       '/uploads/'.$institucion['link_adjunto_indicadores'],
+                       ['class' => 'btn btn-default btn-lg', 'target' => '_blank','escape' => false]
+                   ); ?>
                  </ul>
                  </div>
                   <?php endforeach; ?>
@@ -226,7 +232,7 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
           </div>
           <div id="collapse5" class="panel-collapse collapse in">
               <div class="panel-body">
-                <textarea type="text" class="form-control" id="razon" cols=3 rows=4  name="razon" placeholder="Comentario" > </textarea> 
+                <textarea type="text" class="form-control" id="razon" cols=3 rows=4  name="razon" placeholder="Comentario" > <?=h($texto_comentario); ?></textarea> 
               </div>
           </div>
       </div>

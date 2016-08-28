@@ -242,8 +242,9 @@ class AutorizacionsController extends AppController
         }
 
 
-        
+        $autorizacion_actual=null;
         $texto_consolidado='';
+        $texto_comentario='';
         if ($this->request->is(['patch', 'post', 'put'])) {
             //obtener la autorizacion id a partir del recomendacion id y el id del usuario
             $autorizacion_actual=$this->Autorizacions->find('all', ['contain' => ['Accions']])
@@ -251,6 +252,7 @@ class AutorizacionsController extends AppController
             if($autorizacion_actual==null){
                 $this->Flash->error(__('Usted no puede autorizar este segumiento de acción.'));
             }else{
+                $autorizacion_actual->razon = $this->request->data['razon'];
                 if (isset($this->request->data['btnAprobar'])) {
                   $autorizacion_actual->fecha_modificacion=date('Y-m-d H:i:s');
                   $autorizacion_actual->visto_bueno_fisico='0';
@@ -402,7 +404,7 @@ class AutorizacionsController extends AppController
                         //desaprobar todas las solicitudes de informacion
                         foreach ($accion_solicitudes as $solicitud ) {
                           $solicitud->estado_id='2';
-                          $solicitud->observacion='rechazado por motivo x';
+                          $solicitud->observacion=$this->request->data['razon'];
                           $this->AccionSolicitud->save($solicitud);
                         }
                        foreach ($institucionsAccion as $institucion_responsable) {
@@ -421,7 +423,8 @@ class AutorizacionsController extends AppController
                                     'respuesta'=>'',
                                     'link_adjunto'=>'',
                                     'estado_id'=>'1',
-                                    'user_id'=>$usuario['id']
+                                    'user_id'=>$usuario['id'],
+                                    'link_adjunto_indicadores'=>''
                                     );
                                   $accionSolicitud = $this->AccionSolicitud->newEntity();
                                   $accionSolicitud = $this->AccionSolicitud->patchEntity($accionSolicitud, $req_accion_solicitud_req);
@@ -625,6 +628,11 @@ class AutorizacionsController extends AppController
             $texto_consolidado = $consolidado_datos->texto_consolidado;
           }
         }
+        if($autorizacion_actual!=null){
+          $texto_comentario = $autorizacion_actual->razon;
+        }else{
+          $texto_comentario = '';
+        }
         $users = $this->Accions->Users->find('list', ['limit' => 200]);
         $recomendacions = $this->Accions->Recomendacions->find('list', ['limit' => 200]);
         if($this->Auth->user('rol_id')=='4'|| $this->Auth->user('rol_id')=='5'){
@@ -633,7 +641,7 @@ class AutorizacionsController extends AppController
           $en_transito=false;
         }
         
-        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','comites','all_mecanismos','accion_solicitudes','consolidado_datos','texto_consolidado','en_transito','listIndicadores', 'listInstitucionAccion','ListIndicadresInstAccion','listIndicadoresCheck'));
+        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','comites','all_mecanismos','accion_solicitudes','consolidado_datos','texto_consolidado','en_transito','listIndicadores', 'listInstitucionAccion','ListIndicadresInstAccion','listIndicadoresCheck','texto_comentario'));
         $this->set('_serialize', ['accion']);
     }
 }

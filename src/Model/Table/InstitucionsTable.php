@@ -79,7 +79,8 @@ class InstitucionsTable extends Table
                         accion.id accion_sol_id,
                         accion.accion_id,
                         accion.respuesta,
-                        accion.link_adjunto
+                        accion.link_adjunto,
+                        accion.link_adjunto_indicadores
                     from
                         institucions ins
                             inner join

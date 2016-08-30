@@ -122,19 +122,18 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
            <div id="collapse5" class="panel-collapse collapse in">
                <div class="panel-body">
                  <ul class="nav nav-tabs" role="tablist">
-                 <?php foreach ($listInstitucionAccion as $institucion) : ?>
-                        <li role="presentation"><a href="#" aria-controls="<?php echo $institucion['descripcion']?>" role="tab" data-toggle="tab"
-                        onclick="$('div[name=tabsRespuestas]').hide();$('#tab<?php echo $institucion['id_institucion']?>').show();"><?php echo $institucion['descripcion']?></a></li>
+                 <?php foreach ($listInstitucionAccionUnique as $institucionUnique) : ?>
+                        <li role="presentation"><a href="#" aria-controls="<?php echo $institucionUnique['descripcion']?>" role="tab" data-toggle="tab"
+                        onclick="$('div[name=tabsRespuestas]').hide();$('#tab<?php echo $institucionUnique['id_institucion']?>').show();"><?php echo $institucionUnique['descripcion']?></a></li>
                  <?php endforeach; ?>
                  </ul>
-
+                <?php foreach ($listInstitucionAccionUnique as $institucionUnique) : ?>
                  <!-- Tab panes -->
                  <div class="tab-content">
                  <?php $diplayTab = '';
                  foreach ($listInstitucionAccion as $institucion) : 
                   ?>
-                 <div role="tabpanel" class="tab-pane active" id="tab<?php echo $institucion['id_institucion']?>" name="tabsRespuestas" style="display:<?php echo $diplayTab?>">                   
-                 <?php $diplayTab = 'none'?>
+                 <div role="tabpanel" class="tab-pane active" id="tab<?php echo $institucion['id_institucion']?>" name="tabsRespuestas" style="display:<?php echo $diplayTab?>">                                    
                           <label for="inputRespuesta">Respuesta</label>
                            <textarea type="text" class="form-control" id="inputRespuesta" cols=3 rows=4 
                            placeholder="" readonly="readonly"> <?= h($institucion['respuesta']) ?></textarea>
@@ -162,6 +161,8 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                  </ul>
                  </div>
                   <?php endforeach; ?>
+                  <?php $diplayTab = 'none'?>
+                <?php endforeach; ?>
 
                  
                   </div>

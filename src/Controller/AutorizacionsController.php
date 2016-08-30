@@ -116,6 +116,9 @@ class AutorizacionsController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+    
+  
+
     public function aprobarAccion($id){
         $this->loadModel('Accions');
         $this->loadModel('AccionSolicitud');
@@ -142,9 +145,27 @@ class AutorizacionsController extends AppController
 
         $listIndicadores = $this->Indicadors->find('list', ['limit' => 5])->toArray();
         $listInstitucionAccion = $this->Institucions->obtenerInstitucionAccion($id);
+
+        $listInstitucionAccionUnique = array();
+        
+
+       foreach ($listInstitucionAccion as $institucion)
+       {
+          $existe = false;
+          foreach ($listInstitucionAccionUnique as $key) {
+            if ($key['descripcion'] == $institucion['descripcion']) {
+              $existe = true;
+            }
+          }
+           if (!$existe)
+           {
+              array_push($listInstitucionAccionUnique, $institucion);     
+           }        
+       }
+
+        
+
         $ListIndicadresInstAccion = array();
-
-
 
 
         foreach ($listInstitucionAccion as $itemInsAccion) {
@@ -555,7 +576,8 @@ class AutorizacionsController extends AppController
                     $this->ConsolidadoIndicadores->delete($indicador_cons_borrar);
                   }
                   $indicadores_consolidados=$this->request->data['indicadores_consolidado'];
-                  if($indicadores_consolidados!=''){
+                  //if($indicadores_consolidados!=''){
+                  if(isset($indicadores_consolidados)){
                     foreach ($indicadores_consolidados as $indicador_consolidado) {
                       $indicador_consolidado_req=array('consolidado_id' => $id_consolidado,'indicador_id'=> $indicador_consolidado);
                       $indicador_consolidado = $this->ConsolidadoIndicadores->newEntity();
@@ -641,7 +663,7 @@ class AutorizacionsController extends AppController
           $en_transito=false;
         }
         
-        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','comites','all_mecanismos','accion_solicitudes','consolidado_datos','texto_consolidado','en_transito','listIndicadores', 'listInstitucionAccion','ListIndicadresInstAccion','listIndicadoresCheck','texto_comentario'));
+        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','comites','all_mecanismos','accion_solicitudes','consolidado_datos','texto_consolidado','en_transito','listIndicadores', 'listInstitucionAccion','ListIndicadresInstAccion','listIndicadoresCheck','texto_comentario', 'listInstitucionAccionUnique'));
         $this->set('_serialize', ['accion']);
     }
 }

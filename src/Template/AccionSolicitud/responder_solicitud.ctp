@@ -115,8 +115,32 @@ $this->assign('title', 'Responder Solicitud');
                  <div id="collapse5" class="panel-collapse collapse in">
                      <div class="panel-body">
                               <?php
-                                  echo $this->Form->input('indicadores', array('label'=>'','multiple' => 'checkbox', 'options' => $listIndicadores));
-                              ?>
+                                 $indexGrupo = 0;
+                                 foreach($listGruGrupoIndicadores as $a)
+                                  {
+                                      $nombreGrupo = $a['grupo'];
+                                      
+                                      //$listInstituciones = array_map(create_function('$x', 'return $x->descripcion;'), $listInstituciones);
+                                      echo "<div class='panel panel-default'>";
+                                      echo "<div class='panel-heading' style='cursor: pointer;' data-toggle='collapse' data-target='#indicadorsDiv$indexGrupo'>".$nombreGrupo."</div>";
+                                      echo "<div class='collapse panel-body' id='indicadorsDiv$indexGrupo'>";
+                                      foreach($listIndicadoresAll as $insFil)
+                                      {
+                                          if ($insFil['Grupo'] == $nombreGrupo ) {
+                                            $cheked = $insFil['checked'] == 1?'checked':'';
+                                            echo "<div class='checkbox'>";
+                                            echo "<label>";
+                                            echo '<input type="checkbox" name="indicadores[]" value="'.$insFil['id'].'" id="indicadors-'.$insFil['id'].'"'.$cheked.'>';
+                                            echo $insFil['nombre'];
+                                            echo "</label>";
+                                            echo "</div>";
+                                          }
+                                          
+                                      }
+                                      echo "</div>";
+                                      $indexGrupo = $indexGrupo + 1;
+                                  }
+                                ?>
                          <div class="form-group">
                              <label>Otro Indicador</label>
                              <span>

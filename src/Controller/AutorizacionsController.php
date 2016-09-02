@@ -143,7 +143,12 @@ class AutorizacionsController extends AppController
         $this->loadModel('Comites');
         $this->loadModel('ConsolidadoIndicadores');
 
-        $listIndicadores = $this->Indicadors->find('list', ['limit' => 5])->toArray();
+        $listIndicadores = $this->Indicadors->find('list')->toArray();
+       
+        $listGruGrupoIndicadores = $this->Indicadors->obtenerGruposIndicadors();
+
+        
+
         $listInstitucionAccion = $this->Institucions->obtenerInstitucionAccion($id);
 
         $listInstitucionAccionUnique = array();
@@ -256,17 +261,21 @@ class AutorizacionsController extends AppController
 
         
         $listIndicadoresCheck = array();
-
+        $idConsolidado = 0;
         if ($consolidado_datos != null) {
           $listIndicadoresCheck = $this->Consolidados->getIndicadoresConsolidados($consolidado_datos->id);
           $listIndicadores = array();
+          $idConsolidado = $consolidado_datos->id;
         }
 
+         
 
         $autorizacion_actual=null;
         $texto_consolidado='';
         $texto_comentario='';
+
         if ($this->request->is(['patch', 'post', 'put'])) {
+          $indicadores_consolidados=$this->request->data['indicadores_consolidado'];
             //obtener la autorizacion id a partir del recomendacion id y el id del usuario
             $autorizacion_actual=$this->Autorizacions->find('all', ['contain' => ['Accions']])
                 ->where(['accion_id ' => $id,'Autorizacions.usuario_id'=>$this->Auth->user('id'),'Autorizacions.estado_id'=>'1'])->first();
@@ -575,7 +584,7 @@ class AutorizacionsController extends AppController
                   foreach ($indicadores_consolidado_borrar as $indicador_cons_borrar ) {
                     $this->ConsolidadoIndicadores->delete($indicador_cons_borrar);
                   }
-                  $indicadores_consolidados=$this->request->data['indicadores_consolidado'];
+                  
                   //if($indicadores_consolidados!=''){
                   if(isset($indicadores_consolidados)){
                     foreach ($indicadores_consolidados as $indicador_consolidado) {
@@ -661,9 +670,10 @@ class AutorizacionsController extends AppController
           $en_transito=true;
         }else{
           $en_transito=false;
-        }
-        
-        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','comites','all_mecanismos','accion_solicitudes','consolidado_datos','texto_consolidado','en_transito','listIndicadores', 'listInstitucionAccion','ListIndicadresInstAccion','listIndicadoresCheck','texto_comentario', 'listInstitucionAccionUnique'));
+        }        
+        $listIndicadoresAll = $this->Indicadors->obtenerAllIndicadors($idConsolidado);
+    
+        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','comites','all_mecanismos','accion_solicitudes','consolidado_datos','texto_consolidado','en_transito','listIndicadores', 'listInstitucionAccion','ListIndicadresInstAccion','listIndicadoresCheck','texto_comentario', 'listInstitucionAccionUnique','listGruGrupoIndicadores', 'listIndicadoresAll'));
         $this->set('_serialize', ['accion']);
     }
 }

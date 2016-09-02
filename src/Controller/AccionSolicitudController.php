@@ -21,6 +21,8 @@ class AccionSolicitudController extends AppController
         $this->loadModel('Indicadors');
 
         $listIndicadores = $this->Indicadors->find('list', ['limit' => 5])->toArray();
+        $listGruGrupoIndicadores = $this->Indicadors->obtenerGruposIndicadors();
+        $listIndicadoresAll = $this->Indicadors->obtenerAllIndicadors(0);
 
         $respuestas_anteriores = $this->AccionSolicitud->find('all')->where(['accion_id'=>$accionSolicitud->accion_id,'estado_id !='=>'1']);
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -164,7 +166,7 @@ class AccionSolicitudController extends AppController
             }
         }
 
-        $this->set(compact('accionSolicitud','respuestas_anteriores','listIndicadores'));
+        $this->set(compact('accionSolicitud','respuestas_anteriores','listIndicadores', 'listGruGrupoIndicadores', 'listIndicadoresAll'));
         $this->set('_serialize', ['accionSolicitud']);
     }
     /**

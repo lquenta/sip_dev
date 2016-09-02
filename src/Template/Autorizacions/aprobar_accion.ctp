@@ -150,6 +150,7 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                  <ul class="list">
                   <?php 
                   foreach ($ListIndicadresInstAccion[$institucion['accion_sol_id']] as $institucionIndicador) :?>
+
                     <li class="list-group-item"><?php echo $institucionIndicador['nombre'] ?></li>
                    <?php endforeach; ?>
                    <label>Archivo Adjunto de indicadores</label>
@@ -208,16 +209,32 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                     <div id="collapse5" class="panel-collapse collapse in">
                         <div class="panel-body">
                              <?php
-                                 echo $this->Form->input('indicadores_consolidado', array('label'=>'','multiple' => 'checkbox', 'options' => $listIndicadores, 'selected' => true));
-                             ?>
-                             <?php
-                             foreach ($listIndicadoresCheck as $itemCheck) {
-                              $cheked = $itemCheck['checked'] == 1?'checked':'';
-                               echo '<div class="checkbox"><label for="indicadores-consolidado-'.$itemCheck['id'].'"><input type="checkbox" name="indicadores_consolidado[]" value="'.$itemCheck['id'].'" id="indicadores-consolidado-'.$itemCheck['id'].'" '.$cheked.'>'.$itemCheck['nombre'].'</label></div>';
-                             }
-                             ?>
-                             
-
+                                 $indexGrupo = 0;
+                                 foreach($listGruGrupoIndicadores as $a)
+                                  {
+                                      $nombreGrupo = $a['grupo'];
+                                      
+                                      //$listInstituciones = array_map(create_function('$x', 'return $x->descripcion;'), $listInstituciones);
+                                      echo "<div class='panel panel-default'>";
+                                      echo "<div class='panel-heading' style='cursor: pointer;' data-toggle='collapse' data-target='#indicadorsDiv$indexGrupo'>".$nombreGrupo."</div>";
+                                      echo "<div class='collapse panel-body' id='indicadorsDiv$indexGrupo'>";
+                                      foreach($listIndicadoresAll as $insFil)
+                                      {
+                                          if ($insFil['Grupo'] == $nombreGrupo ) {
+                                            $cheked = $insFil['checked'] == 1?'checked':'';
+                                            echo "<div class='checkbox'>";
+                                            echo "<label>";
+                                            echo '<input type="checkbox" name="indicadores_consolidado[]" value="'.$insFil['id'].'" id="indicadors-'.$insFil['id'].'"'.$cheked.'>';
+                                            echo $insFil['nombre'];
+                                            echo "</label>";
+                                            echo "</div>";
+                                          }
+                                          
+                                      }
+                                      echo "</div>";
+                                      $indexGrupo = $indexGrupo + 1;
+                                  }
+                                ?>
                              
                         </div>
                     </div>

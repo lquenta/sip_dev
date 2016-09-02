@@ -5,7 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
-
+use Cake\Datasource\ConnectionManager;
 /**
  * Indicadors Model
  *
@@ -66,5 +66,25 @@ class IndicadorsTable extends Table
             ->notEmpty('link');
 
         return $validator;
+    }
+
+     public function obtenerGruposIndicadors(){
+
+        $strquery = 'select distinct grupo from indicadors';
+        $connAux = ConnectionManager::get('default');
+        $stmt = $connAux->execute($strquery);
+        $results = $stmt ->fetchAll('assoc');        
+        return $results;
+    }
+
+     public function obtenerAllIndicadors($consolidado_id){
+
+        $strquery = 'select ind.*, 
+                    IFNULL((select 1 from consolidado_indicadores cons where ind.id = cons.indicador_id and cons.consolidado_id = '.$consolidado_id.'), 0) as checked 
+                    from indicadors ind;';
+        $connAux = ConnectionManager::get('default');
+        $stmt = $connAux->execute($strquery);
+        $results = $stmt ->fetchAll('assoc');        
+        return $results;
     }
 }

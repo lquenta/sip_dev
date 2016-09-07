@@ -14,6 +14,7 @@
  */
 namespace App\Controller;
 
+use Cake\Core\App;
 use Cake\Core\Configure;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
@@ -70,7 +71,7 @@ class PagesController extends AppController
         $this->loadModel('AccionSolicitud');
         $this->loadModel('Accions');
         
-        
+            
         if($this->Auth->user('rol_id')=='5'){
             return $this->redirect(['controller'=>'AccionSolicitud','action' => 'index']);
         }
@@ -105,6 +106,8 @@ class PagesController extends AppController
         ])
          ->where(['InstitucionRecomendacion.institucion_id ' => $institucion->id]);
        debug($recomendaciones_segumiento->all());*/
+
+       
 
         $this->set(compact('autorizacions','solicitudInformacions','accionSolicitud','accions_sin_responder_entidades'));
         $this->set('_serialize', ['solicitudInformacions']);

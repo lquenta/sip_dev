@@ -1,4 +1,11 @@
-
+<style type="text/css">
+body{
+    margin-top: -50px;
+}
+    .navbar{
+        background: #438eb9;        
+    }
+</style>
 <?php
 /* @var $this \Cake\View\View */
 use Cake\Core\Configure;
@@ -44,23 +51,15 @@ $this->start('tb_body_start');
             </script>
 
             <div class="navbar-container" id="navbar-container">
-                <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
-                    <span class="sr-only">Toggle sidebar</span>
-
-                    <span class="icon-bar"></span>
-
-                    <span class="icon-bar"></span>
-
-                    <span class="icon-bar"></span>
-                </button>
+               
 
                 <div class="navbar-header pull-left">
-                    <a href="index.html" class="navbar-brand">
-                        <small>
-                             <?=$this->Html->image('imgpsh_fullsize.png', ['class' => 'msg-photo','style'=>'height:50px']);?>
+                    
+                        <div class="navbar-brand">
+                             <?=$this->Html->image('imgpsh_fullsize.png', ['class' => 'msg-photo','style'=>'height:150px']);?>
                             
-                        </small>
-                    </a>
+                        </div>
+                    
                 </div>
 
                 <div class="navbar-buttons navbar-header pull-right" role="navigation">
@@ -208,7 +207,7 @@ $this->start('tb_body_start');
                 try{ace.settings.check('main-container' , 'fixed')}catch(e){}
             </script>
 
-            <div id="sidebar" class="sidebar                  responsive">
+         <!--    <div id="sidebar" class="sidebar                  responsive">
                 <script type="text/javascript">
                     try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
                 </script>
@@ -247,14 +246,14 @@ $this->start('tb_body_start');
 
                     
 
-                </ul><!-- /.nav-list -->
+                </ul> --><!-- /.nav-list
 
                 <hr>
 
                 <script type="text/javascript">
                     try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
                 </script>
-            </div>
+            </div> -->
 
             <div class="main-content">
                 <div class="main-content-inner">

@@ -5,10 +5,6 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 <div class="page-header">
                             <h1>
                                 Panel de control
-                                <small>
-                                    <i class="ace-icon fa fa-angle-double-right"></i>
-                                    Resumen &amp; estadisticas
-                                </small>
                             </h1>
                         </div><!-- /.page-header -->
 
@@ -101,13 +97,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="widget-box transparent" id="recent-box">
-                                            <div class="widget-header">
-                                                <h4 class="widget-title lighter smaller">
-                                                    <i class="ace-icon fa fa-rss orange"></i>Reciente
-                                                </h4>
-
-                                                
-                                            </div>
+                                           
 
                                             <div class="widget-body">
                                                 <div class="widget-main padding-4">
@@ -116,15 +106,44 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 
                                                           <!-- Nav tabs -->
                                                           <ul class="nav nav-tabs" role="tablist">
-                                                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Pendientes</a></li>
+                                                            <li role="presentation" class="active"><a href="#Recomendaciones" aria-controls="Recomendaciones" role="tab" data-toggle="tab">Recomendaciones</a></li>
+                                                            <li role="presentation"><a href="#Solicitudes" aria-controls="Solicitudes" role="tab" data-toggle="tab">Solicitudes</a></li>
+                                                            <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Pendientes</a></li>
                                                             <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Seguimientos sin responder</a></li>
                                                             
                                                           </ul>
 
                                                           <!-- Tab panes -->
                                                           <div class="tab-content">
-                                                            <div role="tabpanel" class="tab-pane active" id="home">
-                                                                <?php if($solicitudInformacions->count()>0){ ?>
+                                                            <div role="tabpanel" class="tab-pane active" id="Recomendaciones">
+                                                                
+                                                                 <a href="<?= $this->Url->build(["controller" => "Recomendacions","action" => "add"]); ?>" class="btn btn-large btn-default">
+                                                                  <img src="images/add.jpg" width="35" />
+                                                                 Nueva Recomendación
+                                                                 </a>
+                                                                
+                                                                <h2>Recomendaciones</h2>
+                                                                
+                                                                <div>
+                                                                    <?php echo $this->requestAction('/recomendacions'); ?>    
+                                                                </div>    
+                                                                
+                                                            </div>
+                                                             <div role="tabpanel" class="tab-pane" id="Solicitudes">
+
+                                                                  <a href="<?= $this->Url->build(["controller" => "solicitud_informacions","action" => "add"]); ?>" class="btn btn-large btn-default">
+                                                                  <img src="images/add.jpg" width="35" />
+                                                                 Nueva Solicitud
+                                                                 </a>
+                                                                
+                                                                <h2>Solicitudes pendientes de informacion</h2>
+                                                                <div>
+                                                                    <?php echo $this->requestAction('/solicitud-informacions'); ?>    
+                                                                </div>    
+                                                                
+                                                            </div>
+                                                            <div role="tabpanel" class="tab-pane" id="home">
+                                                                <?php if($solicitudInformacions->count()>0 && false){ ?>
                                                                 <h2>Pendientes de responder, solicitud de informacion</h2>
                                                                 <table class="table table-striped" cellpadding="0" cellspacing="0">
                                                                     <thead>

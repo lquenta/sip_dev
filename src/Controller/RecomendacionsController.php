@@ -19,8 +19,9 @@ class RecomendacionsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users', 'Estados','Accions', 'AdjuntosRecomendacions', 'DerechoRecomendacion.Derechos', 'InstitucionRecomendacion.Institucions', 'MecanismoRecomendacion.Mecanismos', 'PoblacionRecomendacion.Poblacions', 'RecomendacionParametros']
+            'contain' => ['Users', 'Estados','Accions', 'AdjuntosRecomendacions', 'DerechoRecomendacion.Derechos', 'InstitucionRecomendacion.Institucions', 'MecanismoRecomendacion.Mecanismos', 'PoblacionRecomendacion.Poblacions', 'RecomendacionParametros'], 'limit'     => 1000
         ];
+        
 
         $recomendacions = $this->paginate($this->Recomendacions->find()->order(['Recomendacions.id' => 'DESC']));
 
@@ -209,7 +210,8 @@ class RecomendacionsController extends AppController
                 
                 
                 $this->Flash->success(__('La recomendacion se ha guardado.'));
-                return $this->redirect(['action' => 'index']);
+                //return $this->redirect(['action' => 'index']);
+                return $this->redirect('/');
             } else {
                 $this->Flash->error(__('La recomendacion no se ha guardado, por favor intente de nuevo.'));
             }

@@ -110,6 +110,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                             <li role="presentation"><a href="#Solicitudes" aria-controls="Solicitudes" role="tab" data-toggle="tab">Solicitudes</a></li>
                                                             <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Pendientes</a></li>
                                                             <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Seguimientos sin responder</a></li>
+                                                            <li role="presentation"><a href="#Consolidado" aria-controls="Consolidado" role="tab" data-toggle="tab">Visor Gráfico</a></li>
                                                             
                                                           </ul>
 
@@ -117,29 +118,32 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                           <div class="tab-content">
                                                             <div role="tabpanel" class="tab-pane active" id="Recomendaciones">
                                                                 
-                                                                 <a href="<?= $this->Url->build(["controller" => "Recomendacions","action" => "add"]); ?>" class="btn btn-large btn-default">
+                                                                 <a href="<?= $this->Url->build(["controller" => "Recomendacions","action" => "add"]); ?>" class="btn btn-large btn-default" style="margin:5px">
                                                                   <img src="images/add.jpg" width="35" />
                                                                  Nueva Recomendación
                                                                  </a>
                                                                 
-                                                                <h2>Recomendaciones</h2>
-                                                                
-                                                                <div>
+                                                                 <div class="panel">                                                                  
+                                                                  
                                                                     <?php echo $this->requestAction('/recomendacions'); ?>    
-                                                                </div>    
+                                                                  
+                                                                </div>     
                                                                 
                                                             </div>
                                                              <div role="tabpanel" class="tab-pane" id="Solicitudes">
 
-                                                                  <a href="<?= $this->Url->build(["controller" => "solicitud_informacions","action" => "add"]); ?>" class="btn btn-large btn-default">
+                                                                  <a href="<?= $this->Url->build(["controller" => "solicitud_informacions","action" => "add"]); ?>" class="btn btn-large btn-default" style="margin:5px">
                                                                   <img src="images/add.jpg" width="35" />
                                                                  Nueva Solicitud
                                                                  </a>
                                                                 
-                                                                <h2>Solicitudes pendientes de informacion</h2>
-                                                                <div>
+                                                                
+                                                                <div class="panel panel-primary">
+                                                                  <div class="panel-heading">Solicitudes pendientes de respuesta</div>
+                                                                  <div class="panel-body" style="overflow-y: scroll; max-height: 300px;">
                                                                     <?php echo $this->requestAction('/solicitud-informacions'); ?>    
-                                                                </div>    
+                                                                  </div>
+                                                                </div>                                                                
                                                                 
                                                             </div>
                                                             <div role="tabpanel" class="tab-pane" id="home">
@@ -264,6 +268,25 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                                     </tbody>
                                                                 </table>
 
+                                                            </div>
+                                                            <div role="tabpanel" class="tab-pane" id="Consolidado">
+                                                                
+                                                                
+                                                                    <div class="row panel panel-default">
+                                                                    <div class = "panel-heading">
+                                                                      <h4> Recomendaciones por Estado</h4 >
+                                                                   </div>                                                               
+                                                                   <div id="CharRecomendaciones" class="row panel-body"></div>
+                                                                   </div>
+                                                               
+                                                                   <div class="row panel panel-default">
+                                                                    <div class = "panel-heading">
+                                                                      <h4> Cumplimiento de Solicitudes</h4 >
+                                                                   </div>                                                               
+                                                                   <div id="CharSolicitudes" class="row panel-body">
+                                                                       
+                                                                   </div>
+                                                               </div>
                                                             </div>
                                                           
                                                           </div>
@@ -491,4 +514,142 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                 });
             
             })
+        </script>
+        <script type="text/javascript">
+            var dataRecomendaciones = new Array();
+            var listRecomendacionsPie = <?php echo json_encode($listRecomendacionsPie) ?>;
+
+           for(var item in listRecomendacionsPie) {
+                obj = {
+                        name: listRecomendacionsPie[item]["descripcion"], 
+                        y: parseFloat(listRecomendacionsPie[item]["porcentaje"])
+                      };
+                dataRecomendaciones.push(obj);
+            }
+            
+           $(function () {
+            $('#CharRecomendaciones').highcharts({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                            style: {
+                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Brands',
+                    colorByPoint: true,
+                    data: dataRecomendaciones
+                }]
+            });
+        });
+        </script>
+
+         <script type="text/javascript">
+            
+            var listSolictudTacomentro = <?php echo json_encode($listSolictudTacomentro) ?>;
+
+    $(function () {
+         var gaugeOptions = {
+
+        chart: {
+            type: 'solidgauge'
+        },
+
+        title: 'Titulo',
+
+        pane: {
+            center: ['50%', '85%'],
+            size: '140%',
+            startAngle: -90,
+            endAngle: 90,
+            background: {
+                backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
+                innerRadius: '60%',
+                outerRadius: '100%',
+                shape: 'arc'
+            }
+        },
+
+        tooltip: {
+            enabled: false
+        },
+
+        // the value axis
+        yAxis: {
+            stops: [
+                [0.1, '#DF5353'], // red
+                [0.5, '#DDDF0D'], // yellow
+                [0.9, '#55BF3B'] // green
+            ],
+            lineWidth: 0,
+            minorTickInterval: null,
+            tickAmount: 2,
+            title: {
+                y: -70
+            },
+            labels: {
+                y: 16
+            }
+        },
+
+        plotOptions: {
+            solidgauge: {
+                dataLabels: {
+                    y: 5,
+                    borderWidth: 0,
+                    useHTML: true
+                }
+            }
+        }
+    };
+
+    $('#CharSolicitudes').highcharts(Highcharts.merge(gaugeOptions, {
+        yAxis: {
+            min: 0,
+            max: parseFloat(listSolictudTacomentro[0]['Total']),
+            title: {
+                text: ''
+            }
+        },
+
+        credits: {
+            enabled: false
+        },
+
+        series: [{
+            name: 'Solicitudes',
+            data: [parseFloat(listSolictudTacomentro[0]['Ejecutados'])],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+                    ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}/'+listSolictudTacomentro[0]['Total']+'</span><br/>' +
+                       '<span style="font-size:12px;color:silver">Solicitudes</span></div>'
+            },
+            tooltip: {
+                valueSuffix: ''
+            }
+        }]
+
+    }));
+
+     });
+
         </script>

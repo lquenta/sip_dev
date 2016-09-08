@@ -111,6 +111,7 @@ $(function(){ /* to make sure the script runs after page load */
           </div>
       </div>
     </form>
+    <div class="" style="overflow-y: scroll; max-height: 400px; min-width:200%; margin:10px;">
 <table class="table table-striped" cellpadding="0" cellspacing="0" id="datos">
     <thead>
         <tr>
@@ -173,6 +174,7 @@ $(function(){ /* to make sure the script runs after page load */
         <?php endforeach; ?>
     </tbody>
 </table>
+</div>
 <!-- <div class="paginator">
     <ul class="pagination">
         <?= $this->Paginator->prev('< ' . __('previo')) ?>

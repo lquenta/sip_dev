@@ -124,9 +124,9 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                                  </a>
                                                                 
                                                                  <div class="panel">                                                                  
-                                                                  <div class="" style="overflow-y: scroll; max-height: 400px; min-width:200%; margin:10px;">
+                                                                  
                                                                     <?php echo $this->requestAction('/recomendacions'); ?>    
-                                                                  </div>
+                                                                  
                                                                 </div>     
                                                                 
                                                             </div>

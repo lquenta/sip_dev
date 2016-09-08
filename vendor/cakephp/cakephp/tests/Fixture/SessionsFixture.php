@@ -18,7 +18,8 @@ use Cake\Database\Schema\Table;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * SessionFixture
+ * Class SessionFixture
+ *
  */
 class SessionsFixture extends TestFixture
 {

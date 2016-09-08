@@ -17,6 +17,7 @@ namespace Cake\Routing\Route;
 /**
  * Plugin short route, that copies the plugin param to the controller parameters
  * It is used for supporting /:plugin routes.
+ *
  */
 class PluginShortRoute extends InflectedRoute
 {
@@ -26,12 +27,11 @@ class PluginShortRoute extends InflectedRoute
      * controller parameter.
      *
      * @param string $url The URL to parse
-     * @param string $method The HTTP method
      * @return array|false An array of request parameters, or boolean false on failure.
      */
-    public function parse($url, $method = '')
+    public function parse($url)
     {
-        $params = parent::parse($url, $method);
+        $params = parent::parse($url);
         if (!$params) {
             return false;
         }

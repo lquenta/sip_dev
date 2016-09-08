@@ -21,7 +21,7 @@ use PDO;
  * Encapsulates all conversion functions for values coming from database into PHP and
  * going from PHP into database.
  */
-class Type implements TypeInterface
+class Type
 {
 
     /**
@@ -40,7 +40,6 @@ class Type implements TypeInterface
         'decimal' => 'Cake\Database\Type\FloatType',
         'float' => 'Cake\Database\Type\FloatType',
         'integer' => 'Cake\Database\Type\IntegerType',
-        'json' => 'Cake\Database\Type\JsonType',
         'string' => 'Cake\Database\Type\StringType',
         'text' => 'Cake\Database\Type\StringType',
         'time' => 'Cake\Database\Type\TimeType',
@@ -175,7 +174,9 @@ class Type implements TypeInterface
     }
 
     /**
-     * {@inheritDoc}
+     * Returns type identifier name for this object
+     *
+     * @return string
      */
     public function getName()
     {
@@ -183,7 +184,12 @@ class Type implements TypeInterface
     }
 
     /**
-     * {@inheritDoc}
+     * Returns the base type name that this class is inheriting.
+     * This is useful when extending base type for adding extra functionality
+     * but still want the rest of the framework to use the same assumptions it would
+     * do about the base type it inherits from.
+     *
+     * @return string
      */
     public function getBaseType()
     {
@@ -191,7 +197,11 @@ class Type implements TypeInterface
     }
 
     /**
-     * {@inheritDoc}
+     * Casts given value from a PHP type to one acceptable by database
+     *
+     * @param mixed $value value to be converted to database equivalent
+     * @param \Cake\Database\Driver $driver object from which database preferences and configuration will be extracted
+     * @return mixed
      */
     public function toDatabase($value, Driver $driver)
     {
@@ -234,7 +244,11 @@ class Type implements TypeInterface
     }
 
     /**
-     * {@inheritDoc}
+     * Casts give value to Statement equivalent
+     *
+     * @param mixed $value value to be converted to PHP equivalent
+     * @param \Cake\Database\Driver $driver object from which database preferences and configuration will be extracted
+     * @return mixed
      */
     public function toStatement($value, Driver $driver)
     {
@@ -278,11 +292,17 @@ class Type implements TypeInterface
             $value = '';
         }
 
-        return (string)$value;
+        return strval($value);
     }
 
     /**
-     * {@inheritDoc}
+     * Generate a new primary key value for a given type.
+     *
+     * This method can be used by types to create new primary key values
+     * when entities are inserted.
+     *
+     * @return mixed A new primary key value.
+     * @see \Cake\Database\Type\UuidType
      */
     public function newId()
     {
@@ -290,7 +310,13 @@ class Type implements TypeInterface
     }
 
     /**
-     * {@inheritDoc}
+     * Marshalls flat data into PHP objects.
+     *
+     * Most useful for converting request data into PHP objects
+     * that make sense for the rest of the ORM/Database layers.
+     *
+     * @param mixed $value The value to convert.
+     * @return mixed Converted value.
      */
     public function marshal($value)
     {

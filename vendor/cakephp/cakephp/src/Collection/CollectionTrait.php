@@ -30,7 +30,6 @@ use Cake\Collection\Iterator\UnfoldIterator;
 use Cake\Collection\Iterator\ZipIterator;
 use Countable;
 use LimitIterator;
-use LogicException;
 use RecursiveIteratorIterator;
 use Traversable;
 
@@ -422,22 +421,22 @@ trait CollectionTrait
      * {@inheritDoc}
      *
      */
-    public function nest($idPath, $parentPath, $nestingKey = 'children')
+    public function nest($idPath, $parentPath)
     {
         $parents = [];
         $idPath = $this->_propertyExtractor($idPath);
         $parentPath = $this->_propertyExtractor($parentPath);
         $isObject = true;
 
-        $mapper = function ($row, $key, $mapReduce) use (&$parents, $idPath, $parentPath, $nestingKey) {
-            $row[$nestingKey] = [];
+        $mapper = function ($row, $key, $mapReduce) use (&$parents, $idPath, $parentPath) {
+            $row['children'] = [];
             $id = $idPath($row, $key);
             $parentId = $parentPath($row, $key);
             $parents[$id] =& $row;
             $mapReduce->emitIntermediate($id, $parentId);
         };
 
-        $reducer = function ($values, $key, $mapReduce) use (&$parents, &$isObject, $nestingKey) {
+        $reducer = function ($values, $key, $mapReduce) use (&$parents, &$isObject) {
             static $foundOutType = false;
             if (!$foundOutType) {
                 $isObject = is_object(current($parents));
@@ -456,7 +455,7 @@ trait CollectionTrait
             foreach ($values as $id) {
                 $children[] =& $parents[$id];
             }
-            $parents[$key][$nestingKey] = $children;
+            $parents[$key]['children'] = $children;
         };
 
         return (new Collection(new MapReduce($this->unwrap(), $mapper, $reducer)))
@@ -679,25 +678,5 @@ trait CollectionTrait
     public function _unwrap()
     {
         return $this->unwrap();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @return \Cake\Collection\CollectionInterface
-     */
-    public function transpose()
-    {
-        $arrayValue = $this->toList();
-        $length = count(current($arrayValue));
-        $result = [];
-        foreach ($arrayValue as $column => $row) {
-            if (count($row) != $length) {
-                throw new LogicException('Child arrays do not have even length');
-            }
-            $result[] = array_column($arrayValue, $column);
-        }
-
-        return new Collection($result);
     }
 }

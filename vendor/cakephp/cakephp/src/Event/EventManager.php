@@ -371,16 +371,11 @@ class EventManager
         }
 
         $listeners = $this->listeners($event->name());
-
-        if ($this->_trackEvents) {
-            $this->addEventToList($event);
-        }
-
-        if (!$this->_isGlobal && static::instance()->isTrackingEvents()) {
-            static::instance()->addEventToList($event);
-        }
-
         if (empty($listeners)) {
+            if ($this->_trackEvents) {
+                $this->addEventToList($event);
+            }
+
             return $event;
         }
 
@@ -395,6 +390,10 @@ class EventManager
             if ($result !== null) {
                 $event->result = $result;
             }
+        }
+
+        if ($this->_trackEvents) {
+            $this->addEventToList($event);
         }
 
         return $event;
@@ -532,16 +531,6 @@ class EventManager
     public function trackEvents($enabled)
     {
         $this->_trackEvents = (bool)$enabled;
-    }
-
-    /**
-     * Returns whether this manager is set up to track events
-     *
-     * @return bool
-     */
-    public function isTrackingEvents()
-    {
-        return $this->_trackEvents && $this->_eventList;
     }
 
     /**

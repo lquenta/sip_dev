@@ -39,7 +39,6 @@ class Panel extends Entity
         if (is_resource($content)) {
             return stream_get_contents($content);
         }
-
         return $content;
     }
 }

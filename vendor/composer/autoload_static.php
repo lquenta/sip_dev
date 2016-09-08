@@ -7,8 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInitfc44b02be09609e66339986329c91f59
 {
     public static $files = array (
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '34122c0574b76bf21c9a8db62b5b9cf3' => __DIR__ . '/..' . '/cakephp/chronos/src/carbon_compat.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'c720f792236cd163ece8049879166850' => __DIR__ . '/..' . '/cakephp/cakephp/src/Core/functions.php',
         'ede59e3a405fb689cd1cebb7bb1db3fb' => __DIR__ . '/..' . '/cakephp/cakephp/src/Collection/functions.php',
         '90236b492da7ca2983a2ad6e33e4152e' => __DIR__ . '/..' . '/cakephp/cakephp/src/I18n/functions.php',
@@ -18,10 +18,6 @@ class ComposerStaticInitfc44b02be09609e66339986329c91f59
     );
 
     public static $prefixLengthsPsr4 = array (
-        'Z' => 
-        array (
-            'Zend\\Diactoros\\' => 15,
-        ),
         'X' => 
         array (
             'XdgBaseDir\\' => 11,
@@ -38,17 +34,12 @@ class ComposerStaticInitfc44b02be09609e66339986329c91f59
         'P' => 
         array (
             'Psy\\' => 4,
-            'Psr\\Http\\Message\\' => 17,
             'PhpParser\\' => 10,
             'Phinx\\' => 6,
         ),
         'M' => 
         array (
             'Migrations\\' => 11,
-        ),
-        'G' => 
-        array (
-            'Ghunti\\HighchartsPHP\\' => 21,
         ),
         'D' => 
         array (
@@ -76,10 +67,6 @@ class ComposerStaticInitfc44b02be09609e66339986329c91f59
     );
 
     public static $prefixDirsPsr4 = array (
-        'Zend\\Diactoros\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/zendframework/zend-diactoros/src',
-        ),
         'XdgBaseDir\\' => 
         array (
             0 => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src',
@@ -112,10 +99,6 @@ class ComposerStaticInitfc44b02be09609e66339986329c91f59
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src/Psy',
         ),
-        'Psr\\Http\\Message\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -127,10 +110,6 @@ class ComposerStaticInitfc44b02be09609e66339986329c91f59
         'Migrations\\' => 
         array (
             0 => __DIR__ . '/..' . '/cakephp/migrations/src',
-        ),
-        'Ghunti\\HighchartsPHP\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/ghunti/highcharts-php/src',
         ),
         'DebugKit\\Test\\Fixture\\' => 
         array (

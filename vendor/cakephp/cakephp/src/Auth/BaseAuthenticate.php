@@ -22,6 +22,7 @@ use Cake\ORM\TableRegistry;
 
 /**
  * Base Authentication class with common methods and properties.
+ *
  */
 abstract class BaseAuthenticate implements EventListenerInterface
 {

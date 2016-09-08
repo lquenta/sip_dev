@@ -20,6 +20,7 @@ use InvalidArgumentException;
 
 /**
  * Security Library contains utility methods related to security
+ *
  */
 class Security
 {

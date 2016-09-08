@@ -14,6 +14,7 @@ namespace Cake\Network\Exception;
 
 /**
  * Represents an HTTP 451 error.
+ *
  */
 class UnavailableForLegalReasonsException extends HttpException
 {

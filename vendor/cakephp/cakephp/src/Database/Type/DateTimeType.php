@@ -16,10 +16,8 @@ namespace Cake\Database\Type;
 
 use Cake\Database\Driver;
 use Cake\Database\Type;
-use Cake\Database\TypeInterface;
 use DateTimeInterface;
 use Exception;
-use PDO;
 use RuntimeException;
 
 /**
@@ -27,7 +25,7 @@ use RuntimeException;
  *
  * Use to convert datetime instances to strings & back.
  */
-class DateTimeType extends Type implements TypeInterface
+class DateTimeType extends Type
 {
 
     /**
@@ -79,18 +77,11 @@ class DateTimeType extends Type implements TypeInterface
     protected $_className;
 
     /**
-     * Identifier name for this type
-     *
-     * @var string|null
-     */
-    protected $_name = null;
-
-    /**
      * {@inheritDoc}
      */
     public function __construct($name = null)
     {
-        $this->_name = $name;
+        parent::__construct($name);
         $this->_setClassName(static::$dateTimeClass, 'DateTime');
     }
 
@@ -282,7 +273,7 @@ class DateTimeType extends Type implements TypeInterface
     }
 
     /**
-     * Converts a string into a DateTime object after parsing it using the locale
+     * Converts a string into a DateTime object after parseing it using the locale
      * aware parser with the specified format.
      *
      * @param string $value The value to parse and convert to an object.
@@ -293,18 +284,5 @@ class DateTimeType extends Type implements TypeInterface
         $class = $this->_className;
 
         return $class::parseDateTime($value, $this->_localeFormat);
-    }
-
-    /**
-     * Casts given value to Statement equivalent
-     *
-     * @param mixed $value value to be converted to PDO statement
-     * @param \Cake\Database\Driver $driver object from which database preferences and configuration will be extracted
-     *
-     * @return mixed
-     */
-    public function toStatement($value, Driver $driver)
-    {
-        return PDO::PARAM_STR;
     }
 }

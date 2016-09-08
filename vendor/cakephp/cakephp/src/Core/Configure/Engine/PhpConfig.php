@@ -24,6 +24,7 @@ use Cake\Core\Exception\Exception;
  *
  * Files compatible with PhpConfig should return an array that
  * contains all of the configuration data contained in the file.
+ *
  */
 class PhpConfig implements ConfigEngineInterface
 {

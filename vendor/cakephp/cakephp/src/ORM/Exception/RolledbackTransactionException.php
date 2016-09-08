@@ -16,6 +16,7 @@ use Cake\Core\Exception\Exception;
 
 /**
  * Used when a transaction was rolled back from a callback event.
+ *
  */
 class RolledbackTransactionException extends Exception
 {

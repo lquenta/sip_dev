@@ -62,7 +62,6 @@ class LogPanel extends DebugPanel
         if (!$logger) {
             return 0;
         }
-
         return $logger->count();
     }
 }

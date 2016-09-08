@@ -39,7 +39,6 @@ trait FactoryTrait
         if ($dt instanceof static) {
             return clone $dt;
         }
-
         return new static($dt->format('Y-m-d H:i:s.u'), $dt->getTimeZone());
     }
 
@@ -120,7 +119,6 @@ trait FactoryTrait
     public static function minValue()
     {
         $max = PHP_INT_SIZE === 4 ? PHP_INT_MAX : PHP_INT_MAX / 10;
-
         return static::createFromTimestamp(~$max);
     }
 
@@ -160,7 +158,6 @@ trait FactoryTrait
         }
 
         $instance = static::createFromFormat('Y-n-j G:i:s', sprintf('%s-%s-%s %s:%02s:%02s', 0, $month, $day, $hour, $minute, $second), $tz);
-
         return $instance->addYears($year);
     }
 

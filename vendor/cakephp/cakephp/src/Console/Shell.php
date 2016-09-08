@@ -456,7 +456,7 @@ class Shell
             $this->startup();
             array_shift($argv);
 
-            return $this->{$method}->runCommand($argv, false, ['requested' => true]);
+            return $this->{$method}->runCommand($argv, false);
         }
 
         if ($this->hasMethod('main')) {
@@ -656,11 +656,11 @@ class Shell
      *
      * @param string|array|null $message A string or an array of strings to output
      * @param int $newlines Number of newlines to append
-     * @return int|bool Returns the number of bytes returned from writing to stderr.
+     * @return void
      */
     public function err($message = null, $newlines = 1)
     {
-        return $this->_io->err('<error>' . $message . '</error>', $newlines);
+        $this->_io->err($message, $newlines);
     }
 
     /**
@@ -687,7 +687,7 @@ class Shell
      */
     public function warn($message = null, $newlines = 1)
     {
-        return $this->_io->err('<warning>' . $message . '</warning>', $newlines);
+        return $this->err('<warning>' . $message . '</warning>', $newlines);
     }
 
     /**

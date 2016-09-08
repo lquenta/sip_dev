@@ -10,8 +10,7 @@
         "mobiledetect/mobiledetectlib": "2.*",
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "*",
-        "friendsofcake/bootstrap-ui": "^0.5.0",
-        "ghunti/highcharts-php": "~3.0"
+        "friendsofcake/bootstrap-ui": "^0.5.0"
     },
     "require-dev": {
         "psy/psysh": "@stable",

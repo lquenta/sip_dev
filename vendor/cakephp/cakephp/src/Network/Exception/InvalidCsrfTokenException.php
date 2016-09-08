@@ -14,6 +14,7 @@ namespace Cake\Network\Exception;
 
 /**
  * Represents an HTTP 403 error caused by an invalid CSRF token
+ *
  */
 class InvalidCsrfTokenException extends HttpException
 {

@@ -340,8 +340,7 @@ class SqlserverSchema extends BaseSchema
             'time' => ' TIME',
             'datetime' => ' DATETIME',
             'timestamp' => ' DATETIME',
-            'uuid' => ' UNIQUEIDENTIFIER',
-            'json' => ' NVARCHAR(MAX)',
+            'uuid' => ' UNIQUEIDENTIFIER'
         ];
 
         if (isset($typeMap[$data['type']])) {

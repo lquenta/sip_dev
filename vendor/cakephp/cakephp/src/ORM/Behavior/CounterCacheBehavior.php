@@ -74,6 +74,7 @@ use Cake\ORM\Behavior;
  *     ]
  * ]
  * ```
+ *
  */
 class CounterCacheBehavior extends Behavior
 {

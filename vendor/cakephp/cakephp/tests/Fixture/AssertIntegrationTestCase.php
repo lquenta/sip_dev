@@ -6,6 +6,7 @@ use Cake\TestSuite\IntegrationTestCase;
 
 /**
  * This class helps in indirectly testing the functionalities of IntegrationTestCase
+ *
  */
 class AssertIntegrationTestCase extends IntegrationTestCase
 {

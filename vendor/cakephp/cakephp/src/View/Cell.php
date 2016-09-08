@@ -32,6 +32,7 @@ use ReflectionMethod;
 
 /**
  * Cell base.
+ *
  */
 abstract class Cell
 {

@@ -78,7 +78,6 @@ class PanelRegistry extends ObjectRegistry
     {
         $instance = new $class($this, $config);
         $this->eventManager()->on($instance);
-
         return $instance;
     }
 }

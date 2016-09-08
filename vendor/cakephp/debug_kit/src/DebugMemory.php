@@ -74,7 +74,6 @@ class DebugMemory
             }
         }
         self::$_points[$message] = $memoryUse;
-
         return true;
     }
 
@@ -90,7 +89,6 @@ class DebugMemory
         if ($clear) {
             self::$_points = [];
         }
-
         return $marks;
     }
 

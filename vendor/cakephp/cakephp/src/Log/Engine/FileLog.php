@@ -20,6 +20,7 @@ use Cake\Utility\Text;
 /**
  * File Storage stream for Logging. Writes logs to different files
  * based on the level of log it is.
+ *
  */
 class FileLog extends BaseLog
 {

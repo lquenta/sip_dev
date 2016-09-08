@@ -14,13 +14,10 @@
  */
 namespace Cake\Event;
 
-use ArrayAccess;
-use Countable;
-
 /**
  * The Event List
  */
-class EventList implements ArrayAccess, Countable
+class EventList implements \ArrayAccess, \Countable
 {
 
     /**

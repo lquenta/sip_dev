@@ -29,6 +29,7 @@ use SplFileObject;
  * engine available, or have content which is not performance sensitive.
  *
  * You can configure a FileEngine cache, using Cache::config()
+ *
  */
 class FileEngine extends CacheEngine
 {
@@ -454,7 +455,7 @@ class FileEngine extends CacheEngine
         $key = Inflector::underscore(str_replace(
             [DIRECTORY_SEPARATOR, '/', '.', '<', '>', '?', ':', '|', '*', '"'],
             '_',
-            (string)$key
+            strval($key)
         ));
 
         return $key;

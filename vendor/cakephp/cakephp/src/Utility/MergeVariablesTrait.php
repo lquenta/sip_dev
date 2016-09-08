@@ -16,6 +16,7 @@ namespace Cake\Utility;
 /**
  * Provides features for merging object properties recursively with
  * parent classes.
+ *
  */
 trait MergeVariablesTrait
 {

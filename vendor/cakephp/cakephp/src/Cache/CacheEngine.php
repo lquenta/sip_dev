@@ -19,6 +19,7 @@ use InvalidArgumentException;
 
 /**
  * Storage engine for CakePHP caching
+ *
  */
 abstract class CacheEngine
 {
@@ -254,7 +255,7 @@ abstract class CacheEngine
             $prefix = vsprintf($this->_groupPrefix, $this->groups());
         }
 
-        $key = preg_replace('/[\s]+/', '_', strtolower(trim(str_replace([DIRECTORY_SEPARATOR, '/', '.'], '_', (string)$key))));
+        $key = preg_replace('/[\s]+/', '_', strtolower(trim(str_replace([DIRECTORY_SEPARATOR, '/', '.'], '_', strval($key)))));
 
         return $prefix . $key;
     }

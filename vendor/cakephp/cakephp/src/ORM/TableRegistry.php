@@ -46,6 +46,7 @@ use Cake\ORM\Locator\LocatorInterface;
  * ```
  * $table = TableRegistry::get('Users', $config);
  * ```
+ *
  */
 class TableRegistry
 {

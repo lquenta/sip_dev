@@ -34,10 +34,8 @@ class TimedBehavior extends Behavior
     {
         $alias = $event->subject()->alias();
         DebugTimer::start($alias . '_find', $alias . '->find()');
-
         return $query->formatResults(function ($results) use ($alias) {
             DebugTimer::stop($alias . '_find');
-
             return $results;
         });
     }

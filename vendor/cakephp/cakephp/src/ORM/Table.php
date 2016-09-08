@@ -371,17 +371,11 @@ class Table implements RepositoryInterface, EventListenerInterface, EventDispatc
     /**
      * Alias a field with the table's current alias.
      *
-     * If field is already aliased it will result in no-op.
-     *
      * @param string $field The field to alias.
      * @return string The field prefixed with the table alias.
      */
     public function aliasField($field)
     {
-        if (strpos($field, '.') !== false) {
-            return $field;
-        }
-
         return $this->alias() . '.' . $field;
     }
 
@@ -1092,14 +1086,13 @@ class Table implements RepositoryInterface, EventListenerInterface, EventDispatc
      *
      * You can customize what fields are used for nesting results, by default the
      * primary key and the `parent_id` fields are used. If you wish to change
-     * these defaults you need to provide the keys `keyField`, `parentField` or `nestingKey` in
+     * these defaults you need to provide the keys `keyField` or `parentField` in
      * `$options`:
      *
      * ```
      * $table->find('threaded', [
      *  'keyField' => 'id',
      *  'parentField' => 'ancestor_id'
-     *  'nestingKey' => 'children'
      * ]);
      * ```
      *
@@ -1112,7 +1105,6 @@ class Table implements RepositoryInterface, EventListenerInterface, EventDispatc
         $options += [
             'keyField' => $this->primaryKey(),
             'parentField' => 'parent_id',
-            'nestingKey' => 'children'
         ];
 
         if (isset($options['idField'])) {
@@ -1124,7 +1116,7 @@ class Table implements RepositoryInterface, EventListenerInterface, EventDispatc
         $options = $this->_setFieldMatchers($options, ['keyField', 'parentField']);
 
         return $query->formatResults(function ($results) use ($options) {
-            return $results->nest($options['keyField'], $options['parentField'], $options['nestingKey']);
+            return $results->nest($options['keyField'], $options['parentField']);
         });
     }
 
@@ -1249,9 +1241,8 @@ class Table implements RepositoryInterface, EventListenerInterface, EventDispatc
      *   transaction (default: true)
      * - defaults: Whether to use the search criteria as default values for the new entity (default: true)
      *
-     * @param array|\Cake\ORM\Query $search The criteria to find existing
-     *   records by. Note that when you pass a query object you'll have to use
-     *   the 2nd arg of the method to modify the entity data before saving.
+     * @param array|callable|\Cake\ORM\Query $search The criteria to find an existing record by, or a
+     *   callable that will customize the find query.
      * @param callable|null $callback A callback that will be invoked for newly
      *   created entities. This callback will be called *before* the entity
      *   is persisted.
@@ -1311,21 +1302,6 @@ class Table implements RepositoryInterface, EventListenerInterface, EventDispatc
         unset($options['defaults']);
 
         return $this->save($entity, $options) ?: $entity;
-    }
-
-    /**
-     * Gets the query object for findOrCreate().
-     *
-     * @param array|\Cake\ORM\Query|string $search The criteria to find existing records by.
-     * @return \Cake\ORM\Query
-     */
-    protected function _getFindOrCreateQuery($search)
-    {
-        if ($search instanceof Query) {
-            return $search;
-        }
-
-        return $this->find()->where($search);
     }
 
     /**
@@ -1466,10 +1442,6 @@ class Table implements RepositoryInterface, EventListenerInterface, EventDispatc
      */
     public function save(EntityInterface $entity, $options = [])
     {
-        if ($options instanceof SaveOptionsBuilder) {
-            $options = $options->toArray();
-        }
-
         $options = new ArrayObject($options + [
             'atomic' => true,
             'associated' => true,
@@ -2343,7 +2315,6 @@ class Table implements RepositoryInterface, EventListenerInterface, EventDispatc
      * The conventional method map is:
      *
      * - Model.beforeMarshal => beforeMarshal
-     * - Model.buildValidator => buildValidator
      * - Model.beforeFind => beforeFind
      * - Model.beforeSave => beforeSave
      * - Model.afterSave => afterSave
@@ -2360,7 +2331,6 @@ class Table implements RepositoryInterface, EventListenerInterface, EventDispatc
     {
         $eventMap = [
             'Model.beforeMarshal' => 'beforeMarshal',
-            'Model.buildValidator' => 'buildValidator',
             'Model.beforeFind' => 'beforeFind',
             'Model.beforeSave' => 'beforeSave',
             'Model.afterSave' => 'afterSave',
@@ -2392,17 +2362,6 @@ class Table implements RepositoryInterface, EventListenerInterface, EventDispatc
     public function buildRules(RulesChecker $rules)
     {
         return $rules;
-    }
-
-    /**
-     * Gets a SaveOptionsBuilder instance.
-     *
-     * @param array $options Options to parse by the builder.
-     * @return \Cake\ORM\SaveOptionsBuilder
-     */
-    public function getSaveOptionsBuilder(array $options = [])
-    {
-        return new SaveOptionsBuilder($this, $options);
     }
 
     /**

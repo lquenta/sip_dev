@@ -23,6 +23,7 @@ use Cake\Utility\Inflector;
 
 /**
  * Language string extractor
+ *
  */
 class ExtractTask extends Shell
 {

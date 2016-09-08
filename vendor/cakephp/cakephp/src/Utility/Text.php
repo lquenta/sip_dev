@@ -18,6 +18,7 @@ use InvalidArgumentException;
 
 /**
  * Text handling methods.
+ *
  */
 class Text
 {

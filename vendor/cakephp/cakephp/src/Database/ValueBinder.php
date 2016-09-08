@@ -75,31 +75,6 @@ class ValueBinder
     }
 
     /**
-     * Creates unique named placeholders for each of the passed values
-     * and binds them with the specified type.
-     *
-     * @param array|Traversable $values The list of values to be bound
-     * @param string $type The type with which all values will be bound
-     * @return array with the placeholders to insert in the query
-     */
-    public function generateManyNamed($values, $type = 'string')
-    {
-        $placeholders = [];
-        foreach ($values as $k => $value) {
-            $param = ":c" . $this->_bindingsCount;
-            $this->_bindings[$param] = [
-                'value' => $value,
-                'type' => $type,
-                'placeholder' => $param
-            ];
-            $placeholders[$k] = $param;
-            $this->_bindingsCount++;
-        }
-
-        return $placeholders;
-    }
-
-    /**
      * Returns all values bound to this expression object at this nesting level.
      * Subexpression bound values will not be returned with this function.
      *
@@ -145,7 +120,9 @@ class ValueBinder
         }
         $params = $types = [];
         foreach ($bindings as $b) {
-            $statement->bindValue($b['placeholder'], $b['value'], $b['type']);
+            $params[$b['placeholder']] = $b['value'];
+            $types[$b['placeholder']] = $b['type'];
         }
+        $statement->bind($params, $types);
     }
 }

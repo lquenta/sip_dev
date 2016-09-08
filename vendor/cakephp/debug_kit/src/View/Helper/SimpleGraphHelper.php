@@ -65,7 +65,6 @@ class SimpleGraphHelper extends Helper
             $graphOffset = ($offset / $max) * $width;
             $graphOffset = round($graphOffset);
         }
-
         return sprintf(
             '<div class="graph-bar" style="%s"><div class="graph-bar-value" style="%s" title="%s"> </div></div>',
             "width: {$width}px",

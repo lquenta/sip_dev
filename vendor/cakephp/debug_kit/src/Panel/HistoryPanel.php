@@ -33,7 +33,6 @@ class HistoryPanel extends DebugPanel
     {
         $table = TableRegistry::get('DebugKit.Requests');
         $recent = $table->find('recent');
-
         return [
             'requests' => $recent->toArray(),
         ];

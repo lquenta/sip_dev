@@ -22,6 +22,7 @@ use Cake\Mailer\Email;
 /**
  * Debug Transport class, useful for emulate the email sending process and inspect the resulted
  * email message before actually send it during development
+ *
  */
 class DebugTransport extends AbstractTransport
 {

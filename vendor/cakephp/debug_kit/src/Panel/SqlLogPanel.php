@@ -95,7 +95,6 @@ class SqlLogPanel extends DebugPanel
         if (!$count) {
             return '0';
         }
-
         return "$count / $time ms";
     }
 }

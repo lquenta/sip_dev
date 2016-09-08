@@ -49,7 +49,6 @@ class DebugPanel implements EventListenerInterface
     {
         list($ns, $name) = namespaceSplit(get_class($this));
         $name = substr($name, 0, strlen('Panel') * -1);
-
         return Inflector::humanize(Inflector::underscore($name));
     }
 
@@ -64,7 +63,6 @@ class DebugPanel implements EventListenerInterface
         if ($this->plugin) {
             return $this->plugin . '.' . Inflector::underscore($name);
         }
-
         return Inflector::underscore($name);
     }
 

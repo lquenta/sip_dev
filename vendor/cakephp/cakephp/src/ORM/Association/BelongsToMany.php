@@ -16,7 +16,6 @@ namespace Cake\ORM\Association;
 
 use Cake\Core\App;
 use Cake\Database\ExpressionInterface;
-use Cake\Database\Expression\IdentifierExpression;
 use Cake\Datasource\EntityInterface;
 use Cake\ORM\Association;
 use Cake\ORM\Query;
@@ -334,11 +333,7 @@ class BelongsToMany extends Association
      */
     public function attachTo(Query $query, array $options = [])
     {
-        if (!empty($options['negateMatch'])) {
-            $this->_appendNotMatching($query, $options);
-
-            return;
-        }
+        parent::attachTo($query, $options);
 
         $junction = $this->junction();
         $belongsTo = $junction->association($this->source()->alias());
@@ -351,20 +346,15 @@ class BelongsToMany extends Association
 
         // Attach the junction table as well we need it to populate _joinData.
         $assoc = $this->_targetTable->association($junction->alias());
-        $newOptions = array_intersect_key($options, ['joinType' => 1, 'fields' => 1]);
-        $newOptions += [
+        $query->removeJoin($assoc->name());
+        $options = array_intersect_key($options, ['joinType' => 1, 'fields' => 1]);
+        $options += [
             'conditions' => $cond,
             'includeFields' => $includeFields,
-            'foreignKey' => false,
+            'foreignKey' => $this->targetForeignKey(),
         ];
-        $assoc->attachTo($query, $newOptions);
+        $assoc->attachTo($query, $options);
         $query->eagerLoader()->addToJoinsMap($junction->alias(), $assoc, true);
-
-        parent::attachTo($query, $options);
-
-        $foreignKey = $this->targetForeignKey();
-        $thisJoin = $query->clause('join')[$this->name()];
-        $thisJoin['conditions']->add($assoc->_joinCondition(['foreignKey' => $foreignKey]));
     }
 
     /**
@@ -372,44 +362,29 @@ class BelongsToMany extends Association
      */
     protected function _appendNotMatching($query, $options)
     {
-        if (empty($options['negateMatch'])) {
-            return;
-        }
-        if (!isset($options['conditions'])) {
-            $options['conditions'] = [];
-        }
-        $junction = $this->junction();
-        $belongsTo = $junction->association($this->source()->alias());
-        $conds = $belongsTo->_joinCondition(['foreignKey' => $belongsTo->foreignKey()]);
+        $target = $this->junction();
+        if (!empty($options['negateMatch'])) {
+            $primaryKey = $query->aliasFields((array)$target->primaryKey(), $target->alias());
+            $query->andWhere(function ($exp) use ($primaryKey) {
+                array_map([$exp, 'isNull'], $primaryKey);
 
-        $subquery = $this->find()
-            ->select(array_values($conds))
-            ->where($options['conditions'])
-            ->andWhere($this->junctionConditions());
-
-        $subquery = $options['queryBuilder']($subquery);
-
-        $assoc = $junction->association($this->target()->alias());
-        $conditions = $assoc->_joinCondition([
-            'foreignKey' => $this->targetForeignKey()
-        ]);
-        $subquery = $this->_appendJunctionJoin($subquery, $conditions);
-
-        $query
-            ->andWhere(function ($exp) use ($subquery, $conds) {
-                $identifiers = [];
-                foreach (array_keys($conds) as $field) {
-                    $identifiers = new IdentifierExpression($field);
-                }
-                $identifiers = $subquery->newExpr()->add($identifiers)->tieWith(',');
-                $nullExp = clone $exp;
-
-                return $exp
-                    ->or_([
-                        $exp->notIn($identifiers, $subquery),
-                        $nullExp->and(array_map([$nullExp, 'isNull'], array_keys($conds))),
-                    ]);
+                return $exp;
             });
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function transformRow($row, $nestKey, $joined)
+    {
+        $alias = $this->junction()->alias();
+        if ($joined) {
+            $row[$this->target()->alias()][$this->_junctionProperty] = $row[$alias];
+            unset($row[$alias]);
+        }
+
+        return parent::transformRow($row, $nestKey, $joined);
     }
 
     /**
@@ -446,14 +421,21 @@ class BelongsToMany extends Association
     {
         $resultMap = [];
         $key = (array)$options['foreignKey'];
+        $property = $this->target()->association($this->junction()->alias())->property();
         $hydrated = $fetchQuery->hydrate();
 
         foreach ($fetchQuery->all() as $result) {
-            if (!isset($result[$this->_junctionProperty])) {
+            if (!isset($result[$property])) {
                 throw new RuntimeException(sprintf(
                     '"%s" is missing from the belongsToMany results. Results cannot be created.',
-                    $this->_junctionProperty
+                    $property
                 ));
+            }
+            $result[$this->_junctionProperty] = $result[$property];
+            unset($result[$property]);
+
+            if ($hydrated) {
+                $result->dirty($this->_junctionProperty, false);
             }
 
             $values = [];
@@ -727,12 +709,12 @@ class BelongsToMany extends Association
      * `$article->get('tags')` will contain all tags in `$newTags` after liking
      *
      * @param \Cake\Datasource\EntityInterface $sourceEntity the row belonging to the `source` side
-     *   of this association
+     * of this association
      * @param array $targetEntities list of entities belonging to the `target` side
-     *   of this association
+     * of this association
      * @param array $options list of options to be passed to the internal `save` call
      * @throws \InvalidArgumentException when any of the values in $targetEntities is
-     *   detected to not be already persisted
+     * detected to not be already persisted
      * @return bool true on success, false otherwise
      */
     public function link(EntityInterface $sourceEntity, array $targetEntities, array $options = [])
@@ -777,14 +759,14 @@ class BelongsToMany extends Association
      * `$article->get('tags')` will contain only `[$tag4]` after deleting in the database
      *
      * @param \Cake\Datasource\EntityInterface $sourceEntity an entity persisted in the source table for
-     *   this association
+     * this association
      * @param array $targetEntities list of entities persisted in the target table for
-     *   this association
+     * this association
      * @param array|bool $options list of options to be passed to the internal `delete` call,
-     *   or a `boolean`
+     * or a `boolean`
      * @throws \InvalidArgumentException if non persisted entities are passed or if
-     *   any of them is lacking a primary key value
-     * @return bool Success
+     * any of them is lacking a primary key value
+     * @return void
      */
     public function unlink(EntityInterface $sourceEntity, array $targetEntities, $options = [])
     {
@@ -810,7 +792,7 @@ class BelongsToMany extends Association
 
         $existing = $sourceEntity->get($property) ?: [];
         if (!$options['cleanProperty'] || empty($existing)) {
-            return true;
+            return;
         }
 
         $storage = new SplObjectStorage;
@@ -826,8 +808,6 @@ class BelongsToMany extends Association
 
         $sourceEntity->set($property, array_values($existing));
         $sourceEntity->dirty($property, false);
-
-        return true;
     }
 
     /**
@@ -965,6 +945,7 @@ class BelongsToMany extends Association
         $query
             ->addDefaultTypes($assoc->target())
             ->join($matching + $joins, [], true);
+        $query->eagerLoader()->addToJoinsMap($name, $assoc);
 
         return $query;
     }
@@ -1010,12 +991,12 @@ class BelongsToMany extends Association
      * `$article->get('tags')` will contain only `[$tag1, $tag3]` at the end
      *
      * @param \Cake\Datasource\EntityInterface $sourceEntity an entity persisted in the source table for
-     *   this association
+     * this association
      * @param array $targetEntities list of entities from the target table to be linked
      * @param array $options list of options to be passed to the internal `save`/`delete` calls
-     *   when persisting/updating new links, or deleting existing ones
+     * when persisting/updating new links, or deleting existing ones
      * @throws \InvalidArgumentException if non persisted entities are passed or if
-     *   any of them is lacking a primary key value
+     * any of them is lacking a primary key value
      * @return bool success
      */
     public function replaceLinks(EntityInterface $sourceEntity, array $targetEntities, array $options = [])
@@ -1260,27 +1241,11 @@ class BelongsToMany extends Association
 
         // Ensure that association conditions are applied
         // and that the required keys are in the selected columns.
-
-        $tempName = $this->_name . '_CJoin';
-        $schema = $assoc->schema();
-        $joinFields = $types = [];
-
-        foreach ($schema->typeMap() as $f => $type) {
-            $key = $tempName . '__' . $f;
-            $joinFields[$key] = "$name.$f";
-            $types[$key] = $type;
-        }
-
         $query
             ->where($this->junctionConditions())
-            ->select($joinFields)
-            ->defaultTypes($types)
-            ->addDefaultTypes($this->target());
+            ->select($query->aliasFields((array)$assoc->foreignKey(), $name));
 
-        $query
-            ->eagerLoader()
-            ->addToJoinsMap($tempName, $assoc, false, $this->_junctionProperty);
-        $assoc->attachTo($query, ['aliasPath' => $assoc->alias(), 'includeFields' => false]);
+        $assoc->attachTo($query);
 
         return $query;
     }

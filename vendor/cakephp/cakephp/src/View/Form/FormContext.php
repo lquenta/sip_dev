@@ -75,19 +75,9 @@ class FormContext implements ContextInterface
     /**
      * {@inheritDoc}
      */
-    public function val($field, $options = [])
+    public function val($field)
     {
-        $options += [
-            'default' => null,
-            'schemaDefault' => true
-        ];
-
-        $val = $this->_request->data($field);
-        if ($val !== null) {
-            return $val;
-        }
-
-        return $options['default'];
+        return $this->_request->data($field);
     }
 
     /**

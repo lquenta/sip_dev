@@ -21,6 +21,7 @@ use RedisException;
 
 /**
  * Redis storage engine for cache.
+ *
  */
 class RedisEngine extends CacheEngine
 {

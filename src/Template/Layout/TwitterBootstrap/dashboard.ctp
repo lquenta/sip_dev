@@ -420,8 +420,6 @@ $this->start('tb_body_start');
         <?=$this->Html->script('jquery.flot.resize.min');?>
         <?=$this->Html->script('ace-elements.min');?>
         <?=$this->Html->script('ace.min');?>
-        <?=$this->Html->script('highcharts');?>
-        <?=$this->Html->script('exporting');?>
 
         <!-- inline scripts related to this page -->
        

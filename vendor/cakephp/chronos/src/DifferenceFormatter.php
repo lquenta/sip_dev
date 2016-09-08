@@ -92,7 +92,6 @@ class DifferenceFormatter
         if ($this->translate->exists($tryKeyExists)) {
             $time = $this->translate->plural($tryKeyExists, $count, ['count' => $count]);
         }
-
         return $this->translate->singular($transId, ['time' => $time]);
     }
 }

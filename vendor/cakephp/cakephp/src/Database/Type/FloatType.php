@@ -16,7 +16,6 @@ namespace Cake\Database\Type;
 
 use Cake\Database\Driver;
 use Cake\Database\Type;
-use Cake\Database\TypeInterface;
 use PDO;
 use RuntimeException;
 
@@ -25,25 +24,8 @@ use RuntimeException;
  *
  * Use to convert float/decimal data between PHP and the database types.
  */
-class FloatType extends Type implements TypeInterface
+class FloatType extends Type
 {
-
-    /**
-     * Identifier name for this type
-     *
-     * @var string|null
-     */
-    protected $_name = null;
-
-    /**
-     * Constructor
-     *
-     * @param string|null $name The name identifying this type
-     */
-    public function __construct($name = null)
-    {
-        $this->_name = $name;
-    }
 
     /**
      * The class to use for representing number objects
@@ -76,7 +58,7 @@ class FloatType extends Type implements TypeInterface
             return 1;
         }
 
-        return (float)$value;
+        return floatval($value);
     }
 
     /**
@@ -96,7 +78,7 @@ class FloatType extends Type implements TypeInterface
             return 1;
         }
 
-        return (float)$value;
+        return floatval($value);
     }
 
     /**

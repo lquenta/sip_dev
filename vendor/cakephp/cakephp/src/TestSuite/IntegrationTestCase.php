@@ -15,18 +15,19 @@ namespace Cake\TestSuite;
 
 use Cake\Core\Configure;
 use Cake\Database\Exception as DatabaseException;
+use Cake\Network\Request;
 use Cake\Network\Session;
+use Cake\Routing\DispatcherFactory;
 use Cake\Routing\Router;
-use Cake\TestSuite\LegacyRequestDispatcher;
-use Cake\TestSuite\MiddlewareDispatcher;
+use Cake\TestSuite\Stub\Response;
 use Cake\Utility\CookieCryptTrait;
 use Cake\Utility\Hash;
 use Cake\Utility\Security;
 use Cake\Utility\Text;
 use Cake\View\Helper\SecureFieldTokenTrait;
 use Exception;
-use LogicException;
 use PHPUnit_Exception;
+use PHPUnit_Framework_Constraint_IsEqual;
 
 /**
  * A test case class intended to make integration tests of
@@ -42,28 +43,6 @@ abstract class IntegrationTestCase extends TestCase
 {
     use CookieCryptTrait;
     use SecureFieldTokenTrait;
-
-    /**
-     * Track whether or not tests are run against
-     * the PSR7 HTTP stack.
-     *
-     * @var bool
-     */
-    protected $_useHttpServer = false;
-
-    /**
-     * The customized application class name.
-     *
-     * @var string|null
-     */
-    protected $_appClass;
-
-    /**
-     * The customized application constructor arguments.
-     *
-     * @var array|null
-     */
-    protected $_appArgs;
 
     /**
      * The data used to build the next request.
@@ -146,21 +125,10 @@ abstract class IntegrationTestCase extends TestCase
 
     /**
      *
+     *
      * @var null|string
      */
     protected $_cookieEncriptionKey = null;
-
-    /**
-     * Auto-detect if the HTTP middleware stack should be used.
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        parent::setUp();
-        $namespace = Configure::read('App.namespace');
-        $this->_useHttpServer = class_exists($namespace . '\Application');
-    }
 
     /**
      * Clears the state used for requests.
@@ -179,38 +147,8 @@ abstract class IntegrationTestCase extends TestCase
         $this->_viewName = null;
         $this->_layoutName = null;
         $this->_requestSession = null;
-        $this->_appClass = null;
-        $this->_appArgs = null;
         $this->_securityToken = false;
         $this->_csrfToken = false;
-        $this->_useHttpServer = false;
-    }
-
-    /**
-     * Toggle whether or not you want to use the HTTP Server stack.
-     *
-     * @param bool $enable Enable/disable the usage of the HTTP Stack.
-     * @return void
-     */
-    public function useHttpServer($enable)
-    {
-        $this->_useHttpServer = (bool)$enable;
-    }
-
-    /**
-     * Configure the application class to use in integration tests.
-     *
-     * Combined with `useHttpServer()` to customize the class name and constructor arguments
-     * of your application class.
-     *
-     * @param string $class The application class name.
-     * @param array|null $constructorArgs The constructor arguments for your application class.
-     * @return void
-     */
-    public function configApplication($class, $constructorArgs)
-    {
-        $this->_appClass = $class;
-        $this->_appArgs = $constructorArgs;
     }
 
     /**
@@ -416,17 +354,21 @@ abstract class IntegrationTestCase extends TestCase
      */
     protected function _sendRequest($url, $method, $data = [])
     {
-        $dispatcher = $this->_makeDispatcher();
+        $request = $this->_buildRequest($url, $method, $data);
+        $response = new Response();
+        $dispatcher = DispatcherFactory::create();
+        $dispatcher->eventManager()->on(
+            'Dispatcher.beforeDispatch',
+            ['priority' => 999],
+            [$this, 'controllerSpy']
+        );
         try {
-            $request = $this->_buildRequest($url, $method, $data);
-            $response = $dispatcher->execute($request);
-            $this->_requestSession = $request['session'];
+            $dispatcher->dispatch($request, $response);
+            $this->_requestSession = $request->session();
             $this->_response = $response;
         } catch (PHPUnit_Exception $e) {
             throw $e;
         } catch (DatabaseException $e) {
-            throw $e;
-        } catch (LogicException $e) {
             throw $e;
         } catch (Exception $e) {
             $this->_exception = $e;
@@ -435,33 +377,18 @@ abstract class IntegrationTestCase extends TestCase
     }
 
     /**
-     * Get the correct dispatcher instance.
-     *
-     * @return object A dispatcher instance
-     */
-    protected function _makeDispatcher()
-    {
-        if ($this->_useHttpServer) {
-            return new MiddlewareDispatcher($this, $this->_appClass, $this->_appArgs);
-        }
-
-        return new LegacyRequestDispatcher($this);
-    }
-
-    /**
      * Adds additional event spies to the controller/view event manager.
      *
      * @param \Cake\Event\Event $event A dispatcher event.
-     * @param \Cake\Controller\Controller|null $controller Controller instance.
      * @return void
      */
-    public function controllerSpy($event, $controller = null)
+    public function controllerSpy($event)
     {
-        if (!$controller) {
-            $controller = $event->subject();
+        if (empty($event->data['controller'])) {
+            return;
         }
-        $this->_controller = $controller;
-        $events = $controller->eventManager();
+        $this->_controller = $event->data['controller'];
+        $events = $this->_controller->eventManager();
         $events->on('View.beforeRender', function ($event, $viewFile) {
             if (!$this->_viewName) {
                 $this->_viewName = $viewFile;
@@ -498,7 +425,7 @@ abstract class IntegrationTestCase extends TestCase
      * @param string|array $url The URL
      * @param string $method The HTTP method
      * @param array|null $data The request data.
-     * @return array The request context
+     * @return \Cake\Network\Request The built request.
      */
     protected function _buildRequest($url, $method, $data)
     {
@@ -539,7 +466,7 @@ abstract class IntegrationTestCase extends TestCase
         $props['environment'] = $env;
         $props = Hash::merge($props, $this->_request);
 
-        return $props;
+        return new Request($props);
     }
 
     /**

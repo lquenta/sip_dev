@@ -15,6 +15,7 @@ namespace Cake\Core;
 
 /**
  * ClassLoader
+ *
  */
 class ClassLoader
 {

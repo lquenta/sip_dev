@@ -16,6 +16,7 @@ namespace Cake\Console;
 
 /**
  * Object wrapper for interacting with stdin
+ *
  */
 class ConsoleInput
 {

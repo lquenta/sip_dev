@@ -20,6 +20,7 @@ use Psr\Log\AbstractLogger;
 
 /**
  * Base log engine class.
+ *
  */
 abstract class BaseLog extends AbstractLogger
 {

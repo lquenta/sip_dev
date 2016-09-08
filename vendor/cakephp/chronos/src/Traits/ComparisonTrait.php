@@ -391,7 +391,6 @@ trait ComparisonTrait
         if ($dt === null) {
             $dt = static::now($this->tz);
         }
-
         return $this->format('md') === $dt->format('md');
     }
 

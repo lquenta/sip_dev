@@ -344,9 +344,6 @@ class TestTask extends BakeTask
         if ($suffix && strpos($class, $suffix) === false) {
             $class .= $suffix;
         }
-        if ($type === 'controller' && $this->param('prefix')) {
-            $subSpace .= '\\' . Inflector::camelize($this->param('prefix'));
-        }
 
         return $namespace . '\\' . $subSpace . '\\' . $class;
     }
@@ -684,7 +681,6 @@ class TestTask extends BakeTask
         if ($this->plugin) {
             $namespace = $this->plugin;
         }
-
         $classTail = substr($className, strlen($namespace) + 1);
         $path = $path . $classTail . 'Test.php';
 
@@ -726,9 +722,6 @@ class TestTask extends BakeTask
             'boolean' => true,
             'default' => false,
             'help' => 'Select if you want to bake without fixture.'
-        ])->addOption('prefix', [
-            'default' => false,
-            'help' => 'Use when baking tests for prefixed controllers.'
         ])->addOption('all', [
             'boolean' => true,
             'help' => 'Bake all classes of the given type'

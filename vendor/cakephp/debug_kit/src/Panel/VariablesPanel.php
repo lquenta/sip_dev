@@ -103,7 +103,6 @@ class VariablesPanel extends DebugPanel
                 // Convert objects into using __debugInfo.
                 $item = array_map($walker, $item->__debugInfo());
             }
-
             return $item;
         };
         // Copy so viewVars is not mutated.
@@ -138,7 +137,6 @@ class VariablesPanel extends DebugPanel
         if (!isset($this->_data['content'])) {
             return 0;
         }
-
         return count($this->_data['content']);
     }
 }

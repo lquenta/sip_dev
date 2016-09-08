@@ -45,7 +45,7 @@ class MemoryStorage implements StorageInterface
     /**
      * {@inheritDoc}
      */
-    public function write($user)
+    public function write(array $user)
     {
         $this->_user = $user;
     }

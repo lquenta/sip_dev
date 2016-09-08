@@ -493,7 +493,7 @@ trait EntityTrait
      */
     public function jsonSerialize()
     {
-        return $this->extract($this->visibleProperties());
+        return $this->toArray();
     }
 
     /**
@@ -696,7 +696,6 @@ trait EntityTrait
         $this->_dirty = [];
         $this->_errors = [];
         $this->_invalid = [];
-        $this->_original = [];
     }
 
     /**

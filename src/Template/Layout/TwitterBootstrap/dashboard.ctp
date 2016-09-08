@@ -1,3 +1,5 @@
+
+
 <style type="text/css">
 body{
     margin-top: -50px;
@@ -421,6 +423,9 @@ $this->start('tb_body_start');
         <?=$this->Html->script('ace-elements.min');?>
         <?=$this->Html->script('ace.min');?>
         <?=$this->Html->script('highcharts');?>
+        <script src="http://code.highcharts.com/highcharts-more.js"></script>
+        <script src="http://code.highcharts.com/modules/solid-gauge.js"></script>
+    
 
         <!-- inline scripts related to this page -->
        

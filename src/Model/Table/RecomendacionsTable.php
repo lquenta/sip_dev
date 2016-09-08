@@ -5,7 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
-
+use Cake\Datasource\ConnectionManager;
 /**
  * Recomendacions Model
  *
@@ -146,6 +146,21 @@ class RecomendacionsTable extends Table
         $codigo_numerico=str_pad($result,5,'0',STR_PAD_LEFT);
         $result = 'SPREC'.$codigo_numerico;
         return $result;
+    }
+
+     public function RecomendacionsDatosPie(){
+
+        $strquery = 'select count(recomendacions.id) numero, 
+                    estados.descripcion, 
+                    count(recomendacions.id) / (select count(1) from recomendacions ) * 100 porcentaje
+                    from recomendacions 
+                    inner join estados on estados.id = recomendacions.estado_id
+                    group by estados.descripcion';
+        $connAux = ConnectionManager::get('default');
+        $stmt = $connAux->execute($strquery);
+        $results = $stmt ->fetchAll('assoc');
+        
+        return $results;
     }
 
 }

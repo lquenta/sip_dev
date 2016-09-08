@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Datasource\ConnectionManager;
 
 /**
  * SolicitudInformacions Model
@@ -109,5 +110,24 @@ class SolicitudInformacionsTable extends Table
         $codigo_numerico=str_pad($result,5,'0',STR_PAD_LEFT);
         $result = 'SPSOL'.$codigo_numerico;
         return $result;
+    }
+
+     public function SolictudesTacometro(){
+
+        $strquery = 'select 
+                        count(1) Ejecutados,
+                        (select 
+                                count(1)
+                            from
+                                solicitud_informacions) Total
+                    from
+                        solicitud_informacions
+                    where
+                        estado_id = 10;';
+        $connAux = ConnectionManager::get('default');
+        $stmt = $connAux->execute($strquery);
+        $results = $stmt ->fetchAll('assoc');
+        
+        return $results;
     }
 }

@@ -104,9 +104,11 @@ $(function(){ /* to make sure the script runs after page load */
         }
     </script>
     <form class="form-inline">
-      <div class="form-group">
-        <label for="searchTerm">Busqueda</label>
-        <input id="searchTerm" type="text" onkeyup="doSearch()" />
+      <div class="row">
+          <div class="form-group col-md-12">      
+            <label for="searchTerm">Busqueda</label>
+            <input id="searchTerm" class="form-control" type="text" onkeyup="doSearch()" />
+          </div>
       </div>
     </form>
 <table class="table table-striped" cellpadding="0" cellspacing="0" id="datos">

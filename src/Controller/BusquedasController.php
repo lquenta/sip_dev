@@ -107,7 +107,7 @@ class BusquedasController extends AppController
                  if($adjunto_consolidado==null){
                     $adjunto_link='';
                 }else{
-                    $adjunto_link=$adjunto_consolidado->link;
+                    $adjunto_link=$full_url.'/uploads/'.$adjunto_consolidado->link;
                 }
                 //debug($consolidado);
                 $consolidado_indicadores = $this->ConsolidadoIndicadores->find('all',['contain' => ['Indicadors']])->where(['consolidado_id'=>$consolidado->id])->toArray();
@@ -120,7 +120,7 @@ class BusquedasController extends AppController
                     'descripcion'=>$accion->descripcion,
                     'fecha'=>$accion->fecha->i18nFormat('yyyy-MM-dd'),
                     'indicadores'=>$indicadores_consolidado,
-                    'informe_estado'=>$full_url.'/uploads/'.$adjunto_link,
+                    'informe_estado'=>$adjunto_link,
                     'fuente'=>$consolidado->fuente
                     );
                 $acciones_recomendacion[]=$accion_vinculada;

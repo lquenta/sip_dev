@@ -20,7 +20,6 @@ use PDO;
 /**
  * Represents a database diver containing all specificities for
  * a database engine including its SQL dialect
- *
  */
 abstract class Driver
 {
@@ -253,7 +252,7 @@ abstract class Driver
             return 'TRUE';
         }
         if (is_float($value)) {
-            return str_replace(',', '.', strval($value));
+            return str_replace(',', '.', (string)$value);
         }
         if ((is_int($value) || $value === '0') || (
             is_numeric($value) && strpos($value, ',') === false &&
@@ -263,6 +262,16 @@ abstract class Driver
         }
 
         return $this->_connection->quote($value, PDO::PARAM_STR);
+    }
+
+    /**
+     * Returns the schema name that's being used
+     *
+     * @return string
+     */
+    public function schema()
+    {
+        return $this->_config['schema'];
     }
 
     /**

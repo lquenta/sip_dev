@@ -85,8 +85,13 @@ trait SelectableAssociationTrait
 
         $finder = isset($options['finder']) ? $options['finder'] : $this->finder();
         list($finder, $opts) = $this->_extractFinder($finder);
+        if (!isset($options['fields'])) {
+            $options['fields'] = [];
+        }
+
         $fetchQuery = $this
             ->find($finder, $opts)
+            ->select($options['fields'])
             ->where($options['conditions'])
             ->eagerLoaded(true)
             ->hydrate($options['query']->hydrate());
@@ -96,16 +101,6 @@ trait SelectableAssociationTrait
             $fetchQuery = $this->_addFilteringJoin($fetchQuery, $key, $filter);
         } else {
             $fetchQuery = $this->_addFilteringCondition($fetchQuery, $key, $filter);
-        }
-
-        if (!empty($options['fields'])) {
-            $fields = $fetchQuery->aliasFields($options['fields'], $alias);
-            if (!in_array($key, $fields)) {
-                throw new InvalidArgumentException(
-                    sprintf('You are required to select the "%s" field', $key)
-                );
-            }
-            $fetchQuery->select($fields);
         }
 
         if (!empty($options['sort'])) {
@@ -120,7 +115,52 @@ trait SelectableAssociationTrait
             $fetchQuery = $options['queryBuilder']($fetchQuery);
         }
 
+        $this->_assertFieldsPresent($fetchQuery, (array)$key);
+
         return $fetchQuery;
+    }
+
+    /**
+     * Checks that the fetching query either has auto fields on or
+     * has the foreignKey fields selected.
+     * If the required fields are missing, throws an exception.
+     *
+     * @param \Cake\ORM\Query $fetchQuery The association fetching query
+     * @param array $key The foreign key fields to check
+     * @return void
+     * @throws InvalidArgumentException
+     */
+    protected function _assertFieldsPresent($fetchQuery, $key)
+    {
+        $select = $fetchQuery->aliasFields($fetchQuery->clause('select'));
+        if (empty($select)) {
+            return;
+        }
+        $missingKey = function ($fieldList, $key) {
+            foreach ($key as $keyField) {
+                if (!in_array($keyField, $fieldList, true)) {
+                    return true;
+                }
+            }
+
+            return false;
+        };
+
+        $missingFields = $missingKey($select, $key);
+        if ($missingFields) {
+            $driver = $fetchQuery->connection()->driver();
+            $quoted = array_map([$driver, 'quoteIdentifier'], $key);
+            $missingFields = $missingKey($select, $quoted);
+        }
+
+        if ($missingFields) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    'You are required to select the "%s" field(s)',
+                    implode(', ', (array)$key)
+                )
+            );
+        }
     }
 
     /**

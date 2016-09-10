@@ -66,103 +66,6 @@ $this->start('tb_body_start');
 
                 <div class="navbar-buttons navbar-header pull-right" role="navigation">
                     <ul class="nav ace-nav">
-                        
-                        <li class="purple">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <i class="ace-icon fa fa-bell icon-animated-bell"></i>
-                                <span class="badge badge-important">2</span>
-                            </a>
-
-                            <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
-                                <li class="dropdown-header">
-                                    <i class="ace-icon fa fa-exclamation-triangle"></i>
-                                    2 Notificaciones
-                                </li>
-
-                                <li class="dropdown-content">
-                                    <ul class="dropdown-menu dropdown-navbar navbar-pink">
-                                        <li>
-                                            <a href="#">
-                                                <div class="clearfix">
-                                                    <span class="pull-left">
-                                                        <i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
-                                                        Debe autorizar la accion SPSEG00001-001
-                                                    </span>
-                                                    <span class="pull-right badge badge-info">+1</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                 <li class="dropdown-content">
-                                    <ul class="dropdown-menu dropdown-navbar navbar-pink">
-                                        <li>
-                                            <a href="#">
-                                                <div class="clearfix">
-                                                    <span class="pull-left">
-                                                        <i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
-                                                        Debe autorizar la accion SPSEG00001-002
-                                                    </span>
-                                                    <span class="pull-right badge badge-info">+1</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <li class="dropdown-footer">
-                                    <a href="#">
-                                        Ver todas las notificaciones
-                                        <i class="ace-icon fa fa-arrow-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="green">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
-                                <span class="badge badge-success">1</span>
-                            </a>
-
-                            <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-                                <li class="dropdown-header">
-                                    <i class="ace-icon fa fa-envelope-o"></i>
-                                    1 mensaje
-                                </li>
-
-                                <li class="dropdown-content">
-                                    <ul class="dropdown-menu dropdown-navbar">
-                                        <li>
-                                            <a href="#" class="clearfix">
-                                                <?=$this->Html->image('avatars/avatar1.png', ['class' => 'msg-photo']);?>
-                                                <span class="msg-body">
-                                                    <span class="msg-title">
-                                                        <span class="blue">Alex:</span>
-                                                        Debes autorizar la accion SPSEG00001-001
-                                                    </span>
-
-                                                    <span class="msg-time">
-                                                        <i class="ace-icon fa fa-clock-o"></i>
-                                                        <span>hace un momento</span>
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </li>
-
-                                      
-                                    </ul>
-                                </li>
-
-                                <li class="dropdown-footer">
-                                    <a href="inbox.html">
-                                        Ver todos los mensajes
-                                        <i class="ace-icon fa fa-arrow-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
                         <li class="light-blue">
                             <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                                 <?=$this->Html->image('avatars/user.jpg', ['class' => 'msg-photo']);?>
@@ -198,6 +101,55 @@ $this->start('tb_body_start');
                                     </a>
                                 </li>
                             </ul>
+                          
+        
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administración <span class="caret"></span></a>
+                              <ul class="dropdown-menu">
+                                <li class="list-group-item">
+                                    <a href="<?= $this->Url->build(["controller" => "comites","action" => "index"]); ?>">
+                                        Comités
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="<?= $this->Url->build(["controller" => "mecanismos","action" => "index"]); ?>">
+                                        Mecanismos
+                                    </a>
+                                </li>
+                                <li class="list-group-item"> 
+                                    <a href="<?= $this->Url->build(["controller" => "indicadors","action" => "index"]); ?>">
+                                        Indicadores
+                                    </a>
+                                </li>                                
+                                <li class="list-group-item">
+                                    <a href="<?= $this->Url->build(["controller" => "users","action" => "index"]); ?>">
+                                        Usuarios
+                                    </a>
+                                </li>                                
+                                <li class="list-group-item">
+                                    <a href="<?= $this->Url->build(["controller" => "rols","action" => "index"]); ?>">
+                                        Roles
+                                    </a>
+                                </li>                                
+                                <li class="list-group-item">
+                                    <a href="<?= $this->Url->build(["controller" => "Derechos","action" => "index"]); ?>">
+                                        Derechos
+                                    </a>
+                                </li>                                
+                                <li class="list-group-item">
+                                    <a href="<?= $this->Url->build(["controller" => "poblacions","action" => "index"]); ?>">
+                                        Población
+                                    </a>
+                                </li>                                
+                                <li class="list-group-item"> 
+                                    <a href="<?= $this->Url->build(["controller" => "institucions","action" => "index"]); ?>">
+                                        Instituciones
+                                    </a>
+                                </li>                                
+                              </ul>
+                            </li>
+                          
+
                         </li>
                     </ul>
                 </div>
@@ -431,3 +383,7 @@ $this->start('tb_body_start');
        
     </body>
 </html>
+
+<script>
+    $("#ace-settings-container").hide();
+</script>

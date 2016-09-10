@@ -123,8 +123,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                                  Nueva Recomendación
                                                                  </a>
                                                                 
-                                                                 <div class="panel">                                                                  
-                                                                  
+                                                                 <div class="panel">                                                                                                                                    
                                                                     <?php echo $this->requestAction('/recomendacions'); ?>    
                                                                   
                                                                 </div>     

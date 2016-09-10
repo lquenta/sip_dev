@@ -1,11 +1,11 @@
 <?php
 $this->extend('../Layout/TwitterBootstrap/dashboard');
-$this->assign('title', 'Añadir Segumiento');
+$this->assign('title', 'Añadir Seguimiento');
 ?>
 
 <?= $this->Form->create($accion,['type' => 'file']); ?>
 <fieldset>
-    <legend><?= __('Añadir Segumiento') ?></legend>
+    <legend><?= __('Añadir Seguimiento') ?></legend>
    
      <div class="panel-group">
         <div class="panel panel-default">

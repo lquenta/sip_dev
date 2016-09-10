@@ -1,11 +1,11 @@
 <?php
 $this->extend('../Layout/TwitterBootstrap/dashboard');
-$this->assign('title', 'Responder Solicitud de Informacion');
+$this->assign('title', 'Responder Solicitud de Información');
 ?>
 
 <?= $this->Form->create($solicitud_respuesta,['type' => 'file']); ?>
 <fieldset>
-    <legend><?= __('Responder Solicitud de Informacion') ?></legend>
+    <legend><?= __('Responder Solicitud de Información') ?></legend>
    
      <div class="panel-group">
         <div class="panel panel-default">
@@ -18,7 +18,7 @@ $this->assign('title', 'Responder Solicitud de Informacion');
                 <div class="panel-body">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-12"><label for="inputCodigo">Codigo</label>
+                            <div class="col-md-12"><label for="inputCodigo">Código</label>
                                 <input type="text" class="form-control" id="inputCodigo" placeholder="" readonly="readonly" value="<?= h($solicitudInformacion->codigo) ?>">
                             </div>
                            
@@ -73,6 +73,7 @@ $this->assign('title', 'Responder Solicitud de Informacion');
    
 </fieldset>
 <?= $this->Form->button(__("Grabar")); ?>
+<button class="btn btn-default" onclick = "volver()">Cancelar</button>
 <?= $this->Form->end() ?>
 
 

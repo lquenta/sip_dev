@@ -106,7 +106,7 @@ $(function(){ /* to make sure the script runs after page load */
     <form class="form-inline">
       <div class="row">
           <div class="form-group col-md-12">      
-            <label for="searchTerm">Busqueda</label>
+            <label for="searchTerm">Búsqueda</label>
             <input id="searchTerm" class="form-control" type="text" onkeyup="doSearch()" />
           </div>
       </div>

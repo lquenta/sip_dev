@@ -386,4 +386,8 @@ $this->start('tb_body_start');
 
 <script>
     $("#ace-settings-container").hide();
+    function volver()
+    {
+        window.history.back();
+    }
 </script>

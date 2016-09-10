@@ -109,7 +109,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                             <li role="presentation" class="active"><a href="#Recomendaciones" aria-controls="Recomendaciones" role="tab" data-toggle="tab">Recomendaciones</a></li>
                                                             <li role="presentation"><a href="#Solicitudes" aria-controls="Solicitudes" role="tab" data-toggle="tab">Solicitudes</a></li>
                                                             <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Pendientes</a></li>
-                                                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Seguimientos sin responder</a></li>
+                                                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Seguimientos sin Responder</a></li>
                                                             <li role="presentation"><a href="#Consolidado" aria-controls="Consolidado" role="tab" data-toggle="tab">Visor Gráfico</a></li>
                                                             
                                                           </ul>
@@ -138,7 +138,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                                 
                                                                 
                                                                 <div class="panel panel-primary">
-                                                                  <div class="panel-heading">Solicitudes pendientes de respuesta</div>
+                                                                  <div class="panel-heading">Solicitudes Pendientes de Respuesta</div>
                                                                   <div class="panel-body" style="overflow-y: scroll; max-height: 300px;">
                                                                     <?php echo $this->requestAction('/solicitud-informacions'); ?>    
                                                                   </div>

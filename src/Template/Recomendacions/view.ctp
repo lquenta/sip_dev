@@ -1,6 +1,6 @@
 <?php
 $this->extend('../Layout/TwitterBootstrap/dashboard');
-$this->assign('title', 'Ver Recomendacion');
+$this->assign('title', 'Ver Recomendación');
 
 ?>
 <div class="panel panel-default">
@@ -10,7 +10,7 @@ $this->assign('title', 'Ver Recomendacion');
     </div>
     <table class="table table-striped" cellpadding="0" cellspacing="0">
         <tr>
-            <td><?= __('Descripcion') ?></td>
+            <td><?= __('Descripción') ?></td>
             <td><?= h($recomendacion->descripcion) ?></td>
         </tr>
         <tr>
@@ -27,11 +27,11 @@ $this->assign('title', 'Ver Recomendacion');
         </tr>
        
         <tr>
-            <td><?= __('Fecha Creacion') ?></td>
+            <td><?= __('Fecha Creación') ?></td>
             <td><?= h($recomendacion->fecha_creacion) ?></td>
         </tr>
         <tr>
-            <td><?= __('Fecha Modificacion') ?></td>
+            <td><?= __('Fecha Modificación') ?></td>
             <td><?= h($recomendacion->fecha_modificacion) ?></td>
         </tr>
     </table>
@@ -87,7 +87,7 @@ $this->assign('title', 'Ver Recomendacion');
             <thead>
             <tr>
                 <th><?= __('Id') ?></th>
-                <th><?= __('Id Recomendacion') ?></th>                
+                <th><?= __('Id Recomendación') ?></th>                
                 <th><?= __('Link') ?></th>
             </tr>
             </thead>

@@ -141,7 +141,8 @@ class SolicitudInformacionsController extends AppController
                 
                 
                 $this->Flash->success(__('La Solicitud se ha guardado.'));
-                return $this->redirect(['action' => 'index']);
+                //return $this->redirect(['action' => 'index']);
+                return $this->redirect("/");
             } else {
                 $this->Flash->error(__('La Solicitud no se ha guardado, por favor intente de nuevo.'));
             }

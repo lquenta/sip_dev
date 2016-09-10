@@ -1,6 +1,41 @@
+<style type="text/css">
+    table {
+        width: 100%;
+    }
+
+/*thead, tbody, tr, td, th { display: block; }*/
+
+tr:after {
+    content: '';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+thead th {
+    /*height: 30px;*/
+
+    /*text-align: left;*/
+}
+
+tbody {
+    height: 400px;
+    overflow-y: auto;
+}
+
+thead {
+    /* fallback */
+}
+
+
+tbody td, thead th {
+    /*width: 19.2%;
+    float: left;*/
+}
+</style>
 <?php
 /* @var $this \Cake\View\View */
-$this->extend('../Layout/TwitterBootstrap/dashboard');
+//$this->extend('../Layout/TwitterBootstrap/dashboard');
 $this->assign('title', 'Lista de todas las recomendaciones');
 ?>
 <script language="javascript">
@@ -69,25 +104,28 @@ $(function(){ /* to make sure the script runs after page load */
         }
     </script>
     <form class="form-inline">
-      <div class="form-group">
-        <label for="searchTerm">Busqueda</label>
-        <input id="searchTerm" type="text" onkeyup="doSearch()" />
+      <div class="row">
+          <div class="form-group col-md-12">      
+            <label for="searchTerm">Busqueda</label>
+            <input id="searchTerm" class="form-control" type="text" onkeyup="doSearch()" />
+          </div>
       </div>
     </form>
+    <div class="" style="overflow-y: scroll; max-height: 400px; min-width:200%; margin:10px;">
 <table class="table table-striped" cellpadding="0" cellspacing="0" id="datos">
     <thead>
         <tr>
-            <th><?= $this->Paginator->sort('codigo','Código'); ?></th>
+            <th><?= h('Código'); ?></th>
             <th><?= h('Mecanismos'); ?></th>
-            <th><?= $this->Paginator->sort('descripcion','Descripción'); ?></th>
-            <th><?= $this->Paginator->sort('año'); ?></th>
+            <th><?= h('Descripción'); ?></th>
+            <th><?= h('Año'); ?></th>
             <th><?= h('Grupo Poblacional'); ?></th>
             <th><?= h('Derechos'); ?></th>
             <th><?= h('Instituciones'); ?></th>
-            <th><?= $this->Paginator->sort('fecha_modificacion','Fecha Modificación'); ?></th>
+            <th><?= h('Fecha Modificación'); ?></th>
+            <th><?= h('Usuario'); ?></th>
+            <th><?= h('Estado'); ?></th>
             
-            <th><?= $this->Paginator->sort('usuario_id'); ?></th>
-            <th><?= $this->Paginator->sort('estado_id'); ?></th>
             
             <th class="actions"><?= __('Accesos Directos'); ?></th>
         </tr>
@@ -113,18 +151,18 @@ $(function(){ /* to make sure the script runs after page load */
             }
             //debug($recomendacion->poblacion_recomendacion[0]->poblacion->descripcion);?>
         <tr>
-            <td><?= h($recomendacion->codigo) ?></td>
-            <td><?= $mecanismos_item_recomendacion; ?></td>
+            <td class="filterable-cell"><?= h($recomendacion->codigo) ?></td>
+            <td class="filterable-cell"><?= $mecanismos_item_recomendacion; ?></td>
             <td class="descripcion"><?= h($recomendacion->descripcion)?></td>
-            <td><?= $this->Number->format($recomendacion->año) ?></td>
-            <td><?= $poblaciones_item_recomendacion; ?></td>
-            <td><?= $derecho_item_recomendacion; ?></td>
-            <td><?= $institucion_item_recomendacion; ?></td>
-            <td><?= h($recomendacion->fecha_modificacion) ?></td>
-            <td>
+            <td class="filterable-cell"><?= $this->Number->format($recomendacion->año) ?></td>
+            <td class="filterable-cell"><?= $poblaciones_item_recomendacion; ?></td>
+            <td class="filterable-cell"><?= $derecho_item_recomendacion; ?></td>
+            <td class="filterable-cell"><?= $institucion_item_recomendacion; ?></td>
+            <td class="filterable-cell"><?= h($recomendacion->fecha_modificacion) ?></td>
+            <td class="filterable-cell">
                 <?= $recomendacion->has('user') ? $this->Html->link($recomendacion->user->nombre_usuario, ['controller' => 'Users', 'action' => 'view', $recomendacion->user->id]) : '' ?>
             </td>
-            <td>
+            <td class="filterable-cell">
                 <?= $recomendacion->estado->descripcion; ?>
             </td>
             
@@ -136,11 +174,12 @@ $(function(){ /* to make sure the script runs after page load */
         <?php endforeach; ?>
     </tbody>
 </table>
-<div class="paginator">
+</div>
+<!-- <div class="paginator">
     <ul class="pagination">
         <?= $this->Paginator->prev('< ' . __('previo')) ?>
         <?= $this->Paginator->numbers(['before' => '', 'after' => '']) ?>
         <?= $this->Paginator->next(__('siguiente') . ' >') ?>
     </ul>
     <p><?= $this->Paginator->counter() ?></p>
-</div>
+</div> -->

@@ -37,6 +37,14 @@ class BusquedasController extends AppController
         $textoBusqueda=$this->request->data('textoBuscar');
         $this->loadModel('Recomendacions');
         $this->loadModel('Accions');
+        $this->loadModel('ComiteRecomendacions');
+        $this->loadModel('Comites');
+        $this->loadModel('ConsolidadoIndicadores');
+        $this->loadModel('Consolidados');
+        $this->loadModel('AdjuntosConsolidados');
+        
+        
+        
         if($textoBusqueda!=''){
              $recomendaciones = $this->Recomendacions->find('all',[
             'contain' => ['Users', 'Estados', 'AdjuntosRecomendacions', 'DerechoRecomendacion.Derechos', 'InstitucionRecomendacion.Institucions', 'MecanismoRecomendacion.Mecanismos', 'PoblacionRecomendacion.Poblacions', 'RecomendacionParametros']
@@ -60,6 +68,16 @@ class BusquedasController extends AppController
             foreach ($recomendacion->mecanismo_recomendacion as $item_mecanismo) {
                 $mecanismo_proteccion.=' '.$item_mecanismo->mecanismo->descripcion;
             }
+            
+            $comiteRecomendacion = $this->ComiteRecomendacions->find('list',[
+                'keyField' => 'comite_id',
+                'valueField' => 'comite_id'
+            ])
+             ->where(['ComiteRecomendacions.recomendacion_id ' => $id_recomendacion])->toArray();
+             $comites=$this->Comites->find('list')->where(['idComite IN ' => $comiteRecomendacion])
+            ->toArray();
+
+
             $fecha_recomendacion=$recomendacion->fecha_modificacion->i18nFormat('yyyy-MM-dd');
             $grupo_poblacional='';
              foreach ($recomendacion->poblacion_recomendacion as $item_poblacion) {
@@ -82,28 +100,35 @@ class BusquedasController extends AppController
             $acciones = $this->Accions->find('all',['contain' => ['Users','AdjuntosAccions' ]])->where(['recomendacion_id'=> $id_recomendacion,'estado_id'=>'9' ]);
             $acciones_recomendacion =array();
             foreach ($acciones as $accion ) {
-                if($accion->adjuntos_accions==null){
+               
+                //obtenemos el consolidado de la accion
+                $consolidado = $this->Consolidados->find('all')->where(['accion_id'=>$accion->id])->first();
+                $adjunto_consolidado = $this->AdjuntosConsolidados->find('all')->where(['consolidado_id'=>$accion->id])->first();
+                 if($adjunto_consolidado==null){
                     $adjunto_link='';
                 }else{
-                    $adjunto_link=$accion->adjuntos_accions[0]->link;
+                    $adjunto_link=$adjunto_consolidado->link;
+                }
+                //debug($consolidado);
+                $consolidado_indicadores = $this->ConsolidadoIndicadores->find('all',['contain' => ['Indicadors']])->where(['consolidado_id'=>$consolidado->id])->toArray();
+                $indicadores_consolidado=array();
+                foreach ($consolidado_indicadores as $cons_indicador) {
+                    $indicadores_consolidado[]=array('nombre'=>$cons_indicador->indicador->nombre,'link'=>$cons_indicador->indicador->link,'grupo'=>$cons_indicador->indicador->Grupo);
                 }
                 $accion_vinculada = array(
                     'id_accion'=>$accion->id,
                     'descripcion'=>$accion->descripcion,
                     'fecha'=>$accion->fecha->i18nFormat('yyyy-MM-dd'),
-                    'indicadores'=>array(
-                        'justicia' =>array('Índices Gini y razón de percentil de la distribución de ingresos','Distribución de ingreso regular en la ocupación principal de mujeres en relación a hombres (Brecha salarial)'),
-                        'trabajo' =>array('Ingreso promedio mensual en la ocupacion principal, según grupo ocupacional')
-                        ),
+                    'indicadores'=>$indicadores_consolidado,
                     'informe_estado'=>$full_url.'/uploads/'.$adjunto_link,
-                    'fuente'=>'Informe Bolivia - CERD 2010'
+                    'fuente'=>$consolidado->fuente
                     );
                 $acciones_recomendacion[]=$accion_vinculada;
             }
 
             $recomendacion_vinculada=array(
                 'id_recomendacion'=>$id_recomendacion,
-                'mecanismo_proteccion'=>$mecanismo_proteccion,
+                'mecanismo_proteccion'=>array_values($comites),
                 'fecha_recomendacion'=> $fecha_recomendacion,
                 'grupo_poblacional'=>$grupo_poblacional,
                 'derechos'=>$derechos,
@@ -229,7 +254,7 @@ class BusquedasController extends AppController
 
             $recomendacion_vinculada=array(
                 'id_recomendacion'=>$id_recomendacion,
-                'mecanismo_proteccion'=>$mecanismo_proteccion,
+                'mecanismo_proteccion'=>array('Examen Periódico Universal 2014'),
                 'fecha_recomendacion'=> $fecha_recomendacion,
                 'grupo_poblacional'=>$grupo_poblacional,
                 'derechos'=>$derechos,

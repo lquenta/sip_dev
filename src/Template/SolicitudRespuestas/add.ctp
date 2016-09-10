@@ -1,4 +1,3 @@
-<h1>carajo</h1>
 <?php
 $this->extend('../Layout/TwitterBootstrap/dashboard');
 $this->assign('title', 'Responder Solicitud de Informacion');

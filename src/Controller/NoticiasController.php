@@ -3,6 +3,8 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Routing\RouteBuilder;
+use Cake\Routing\Router;
 class NoticiasController extends AppController
 {
     public function beforeFilter(Event $event)
@@ -17,36 +19,45 @@ class NoticiasController extends AppController
         $this->loadComponent('RequestHandler');
     }
     public function todas(){
+         $full_url=Router::url('/', true);;
         $resultados=array(
             'resultados'=>
                 array(
                     array('id_noticia'=>1,
-                        'titular'=>'Noticia no publicada 1',
-                        'contenido'=> '<strong>Lorem</strong> ipsum dolor sit amet, consectetur adipiscing elit. Proin in placerat lacus. Quisque bibendum tincidunt est id pretium. Nulla vitae nisl eget metus rutrum euismod. Maecenas sit amet nibh viverra eros volutpat tincidunt. Duis mi turpis, fermentum pretium luctus sit amet, mattis a tellus. Praesent in nibh maximus, dignissim eros eget, fermentum urna. Donec vehicula mauris lectus, vel porta nisi vestibulum eget. Morbi aliquam urna at aliquet mollis. Ut ultricies risus nec purus mollis tincidunt. Fusce vehicula a urna eget iaculis. Proin ac dui placerat elit consequat efficitur. Fusce ac massa id ex iaculis iaculis sit amet nec mi. Fusce suscipit, felis et mollis elementum, nisl orci accumsan dui, sit amet congue sem risus in dui. Nunc ac pharetra quam. Sed eleifend leo eget justo volutpat viverra. Aenean sed risus neque. Quisque sit amet nisi eu mauris consectetur facilisis sit amet eget ipsum. Maecenas massa libero, elementum vitae mattis sit amet, vulputate blandit metus. Sed egestas sagittis sapien, id tempor quam.<br\>Ut placerat quam orci, eu vulputate metus euismod vel. Quisque interdum sodales ornare. Quisque vel turpis dictum lacus pellentesque lobortis a at turpis. Aenean lacus lectus, porttitor vel eros nec, mollis sagittis lectus. Sed et fringilla tellus. Aliquam tempor mauris sit amet tincidunt faucibus. Morbi tempor in dui quis cursus.',
-                        'fecha'=>'09-06- 2012',
-                        'estado'=>'0',
-                        'link_imagen'=>'https://placebear.com/g/200/300'
+                        'titular'=>'BOLIVIA en el Examen Periódico Universal 2014',
+                        'contenido'=> 'En Octubre de 2014, en el marco de su segundo informe al Examen Periódico Universal (EPU), el Estado boliviano se comprometió voluntariamente a la “Creación de un espacio interministerial en derechos humanos para la elaboración de informes periódicos.”  A partir de entonces, y en cumplimiento a este compromiso, el Ministerio de Relaciones Exteriores, el Ministerio de Justicia y la Procuraduría General del Estado, con el apoyo de la OACNUDH Bolivia, trabajaron en la conformación de un espacio de coordinación interinstitucional para la elaboración, presentación y defensa de Informes del Estado Plurinacional de Bolivia ante los diferentes mecanismos de protección de los derechos humanos de la Organización de Naciones Unidas, y en la creación paralela de un Sistema de Seguimiento, Monitoreo y Estadísticas de las recomendaciones sobre derechos humanos aceptadas por el Estado, denominado SIPLUS Bolivia. Este esfuerzo fue oficializado a través de un Convenio de Cooperación firmado el 01 de diciembre de 2015 entre estas instituciones.<br\>El EPU es el mecanismo de protección más reciente creado por el Consejo de Derechos Humanos de la Organización de Naciones Unidas. Es un proceso único al que los 193 Estados Miembros de la ONU se presentan voluntariamente para dar a conocer ante sus pares la situación de los derechos humanos en sus países y asumen, en muchos casos, compromisos voluntarios en materia de derechos humanos. Tras un diálogo interactivo entre Estados, el Estado examinado recibe recomendaciones con la posibilidad de aceptarlas o rechazarlas. <br\>Bolivia presentó dos informes EPU en 2010 y 2014. <br\>
+                            •   <a href="http://www.ohchr.org/EN/HRBodies/UPR/Pages/BOSession20.aspx">Aquí</a>.    Informes de Bolivia ante el Examen Periódico Universal.<br\>
+                            •   <a href="http://webtv.un.org/meetings-events/watch/bolivia-upr-report-consideration-38th-meeting-28th-regular-session-human-rights-council/4119476801001">Aquí</a>.    Video de la presentación del segundo informe EPU de Bolivia el año 2014.',
+                        'fecha'=>'01-10-2012',
+                        'estado'=>'1',
+                        'link_imagen'=>$full_url.'/images/noticia1.jpg'
                     ),
                     array('id_noticia'=>2,
-                        'titular'=>'Noticia no publicada 2',
-                        'contenido'=> '<strong>Lorem</strong> ipsum dolor sit amet, consectetur adipiscing elit. Proin in placerat lacus. Quisque bibendum tincidunt est id pretium. Nulla vitae nisl eget metus rutrum euismod. Maecenas sit amet nibh viverra eros volutpat tincidunt. Duis mi turpis, fermentum pretium luctus sit amet, mattis a tellus. Praesent in nibh maximus, dignissim eros eget, fermentum urna. Donec vehicula mauris lectus, vel porta nisi vestibulum eget. Morbi aliquam urna at aliquet mollis. Ut ultricies risus nec purus mollis tincidunt. Fusce vehicula a urna eget iaculis. Proin ac dui placerat elit consequat efficitur. Fusce ac massa id ex iaculis iaculis sit amet nec mi. Fusce suscipit, felis et mollis elementum, nisl orci accumsan dui, sit amet congue sem risus in dui. Nunc ac pharetra quam. Sed eleifend leo eget justo volutpat viverra. Aenean sed risus neque. Quisque sit amet nisi eu mauris consectetur facilisis sit amet eget ipsum. Maecenas massa libero, elementum vitae mattis sit amet, vulputate blandit metus. Sed egestas sagittis sapien, id tempor quam.<br\>Ut placerat quam orci, eu vulputate metus euismod vel. Quisque interdum sodales ornare. Quisque vel turpis dictum lacus pellentesque lobortis a at turpis. Aenean lacus lectus, porttitor vel eros nec, mollis sagittis lectus. Sed et fringilla tellus. Aliquam tempor mauris sit amet tincidunt faucibus. Morbi tempor in dui quis cursus.',
-                        'fecha'=>'09-06- 2011',
-                        'estado'=>'0',
-                        'link_imagen'=>'https://placebear.com/g/200/300'
+                        'titular'=>'Presentación oficial del Sistema Plurinacional de Seguimiento, Monitoreo y Estadística de Recomendaciones sobre Derechos Humanos en Bolivia: SIPLUS Bolivia',
+                        'contenido'=> 'El 10 de diciembre 2015, en conmemoración al Día Internacional de los Derechos Humanos, el Ministerio de Justicia, el Ministerio de Relaciones Exteriores y la Procuraduría General de Estado, con el apoyo técnica de la Oficina en Bolivia del Alto Comisionado de las Naciones Unidas para los Derechos Humanos, realizaron la presentación de la primera versión del Sistema Plurinacional de Seguimiento, Monitoreo y Estadística de Recomendaciones sobre Derechos Humanos en Bolivia (SIPLUS Bolivia).<br/>
+                            El Viceministro de Justicia y Derechos Fundamentales, Sr. Diego Jiménez, expresó:  “El objeto es facilitar la búsqueda de recomendaciones, hacer el seguimiento de las acciones llevadas a cabo por el Estado respecto a éstas y conocer datos estadísticos vinculados  a los esfuerzos del Estado en el cumplimiento de sus obligaciones en materia de derechos humanos”.',
+                        'fecha'=>'11-12-2015',
+                        'estado'=>'1',
+                        'link_imagen'=>$full_url.'/images/noticia2.jpg'
                     ),
                      array('id_noticia'=>3,
-                        'titular'=>'Noticia si publicada 3',
-                        'contenido'=> '<strong>Lorem</strong> ipsum dolor sit amet, consectetur adipiscing elit. Proin in placerat lacus. Quisque bibendum tincidunt est id pretium. Nulla vitae nisl eget metus rutrum euismod. Maecenas sit amet nibh viverra eros volutpat tincidunt. Duis mi turpis, fermentum pretium luctus sit amet, mattis a tellus. Praesent in nibh maximus, dignissim eros eget, fermentum urna. Donec vehicula mauris lectus, vel porta nisi vestibulum eget. Morbi aliquam urna at aliquet mollis. Ut ultricies risus nec purus mollis tincidunt. Fusce vehicula a urna eget iaculis. Proin ac dui placerat elit consequat efficitur. Fusce ac massa id ex iaculis iaculis sit amet nec mi. Fusce suscipit, felis et mollis elementum, nisl orci accumsan dui, sit amet congue sem risus in dui. Nunc ac pharetra quam. Sed eleifend leo eget justo volutpat viverra. Aenean sed risus neque. Quisque sit amet nisi eu mauris consectetur facilisis sit amet eget ipsum. Maecenas massa libero, elementum vitae mattis sit amet, vulputate blandit metus. Sed egestas sagittis sapien, id tempor quam.<br\>Ut placerat quam orci, eu vulputate metus euismod vel. Quisque interdum sodales ornare. Quisque vel turpis dictum lacus pellentesque lobortis a at turpis. Aenean lacus lectus, porttitor vel eros nec, mollis sagittis lectus. Sed et fringilla tellus. Aliquam tempor mauris sit amet tincidunt faucibus. Morbi tempor in dui quis cursus.',
-                        'fecha'=>'09-06-2010',
+                        'titular'=>'Informe del Estado Plurinacional de Bolivia ante el Comité de los Derechos de las Personas con Discapacidad de la Organización de las Naciones Unidas (ONU)',
+                        'contenido'=> 'La delegación del Estado Plurinacional de Bolivia, encabezada por la Ministra de Justicia, Dra. Virginia Velasco Condori, y la Embajadora de la Misión Permanente de Bolivia ante la Organización de las Naciones Unidas, Dra. Nardi Suxo Iturry, junto a su equipo técnico, participaron  en la ciudad de Ginebra- Suiza los días 17 y 18 de agosto de 2016, en la presentación del Informe del Estado ante el Comité de los Derechos de las Personas con Discapacidad. <br/>
+El Informe fue revisado en el marco del espacio de coordinación interinstitucional para la elaboración, presentación y defensa de Informes del Estado Plurinacional de Bolivia ante los diferentes mecanismos de protección de los derechos humanos de la Organización de Naciones Unidas. Fue una primera experiencia exitosa de trabajo de este espacio en la que, además de las instituciones que conforman esta instancia, participó el equipo técnico del Viceministerio de Igualdad de Oportunidades del Ministerio de Justicia, quienes se encargaron de la elaboración de este informe. Además de la revisión del informe, el espacio de coordinación interinstitucional sirvió para preparar a la delegación del Estado respecto a aspectos técnicos de la modalidad de trabajo del Comité de los Derechos de las Personas con Discapacidad.<br/>
+Las recomendaciones emitidas por el Comité de los Derechos de las Personas con Discapacidad serán incorporadas en la base de datos del SIPLUS Bolivia.
+
+Video de la presentación del Informe de Bolivia ante el Comité de los Derechos de las Personas con Discapacidad 2016: <a href="http://webtv.un.org/meetings-events/watch/bolivia-16th-session-of-committee-on-rights-of-persons-with-disabilities/5104154403001">http://webtv.un.org/meetings-events/watch/bolivia-16th-session-of-committee-on-rights-of-persons-with-disabilities/5104154403001"</a>
+',
+                        'fecha'=>'17-08-2016',
                         'estado'=>'1',
-                        'link_imagen'=>'https://placebear.com/g/200/300'
+                        'link_imagen'=>$full_url.'/images/noticia3.jpg'
                     ),
                       array('id_noticia'=>4,
-                        'titular'=>'Noticia si publicada 4 solo link',
+                        'titular'=>'¡Baja la aplicación del SIPLUS en tu celular! ',
                         'contenido'=> 'http://www.boliviaentusmanos.com/noticias/.',
                         'fecha'=>'09-06-2014',
                         'estado'=>'1',
-                        'link_imagen'=>'https://placebear.com/g/200/300'
+                        'link_imagen'=>$full_url.'/images/noticia1.jpg'
                     ),
                 ));
         $this->set([

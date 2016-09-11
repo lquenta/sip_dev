@@ -1,6 +1,6 @@
 <?php
 $this->extend('../Layout/TwitterBootstrap/dashboard');
-$this->assign('title', 'Añadir Solicitud de informacion');
+$this->assign('title', 'Añadir Solicitud de Información');
 ?>
 <?= $this->Form->create($solicitud,['type' => 'file']); ?>
 <fieldset>
@@ -8,7 +8,7 @@ $this->assign('title', 'Añadir Solicitud de informacion');
         <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a data-toggle="collapse" href="#collapse1">Nueva Solicitud de informacion</a>
+                <a data-toggle="collapse" href="#collapse1">Nueva Solicitud de Información</a>
               </h4>
             </div>
             <div id="collapse1" class="panel-collapse collapse in">
@@ -34,4 +34,5 @@ $this->assign('title', 'Añadir Solicitud de informacion');
     
 </fieldset>
 <?= $this->Form->button('Grabar y Enviar',array('name'=>'btnGuardar','style'=>'btn btn-primary'));?>
+<button class="btn btn-default" onclick = "volver()">Cancelar</button>
 <?= $this->Form->end() ?>

@@ -1,11 +1,11 @@
 <?php
 $this->extend('../Layout/TwitterBootstrap/dashboard');
-$this->assign('title', 'Añadir Segumiento');
+$this->assign('title', 'Añadir Seguimiento');
 ?>
 
 <?= $this->Form->create($accion,['type' => 'file']); ?>
 <fieldset>
-    <legend><?= __('Añadir Segumiento') ?></legend>
+    <legend><?= __('Añadir Seguimiento') ?></legend>
    
      <div class="panel-group">
         <div class="panel panel-default">
@@ -18,18 +18,18 @@ $this->assign('title', 'Añadir Segumiento');
                 <div class="panel-body">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-12"><label for="inputCodigo">Codigo</label>
+                            <div class="col-md-12"><label for="inputCodigo">Código</label>
                                 <input type="text" class="form-control" id="inputCodigo" placeholder="" readonly="readonly" value="<?= h($recomendacion->codigo) ?>">
                             </div>
                            
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputDetalle">Recomendacion</label>
+                        <label for="inputDetalle">Recomendación</label>
                         <textarea type="text" class="form-control" id="inputDetalle" placeholder="" readonly="readonly" rows="5"><?= h($recomendacion->descripcion) ?></textarea>
                     </div>
                      <div class="form-group">
-                          <?php echo $this->Form->input('Comite', array('label'=>'Comite de Protección','multiple' => 'checkbox', 'options' => $comites,'readonly' => 'readonly','disabled'=>'disabled','value'=>array_keys($comites)));
+                          <?php echo $this->Form->input('Comite', array('label'=>'Comité de Protección','multiple' => 'checkbox', 'options' => $comites,'readonly' => 'readonly','disabled'=>'disabled','value'=>array_keys($comites)));
                           ?>
                     </div>
                 </div>
@@ -71,7 +71,7 @@ $this->assign('title', 'Añadir Segumiento');
             <div id="collapse3" class="panel-collapse collapse in">
                 <div class="panel-body">
                     <div class="form-group">
-                        <label for="codigo">Codigo</label>
+                        <label for="codigo">Código</label>
                         <input type="text" class="form-control" id="codigo" name='codigo' placeholder="" readonly="readonly" value="<?= h($codigo_accion) ?>">
                     </div>
                     <div class="form-group">
@@ -137,4 +137,5 @@ $this->assign('title', 'Añadir Segumiento');
     </div>
 </fieldset>
 <?= $this->Form->button(__("Grabar y Enviar")); ?>
+<button class="btn btn-default" onclick = "volver()">Cancelar</button>
 <?= $this->Form->end() ?>

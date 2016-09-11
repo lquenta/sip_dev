@@ -11,7 +11,7 @@
 </style>
 <?php
 $this->extend('../Layout/TwitterBootstrap/dashboard');
-$this->assign('title', 'Añadir Recomendacion');
+$this->assign('title', 'Añadir Recomendación');
 ?>
 <?= $this->Form->create($recomendacion,['type' => 'file']); ?>
 <fieldset>
@@ -135,6 +135,7 @@ $this->assign('title', 'Añadir Recomendacion');
 </fieldset>
 <?= $this->Form->button('Grabar',array('name'=>'btnGuardar'));?>
 <?= $this->Form->button('Grabar y Publicar',array('name'=>'btnPublicar'));?>
+<button class="btn btn-default" onclick = "volver()">Cancelar</button>
 <?= $this->Form->end() ?>
 <script>
     var codigoOriginal = $("#codigo").val();

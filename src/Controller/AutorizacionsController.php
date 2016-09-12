@@ -276,7 +276,11 @@ class AutorizacionsController extends AppController
 
         if ($this->request->is(['patch', 'post', 'put'])) {
           $flag_guardado=false;
-          $indicadores_consolidados=$this->request->data['indicadores_consolidado'];
+          $indicadores_consolidados= null;
+          if (isset($this->request->data['indicadores_consolidado'])) {
+            $indicadores_consolidados=$this->request->data['indicadores_consolidado'];
+          }
+          
             //obtener la autorizacion id a partir del recomendacion id y el id del usuario
             $autorizacion_actual=$this->Autorizacions->find('all', ['contain' => ['Accions']])
                 ->where(['accion_id ' => $id,'Autorizacions.usuario_id'=>$this->Auth->user('id'),'Autorizacions.estado_id'=>'1'])->first();
@@ -401,8 +405,11 @@ class AutorizacionsController extends AppController
                   }
                   $texto_consolidado=$this->request->data['texto_consolidado'];
                   //grabacion de adjuntos
-                  $adjuntos_consolidado = $this->request->data['adjuntos_consolidado'];
-                  if($adjuntos_consolidado[0]['name']!=''){
+                  $adjuntos_consolidado = null;
+                  if (isset($this->request->data['adjuntos_consolidado'])) {
+                    $adjuntos_consolidado = $this->request->data['adjuntos_consolidado'];
+                  }
+                  if($adjuntos_consolidado != null && $adjuntos_consolidado[0]['name']!=''){
                     foreach ($adjuntos_consolidado as $adjunto ) {
                         $adjunto_req = [
                             'name' => $adjunto['name'],

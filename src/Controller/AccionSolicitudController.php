@@ -76,7 +76,11 @@ class AccionSolicitudController extends AppController
                     $id_nuevo_indicador = $nuevo_indicador->id;
                 }
 
-                $indicadores=$this->request->data['indicadores'];
+                $indicadores= array();
+
+                if (isset($this->request->data['indicadores'])) {
+                  $indicadores=$this->request->data['indicadores'];
+                }
 
                 if(isset($id_nuevo_indicador) && $id_nuevo_indicador!=''){
                     $indicadores[]=$id_nuevo_indicador;

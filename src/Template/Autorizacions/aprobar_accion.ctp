@@ -151,7 +151,10 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                   <?php 
                   foreach ($ListIndicadresInstAccion[$institucion['accion_sol_id']] as $institucionIndicador) :?>
 
-                    <li class="list-group-item"><?php echo $institucionIndicador['nombre'] ?></li>
+                    <li class="list-group-item">
+                    [<?php echo $institucionIndicador['Grupo'] ?>]<?php echo $institucionIndicador['nombre'] ?>
+                      
+                    </li>
                    <?php endforeach; ?>
                    <label>Archivo Adjunto de indicadores</label>
                      <?php echo $this->Html->link(

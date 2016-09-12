@@ -101,7 +101,8 @@ class AccionSolicitudTable extends Table
     {
         $strquery = 'select accion_ind.accion_solicitud_id,
                            ind.id indicador_id,
-                           ind.nombre
+                           ind.nombre,
+                           ind.Grupo
                     from
                         indicadores_accion_solicituds accion_ind
                         inner join indicadors ind ON ind.id = accion_ind.indicador_id

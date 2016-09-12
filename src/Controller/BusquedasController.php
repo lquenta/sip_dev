@@ -30,7 +30,15 @@ class BusquedasController extends AppController
         $this->loadModel('Institucions');
         $this->loadModel('Comites');
         $this->loadModel('Poblacions');
-
+        $this->loadModel('Recomendacions');
+        $gestiones = $this->Recomendacions->obtenerAñosRecomendaciones();
+        $solo_anios=array();
+        foreach ($gestiones as $anios => $value) {
+            foreach ($value as $anio_este ) {
+               $solo_anios[]=$anio_este;
+            }
+        }
+        
         $array_años=array('2016');
         $array_derechos = $this->Derechos->find('list');
         $array_institucion =$this->Institucions->find('list');
@@ -38,7 +46,7 @@ class BusquedasController extends AppController
         $array_poblacion =$this->Poblacions->find('list');
 
         $resultados = array(
-            'anios'=>$array_años,
+            'anios'=>$solo_anios,
             'derechos'=>$array_derechos,
             'institucions'=>$array_institucion,
             'mecanismos'=>$array_mecanismo,
@@ -252,20 +260,12 @@ class BusquedasController extends AppController
             ]);
         }
         //por año
-        /*$año_recomendacion = $this->request->data('año_recomendacion');
-        debug($año_recomendacion);
-        if(count($año_recomendacion)>0){
-            $recomendaciones = $recomendaciones->where(['EXTRACT(YEAR FROM fecha_creacion) IN ' => $año_recomendacion]);
-        }*/
-        //por derechos
-        /*$derechos_filtro = $this->request->data('derechos');
-        if(count($derechos_filtro)>0){
-            $recomendaciones = $recomendacions->matching()
-            $recomendaciones->where(['EXTRACT(YEAR FROM fecha_creacion) IN ' => $año_recomendacion]);
-            foreach ($derechos_filtro as $derecho_filtro) {
-                
-            }
-        }*/
+        $anios_filtro = $this->request->data('anios');
+        $anios_filtro=json_decode($anios_filtro);
+        if($anios_filtro!=null){
+            $recomendaciones = $recomendaciones->where(['YEAR(Recomendacions.fecha_creacion) IN ' => $anios_filtro]);
+        }
+       
          //busqueda por derechos
         $derechos_filtro=$this->request->data('derechos');
         $derechos_filtro=json_decode($derechos_filtro);

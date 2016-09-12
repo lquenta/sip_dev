@@ -166,4 +166,12 @@ class RecomendacionsTable extends Table
         return $results;
     }
 
+    public function obtenerAñosRecomendaciones(){
+
+        $strquery = 'SELECT DISTINCT(YEAR(fecha_creacion)) as anio FROM recomendacions ORDER BY anio;';
+        $connAux = ConnectionManager::get('default');
+        $stmt = $connAux->execute($strquery);
+        $results = $stmt ->fetchAll('assoc');        
+        return $results;
+    }
 }

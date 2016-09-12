@@ -275,6 +275,7 @@ class AutorizacionsController extends AppController
         $texto_comentario='';
 
         if ($this->request->is(['patch', 'post', 'put'])) {
+          $flag_guardado=false;
           $indicadores_consolidados=$this->request->data['indicadores_consolidado'];
             //obtener la autorizacion id a partir del recomendacion id y el id del usuario
             $autorizacion_actual=$this->Autorizacions->find('all', ['contain' => ['Accions']])
@@ -384,7 +385,8 @@ class AutorizacionsController extends AppController
                           'accion_id'=>$id,
                           'texto_consolidado'=>$this->request->data['texto_consolidado'],
                           'user_id'=>$this->Auth->user('id'),
-                          'fecha_consolidado'=>date('Y-m-d H:i:s')
+                          'fecha_consolidado'=>date('Y-m-d H:i:s'),
+                          'fuente'=>$this->request->data['fuente']
                           );
                         $consolidado = $this->Consolidados->patchEntity($consolidado,$req_consolidado);
                         $this->Consolidados->save($consolidado);
@@ -393,6 +395,7 @@ class AutorizacionsController extends AppController
                     $consolidado_datos->texto_consolidado = $this->request->data['texto_consolidado'];
                     $consolidado_datos->fecha_consolidado =date('Y-m-d H:i:s');
                     $consolidado_datos->user_id = $this->Auth->user('id');
+                    $consolidado_datos->fuente =$this->request->data['fuente'];
                     $test=$this->Consolidados->save($consolidado_datos);
                     $id_consolidado=$consolidado_datos->id;
                   }
@@ -566,7 +569,8 @@ class AutorizacionsController extends AppController
                           'accion_id'=>$id,
                           'texto_consolidado'=>$this->request->data['texto_consolidado'],
                           'user_id'=>$this->Auth->user('id'),
-                          'fecha_consolidado'=>date('Y-m-d H:i:s')
+                          'fecha_consolidado'=>date('Y-m-d H:i:s'),
+                          'fuente'=>$this->request->data['fuente']
                           );
                         $consolidado = $this->Consolidados->patchEntity($consolidado,$req_consolidado);
                         $this->Consolidados->save($consolidado);
@@ -576,6 +580,7 @@ class AutorizacionsController extends AppController
                     $consolidado_datos->texto_consolidado = $this->request->data['texto_consolidado'];
                     $consolidado_datos->fecha_consolidado =date('Y-m-d H:i:s');
                     $consolidado_datos->user_id = $this->Auth->user('id');
+                    $consolidado_datos->fuente =$this->request->data['fuente'];
                     $test=$this->Consolidados->save($consolidado_datos);
                     $id_consolidado=$consolidado_datos->id;
                   }
@@ -620,11 +625,12 @@ class AutorizacionsController extends AppController
                         $this->AdjuntosConsolidados->save($adjuntosConsolidados);
                     }
                   }
+                  $flag_guardado=true;
                  
 
                 }
                 //$autorizacion_actual = $this->Autorizacions->patchEntity($autorizacion, $autorizacion_req);
-              if(isset($this->request->data['btnGuardar'])==false){
+              if($flag_guardado==false){
                 if ($this->Autorizacions->save($autorizacion_actual)) {
                 //     if(true){
                      $todas_autorizaciones_pendientes = $this->Autorizacions->find('all')->where(['accion_id'=>$id,'estado_id'=>'1','id !='=>$autorizacion_actual->id]);
@@ -666,7 +672,7 @@ class AutorizacionsController extends AppController
         }
         $users = $this->Accions->Users->find('list', ['limit' => 200]);
         $recomendacions = $this->Accions->Recomendacions->find('list', ['limit' => 200]);
-        if($this->Auth->user('rol_id')=='4'|| $this->Auth->user('rol_id')=='5'){
+        if($this->Auth->user('rol_id')=='3'){
           $en_transito=true;
         }else{
           $en_transito=false;

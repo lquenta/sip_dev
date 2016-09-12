@@ -85,6 +85,9 @@ class RecomendacionsTable extends Table
         $this->hasMany('Versions', [
             'foreignKey' => 'recomendacion_id'
         ]);
+         $this->hasMany('ComiteRecomendacions', [
+            'foreignKey' => 'recomendacion_id'
+        ]);
     }
 
     /**

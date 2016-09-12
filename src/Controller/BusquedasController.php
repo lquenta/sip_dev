@@ -22,14 +22,34 @@ class BusquedasController extends AppController
         $this->loadComponent('RequestHandler');
     }
     public function parametrosBusqueda(){
-        $this->Layout=null;
-        $this->loadModel('Recomendacions');
-        $recomendaciones=$this->Recomendacions->find('all',[
-            'contain' => ['Users', 'Estados', 'AdjuntosRecomendacions', 'DerechoRecomendacion.Derechos', 'InstitucionRecomendacion.Institucions', 'MecanismoRecomendacion.Mecanismos', 'PoblacionRecomendacion.Poblacions', 'RecomendacionParametros']
+        //
+         /*$gruposInstitucioones = $this->Institucions->find();
+        $gruposInstitucioones->select(['grupo'])->distinct(['grupo'])->all();
+*/
+        $this->loadModel('Derechos');
+        $this->loadModel('Institucions');
+        $this->loadModel('Comites');
+        $this->loadModel('Poblacions');
+
+        $array_años=array('2016');
+        $array_derechos = $this->Derechos->find('list');
+        $array_institucion =$this->Institucions->find('list');
+        $array_mecanismo =$this->Comites->find('list');
+        $array_poblacion =$this->Poblacions->find('list');
+
+        $resultados = array(
+            'anios'=>$array_años,
+            'derechos'=>$array_derechos,
+            'institucions'=>$array_institucion,
+            'mecanismos'=>$array_mecanismo,
+            'poblacions'=>$array_poblacion
+            );
+
+        $this->set([
+            'resultados' => $resultados,
+            '_serialize' => ['resultados']
         ]);
-        debug($recomendaciones->all());
-        $derechos=$recomendaciones->select(['Recomendacions.derecho_recomendacion.derecho.descripcion'])->distinct(['Recomendacions.derecho_recomendacion.derecho.descripcion'])->all();
-        debug($derechos->select['descripcion']);
+        
     }
     public function simple(){
         //buscamos recomendaciones que coincidan con el texto y descripcion
@@ -218,7 +238,7 @@ class BusquedasController extends AppController
         
         if($textoBusqueda!=''){
              $recomendaciones = $this->Recomendacions->find('all',[
-            'contain' => ['Users', 'Estados', 'AdjuntosRecomendacions', 'DerechoRecomendacion.Derechos', 'InstitucionRecomendacion.Institucions', 'MecanismoRecomendacion.Mecanismos', 'PoblacionRecomendacion.Poblacions', 'RecomendacionParametros']
+            'contain' => ['Users', 'Estados', 'AdjuntosRecomendacions', 'DerechoRecomendacion.Derechos', 'InstitucionRecomendacion.Institucions', 'MecanismoRecomendacion.Mecanismos', 'PoblacionRecomendacion.Poblacions', 'RecomendacionParametros','ComiteRecomendacions.Comites']
         ])
        ->where(["MATCH(Recomendacions.descripcion) AGAINST(:search)"])
        ->bind(":search", $textoBusqueda);
@@ -228,7 +248,7 @@ class BusquedasController extends AppController
         //->where(['Recomendacions.descripcion LIKE ' =>'%'.$textoBusqueda.'%']);
         }else{
              $recomendaciones = $this->Recomendacions->find('all',[
-            'contain' => ['Users', 'Estados', 'AdjuntosRecomendacions', 'DerechoRecomendacion.Derechos', 'InstitucionRecomendacion.Institucions', 'MecanismoRecomendacion.Mecanismos', 'PoblacionRecomendacion.Poblacions', 'RecomendacionParametros']
+            'contain' => ['Users', 'Estados', 'AdjuntosRecomendacions', 'DerechoRecomendacion.Derechos', 'InstitucionRecomendacion.Institucions', 'MecanismoRecomendacion.Mecanismos', 'PoblacionRecomendacion.Poblacions', 'RecomendacionParametros','ComiteRecomendacions.Comites']
             ]);
         }
         //por año
@@ -246,6 +266,50 @@ class BusquedasController extends AppController
                 
             }
         }*/
+         //busqueda por derechos
+        $derechos_filtro=$this->request->data('derechos');
+        $derechos_filtro=json_decode($derechos_filtro);
+        if($derechos_filtro!=null){
+            //$recomendaciones = $recomendaciones->where(['DerechoRecomendacion.Derechos.id IN'=>$derechos_filtro]);
+            $recomendaciones = $recomendaciones->matching(
+                'DerechoRecomendacion.Derechos', function ($q) use ($derechos_filtro) {
+                    return $q->where(['Derechos.id IN' => $derechos_filtro]);
+                }
+            );
+        }
+        $institucions_filtro=$this->request->data('institucions');
+        $institucions_filtro=json_decode($institucions_filtro);
+        if($institucions_filtro!=null){
+            //$recomendaciones = $recomendaciones->where(['DerechoRecomendacion.Derechos.id IN'=>$institucions_filtro]);
+            $recomendaciones = $recomendaciones->matching(
+                'InstitucionRecomendacion.Institucions', function ($q) use ($institucions_filtro) {
+                    return $q->where(['Institucions.id IN' => $institucions_filtro]);
+                }
+            );
+        }
+        $mecanismos_filtro=$this->request->data('mecanismos');
+        $mecanismos_filtro=json_decode($mecanismos_filtro);
+        if($mecanismos_filtro!=null){
+            //$recomendaciones = $recomendaciones->where(['DerechoRecomendacion.Derechos.id IN'=>$mecanismos_filtro]);
+            $recomendaciones = $recomendaciones->matching(
+                'MecanismoRecomendacion.Mecanismos', function ($q) use ($mecanismos_filtro) {
+                    return $q->where(['Mecanismos.id IN' => $mecanismos_filtro]);
+                }
+            );
+        }
+        $poblacions_filtro=$this->request->data('poblacions');
+        $poblacions_filtro=json_decode($poblacions_filtro);
+        if($poblacions_filtro!=null){
+            //$recomendaciones = $recomendaciones->where(['DerechoRecomendacion.Derechos.id IN'=>$poblacions_filtro]);
+            $recomendaciones = $recomendaciones->matching(
+                'PoblacionRecomendacion.Poblacions', function ($q) use ($poblacions_filtro) {
+                    return $q->where(['Poblacions.id IN' => $poblacions_filtro]);
+                }
+            );
+        }
+        
+
+        
        
         //->where(["MATCH(recomendacions.descripcion) AGAINST(:search)"])
         //->bind(":search", $textoBusqueda);
@@ -266,7 +330,6 @@ class BusquedasController extends AppController
              ->where(['ComiteRecomendacions.recomendacion_id ' => $id_recomendacion])->toArray();
              $comites=$this->Comites->find('list')->where(['idComite IN ' => $comiteRecomendacion])
             ->toArray();
-
 
             $fecha_recomendacion=$recomendacion->fecha_modificacion->i18nFormat('yyyy-MM-dd');
             $grupo_poblacional='';

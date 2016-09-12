@@ -191,8 +191,15 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                          );
                          endforeach; ?>
                      <?php }?>
-                   <?php
+                     <?php if($en_transito==true){
                       echo $this->Form->input('adjuntos_consolidado[]', ['type' => 'file', 'multiple' => 'true', 'label' => 'Añadir Archivos']);
+                      }
+                      if(isset($consolidado_datos->fuente)){
+                        echo $this->Form->input('fuente',['value'=>$consolidado_datos->fuente]);
+                      }else{
+                        echo $this->Form->input('fuente');
+                      }
+                      
                    ?>
                </div>
            </div>

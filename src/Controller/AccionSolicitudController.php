@@ -84,7 +84,7 @@ class AccionSolicitudController extends AppController
                 foreach ($indicadores as $indicador_marcado ) {
                     $req_indicadores_solicitud = array(
                         'indicador_id'=> $indicador_marcado,
-                        'accion_solicitud_id'=>$accionSolicitud->accion_id
+                        'accion_solicitud_id'=>$accionSolicitud->id
                         );
                     $indicador_solicitud = $this->IndicadoresAccionSolicitud->newEntity();
                     $indicador_solicitud = $this->IndicadoresAccionSolicitud->patchEntity($indicador_solicitud,$req_indicadores_solicitud);
@@ -108,7 +108,7 @@ class AccionSolicitudController extends AppController
                         $id_nuevo_indicador = $nuevo_indicador->id;
                     }
                     $indicadores=$this->request->data['indicadores'];
-                    if($id_nuevo_indicador!=''){
+                    /*if($id_nuevo_indicador!=''){
                         $indicadores[]=$id_nuevo_indicador;
                     }
                     foreach ($indicadores as $indicador_marcado ) {
@@ -119,7 +119,7 @@ class AccionSolicitudController extends AppController
                         $indicador_solicitud = $this->IndicadoresAccionSolicitud->newEntity();
                         $indicador_solicitud = $this->IndicadoresAccionSolicitud->patchEntity($indicador_solicitud,$req_indicadores_solicitud);
                         $res_save=$this->IndicadoresAccionSolicitud->save($indicador_solicitud);
-                    }
+                    }*/
 
                     $institucion_responsable=26;
                     $query =  $this->Users->find()->matching(

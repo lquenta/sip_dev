@@ -89,6 +89,10 @@ Router::scope('/', function ($routes) {
        'avanzada' => [
            'action' => 'avanzada',
            'method' => 'POST'
+       ],
+       'parametricas' => [
+           'action' => 'parametrosBusqueda',
+           'method' => 'GET'
        ]
    ]]);
 });

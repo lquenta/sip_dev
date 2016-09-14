@@ -79,7 +79,7 @@ class BusquedasController extends AppController
              $recomendaciones = $this->Recomendacions->find('all',[
             'contain' => ['Users', 'Estados', 'AdjuntosRecomendacions', 'DerechoRecomendacion.Derechos', 'InstitucionRecomendacion.Institucions', 'MecanismoRecomendacion.Mecanismos', 'PoblacionRecomendacion.Poblacions', 'RecomendacionParametros']
         ])
-       ->where(["MATCH(Recomendacions.descripcion) AGAINST(:search)"])
+       ->where(["MATCH(Recomendacions.descripcion) AGAINST(:search IN BOOLEAN MODE)"])
        ->bind(":search", $textoBusqueda);
        //debug($recomendaciones);
         //SELECT * FROM recomendacions WHERE MATCH (descripcion)
@@ -248,7 +248,7 @@ class BusquedasController extends AppController
              $recomendaciones = $this->Recomendacions->find('all',[
             'contain' => ['Users', 'Estados', 'AdjuntosRecomendacions', 'DerechoRecomendacion.Derechos', 'InstitucionRecomendacion.Institucions', 'MecanismoRecomendacion.Mecanismos', 'PoblacionRecomendacion.Poblacions', 'RecomendacionParametros','ComiteRecomendacions.Comites']
         ])
-       ->where(["MATCH(Recomendacions.descripcion) AGAINST(:search)"])
+       ->where(["MATCH(Recomendacions.descripcion) AGAINST(:search IN BOOLEAN MODE)"])
        ->bind(":search", $textoBusqueda);
        //debug($recomendaciones);
         //SELECT * FROM recomendacions WHERE MATCH (descripcion)
@@ -292,8 +292,8 @@ class BusquedasController extends AppController
         if($mecanismos_filtro!=null){
             //$recomendaciones = $recomendaciones->where(['DerechoRecomendacion.Derechos.id IN'=>$mecanismos_filtro]);
             $recomendaciones = $recomendaciones->matching(
-                'MecanismoRecomendacion.Mecanismos', function ($q) use ($mecanismos_filtro) {
-                    return $q->where(['Mecanismos.id IN' => $mecanismos_filtro]);
+                'ComiteRecomendacions.Comites', function ($q) use ($mecanismos_filtro) {
+                    return $q->where(['Comites.IdComite IN' => $mecanismos_filtro]);
                 }
             );
         }

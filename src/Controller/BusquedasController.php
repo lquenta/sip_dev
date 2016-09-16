@@ -151,7 +151,7 @@ class BusquedasController extends AppController
                
                 //obtenemos el consolidado de la accion
                 $consolidado = $this->Consolidados->find('all')->where(['accion_id'=>$accion->id])->first();
-                $adjunto_consolidado = $this->AdjuntosConsolidados->find('all')->where(['consolidado_id'=>$accion->id])->first();
+                $adjunto_consolidado = $this->AdjuntosConsolidados->find('all')->where(['consolidado_id'=>$consolidado->id])->first();
                  if($adjunto_consolidado==null){
                     $adjunto_link='';
                 }else{
@@ -370,7 +370,7 @@ class BusquedasController extends AppController
                
                 //obtenemos el consolidado de la accion
                 $consolidado = $this->Consolidados->find('all')->where(['accion_id'=>$accion->id])->first();
-                $adjunto_consolidado = $this->AdjuntosConsolidados->find('all')->where(['consolidado_id'=>$accion->id])->first();
+                $adjunto_consolidado = $this->AdjuntosConsolidados->find('all')->where(['consolidado_id'=>$consolidado->id])->first();
                  if($adjunto_consolidado==null){
                     $adjunto_link='';
                 }else{

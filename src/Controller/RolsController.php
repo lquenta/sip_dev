@@ -55,10 +55,10 @@ class RolsController extends AppController
         if ($this->request->is('post')) {
             $rol = $this->Rols->patchEntity($rol, $this->request->data);
             if ($this->Rols->save($rol)) {
-                $this->Flash->success(__('The rol has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                $this->Flash->success(__('El rol se ha grabado.'));
+                return $this->redirect('/');
             } else {
-                $this->Flash->error(__('The rol could not be saved. Please, try again.'));
+                $this->Flash->error(__('El rol no pudo ser grabado, por favor reintente.'));
             }
         }
         $institucions = $this->Rols->Institucions->find('list', ['limit' => 200]);

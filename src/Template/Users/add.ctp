@@ -21,14 +21,13 @@ $this->end();
 ?>
 <?= $this->Form->create($user); ?>
 <fieldset>
-    <legend><?= __('Add {0}', ['User']) ?></legend>
+    <legend><?= __('Añadir {0}', ['User']) ?></legend>
     <?php
     echo $this->Form->input('nombre_usuario');
     echo $this->Form->input('password');
-    echo $this->Form->input('fecha_creacion');
-    echo $this->Form->input('fecha_modificacion');
+    echo $this->Form->input('email', ['type' => 'email']);
     echo $this->Form->input('rol_id', ['options' => $rols]);
     ?>
 </fieldset>
-<?= $this->Form->button(__("Add")); ?>
+<?= $this->Form->button(__("Añadir")); ?>
 <?= $this->Form->end() ?>

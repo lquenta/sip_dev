@@ -37,11 +37,11 @@ $this->end();
 ?>
 <?= $this->Form->create($comite); ?>
 <fieldset>
-    <legend><?= __('Edit {0}', ['Comite']) ?></legend>
+    <legend><?= __('Editar {0}', ['Comite']) ?></legend>
     <?php
     echo $this->Form->input('Descripcion');
     echo $this->Form->input('mecanismo_id', ['options' => $mecanismos]);
     ?>
 </fieldset>
-<?= $this->Form->button(__("Save")); ?>
+<?= $this->Form->button(__("Grabar")); ?>
 <?= $this->Form->end() ?>

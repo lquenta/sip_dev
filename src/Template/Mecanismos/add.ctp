@@ -21,10 +21,10 @@ $this->end();
 ?>
 <?= $this->Form->create($mecanismo); ?>
 <fieldset>
-    <legend><?= __('Add {0}', ['Mecanismo']) ?></legend>
+    <legend><?= __('Añadir {0}', ['Mecanismo']) ?></legend>
     <?php
     echo $this->Form->input('descripcion');
     ?>
 </fieldset>
-<?= $this->Form->button(__("Add")); ?>
+<?= $this->Form->button(__("Añadir")); ?>
 <?= $this->Form->end() ?>

@@ -37,11 +37,11 @@ $this->end();
 ?>
 <?= $this->Form->create($indicador); ?>
 <fieldset>
-    <legend><?= __('Edit {0}', ['Indicador']) ?></legend>
+    <legend><?= __('Editar {0}', ['Indicador']) ?></legend>
     <?php
     echo $this->Form->input('nombre');
     echo $this->Form->input('link');
     ?>
 </fieldset>
-<?= $this->Form->button(__("Save")); ?>
+<?= $this->Form->button(__("Grabar")); ?>
 <?= $this->Form->end() ?>

@@ -21,11 +21,11 @@ $this->end();
 ?>
 <?= $this->Form->create($indicador); ?>
 <fieldset>
-    <legend><?= __('Add {0}', ['Indicador']) ?></legend>
+    <legend><?= __('Añadir {0}', ['Indicador']) ?></legend>
     <?php
     echo $this->Form->input('nombre');
     echo $this->Form->input('link');
     ?>
 </fieldset>
-<?= $this->Form->button(__("Add")); ?>
+<?= $this->Form->button(__("Añadir")); ?>
 <?= $this->Form->end() ?>

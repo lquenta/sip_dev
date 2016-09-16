@@ -147,7 +147,8 @@ class RecomendacionsTable extends Table
 
         
         $codigo_numerico=str_pad($result,5,'0',STR_PAD_LEFT);
-        $result = 'SPREC'.$codigo_numerico;
+        //$result = 'SPREC'.$codigo_numerico;
+        $result = $codigo_numerico;
         return $result;
     }
 

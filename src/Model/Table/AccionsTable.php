@@ -115,9 +115,11 @@ class AccionsTable extends Table
             $result = '1';
         }
         $codigo_numerico=str_pad($id_segumiento,5,'0',STR_PAD_LEFT);
-        $codigo_parcial = 'SPSEG'.$codigo_numerico;
-        $codigo_numerico=str_pad($result,3,'0',STR_PAD_LEFT);
-        $result = $codigo_parcial.'-'.$codigo_numerico;
+        //$codigo_parcial = 'SPSEG'.$codigo_numerico;
+        $codigo_parcial = $codigo_numerico;
+        //$codigo_numerico=str_pad($result,3,'0',STR_PAD_LEFT);
+        //$result = $codigo_parcial.'-'.$codigo_numerico;
+
         return $result;
     }
 }

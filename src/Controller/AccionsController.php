@@ -72,9 +72,9 @@ class AccionsController extends AppController
         
 
 
-        $gruposInstitucioones = $this->Institucions->find();
+        $gruposInstitucioones = $this->Institucions->find()->where(['AccionSeg_Activo = 1']);
         $gruposInstitucioones->select(['grupo'])->distinct(['grupo'])->all();
-        $institucionesNew = $this->Institucions->find()->toArray();
+        $institucionesNew = $this->Institucions->find()->where(['AccionSeg_Activo = 1'])->toArray();
 
         $institucionesRol = $this->Institucions->obtenerInstitucionConRol();
 
@@ -141,7 +141,9 @@ class AccionsController extends AppController
         $accion = $this->Accions->newEntity();
         if ($this->request->is('post')) {
             //para recomendacion entity
-            $codigo_accion=$this->Accions->obtenerUltimoCodigoAccion($id);
+            //$codigo_accion=$this->Accions->obtenerUltimoCodigoAccion($id);
+            $codigo_accion=$recomendacion->codigo;
+
             $request = $this->request->data;
             $accion_req = array(
                 'codigo'=>$codigo_accion,
@@ -298,7 +300,8 @@ class AccionsController extends AppController
               '1' => 'Indicador 2'
            ]
         ];
-         $codigo_accion=$this->Accions->obtenerUltimoCodigoAccion($id);
+        $codigo_accion=$this->Accions->obtenerUltimoCodigoAccion($id);
+        $codigo_accion= str_replace('NR', 'NA', $recomendacion->codigo).'-'.$codigo_accion;
         $recomendacions = $this->Accions->Recomendacions->find('list', ['limit' => 200]);
         $this->set(compact('accion', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos','codigo_accion','incidencia_indicadores','gruposInstitucioones','institucionesNew','comiteRecomendacion','comites','institucionesRol'));
         $this->set('_serialize', ['accion']);

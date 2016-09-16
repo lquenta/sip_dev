@@ -54,7 +54,7 @@ return [
             'templates' => [APP . 'Template' . DS],
             'locales' => [APP . 'Locale' . DS],
         ],
-        'title' => 'SIPLUS',
+        'title' => 'SIPLUS BOLIVIA',
     ],
 
     /**

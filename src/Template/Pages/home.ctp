@@ -115,10 +115,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                             <li role="presentation"><a href="#Consolidado" aria-controls="Consolidado" role="tab" data-toggle="tab">Consolidado</a></li>
 
                                                             <li role="presentation"><a href="#DatosEstadisticos" aria-controls="DatosEstadisticos" role="tab" data-toggle="tab">Datos Estadísticos</a></li>
-
-                                                            <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Pendientes</a></li>
-                                                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Seguimientos sin Responder</a></li>
-                                                            
+                                                                                                                     
                                                             
                                                           </ul>
 
@@ -139,16 +136,9 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                                 <h1>Nueva Solicitud de Información</h1>
                                                                 
                                                                 
-                                                            </div>
-                                                             <div role="tabpanel" class="tab-pane" id="Consolidado">
+                                                            </div>                                                           
 
-                                                                <h1>Consolidado</h1>
-                                                                                                                    
-                                                                
-                                                            </div>
-                                                           
-
-                                                            <div role="tabpanel" class="tab-pane" id="home">
+                                                            <div role="tabpanel" class="tab-pane" id="Consolidado">
                                                                 <?php if($solicitudInformacions->count()>0 && false){ ?>
                                                                 <h2>Pendientes de responder, solicitud de informacion</h2>
                                                                 <table class="table table-striped" cellpadding="0" cellspacing="0">
@@ -244,9 +234,9 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                                
                                                                 <?php } ?>
 
-                                                            </div>
-                                                            <div role="tabpanel" class="tab-pane" id="profile">
-                                                                <table class="table table-striped" cellpadding="0" cellspacing="0">
+                                                                <h2>Solicitudes sin Respuesta</h2>
+
+                                                                 <table class="table table-striped" cellpadding="0" cellspacing="0">
                                                                     <thead>
                                                                         <tr>
                                                                             <th><?= $this->Paginator->sort('codigo','Código'); ?></th>
@@ -269,6 +259,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                                         <?php endforeach; ?>
                                                                     </tbody>
                                                                 </table>
+
 
                                                             </div>
                                                             <div role="tabpanel" class="tab-pane" id="DatosEstadisticos">

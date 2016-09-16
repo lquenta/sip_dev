@@ -21,11 +21,11 @@ $this->end();
 ?>
 <?= $this->Form->create($comite); ?>
 <fieldset>
-    <legend><?= __('Add {0}', ['Comite']) ?></legend>
+    <legend><?= __('Añadir {0}', ['Comite']) ?></legend>
     <?php
     echo $this->Form->input('Descripcion');
     echo $this->Form->input('mecanismo_id', ['options' => $mecanismos]);
     ?>
 </fieldset>
-<?= $this->Form->button(__("Add")); ?>
+<?= $this->Form->button(__("Añadir")); ?>
 <?= $this->Form->end() ?>

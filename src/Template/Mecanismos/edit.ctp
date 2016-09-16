@@ -37,10 +37,10 @@ $this->end();
 ?>
 <?= $this->Form->create($mecanismo); ?>
 <fieldset>
-    <legend><?= __('Edit {0}', ['Mecanismo']) ?></legend>
+    <legend><?= __('Editar {0}', ['Mecanismo']) ?></legend>
     <?php
     echo $this->Form->input('descripcion');
     ?>
 </fieldset>
-<?= $this->Form->button(__("Save")); ?>
+<?= $this->Form->button(__("Grabar")); ?>
 <?= $this->Form->end() ?>

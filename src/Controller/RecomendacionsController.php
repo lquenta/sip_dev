@@ -259,9 +259,13 @@ class RecomendacionsController extends AppController
         $this->loadModel('Mecanismos');
         $this->loadModel('IndicadoresDerechos');
         $this->loadModel('AdjuntosAccions');
+        $this->loadModel('ComiteRecomendacions');
+        $this->loadModel('Comites');
+        
+        
         
          $recomendacion = $this->Recomendacions->get($id, [
-            'contain' => ['Users', 'Estados', 'Accions', 'AdjuntosRecomendacions', 'DerechoRecomendacion', 'InstitucionRecomendacion', 'MecanismoRecomendacion', 'Notificacions', 'PoblacionRecomendacion', 'RecomendacionParametros', 'Revisions', 'Versions']
+            'contain' => ['Users', 'Estados', 'Accions', 'AdjuntosRecomendacions', 'DerechoRecomendacion', 'InstitucionRecomendacion', 'MecanismoRecomendacion', 'PoblacionRecomendacion', 'RecomendacionParametros', 'Revisions', 'Versions']
         ]);
          $recomendacions = $this->PoblacionRecomendacion->find('list', ['limit' => 200]);
          $PoblacionRecomendacion =$this->PoblacionRecomendacion->find('list',[
@@ -297,23 +301,20 @@ class RecomendacionsController extends AppController
         $instituciones=$this->Institucions->find('list', ['limit' => 200])
         ->where(['id IN ' => $institucionsRecomendacion])
         ->toArray();
-         $mecanismoRecomendacion = $this->MecanismoRecomendacion->find('list',[
-            'keyField' => 'mecanismo_id',
-            'valueField' => 'mecanismo_id'
+        $comiteRecomendacion = $this->ComiteRecomendacions->find('list',[
+            'keyField' => 'comite_id',
+            'valueField' => 'comite_id'
         ])
-         ->where(['MecanismoRecomendacion.recomendacion_id ' => $id])->toArray();
-        
-        $mecanismos=$this->Mecanismos->find('list', ['limit' => 200])
-        ->where(['id IN ' => $mecanismoRecomendacion])
+         ->where(['ComiteRecomendacions.recomendacion_id ' => $id])->toArray();
+         $comites=$this->Comites->find('list')->where(['idComite IN ' => $comiteRecomendacion])
         ->toArray();
         //debug(json_encode(array_keys($poblaciones), JSON_PRETTY_PRINT));die;
         $all_poblaciones = $this->Poblacions->find('list', ['limit' => 200])->toArray();
         $all_derechos = $this->Derechos->find('list', ['limit' => 200])->toArray();
         $all_instituciones = $this->Institucions->find('list', ['limit' => 200])->toArray();
         $all_mecanismos = $this->Mecanismos->find('list', ['limit' => 200])->toArray();
-        //if ($this->request->is(['patch', 'post', 'put'])) {
-        if ($this->request->is(['post'])) {
-            debug($this->request->data);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+        //if ($this->request->is(['post'])) {
              if (isset($this->request->data['btnGuardar'])) {
                 $estado=1;
              }
@@ -322,13 +323,14 @@ class RecomendacionsController extends AppController
              }
             //para recomendacion entity
             $request = $this->request->data;
+
+            
             $recomendacion_req = array(
                 'id'=>$id,
-                'codigo'=>$request['codigo'],
-                'descripcion'=>$request['descripcion'],
-                'fecha_creacion'=>date('Y-m-d H:i:s'),
+                'codigo'=>$request['inputCodigo'],
+                'descripcion'=>$request['inputDetalle'],
+                'fecha_creacion'=>date('Y-m-d H:i:s',strtotime($request['fechaRecomendacion'])),
                 'fecha_modificacion'=>date('Y-m-d H:i:s'),
-                'año'=>$request['año'],
                 'usuario_id'=>$this->Auth->user('id'),
                 'estado_id'=>$estado
                 );
@@ -338,72 +340,8 @@ class RecomendacionsController extends AppController
             if ($res_save_recomendacion) {
                 //para los relacionados a Poblacion_recomendacion
                 
-                foreach ($request['poblaciones'] as $poblacion) {
-                    $poblacionRecomendacion = $this->PoblacionRecomendacion->newEntity();
-                      $poblacion_recomendacion_req = array(
-                        'recomendacion_id'=>$id,
-                        'poblacion_id'=>$poblacion
-                        );
-                    $poblacionRecomendacion = $this->PoblacionRecomendacion->patchEntity($poblacionRecomendacion, $poblacion_recomendacion_req);
-                     $res_save_pob_rec=$this->PoblacionRecomendacion->save($poblacionRecomendacion); 
-                    
-                }
-                foreach ($request['derecho'] as $derecho) {
-                    $derechoRecomendacion = $this->DerechoRecomendacion->newEntity();
-                    $derecho_recomendacion_req = array(
-                        'recomendacion_id'=>$id,
-                        'derecho_id'=>$derecho
-                        );
-                    $derechoRecomendacion = $this->DerechoRecomendacion->patchEntity($derechoRecomendacion, $derecho_recomendacion_req);
-                     $res_save_der_rec=$this->DerechoRecomendacion->save($derechoRecomendacion); 
-                }
-               
-                foreach ($request['institucions'] as $institucions) {
-                    $institucionRecomendacion = $this->InstitucionRecomendacion->newEntity();
-                    $institucion_recomendacion_req = array(
-                        'recomendacion_id'=>$id,
-                        'institucion_id'=>$institucions
-                        );
-                    $institucionRecomendacion = $this->InstitucionRecomendacion->patchEntity($institucionRecomendacion, $institucion_recomendacion_req);
-                     $res_save_ins_rec=$this->InstitucionRecomendacion->save($institucionRecomendacion); 
-                     //obtener todos los usuarios asociados a la institucion+
-                     
-                     
-                }
-                foreach ($request['mecanismos'] as $mecanismos) {
-                    $mecanismoRecomendacion = $this->MecanismoRecomendacion->newEntity();
-                    $mecanismo_recomendacion_req = array(
-                        'recomendacion_id'=>$id,
-                        'mecanismo_id'=>$mecanismos
-                        );
-                    $mecanismoRecomendacion = $this->MecanismoRecomendacion->patchEntity($mecanismoRecomendacion, $mecanismo_recomendacion_req);
-                     $res_save_mec_rec=$this->MecanismoRecomendacion->save($mecanismoRecomendacion); 
-                }
-                $adjuntos_recomendacion = $this->request->data['adjuntos_recomendacion'];
-                foreach ($adjuntos_recomendacion as $adjunto ) {
-                    $adjunto_req = [
-                        'name' => $adjunto['name'],
-                        'type' => $adjunto['type'],
-                        'tmp_name' => $adjunto['tmp_name'],
-                        'error' => $adjunto['error'],
-                        'size' => $adjunto['size']
-                    ];
-                    $adjunto_req['name']=$this->sanitize($adjunto_req['name']);
-                    //$file_name =  ROOT .DS. 'uploads' .DS. time().'_'.$adjunto_req['name'];
-                    $file_name_part = time().'_'.$adjunto_req['name'];
-                    $file_name =  ROOT .DS. 'webroot'.DS.'uploads'.DS. $file_name_part;
-                    $res=move_uploaded_file($adjunto_req['tmp_name'],$file_name); 
-                    $adj_save = array(
-                        'recomendacion_id'=>$id,
-                        'link'=>$file_name_part);
-                    $adjuntosRecomendacion = $this->AdjuntosRecomendacions->newEntity();
-                    $adjuntosRecomendacion = $this->AdjuntosRecomendacions->patchEntity($adjuntosRecomendacion, $adj_save);
-                    $this->AdjuntosRecomendacions->save($adjuntosRecomendacion);
-                }
-                
-                
                 $this->Flash->success(__('La recomendacion se ha guardado.'));
-                return $this->redirect(['action' => 'index']);
+               return $this->redirect('/');
             } else {
                 $this->Flash->error(__('La recomendacion no se ha guardado, por favor intente de nuevo.'));
             }
@@ -411,7 +349,7 @@ class RecomendacionsController extends AppController
         }
         $users = $this->Recomendacions->Users->find('list', ['limit' => 200]);
         $recomendacions = $this->Recomendacions->find('list', ['limit' => 200]);
-        $this->set(compact( 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','mecanismos','all_mecanismos'));
+        $this->set(compact( 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','comites','all_mecanismos'));
         $this->set('_serialize', ['recomendacion']);
         
     }

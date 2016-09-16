@@ -25,11 +25,11 @@ $this->end();
 ?>
 <?= $this->Form->create($rol); ?>
 <fieldset>
-    <legend><?= __('Add {0}', ['Rol']) ?></legend>
+    <legend><?= __('Añadir {0}', ['Rol']) ?></legend>
     <?php
     echo $this->Form->input('nombre');
     echo $this->Form->input('institucion_id', ['options' => $institucions]);
     ?>
 </fieldset>
-<?= $this->Form->button(__("Add")); ?>
+<?= $this->Form->button(__("Añadir")); ?>
 <?= $this->Form->end() ?>

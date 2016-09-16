@@ -18,9 +18,7 @@ class DerechosController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Indicadors']
-        ];
+        
         $derechos = $this->paginate($this->Derechos);
 
         $this->set(compact('derechos'));
@@ -75,19 +73,16 @@ class DerechosController extends AppController
      */
     public function edit($id = null)
     {
-        $derecho = $this->Derechos->get($id, [
-            'contain' => []
-        ]);
+        $derecho = $this->Derechos->get($id);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $derecho = $this->Derechos->patchEntity($derecho, $this->request->data);
             if ($this->Derechos->save($derecho)) {
-                $this->Flash->success(__('The derecho has been saved.'));
+                $this->Flash->success(__('El derecho se ha grabado.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The derecho could not be saved. Please, try again.'));
+                $this->Flash->error(__('El derecho no ha sido grabado, por favor intente de nuevo.'));
             }
         }
-        $indicadors = $this->Derechos->Indicadors->find('list', ['limit' => 200]);
         $this->set(compact('derecho', 'indicadors'));
         $this->set('_serialize', ['derecho']);
     }

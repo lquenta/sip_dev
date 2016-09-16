@@ -1,5 +1,6 @@
 <?php
 $this->extend('../Layout/TwitterBootstrap/dashboard');
+$this->assign('title', 'Editar Recomendación');
 ?>
 <?= $this->Form->create($recomendacion); ?>
 <fieldset>
@@ -14,36 +15,33 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
             <div id="collapse1" class="panel-collapse collapse in">
                 <div class="panel-body">
                     <div class="form-group">
-                        <label for="inputDetalle">Estado</label>
-                        <input type="text" class="form-control" id="inputDetalle" placeholder="" readonly="readonly" value="<?= h($recomendacion->estado_id) ?>"></input>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputDetalle">Codigo</label>
-                        <input type="text" class="form-control" id="inputDetalle" placeholder="" readonly="readonly" value="<?= h($recomendacion->codigo) ?>"></input>
+                        <label for="inputCodigo">Codigo</label>
+                        <input type="text" class="form-control" id="inputCodigo" name="inputCodigo" placeholder="" readonly="readonly" value="<?= h($recomendacion->codigo) ?>"></input>
                     </div>
                     <div class="form-group">
                         <label for="inputDetalle">Detalle de la recomendacion</label>
-                        <textarea type="text" class="form-control" id="inputDetalle" placeholder="" rows="5"><?= h($recomendacion->descripcion) ?></textarea>
+                        <textarea type="text" class="form-control" id="inputDetalle" name="inputDetalle" placeholder="" rows="5"><?= h($recomendacion->descripcion) ?></textarea>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-6"><label for="inputAño">Año</label>
-                                <input type="text" class="form-control" id="inputAño" placeholder=""  value="<?= h($recomendacion->año) ?>">
+                            <div class="col-md-6">
+                                <label for="fechaRecomendacion">Fecha Recomendacion</label>
+                                <input type="date" class="form-control" id="fechaRecomendacion" name='fechaRecomendacion' placeholder="" required="" value="<?php echo date('Y-m-d',strtotime($recomendacion->fecha_creacion)) ?>" />
                             </div>
                             <div class="col-md-6">
-                                <?php echo $this->Form->input('derechos', array('multiple' => 'checkbox', 'options' => $all_derechos,'value'=>array_keys($derechos),'readonly' => 'readonly','disabled'=>'disabled'));
+                                <?php echo $this->Form->input('derechos', array('multiple' => 'checkbox', 'options' => $derechos,'value'=>array_keys($derechos),'readonly' => 'readonly','disabled'=>'disabled'));
                                   ?>
                             </div>
                             <div class="col-md-12">
-                                <?php echo $this->Form->input('poblaciones', array('multiple' => 'checkbox', 'options' => $all_poblaciones,'value'=>array_keys($poblaciones),'readonly' => 'readonly','disabled'=>'disabled'));
+                                <?php echo $this->Form->input('poblaciones', array('multiple' => 'checkbox', 'options' => $poblaciones,'value'=>array_keys($poblaciones),'readonly' => 'readonly','disabled'=>'disabled'));
                                   ?>
                             </div>
                             <div class="col-md-6">
-                                <?php echo $this->Form->input('instituciones', array('multiple' => 'checkbox', 'options' => $all_instituciones,'value'=>array_keys($instituciones),'readonly' => 'readonly','disabled'=>'disabled'));
+                                <?php echo $this->Form->input('instituciones', array('multiple' => 'checkbox', 'options' => $instituciones,'value'=>array_keys($instituciones),'readonly' => 'readonly','disabled'=>'disabled'));
                                   ?>
                             </div>
                             <div class="col-md-6">
-                                <?php echo $this->Form->input('mecanismos', array('multiple' => 'checkbox', 'options' => $all_mecanismos,'value'=>array_keys($mecanismos),'readonly' => 'readonly','disabled'=>'disabled'));
+                                <?php echo $this->Form->input('comites', array('multiple' => 'checkbox', 'options' => $comites,'value'=>array_keys($comites),'readonly' => 'readonly','disabled'=>'disabled'));
                                   ?>
                             </div>
                         </div>

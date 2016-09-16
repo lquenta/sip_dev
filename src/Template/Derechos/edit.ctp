@@ -41,11 +41,10 @@ $this->end();
 ?>
 <?= $this->Form->create($derecho); ?>
 <fieldset>
-    <legend><?= __('Edit {0}', ['Derecho']) ?></legend>
+    <legend><?= __('Editar {0}', ['Derecho']) ?></legend>
     <?php
     echo $this->Form->input('descripcion');
-    echo $this->Form->input('indicador_id', ['options' => $indicadors]);
     ?>
 </fieldset>
-<?= $this->Form->button(__("Save")); ?>
+<?= $this->Form->button(__("Grabar")); ?>
 <?= $this->Form->end() ?>

@@ -28,7 +28,6 @@ $this->end();
     <legend><?= __('Add {0}', ['Derecho']) ?></legend>
     <?php
     echo $this->Form->input('descripcion');
-    echo $this->Form->input('indicador_id', ['options' => $indicadors]);
     ?>
 </fieldset>
 <?= $this->Form->button(__("Add")); ?>

@@ -146,7 +146,7 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                               ['class' => 'btn btn-default btn-lg', 'target' => '_blank','escape' => false]
                           ); ?>
                             <?php } ?>                   
-                 <label class="form-control">Indicadores</label>
+                 <label class="form-control">Indicadores de Derechos Humanos</label>
                  <ul class="list">
                   <?php 
                   foreach ($ListIndicadresInstAccion[$institucion['accion_sol_id']] as $institucionIndicador) :?>
@@ -156,7 +156,7 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                       
                     </li>
                    <?php endforeach; ?>
-                   <label>Archivo Adjunto de indicadores</label>
+                   <label>Archivo Adjunto de indicadores de Derechos Humanos</label>
                      <?php echo $this->Html->link(
                        '<i class="glyphicon glyphicon-save-file">'.$institucion['link_adjunto_indicadores'].'</i>',
                        '/uploads/'.$institucion['link_adjunto_indicadores'],
@@ -213,7 +213,7 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                 <div class="panel panel-default">
                     <div class="panel-heading">
                       <h4 class="panel-title">
-                        <a data-toggle="collapse" href="#collapse5">Indicadores</a>
+                        <a data-toggle="collapse" href="#collapse5">Indicadores de Derechos Humanos</a>
                       </h4>
                     </div>
                     <div id="collapse5" class="panel-collapse collapse in">
@@ -268,7 +268,18 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
 </fieldset>
 
 <?= $this->Form->button('Guardar',array('name'=>'btnGuardar','class'=>'btn btn-primary'));?>
-<?= $this->Form->button('Aprobar y enviar',array('name'=>'btnAprobar','class'=>'btn btn-danger'));?>
+<div style="margin: 3px; display:inline">
+<?php
+if (isset($autorizadores_cancilleria)) {
+  echo $this->Form->button('Aprobar y publicar',array('name'=>'btnAprobar','class'=>'btn btn-danger'));
+}
+else
+{
+  echo $this->Form->button('Aprobar y enviar',array('name'=>'btnAprobar','class'=>'btn btn-danger'));
+}
+  
+ ?>
+ </div>
 <?= $this->Form->button('Rechazar',array('class'=>'btn btn-danger','name'=>'btnRechazar'));?>
 <!--<?= $this->Form->button(__("Rechazar")); ?> -->
 <?= $this->Form->end() ?>

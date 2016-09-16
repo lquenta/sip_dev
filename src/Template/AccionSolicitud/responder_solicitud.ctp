@@ -95,7 +95,7 @@ $this->assign('title', 'Responder Solicitud');
             <div id="collapse5" class="panel-collapse collapse in">
                 <div class="panel-body">
                  <div class="form-group">
-                    <label for="respuesta">Respuesta</label>
+                    <label for="respuesta">Respuesta a la acción de seguimiento</label>
                     <textarea type="text" class="form-control" id="respuesta" name="respuesta" cols=3 rows=4 placeholder="Ingrese su respuesta aqui..."  maxlength="500"> </textarea>  
                     <h6 class="pull-right" id="count_message"></h6>                     
                 </div>
@@ -109,7 +109,7 @@ $this->assign('title', 'Responder Solicitud');
              <div class="panel panel-default">
                  <div class="panel-heading">
                    <h4 class="panel-title">
-                     <a data-toggle="collapse" href="#collapse5">Indicadores</a>
+                     <a data-toggle="collapse" href="#collapse5">Seleccione indicadores de derechos humanos de acuerdo a la información mencionada</a>
                    </h4>
                  </div>
                  <div id="collapse5" class="panel-collapse collapse in">
@@ -148,7 +148,7 @@ $this->assign('title', 'Responder Solicitud');
                                  
                              </span>
                          </div>
-                         <?php echo $this->Form->input('adjunto_respuesta_indicadores', ['type' => 'file', 'label' => 'Añadir Archivo adjunto de Indicadores']);?>
+                         <?php echo $this->Form->input('adjunto_respuesta_indicadores', ['type' => 'file', 'label' => 'Adjuntar información de respaldo a los indicadores de derechos humanos seleccionados']);?>
 
 
                       <div class="form-group">

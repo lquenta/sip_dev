@@ -143,6 +143,8 @@ class AutorizacionsController extends AppController
         $this->loadModel('Comites');
         $this->loadModel('ConsolidadoIndicadores');
 
+
+
         $listIndicadores = $this->Indicadors->find('list')->toArray();
        
         $listGruGrupoIndicadores = $this->Indicadors->obtenerGruposIndicadors();
@@ -609,8 +611,12 @@ class AutorizacionsController extends AppController
                   
                   $texto_consolidado=$this->request->data['texto_consolidado'];
                   //grabacion de adjuntos
-                  $adjuntos_consolidado = $this->request->data['adjuntos_consolidado'];
-                  if($adjuntos_consolidado[0]['name']!=''){
+                  $adjuntos_consolidado = null;
+                  if (isset($this->request->data['adjuntos_consolidado'])) {
+                    $adjuntos_consolidado = $this->request->data['adjuntos_consolidado'];
+                  }
+                  
+                  if($adjuntos_consolidado != null && $adjuntos_consolidado[0]['name']!=''){
                     foreach ($adjuntos_consolidado as $adjunto ) {
                         $adjunto_req = [
                             'name' => $adjunto['name'],
@@ -685,8 +691,9 @@ class AutorizacionsController extends AppController
           $en_transito=false;
         }        
         $listIndicadoresAll = $this->Indicadors->obtenerAllIndicadors($idConsolidado);
-    
-        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','comites','all_mecanismos','accion_solicitudes','consolidado_datos','texto_consolidado','en_transito','listIndicadores', 'listInstitucionAccion','ListIndicadresInstAccion','listIndicadoresCheck','texto_comentario', 'listInstitucionAccionUnique','listGruGrupoIndicadores', 'listIndicadoresAll'));
+            
+        $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','comites','all_mecanismos','accion_solicitudes','consolidado_datos','texto_consolidado','en_transito','listIndicadores', 'listInstitucionAccion','ListIndicadresInstAccion','listIndicadoresCheck','texto_comentario', 'listInstitucionAccionUnique','listGruGrupoIndicadores', 'listIndicadoresAll', 'autorizadores_cancilleria'));
         $this->set('_serialize', ['accion']);
+        
     }
 }

@@ -5,7 +5,9 @@ body{
     margin-top: -50px;
 }
     .navbar{
-        background: #438eb9;        
+        /*background: #438eb9;*/
+        background: #FFFFFF;
+        border: 2px solid #E5E5E0;
     }
 </style>
 <?php
@@ -170,7 +172,7 @@ $this->start('tb_body_start');
 
                 <ul class="nav nav-pills">
                     <li class="active">
-                    
+
                         <a href="#">
                             
                             <span class="menu-text"> MENU </span>

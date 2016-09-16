@@ -106,45 +106,48 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 
                                                           <!-- Nav tabs -->
                                                           <ul class="nav nav-tabs" role="tablist">
-                                                            <li role="presentation" class="active"><a href="#Recomendaciones" aria-controls="Recomendaciones" role="tab" data-toggle="tab">Recomendaciones</a></li>
-                                                            <li role="presentation"><a href="#Solicitudes" aria-controls="Solicitudes" role="tab" data-toggle="tab">Solicitudes</a></li>
+                                                            <li role="presentation" class="active"><a href="#NuevaRecomendaciones" aria-controls="NuevaRecomendaciones" role="tab" data-toggle="tab">Nueva Recomendación</a></li>
+
+                                                            <li role="presentation"><a href="#NuevaAS" aria-controls="NuevaAS" role="tab" data-toggle="tab">Nueva Acción de Seguimiento</a></li>
+
+                                                            <li role="presentation" class=""><a href="#NSI" aria-controls="NSI" role="tab" data-toggle="tab">Nueva Solicitud de Información</a></li>
+
+                                                            <li role="presentation"><a href="#Consolidado" aria-controls="Consolidado" role="tab" data-toggle="tab">Consolidado</a></li>
+
+                                                            <li role="presentation"><a href="#DatosEstadisticos" aria-controls="DatosEstadisticos" role="tab" data-toggle="tab">Datos Estadísticos</a></li>
+
                                                             <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Pendientes</a></li>
                                                             <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Seguimientos sin Responder</a></li>
-                                                            <li role="presentation"><a href="#Consolidado" aria-controls="Consolidado" role="tab" data-toggle="tab">Visor Gráfico</a></li>
+                                                            
                                                             
                                                           </ul>
 
                                                           <!-- Tab panes -->
                                                           <div class="tab-content">
-                                                            <div role="tabpanel" class="tab-pane active" id="Recomendaciones">
+                                                            <div role="tabpanel" class="tab-pane active" id="NuevaRecomendaciones">
                                                                 
-                                                                 <a href="<?= $this->Url->build(["controller" => "Recomendacions","action" => "add"]); ?>" class="btn btn-large btn-default" style="margin:5px">
-                                                                  <img src="images/add.jpg" width="35" />
-                                                                 Nueva Recomendación
-                                                                 </a>
-                                                                
-                                                                 <div class="panel">                                                                                                                                    
-                                                                    <?php echo $this->requestAction('/recomendacions'); ?>    
-                                                                  
-                                                                </div>     
+                                                                <h1>NuevaRecomendaciones</h1>
                                                                 
                                                             </div>
-                                                             <div role="tabpanel" class="tab-pane" id="Solicitudes">
+                                                             <div role="tabpanel" class="tab-pane" id="NuevaAS">
 
-                                                                  <a href="<?= $this->Url->build(["controller" => "solicitud_informacions","action" => "add"]); ?>" class="btn btn-large btn-default" style="margin:5px">
-                                                                  <img src="images/add.jpg" width="35" />
-                                                                 Nueva Solicitud
-                                                                 </a>
-                                                                
-                                                                
-                                                                <div class="panel panel-primary">
-                                                                  <div class="panel-heading">Solicitudes Pendientes de Respuesta</div>
-                                                                  <div class="panel-body" style="overflow-y: scroll; max-height: 300px;">
-                                                                    <?php echo $this->requestAction('/solicitud-informacions'); ?>    
-                                                                  </div>
-                                                                </div>                                                                
+                                                                <h1>Nueva Acción de Seguimiento</h1>
+                                                                                                                    
                                                                 
                                                             </div>
+                                                            <div role="tabpanel" class="tab-pane" id="NSI">
+                                                                <h1>Nueva Solicitud de Información</h1>
+                                                                
+                                                                
+                                                            </div>
+                                                             <div role="tabpanel" class="tab-pane" id="Consolidado">
+
+                                                                <h1>Consolidado</h1>
+                                                                                                                    
+                                                                
+                                                            </div>
+                                                           
+
                                                             <div role="tabpanel" class="tab-pane" id="home">
                                                                 <?php if($solicitudInformacions->count()>0 && false){ ?>
                                                                 <h2>Pendientes de responder, solicitud de informacion</h2>
@@ -268,7 +271,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                                 </table>
 
                                                             </div>
-                                                            <div role="tabpanel" class="tab-pane" id="Consolidado">
+                                                            <div role="tabpanel" class="tab-pane" id="DatosEstadisticos">
                                                                 
                                                                 
                                                                     <div class="row panel panel-default">

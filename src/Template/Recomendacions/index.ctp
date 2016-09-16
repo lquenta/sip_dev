@@ -167,8 +167,10 @@ $(function(){ /* to make sure the script runs after page load */
             </td>
             
             <td class="actions">
-                <?= $this->Html->link('', ['action' => 'view', $recomendacion->id], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
+                <?= $this->Html->link('', ['action' => 'view', $recomendacion->id], ['title' => __('Ver'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
+                 <?= $this->Html->link('', ['action' => 'edit', $recomendacion->id], ['title' => __('Editar'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
                <?= $this->Html->link('', ['controller'=>'Accions','action' => 'add', $recomendacion->id], ['title' => __('Añadir Seguimiento'), 'class' => 'btn btn-default glyphicon glyphicon-plus']) ?>
+
             </td>
         </tr>
         <?php endforeach; ?>

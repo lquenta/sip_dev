@@ -161,7 +161,7 @@ $this->start('tb_body_start');
                 try{ace.settings.check('main-container' , 'fixed')}catch(e){}
             </script>
 
-         <!--    <div id="sidebar" class="sidebar                  responsive">
+          <div id="sidebar" class="sidebar                  responsive">
                 <script type="text/javascript">
                     try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
                 </script>
@@ -170,9 +170,10 @@ $this->start('tb_body_start');
 
                 <ul class="nav nav-pills">
                     <li class="active">
-                        <a href="<?= $this->Url->build(["controller" => "Pages","action" => "display","home"]); ?>">
+                    
+                        <a href="#">
                             
-                            <span class="menu-text"> Panel de Control </span>
+                            <span class="menu-text"> MENU </span>
                         </a>
                     </li>
                     <li class="">
@@ -194,20 +195,26 @@ $this->start('tb_body_start');
                             <span class="menu-text"> Nueva Solicitud de informacion</span>
                         </a>
                     </li>
+                     <li class="">
+                        <a href="<?= $this->Url->build(["controller" => "Pages","action" => "display","home"]); ?>">
+                            
+                            <span> Panel de Control </span>
+                        </a>
+                    </li>
                     
 
                     
 
                     
 
-                </ul> --><!-- /.nav-list
+                </ul>
 
                 <hr>
 
                 <script type="text/javascript">
                     try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
                 </script>
-            </div> -->
+            </div> 
 
             <div class="main-content">
                 <div class="main-content-inner">

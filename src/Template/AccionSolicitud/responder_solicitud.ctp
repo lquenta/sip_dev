@@ -145,6 +145,8 @@ $this->assign('title', 'Responder Solicitud');
                              <label>Otro Indicador</label>
                              <span>
                                  <input type="text" id="descripcionIndicador" name="descripcionIndicador" placeholder="Indicador Nuevo">
+                                 <input type="text" id="GrupoIndicador" name="GrupoIndicador" placeholder="Grupo">
+                                 <input type="text" id="UrlIndicador" name="UrlIndicador" placeholder="url">
                                  
                              </span>
                          </div>

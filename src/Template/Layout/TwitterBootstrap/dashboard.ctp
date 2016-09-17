@@ -108,46 +108,25 @@ $this->start('tb_body_start');
                             <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administración <span class="caret"></span></a>
                               <ul class="dropdown-menu">
-                                <li class="list-group-item">
-                                    <a href="<?= $this->Url->build(["controller" => "comites","action" => "index"]); ?>">
-                                        Comités
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="<?= $this->Url->build(["controller" => "mecanismos","action" => "index"]); ?>">
-                                        Mecanismos
-                                    </a>
-                                </li>
-                                <li class="list-group-item"> 
-                                    <a href="<?= $this->Url->build(["controller" => "indicadors","action" => "index"]); ?>">
-                                        Indicadores
-                                    </a>
-                                </li>                                
-                                <li class="list-group-item">
-                                    <a href="<?= $this->Url->build(["controller" => "users","action" => "index"]); ?>">
-                                        Usuarios
-                                    </a>
-                                </li>                                
+                                             
                                 <li class="list-group-item">
                                     <a href="<?= $this->Url->build(["controller" => "rols","action" => "index"]); ?>">
                                         Roles
                                     </a>
                                 </li>                                
+
+                                <li class="list-group-item">
+                                    <a href="<?= $this->Url->build(["controller" => "users","action" => "index"]); ?>">
+                                        Usuarios
+                                    </a>
+                                </li>                                
+                              
                                 <li class="list-group-item">
                                     <a href="<?= $this->Url->build(["controller" => "Derechos","action" => "index"]); ?>">
                                         Derechos
                                     </a>
                                 </li>                                
-                                <li class="list-group-item">
-                                    <a href="<?= $this->Url->build(["controller" => "poblacions","action" => "index"]); ?>">
-                                        Población
-                                    </a>
-                                </li>                                
-                                <li class="list-group-item"> 
-                                    <a href="<?= $this->Url->build(["controller" => "institucions","action" => "index"]); ?>">
-                                        Instituciones
-                                    </a>
-                                </li>                                
+                                
                               </ul>
                             </li>
                           

@@ -64,11 +64,15 @@ class AccionSolicitudController extends AppController
                 );
             $accionSolicitud = $this->AccionSolicitud->patchEntity($accionSolicitud,  $req_accion_solicitud);
             if ($this->AccionSolicitud->save($accionSolicitud)) {
-                if($this->request->data['descripcionIndicador']){
+                if(isset($this->request->data['descripcionIndicador'])
+                    && isset($this->request->data['GrupoIndicador'])
+                    && isset($this->request->data['UrlIndicador'])
+                  ){
                     //nuevo indicador
                     $req_nuevo_indicador = array(
                         'nombre'=>$this->request->data['descripcionIndicador'],
-                        'link'=>' '
+                        'link'=>$this->request->data['UrlIndicador'],
+                        'Grupo'=>$this->request->data['GrupoIndicador'],
                         );
                     $nuevo_indicador = $this->Indicadors->newEntity();
                     $nuevo_indicador = $this->Indicadors->patchEntity($nuevo_indicador,$req_nuevo_indicador);
@@ -111,7 +115,11 @@ class AccionSolicitudController extends AppController
                         $this->Indicadors->save($nuevo_indicador);
                         $id_nuevo_indicador = $nuevo_indicador->id;
                     }
-                    $indicadores=$this->request->data['indicadores'];
+
+                    $indicadores=null;
+                    if (isset($this->request->data['indicadores'])) {
+                       $indicadores = $this->request->data['indicadores'];
+                    }
                     /*if($id_nuevo_indicador!=''){
                         $indicadores[]=$id_nuevo_indicador;
                     }

@@ -139,3 +139,64 @@ $this->assign('title', 'Añadir Seguimiento');
 <?= $this->Form->button(__("Grabar y Enviar")); ?>
 <button class="btn btn-default" onclick = "volver()">Cancelar</button>
 <?= $this->Form->end() ?>
+<script type="text/javascript">
+       /**************validacion del formulario*****************/
+    // override jquery validate plugin defaults
+$.validator.setDefaults({
+        highlight: function(element) {
+            $(element).closest('.form-group').addClass('has-error');
+            //$(element).closest('td').addClass('has-error');
+        },
+        unhighlight: function(element) {
+            $(element).closest('.form-group').removeClass('has-error');
+            //$(element).closest('td').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function(error, element) {
+            if(element.parent('.help-block').length) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertBefore(element);
+            }
+        }
+});
+
+    $("form").first().validate({ 
+        rules: {
+           
+            'descripcion': {
+                required: true
+            }
+        },
+        
+        
+        messages: {
+            'descripcion': {
+                required: "La descripción es requerida"
+            }
+            
+        },
+        
+        
+        errorPlacement: function(error, element) {
+            $("#message").html("");            
+            error.appendTo("#message");            
+        }
+    });
+
+  
+
+    $("form").first().on('submit', function() {
+         
+         //aqui atrapamos lo que el pluugin no valida
+         if($('input[name="institucions[]"]:checked').length ==  0)
+         {
+            $("#message").html("Debe seleccionar al menos una institucion");            
+            $('#popupMessage').modal('show');
+            return false;
+         }       
+
+         $('#popupMessage').modal('show');
+     });
+</script>

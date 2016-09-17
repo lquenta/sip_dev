@@ -16,6 +16,9 @@ $this->assign('title', 'Añadir Recomendación');
 <?= $this->Form->create($recomendacion,['type' => 'file']); ?>
 <fieldset>
     <div class="panel-group">
+        
+  
+
         <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
@@ -142,4 +145,94 @@ $this->assign('title', 'Añadir Recomendación');
     function cambiarCodigo(prefijo){
         $("#codigo").val(prefijo + codigoOriginal);
     }
+
+    /**************validacion del formulario*****************/
+    // override jquery validate plugin defaults
+$.validator.setDefaults({
+        highlight: function(element) {
+            $(element).closest('.form-group').addClass('has-error');
+            //$(element).closest('td').addClass('has-error');
+        },
+        unhighlight: function(element) {
+            $(element).closest('.form-group').removeClass('has-error');
+            //$(element).closest('td').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function(error, element) {
+            if(element.parent('.help-block').length) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertBefore(element);
+            }
+        }
+});
+
+    $("form").first().validate({ 
+        rules: {
+            'poblaciones[]': {
+                required: true
+            },
+            'derecho[]': {
+                required: true
+            },
+            'descripcion': {
+                required: true
+            },
+            'fechaRecomendacion': {
+                required: true
+            },
+            'adjuntos_recomendacion[]': {
+                required: true
+            }
+        },
+        
+        
+        messages: {
+            'descripcion': {
+                required: "La descripción es requerida"
+            },
+            'fechaRecomendacion': {
+                required: "La fecha de recomendación es requerida"
+            },
+            'poblaciones[]': {
+                required: "Debe seleccionar al menos un item de Grupo Poblacional"
+            },
+            'derecho[]': {
+                required: "Debe seleccionar al menos un Derecho"
+            },
+            'adjuntos_recomendacion[]': {
+                required: "Debe Añadir un archivo"
+            }
+            
+        },
+        
+        
+        errorPlacement: function(error, element) {
+            $("#message").html("");            
+            error.appendTo("#message");            
+        }
+    });
+
+  
+
+    $("form").first().on('submit', function() {
+         
+         //aqui atrapamos lo que el pluugin no valida
+         if($('input[name="institucions[]"]:checked').length ==  0)
+         {
+            $("#message").html("Debe seleccionar al menos una institucion");            
+            $('#popupMessage').modal('show');
+            return false;
+         }
+
+         if($('input[name="comites[]"]:checked').length ==  0)
+         {
+            $("#message").html("Debe seleccionar al menos un Mecanismo De Protección");            
+            $('#popupMessage').modal('show');
+            return false;
+         }
+
+         $('#popupMessage').modal('show');
+     });
 </script>

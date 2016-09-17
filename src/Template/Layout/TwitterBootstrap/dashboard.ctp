@@ -41,6 +41,7 @@ $this->start('tb_body_start');
 <!-- ace settings handler -->
 <?=$this->Html->script('ace-extra.min.js');?>
 <?=$this->Html->script('jquery/jquery');?>
+<?=$this->Html->script('jquery.validate.min.js');?>
 
 <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
@@ -368,6 +369,26 @@ $this->start('tb_body_start');
     
 
         <!-- inline scripts related to this page -->
+
+          <!-- Modal content-->
+      <div class="modal fade" id="popupMessage" role="dialog">
+        <div class="modal-dialog">          
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Mensaje</h4>
+            </div>
+            <div class="modal-body">
+              <div id="message">Procesando...</div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" onclick="limpiarMensaje()">Aceptar</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <!-- Fin Modal content-->
        
     </body>
 </html>
@@ -378,4 +399,11 @@ $this->start('tb_body_start');
     {
         window.history.back();
     }
+
+    function limpiarMensaje()
+    {
+        $("#message").html("Procesando...");                
+    }
+
+    
 </script>

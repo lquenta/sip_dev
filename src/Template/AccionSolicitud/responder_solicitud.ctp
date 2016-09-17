@@ -96,7 +96,7 @@ $this->assign('title', 'Responder Solicitud');
                 <div class="panel-body">
                  <div class="form-group">
                     <label for="respuesta">Respuesta a la acción de seguimiento</label>
-                    <textarea type="text" class="form-control" id="respuesta" name="respuesta" cols=3 rows=4 placeholder="Ingrese su respuesta aqui..."  maxlength="500"> </textarea>  
+                    <textarea type="text" class="form-control" id="respuesta" name="respuesta" cols=3 rows=4 placeholder="Ingrese su respuesta aqui..."  maxlength="500" required> </textarea>  
                     <h6 class="pull-right" id="count_message"></h6>                     
                 </div>
                     <?php echo $this->Form->input('adjunto_respuesta', ['type' => 'file', 'label' => 'Añadir Archivo adjunto']);?>
@@ -182,4 +182,64 @@ $this->assign('title', 'Responder Solicitud');
       
       $('#count_message').html(text_remaining + ' restantes');
 });
+
+      /**************validacion del formulario*****************/
+    // override jquery validate plugin defaults
+$.validator.setDefaults({
+        highlight: function(element) {
+            $(element).closest('.form-group').addClass('has-error');
+            //$(element).closest('td').addClass('has-error');
+        },
+        unhighlight: function(element) {
+            $(element).closest('.form-group').removeClass('has-error');
+            //$(element).closest('td').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function(error, element) {
+            if(element.parent('.help-block').length) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertBefore(element);
+            }
+        }
+});
+
+    $("form").first().validate({ 
+        rules: {
+           
+            'respuesta': {
+                required: true
+            }
+        },
+        
+        
+        messages: {
+            'respuesta': {
+                required: "La respuesta es requerida"
+            }
+            
+        },
+        
+        
+        errorPlacement: function(error, element) {
+            $("#message").html("");            
+            error.appendTo("#message");            
+        }
+    });
+
+  
+
+    $("form").first().on('submit', function() {
+         
+         //aqui atrapamos lo que el pluugin no valida
+         if($('input[name="indicadores[]"]:checked').length ==  0)
+         {
+            $("#message").html("Debe seleccionar al menos un indicador");            
+            $('#popupMessage').modal('show');
+            return false;
+         }       
+
+         $('#popupMessage').modal('show');
+     });
 </script>

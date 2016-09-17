@@ -694,8 +694,7 @@ class AutorizacionsController extends AppController
         $listIndicadoresAll = $this->Indicadors->obtenerAllIndicadors($idConsolidado);
 
         $rol_usuario_final = $this->Rols->find('all')->where(['id'=>$this->Auth->user('rol_id')])->toArray()[0]['institucion_id'];
-        
-        
+             
 
         $this->set(compact('aprobarAccion','accion','acciones', 'users', 'recomendacions','recomendacion','poblaciones','all_poblaciones','derechos','all_derechos','instituciones','all_instituciones','comites','all_mecanismos','accion_solicitudes','consolidado_datos','texto_consolidado','en_transito','listIndicadores', 'listInstitucionAccion','ListIndicadresInstAccion','listIndicadoresCheck','texto_comentario', 'listInstitucionAccionUnique','listGruGrupoIndicadores', 'listIndicadoresAll', 'autorizadores_cancilleria', 'rol_usuario_final'));
         $this->set('_serialize', ['accion']);

@@ -1,0 +1,269 @@
+﻿<div ng-controller="RegistroCaratulaNotarial">
+    <script>
+        (function ($) {
+            $(function () {
+                $("#accordion > div").accordion({ header: "h3", collapsible: true });
+            })
+        })(jQuery);
+    </script>
+
+    <div class="jumbotron">
+        <center>
+            <h1>Caratula Notarial</h1>
+        </center>
+    </div>
+
+    <div id="accordion">
+
+        <div>
+
+            <h3>Datos Caratula</h3>
+            <div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Materia</label>
+                            <span>
+                                <select class="form-control">
+                                    <option>Materia 1</option>
+                                    <option>Materia 2</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Código IANUS</label>
+                            <span class="row">
+                                <input type="text" value="" class="form-control" placeholder="Código IANUS" />
+                                <button class="btn btn-info"> Validar</button>
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Distrito</label>
+                            <span>
+                                <select class="form-control">
+                                    <option>Distrito 1</option>
+                                    <option>Distrito 2</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Lugar</label>
+                            <span>
+                                <select class="form-control">
+                                    <option>Lugar 1</option>
+                                    <option>Lugar 2</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Juzgado/Tribunal/Sala</label>
+                            <span>
+                                <select class="form-control">
+                                    <option>Juzgado 1</option>
+                                    <option>Juzgado 2</option>
+                                    <option>Tribunal 1</option>
+                                    <option>Tribunal 2</option>
+                                    <option>Sala 1</option>
+                                    <option>Sala 2</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label class="col-lg-2">Descripción del caso</label>
+                            <span class="col-lg-10">
+                                <textarea class="form-control" rows="3" style="width:100%; max-width:100%" placeholder="Descripción del caso"></textarea>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3>Sujetos Procesales</h3>
+            <div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>[Activo]</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <center>
+                                <label class="col-xs-12 align-center">Institución</label>
+                            </center>
+                            <input class="col-xs-12 align-center" name="activo" type="radio" />
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <center>
+                                <label class="col-xs-12 align-center">Persona Natural</label>
+                            </center>
+                            <input class="col-xs-12 align-center" name="activo" type="radio" />
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <center>
+                                <label class="col-xs-12 align-center">Persona Juridica</label>
+                            </center>
+                            <input class="col-xs-12 align-center" name="activo" type="radio" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>[Pasivo]</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <center>
+                                <label class="col-xs-12 align-center">Institución</label>
+                            </center>
+                            <input class="col-xs-12 align-center" name="pasivo" type="radio" />
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <center>
+                                <label class="col-xs-12 align-center">Persona Natural</label>
+                            </center>
+                            <input class="col-xs-12 align-center" name="pasivo" type="radio" />
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <center>
+                                <label class="col-xs-12 align-center">Persona Juridica</label>
+                            </center>
+                            <input class="col-xs-12 align-center" name="pasivo" type="radio" />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="col-lg-3">Cuantia</label>
+                            <div class="col-lg-4">
+                                <input type="text" value="" class="form-control" placeholder="0,000.00" />
+                            </div>
+                            <span class="col-lg-5">
+                                <select class="form-control">
+                                    <option selected="selected">Bolivianos</option>
+                                    <option>Dolares</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="col-lg-3">Literal</label>
+                            <div class="col-lg-9">
+                                <input type="text" value="" class="form-control" placeholder="Importe Literal" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <label class="col-lg-7">Fecha 1</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <span>
+                            <input type="date" value="" class="form-control" />
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <label class="col-lg-7">Fecha 2</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <span>
+                            <input type="date" value="" class="form-control" />
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <label class="col-lg-7">Fecha 3</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <span>
+                            <input type="date" value="" class="form-control" />
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3>Abogados Copatrocinantes</h3>
+            <div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="col-lg-3">Disponibles</label>
+                            <div class="col-lg-10">
+                                <select name="Abogados" size="5" style="width: 100%">
+                                    <option>Abogado 1</option>
+                                    <option>Abogado 2</option>
+                                    <option>Abogado 3</option>
+                                    <option>Abogado 4</option>
+                                    <option>Abogado 5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group" style="padding-top:30px; display:table-cell; vertical-align:middle; text-align:center">
+                            <button class="btn btn-default" style="width:90px">Agregar =></button>
+                            <button class="btn btn-default" style="width:90px"><= Quitar</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="col-lg-3">Seleccionados</label>
+                            <div class="col-lg-10">
+                                <select name="Abogados" size="5" style="width: 100%">
+                                    <option>Abogado 6</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

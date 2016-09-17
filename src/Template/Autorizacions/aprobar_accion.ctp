@@ -127,46 +127,62 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
                         onclick="$('div[name=tabsRespuestas]').hide();$('#tab<?php echo $institucionUnique['id_institucion']?>').show();"><?php echo $institucionUnique['descripcion']?></a></li>
                  <?php endforeach; ?>
                  </ul>
-                <?php foreach ($listInstitucionAccionUnique as $institucionUnique) : ?>
-                 <!-- Tab panes -->
-                 <div class="tab-content">
-                 <?php $diplayTab = '';
-                 foreach ($listInstitucionAccion as $institucion) : 
-                  ?>
-                 <div role="tabpanel" class="tab-pane active" id="tab<?php echo $institucion['id_institucion']?>" name="tabsRespuestas" style="display:<?php echo $diplayTab?>">                                    
-                          <label for="inputRespuesta">Respuesta</label>
-                           <textarea type="text" class="form-control" id="inputRespuesta" cols=3 rows=4 
-                           placeholder="" readonly="readonly"> <?= h($institucion['respuesta']) ?></textarea>
-                           <?php if($institucion['link_adjunto']!=null){
-                           ?>  
-                             <label>Archivo Adjunto de respuesta</label>
-                            <?php  echo $this->Html->link(
-                              '<i class="glyphicon glyphicon-save-file">'.$institucion['link_adjunto'].'</i>',
-                              '/uploads/'.$institucion['link_adjunto'],
-                              ['class' => 'btn btn-default btn-lg', 'target' => '_blank','escape' => false]
-                          ); ?>
-                            <?php } ?>                   
-                 <label class="form-control">Indicadores de Derechos Humanos</label>
-                 <ul class="list">
-                  <?php 
-                  foreach ($ListIndicadresInstAccion[$institucion['accion_sol_id']] as $institucionIndicador) :?>
 
-                    <li class="list-group-item">
-                    [<?php echo $institucionIndicador['Grupo'] ?>]<?php echo $institucionIndicador['nombre'] ?>
-                      
-                    </li>
-                   <?php endforeach; ?>
-                   <label>Archivo Adjunto de indicadores de Derechos Humanos</label>
-                     <?php echo $this->Html->link(
-                       '<i class="glyphicon glyphicon-save-file">'.$institucion['link_adjunto_indicadores'].'</i>',
-                       '/uploads/'.$institucion['link_adjunto_indicadores'],
-                       ['class' => 'btn btn-default btn-lg', 'target' => '_blank','escape' => false]
-                   ); ?>
-                 </ul>
-                 </div>
-                  <?php endforeach; ?>
-                  <?php $diplayTab = 'none'?>
-                <?php endforeach; ?>
+                <div class="tab-content">
+
+                <?php $diplayTab = 'active';
+                foreach ($listInstitucionAccionUnique as $institucionUnique) : 
+                ?>
+                 <!-- Tab panes -->
+                 
+                 <div role="tabpanel" class="tab-pane <?php echo $diplayTab ?>" id="tab<?php echo $institucionUnique['id_institucion']?>" name="tabsRespuestas" >
+
+                  <?php $diplayTab = ''; ?>
+
+
+                         <?php foreach ($listInstitucionAccion as $institucion) {
+
+                            if ($institucionUnique['id_institucion'] == $institucion['id_institucion'] ) {
+                          ?>
+                                                             
+                                  <label for="inputRespuesta">Respuesta</label>
+                                   <textarea type="text" class="form-control" id="inputRespuesta" cols=3 rows=4 
+                                   placeholder="" readonly="readonly"> <?= h($institucion['respuesta']) ?></textarea>
+                                   <?php if($institucion['link_adjunto']!=null){
+                                   ?>  
+                                     <label>Archivo Adjunto de respuesta</label>
+                                    <?php  echo $this->Html->link(
+                                      '<i class="glyphicon glyphicon-save-file">'.$institucion['link_adjunto'].'</i>',
+                                      '/uploads/'.$institucion['link_adjunto'],
+                                      ['class' => 'btn btn-default btn-lg', 'target' => '_blank','escape' => false]
+                                  ); ?>
+                                    <?php $diplayTab = ''; } ?>                   
+                         <label class="form-control">Indicadores de Derechos Humanos</label>
+                         <ul class="list">
+                          <?php 
+                          foreach ($ListIndicadresInstAccion[$institucion['accion_sol_id']] as $institucionIndicador) :?>
+
+                            <li class="list-group-item">
+                            [<?php echo $institucionIndicador['Grupo'] ?>]<?php echo $institucionIndicador['nombre'] ?>
+                              
+                            </li>
+                           <?php endforeach; ?>
+                           <label>Archivo Adjunto de indicadores de Derechos Humanos</label>
+                             <?php echo $this->Html->link(
+                               '<i class="glyphicon glyphicon-save-file">'.$institucion['link_adjunto_indicadores'].'</i>',
+                               '/uploads/'.$institucion['link_adjunto_indicadores'],
+                               ['class' => 'btn btn-default btn-lg', 'target' => '_blank','escape' => false]
+                           ); ?>
+                         </ul>
+                         
+
+                          <?php }
+                          }?>
+
+                  </div>
+                  <?php $diplayTab = '';?>
+                <?php endforeach; 
+                ?>
 
                  
                   </div>
@@ -184,7 +200,7 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
            <div id="collapse4" class="panel-collapse collapse in">
                <div class="panel-body">
                    <label for="inputTexto">Texto</label>
-                   <textarea type="text" class="form-control" id="texto_consolidado" name="texto_consolidado" cols=3 rows=4 placeholder=""><?=h($texto_consolidado); ?> </textarea> 
+                   <textarea type="text" class="form-control" id="texto_consolidado" name="texto_consolidado" cols=3 rows=4 required="required" placeholder=""><?=h($texto_consolidado); ?> </textarea> 
                    <?php if($consolidado_datos!=null){?>
                       <?php foreach ($consolidado_datos->adjuntos_consolidados as $adjunto) : 
                          echo $this->Html->link(

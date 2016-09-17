@@ -179,9 +179,9 @@ class RecomendacionsTable extends Table
     public function getNuevasRecomendaciones(){
 
         $strquery = 'SELECT rec.*, nombre_usuario, estados.descripcion estado 
-                    FROM siplus.recomendacions rec
-                    inner join siplus.users user on rec.usuario_id = user.id
-                    inner join siplus.estados estados on estados.id = rec.estado_id
+                    FROM recomendacions rec
+                    inner join users user on rec.usuario_id = user.id
+                    inner join estados estados on estados.id = rec.estado_id
                     order by rec.id desc 
                     limit 10';
         $connAux = ConnectionManager::get('default');
@@ -199,13 +199,13 @@ class RecomendacionsTable extends Table
                         estado.descripcion estado_desc,
                         usuario.nombre_usuario
                     from
-                        siplus.accions accion
+                        accions accion
                             inner join
-                        siplus.recomendacions recomendacion ON accion.recomendacion_id = recomendacion.id
+                        recomendacions recomendacion ON accion.recomendacion_id = recomendacion.id
                             inner join
-                        siplus.estados estado ON estado.id = accion.estado_id
+                        estados estado ON estado.id = accion.estado_id
                             inner join
-                        siplus.users usuario ON usuario.id = accion.usuario_id
+                        users usuario ON usuario.id = accion.usuario_id
                     order by accion.id desc
                     limit 20';
         $connAux = ConnectionManager::get('default');

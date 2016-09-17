@@ -128,8 +128,8 @@ class AccionsTable extends Table
 
         $strquery = 'select count(accion.id) numero, 
                     estados.descripcion, 
-                    count(accion.id) / (select count(1) from siplus.accions ) * 100 porcentaje
-                    from  siplus.accions accion  
+                    count(accion.id) / (select count(1) from accions ) * 100 porcentaje
+                    from  accions accion  
                     inner join estados on estados.id = accion.estado_id
                     group by estados.descripcion;';
         $connAux = ConnectionManager::get('default');

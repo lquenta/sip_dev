@@ -134,9 +134,9 @@ class SolicitudInformacionsTable extends Table
      public function getNuevasSolictudes(){
 
         $strquery = 'select solicitud.*, estado.descripcion estado_desc, user.nombre_usuario
-                    from siplus.solicitud_informacions solicitud
-                    inner join siplus.estados estado on estado.id = solicitud.estado_id
-                    inner join siplus.users user on user.id = solicitud.usuario_id
+                    from solicitud_informacions solicitud
+                    inner join estados estado on estado.id = solicitud.estado_id
+                    inner join users user on user.id = solicitud.usuario_id
                     limit 10;';
         $connAux = ConnectionManager::get('default');
         $stmt = $connAux->execute($strquery);
@@ -145,5 +145,5 @@ class SolicitudInformacionsTable extends Table
         return $results;
     }
 
-     
+
 }

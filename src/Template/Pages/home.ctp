@@ -123,18 +123,90 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                           <div class="tab-content">
                                                             <div role="tabpanel" class="tab-pane active" id="NuevaRecomendaciones">
                                                                 
-                                                                <h1>NuevaRecomendaciones</h1>
+                                                                <h2>Nuevas Recomendaciones</h2>
+
+                                                                 <table class="table table-striped" cellpadding="0" cellspacing="0">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Fecha de Creación</th>
+                                                                            <th>Código</th>
+                                                                            <th>Descripción</th>
+                                                                            <th>Usuario de Registro</th>
+                                                                            <th>Estado</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <?php foreach ($listNuevasRecomendaciones as $recomendacion): ?>
+                                                                        <tr>
+                                                                            <td><?= h($recomendacion['fecha_creacion']) ?></td>
+                                                                            <td><?= h($recomendacion['codigo']) ?></td>
+                                                                            <td><p class="minimize"><?= h($recomendacion['descripcion']) ?></p></td>
+                                                                            <td><?= h($recomendacion['nombre_usuario']) ?></td>
+                                                                            <td><?= h($recomendacion['estado']) ?></td>
+                                                                         </tr>
+                                                                        <?php endforeach; ?>
+                                                                    </tbody>
+                                                                </table>
+
                                                                 
                                                             </div>
                                                              <div role="tabpanel" class="tab-pane" id="NuevaAS">
 
-                                                                <h1>Nueva Acción de Seguimiento</h1>
+                                                                <h2>Nuevas Acciones de Seguimiento</h2>
+
+                                                                  <table class="table table-striped" cellpadding="0" cellspacing="0">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Fecha</th>
+                                                                            <th>Código</th>
+                                                                            <th>Descripción Acción</th>
+                                                                            <th>Descripción Recomendación</th>
+                                                                            <th>Usuario de Registro</th>
+                                                                            <th>Estado</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <?php foreach ($listAccionesSeguimiento as $recomendacion): ?>
+                                                                        <tr>
+                                                                            <td><?= h($recomendacion['fecha']) ?></td>
+                                                                            <td><?= h($recomendacion['codigo']) ?></td>
+                                                                            <td><p class="minimize"><?= h($recomendacion['descripcion']) ?></p></td>
+                                                                            <td><p class="minimize"><?= h($recomendacion['recomendacion_desc']) ?></p></td>
+                                                                            <td><?= h($recomendacion['nombre_usuario']) ?></td>
+                                                                            <td><?= h($recomendacion['estado_desc']) ?></td>
+                                                                         </tr>
+                                                                        <?php endforeach; ?>
+                                                                    </tbody>
+                                                                </table>
                                                                                                                     
                                                                 
                                                             </div>
                                                             <div role="tabpanel" class="tab-pane" id="NSI">
-                                                                <h1>Nueva Solicitud de Información</h1>
+                                                                <h2>Nuevas Solicitudes de Información</h2>
                                                                 
+                                                                 <table class="table table-striped" cellpadding="0" cellspacing="0">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Fecha</th>
+                                                                            <th>Código</th>
+                                                                            <th>Descripción</th>
+                                                                            <th>Usuario de Registro</th>
+                                                                            <th>Estado</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <?php foreach ($listNuevaSolicitudInformacion as $recomendacion): ?>
+                                                                        <tr>
+                                                                            <td><?= h($recomendacion['fecha_modificacion']) ?></td>
+                                                                            <td><?= h($recomendacion['codigo']) ?></td>
+                                                                            <td><p class="minimize"><?= h($recomendacion['descripcion']) ?></p></td>
+                                                                            <td><?= h($recomendacion['nombre_usuario']) ?></td>
+                                                                            <td><?= h($recomendacion['estado_desc']) ?></td>
+                                                                         </tr>
+                                                                        <?php endforeach; ?>
+                                                                    </tbody>
+                                                                </table>
+                                                                               
                                                                 
                                                             </div>                                                           
 
@@ -265,21 +337,28 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                             <div role="tabpanel" class="tab-pane" id="DatosEstadisticos">
                                                                 
                                                                 
-                                                                    <div class="row panel panel-default">
+                                                                <div class="row panel panel-default">
                                                                     <div class = "panel-heading">
-                                                                      <h4> Recomendaciones por Estado</h4 >
+                                                                      <h4> Distribución de Recomendaciones</h4 >
                                                                    </div>                                                               
                                                                    <div id="CharRecomendaciones" class="row panel-body"></div>
-                                                                   </div>
+                                                                </div>
+
+                                                                <div class="row panel panel-default">
+                                                                    <div class = "panel-heading">
+                                                                      <h4> Distribución de las Acciones de Seguimiento</h4 >
+                                                                     </div>                                                               
+                                                                   <div id="CharAcciones" class="row panel-body"></div>
+                                                                </div>
                                                                
-                                                                   <div class="row panel panel-default">
+                                                                 <!--  <div class="row panel panel-default">
                                                                     <div class = "panel-heading">
                                                                       <h4> Cumplimiento de Solicitudes</h4 >
                                                                    </div>                                                               
                                                                    <div id="CharSolicitudes" class="row panel-body">
                                                                        
                                                                    </div>
-                                                               </div>
+                                                                    </div>  -->
                                                             </div>
                                                           
                                                           </div>
@@ -509,8 +588,12 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
             })
         </script>
         <script type="text/javascript">
+        console.log('hola');
             var dataRecomendaciones = new Array();
             var listRecomendacionsPie = <?php echo json_encode($listRecomendacionsPie) ?>;
+            var dataAccionesSeguimiento = new Array();
+            var listAccionesSegPie = <?php echo json_encode($listAccionesSegPie) ?>;
+            console.log(listAccionesSegPie);
 
            for(var item in listRecomendacionsPie) {
                 obj = {
@@ -518,6 +601,14 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                         y: parseFloat(listRecomendacionsPie[item]["porcentaje"])
                       };
                 dataRecomendaciones.push(obj);
+            }
+
+            for(var item in listAccionesSegPie) {
+                obj = {
+                        name: listAccionesSegPie[item]["descripcion"], 
+                        y: parseFloat(listAccionesSegPie[item]["porcentaje"])
+                      };
+                dataAccionesSeguimiento.push(obj);
             }
             
            $(function () {
@@ -553,7 +644,45 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                     data: dataRecomendaciones
                 }]
             });
+
+          
         });
+
+              $(function () {
+            $('#CharAcciones').highcharts({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                            style: {
+                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Brands',
+                    colorByPoint: true,
+                    data: dataAccionesSeguimiento
+                }]
+            });
+              });
+
         </script>
 
          <script type="text/javascript">
@@ -615,7 +744,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
         }
     };
 
-    $('#CharSolicitudes').highcharts(Highcharts.merge(gaugeOptions, {
+    /*$('#CharSolicitudes').highcharts(Highcharts.merge(gaugeOptions, {
         yAxis: {
             min: 0,
             max: parseFloat(listSolictudTacomentro[0]['Total']),
@@ -643,6 +772,37 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 
     }));
 
-     });
+     });*/
+
+
+    /****truncar cadenas***/
+
+    jQuery(function(){
+
+    var minimized_elements = $('p.minimize');
+    
+    minimized_elements.each(function(){    
+        var t = $(this).text();        
+        if(t.length < 100) return;
+        
+        $(this).html(
+            t.slice(0,100)+'<span>... </span><a href="#" class="more">Mas</a>'+
+            '<span style="display:none;">'+ t.slice(100,t.length)+' <a href="#" class="less">Menos</a></span>'
+        );
+        
+    }); 
+    
+    $('a.more', minimized_elements).click(function(event){
+        event.preventDefault();
+        $(this).hide().prev().hide();
+        $(this).next().show();        
+    });
+    
+    $('a.less', minimized_elements).click(function(event){
+        event.preventDefault();
+        $(this).parent().hide().prev().show().prev().show();    
+    });
+
+});
 
         </script>

@@ -175,4 +175,43 @@ class RecomendacionsTable extends Table
         $results = $stmt ->fetchAll('assoc');        
         return $results;
     }
+
+    public function getNuevasRecomendaciones(){
+
+        $strquery = 'SELECT rec.*, nombre_usuario, estados.descripcion estado 
+                    FROM siplus.recomendacions rec
+                    inner join siplus.users user on rec.usuario_id = user.id
+                    inner join siplus.estados estados on estados.id = rec.estado_id
+                    order by rec.id desc 
+                    limit 10';
+        $connAux = ConnectionManager::get('default');
+        $stmt = $connAux->execute($strquery);
+        $results = $stmt ->fetchAll('assoc');
+        
+        return $results;
+    }
+
+    public function getNuevasAccionesSeguimiento(){
+
+        $strquery = 'select 
+                        accion . *,
+                        recomendacion.descripcion recomendacion_desc,
+                        estado.descripcion estado_desc,
+                        usuario.nombre_usuario
+                    from
+                        siplus.accions accion
+                            inner join
+                        siplus.recomendacions recomendacion ON accion.recomendacion_id = recomendacion.id
+                            inner join
+                        siplus.estados estado ON estado.id = accion.estado_id
+                            inner join
+                        siplus.users usuario ON usuario.id = accion.usuario_id
+                    order by accion.id desc
+                    limit 20';
+        $connAux = ConnectionManager::get('default');
+        $stmt = $connAux->execute($strquery);
+        $results = $stmt ->fetchAll('assoc');
+        
+        return $results;
+    }
 }

@@ -76,6 +76,11 @@ class PagesController extends AppController
         $listRecomendacionsPie = $this->Recomendacions->RecomendacionsDatosPie();
         $listSolictudTacomentro = $this->SolicitudInformacions->SolictudesTacometro();
 
+        $listNuevasRecomendaciones = $this->Recomendacions->getNuevasRecomendaciones();        
+        $listAccionesSeguimiento = $this->Recomendacions->getNuevasAccionesSeguimiento();        
+        $listNuevaSolicitudInformacion = $this->SolicitudInformacions->getNuevasSolictudes(); 
+        $listAccionesSegPie = $this->Accions->getAccionesSeguimientoPie(); 
+
         //si la institucion es diferente de min.justicia, cancilleria,procuraduria
         $rol_usuario = $this->Rols->find('all')->where(['id'=>$this->Auth->user('rol_id')])->toArray();
         if($rol_usuario[0]['institucion_id']!=26 && $rol_usuario[0]['institucion_id']!=27 && $rol_usuario[0]['institucion_id']!=28){
@@ -115,7 +120,7 @@ class PagesController extends AppController
 
        
 
-        $this->set(compact('autorizacions','solicitudInformacions','accionSolicitud','accions_sin_responder_entidades','listRecomendacionsPie','listSolictudTacomentro'));
+        $this->set(compact('autorizacions','solicitudInformacions','accionSolicitud','accions_sin_responder_entidades','listRecomendacionsPie','listSolictudTacomentro', 'listNuevasRecomendaciones','listAccionesSeguimiento','listNuevaSolicitudInformacion','listAccionesSegPie'));
         $this->set('_serialize', ['solicitudInformacions']);
 
         //$solicitudInstituciones= 

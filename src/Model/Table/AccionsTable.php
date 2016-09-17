@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Datasource\ConnectionManager;
 
 /**
  * Accions Model
@@ -121,5 +122,20 @@ class AccionsTable extends Table
         //$result = $codigo_parcial.'-'.$codigo_numerico;
 
         return $result;
+    }
+
+    public function getAccionesSeguimientoPie(){
+
+        $strquery = 'select count(accion.id) numero, 
+                    estados.descripcion, 
+                    count(accion.id) / (select count(1) from siplus.accions ) * 100 porcentaje
+                    from  siplus.accions accion  
+                    inner join estados on estados.id = accion.estado_id
+                    group by estados.descripcion;';
+        $connAux = ConnectionManager::get('default');
+        $stmt = $connAux->execute($strquery);
+        $results = $stmt ->fetchAll('assoc');
+        
+        return $results;
     }
 }

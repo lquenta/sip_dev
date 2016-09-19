@@ -128,7 +128,7 @@ class SolicitudRespuestasController extends AppController
                     $this->AdjuntosSolicitudRespuestas->save($adjuntosSolicitudRespuesta);
                 }
                 $this->Flash->success(__('La accion se ha guardado.'));
-                return $this->redirect(['action' => 'index']);
+                 return $this->redirect("/");
             } else {
                 $this->Flash->error(__('La accion no se ha guardado, por favor intente de nuevo.'));
             }

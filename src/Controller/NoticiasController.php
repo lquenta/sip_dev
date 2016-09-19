@@ -19,6 +19,14 @@ class NoticiasController extends AppController
         $this->loadComponent('RequestHandler');
     }
     public function todas(){
+        $this->response->cors($this->request)
+            ->allowOrigin(['*'])
+            ->allowMethods(['GET', 'POST'])
+            ->allowHeaders(['X-CSRF-Token'])
+            ->allowCredentials()
+            ->exposeHeaders(['Link'])
+            ->maxAge(300)
+            ->build();
          $full_url=Router::url('/', true);;
         $resultados=array(
             'resultados'=>

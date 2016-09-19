@@ -188,6 +188,7 @@ class AccionSolicitudController extends AppController
      */
     public function index()
     {
+        $this->loadModel('SolicitudesPendientesRespuestas');
         $this->paginate = [
             'contain' => ['Accions', 'Institucions', 'Estados', 'Users']
         ];
@@ -197,8 +198,12 @@ class AccionSolicitudController extends AppController
         $accionSolicitud = $this->paginate($accionSolicitud);
 
         //debug($accionSolicitud);
-
-        $this->set(compact('accionSolicitud'));
+        $this->paginate = [
+            'contain' => ['SolicitudInformacions','Users', 'Estados']
+        ];
+        $solicitudesPendientes=$this->SolicitudesPendientesRespuestas->find('all')->where(['SolicitudesPendientesRespuestas.estado_id'=>'1','SolicitudesPendientesRespuestas.usuario_id'=>$this->Auth->user('id')]);
+        $solicitudInformacions = $this->paginate($solicitudesPendientes);
+        $this->set(compact('accionSolicitud','solicitudInformacions'));
         $this->set('_serialize', ['accionSolicitud']);
     }
 

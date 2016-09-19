@@ -61,6 +61,14 @@ class BusquedasController extends AppController
     }
     public function simple(){
         //buscamos recomendaciones que coincidan con el texto y descripcion
+        $this->response->cors($this->request)
+            ->allowOrigin(['*'])
+            ->allowMethods(['GET', 'POST'])
+            ->allowHeaders(['X-CSRF-Token'])
+            ->allowCredentials()
+            ->exposeHeaders(['Link'])
+            ->maxAge(300)
+            ->build();
         $full_url=Router::url('/', true);;
 
         $resultados=array();

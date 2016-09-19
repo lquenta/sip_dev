@@ -1,5 +1,5 @@
 <?php
-$this->extend('../Layout/TwitterBootstrap/dashboard');
+$this->extend('../Layout/TwitterBootstrap/dashboard_restringido');
 $this->assign('title', 'Responder Solicitud de Información');
 ?>
 

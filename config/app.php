@@ -228,8 +228,8 @@ return [
              */
             //'port' => 'non_standard_port_number',
             'username' => 'root',
-            'password' => 'root',
-            'database' => 'SIPLUS',
+            'password' => 'GerminalVRTX',
+            'database' => 'siplus',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'flags' => [],

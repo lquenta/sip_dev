@@ -331,6 +331,7 @@ class FormHelper extends Helper
      * - `context` Additional options for the context class. For example the EntityContext accepts a 'table'
      *   option that allows you to set the specific Table class the form should be based on.
      * - `idPrefix` Prefix for generated ID attributes.
+     * - `templateVars` Provide template variables for the formStart template.
      *
      * @param mixed $model The context for which the form is being defined. Can
      *   be an ORM entity, ORM resultset, or an array of meta data. You can use false or null
@@ -435,7 +436,8 @@ class FormHelper extends Helper
         $actionAttr = $templater->formatAttributes(['action' => $action, 'escape' => false]);
 
         return $this->formatTemplate('formStart', [
-            'attrs' => $templater->formatAttributes($htmlAttributes) . $actionAttr
+            'attrs' => $templater->formatAttributes($htmlAttributes) . $actionAttr,
+            'templateVars' => isset($options['templateVars']) ? $options['templateVars'] : []
         ]) . $append;
     }
 
@@ -1136,7 +1138,7 @@ class FormHelper extends Helper
      */
     protected function _getInput($fieldName, $options)
     {
-        switch ($options['type']) {
+        switch (strtolower($options['type'])) {
             case 'select':
                 $opts = $options['options'];
                 unset($options['options']);
@@ -1152,6 +1154,9 @@ class FormHelper extends Helper
                 unset($options['options']);
 
                 return $this->multiCheckbox($fieldName, $opts, $options);
+            case 'input':
+                throw new RuntimeException("Invalid type 'input' used for field '$fieldName'");
+
             default:
                 return $this->{$options['type']}($fieldName, $options);
         }
@@ -2466,7 +2471,11 @@ class FormHelper extends Helper
             unset($options['value']);
         }
         if (!isset($options['val'])) {
-            $options['val'] = $context->val($field);
+            $valOptions = [
+                'default' => isset($options['default']) ? $options['default'] : null,
+                'schemaDefault' => isset($options['schemaDefault']) ? $options['schemaDefault'] : true,
+            ];
+            $options['val'] = $context->val($field, $valOptions);
         }
         if (!isset($options['val']) && isset($options['default'])) {
             $options['val'] = $options['default'];

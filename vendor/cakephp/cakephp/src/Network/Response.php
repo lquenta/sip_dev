@@ -27,7 +27,6 @@ use InvalidArgumentException;
  *
  * By default controllers will use this class to render their response. If you are going to use
  * a custom response class it should subclass this object in order to ensure compatibility.
- *
  */
 class Response
 {
@@ -273,6 +272,7 @@ class Response
         'xbm' => 'image/x-xbitmap',
         'xpm' => 'image/x-xpixmap',
         'xwd' => 'image/x-xwindowdump',
+        'psd' => ['application/photoshop', 'application/psd', 'image/psd', 'image/x-photoshop', 'image/photoshop', 'zz-application/zz-winassoc-psd'],
         'ice' => 'x-conference/x-cooltalk',
         'iges' => 'model/iges',
         'igs' => 'model/iges',

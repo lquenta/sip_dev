@@ -16,10 +16,10 @@ namespace Cake\View;
 
 use Cake\Core\App;
 use Cake\Utility\Inflector;
+use Cake\View\Exception\MissingCellException;
 
 /**
  * Provides cell() method for usage in Controller and View classes.
- *
  */
 trait CellTrait
 {
@@ -69,7 +69,7 @@ trait CellTrait
         $className = App::className($pluginAndCell, 'View/Cell', 'Cell');
 
         if (!$className) {
-            throw new Exception\MissingCellException(['className' => $pluginAndCell . 'Cell']);
+            throw new MissingCellException(['className' => $pluginAndCell . 'Cell']);
         }
 
         if (!empty($data)) {

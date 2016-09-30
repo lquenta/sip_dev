@@ -75,7 +75,9 @@ $this->assign('title', 'Añadir Recomendación');
                     }
                     //echo $this->Form->input('mecanismos',array('label'=>'Mecanismo de Protección','multiple' => 'checkbox', 'options' => $mecanismos, ));
                     
+                    echo '<div class="divDerechos">';
                     echo $this->Form->input('poblaciones', array('label'=>'Grupo Poblacional','multiple' => 'checkbox', 'options' => $poblaciones));
+                    echo '</div>';
                     echo '<div class="divDerechos">';
                     echo $this->Form->input('derecho', array('label'=>'Derecho(s)','multiple' => 'checkbox', 'options' => $derecho));
                     echo '</div>';

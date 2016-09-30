@@ -180,7 +180,7 @@ $this->start('tb_body_start');
                      <li class="">
                         <a href="<?= $this->Url->build(["controller" => "Pages","action" => "display","home"]); ?>">
                             
-                            <span> Panel de Control </span>
+                            <span> Panel de Control</span>
                         </a>
                     </li>
                     

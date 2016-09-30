@@ -58,8 +58,11 @@ class SolicitudInformacionsController extends AppController
         $this->loadModel('SolicitudesPendientesRespuestas');
         $this->loadModel('InstitucionRecomendacion');
         
-        
-        
+        $gruposInstitucioones = $this->Institucions->find()->where(['AccionSeg_Activo = 1']);
+        $gruposInstitucioones->select(['grupo'])->distinct(['grupo'])->all();
+        $institucionesNew = $this->Institucions->find()->where(['AccionSeg_Activo = 1'])->toArray();
+        $institucionesRol = $this->Institucions->obtenerInstitucionConRol();
+
         $solicitud = $this->SolicitudInformacions->newEntity();
         if ($this->request->is('post')) {
              //if (isset($this->request->data['btnGuardar'])) {
@@ -153,7 +156,7 @@ class SolicitudInformacionsController extends AppController
        
         $institucions = $this->Institucions->find('list', ['limit' => 200])->toArray();
         $codigo_solicitud=$this->SolicitudInformacions->obtenerUltimoCodigoSolicitud();
-        $this->set(compact('solicitud', 'users', 'estados','institucions','codigo_solicitud'));
+        $this->set(compact('solicitud', 'users', 'estados','institucions','codigo_solicitud','gruposInstitucioones','institucionesNew', 'institucionesRol'));
         $this->set('_serialize', ['solicitud']);
 
     }

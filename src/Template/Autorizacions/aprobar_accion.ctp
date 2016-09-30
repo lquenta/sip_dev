@@ -271,7 +271,7 @@ $this->assign('title', 'Aprobacion de Accion de Seguimiento ');
       <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" href="#collapse5">Comentario</a>
+              <a data-toggle="collapse" href="#collapse5">Comentarios (Detalle de las modificaciones)</a>
             </h4>
           </div>
           <div id="collapse5" class="panel-collapse collapse in">

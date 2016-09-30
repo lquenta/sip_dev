@@ -1,6 +1,6 @@
 <?php
 /* @var $this \Cake\View\View */
-//$this->extend('../Layout/TwitterBootstrap/dashboard');
+$this->extend('../Layout/TwitterBootstrap/dashboard');
 $this->assign('title', 'Solicitudes pendientes de informacion');
 ?>
 

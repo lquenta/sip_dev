@@ -23,7 +23,6 @@ use SessionHandlerInterface;
 
 /**
  * DatabaseSession provides methods to be used with Session.
- *
  */
 class DatabaseSession implements SessionHandlerInterface
 {
@@ -113,7 +112,7 @@ class DatabaseSession implements SessionHandlerInterface
         if ($session === false) {
             return '';
         }
-        
+
         return $session;
     }
 

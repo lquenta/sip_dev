@@ -42,6 +42,7 @@ use Cake\Routing\Router;
  */
 Router::defaultRouteClass('DashedRoute');
 Router::connect('/', array('controller' => 'pages', 'action' => 'home'));
+//Router::connect('/', array('controller' => 'SolicitudInformacions', 'action' => 'index'));
 
 Router::scope('/', function (RouteBuilder $routes) {
     /**
@@ -50,7 +51,7 @@ Router::scope('/', function (RouteBuilder $routes) {
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
-    //$routes->connect('/', ['controller' => 'SolicitudInformacions', 'action' => 'display', 'index']);
+    //$routes->connect('/', ['controller' => 'SolicitudInformacions', 'action' => 'index', 'index']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.

@@ -11,7 +11,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                         <div class="row">
                             <div class="col-xs-12">
                                 <!-- PAGE CONTENT BEGINS -->
-                                <div class="alert alert-block alert-danger">
+                                <!--<div class="alert alert-block alert-danger">
                                     <button type="button" class="close" data-dismiss="alert">
                                         <i class="ace-icon fa fa-times"></i>
                                     </button>
@@ -19,7 +19,8 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                     <i class="ace-icon fa fa-close red"></i>
 
                                    Existen acciones pendientes de autorizacion
-                                </div>
+                                </div>-->
+                                <img src="webroot/images/printer.png" width="50px" onclick="window.print();" style="cursor:pointer;">
 
                                 <div class="row">
                                     <div class="space-6"></div>
@@ -95,7 +96,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 
                                     
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <div class="widget-box transparent" id="recent-box">
                                            
 
@@ -250,6 +251,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                                 <table class="table table-striped" cellpadding="0" cellspacing="0">
                                                                     <thead>
                                                                         <tr>
+                                                                            <th>Fecha</th>
                                                                             <th><?= $this->Paginator->sort('codigo','Código'); ?></th>
                                                                             <th><?= $this->Paginator->sort('accion_id','Acción'); ?></th>
                                                                             <th><?= $this->Paginator->sort('estado_id','Estado'); ?></th>
@@ -261,10 +263,13 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                                         <?php foreach ($autorizacions as $autorizacion): ?>
                                                                         <tr>
                                                                             <td>
-                                                                                <?= $autorizacion->has('accion') ? $this->Html->link($autorizacion->accion->codigo, ['controller' => 'Accions', 'action' => 'view', $autorizacion->accion->id]) : '' ?>
+                                                                                <?= $autorizacion->accion->fecha ?>
                                                                             </td>
                                                                             <td>
-                                                                                <?= $autorizacion->has('accion') ? $this->Html->link($autorizacion->accion->descripcion, ['controller' => 'Accions', 'action' => 'view', $autorizacion->accion->id]) : '' ?>
+                                                                                <?= $autorizacion->accion->codigo ?>
+                                                                            </td>
+                                                                            <td>
+                                                                                <?= $autorizacion->accion->descripcion ?>
                                                                             </td>
                                                                             <td>
                                                                                 <?= $autorizacion->estado->descripcion?>           </td>
@@ -351,14 +356,14 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                                    <div id="CharAcciones" class="row panel-body"></div>
                                                                 </div>
                                                                
-                                                                 <!--  <div class="row panel panel-default">
+                                                                   <div class="row panel panel-default">
                                                                     <div class = "panel-heading">
                                                                       <h4> Cumplimiento de Solicitudes</h4 >
                                                                    </div>                                                               
                                                                    <div id="CharSolicitudes" class="row panel-body">
                                                                        
                                                                    </div>
-                                                                    </div>  -->
+                                                                    </div>  
                                                             </div>
                                                           
                                                           </div>
@@ -744,7 +749,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
         }
     };
 
-    /*$('#CharSolicitudes').highcharts(Highcharts.merge(gaugeOptions, {
+    $('#CharSolicitudes').highcharts(Highcharts.merge(gaugeOptions, {
         yAxis: {
             min: 0,
             max: parseFloat(listSolictudTacomentro[0]['Total']),
@@ -772,7 +777,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 
     }));
 
-     });*/
+     });
 
 
     /****truncar cadenas***/

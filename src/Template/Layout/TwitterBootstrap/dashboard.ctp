@@ -153,7 +153,7 @@ $this->start('tb_body_start');
                 <ul class="nav nav-pills">
                     <li class="active">
 
-                        <a href="#">
+                        <a href="<?= $this->Url->build(["controller" => "SolicitudInformacions","action" => "index"]); ?>">
                             
                             <span class="menu-text"> MENU </span>
                         </a>

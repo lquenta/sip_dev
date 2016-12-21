@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\I18n\Time;
 /**
  * Recomendacions Controller
  *
@@ -82,15 +82,17 @@ class RecomendacionsController extends AppController
             //para recomendacion entity
             $codigo_recomendacion=$this->Recomendacions->obtenerUltimoCodigoRecomendacion();
             $request = $this->request->data;
+            $fecha_creacion = Time::parse($request['fechaRecomendacion']);
             $recomendacion_req = array(
                 'codigo'=>$request['codigo'],
                 'descripcion'=>$request['descripcion'],
-                'fecha_creacion'=>date('Y-m-d H:i:s'),
+                'fecha_creacion'=>$fecha_creacion->i18nFormat('yyyy-MM-dd HH:mm:ss'),
                 'fecha_modificacion'=>date('Y-m-d H:i:s'),
                 'usuario_id'=>$this->Auth->user('id'),
                 'estado_id'=>$estado
                 );
             $recomendacion = $this->Recomendacions->patchEntity($recomendacion, $recomendacion_req);
+            debug($recomendacion);
             $res_save_recomendacion = $this->Recomendacions->save($recomendacion);
             
             if ($res_save_recomendacion) {
@@ -315,7 +317,7 @@ class RecomendacionsController extends AppController
         $all_mecanismos = $this->Mecanismos->find('list', ['limit' => 200])->toArray();
         if ($this->request->is(['patch', 'post', 'put'])) {
         //if ($this->request->is(['post'])) {
-             if (isset($this->request->data['btnGuardar'])) {
+             if (isset($this->request->data['btnGuardar']) || isset($this->request->data['btnDespublicar'])) {
                 $estado=1;
              }
              else if (isset($this->request->data['btnPublicar'])) {

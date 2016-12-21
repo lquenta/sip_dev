@@ -134,6 +134,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                                             <th>Descripción</th>
                                                                             <th>Usuario de Registro</th>
                                                                             <th>Estado</th>
+                                                                            <th class="actions"><?= __('Accesos Directos'); ?></th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
@@ -144,6 +145,11 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
                                                                             <td><p class="minimize"><?= h($recomendacion['descripcion']) ?></p></td>
                                                                             <td><?= h($recomendacion['nombre_usuario']) ?></td>
                                                                             <td><?= h($recomendacion['estado']) ?></td>
+                                                                            <td class="actions">
+                                                                                 <?= $this->Html->link('', ['controller' => 'recomendacions','action' => 'edit', $recomendacion['id']], ['title' => __('Editar'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
+                                                                               
+
+                                                                            </td>
                                                                          </tr>
                                                                         <?php endforeach; ?>
                                                                     </tbody>

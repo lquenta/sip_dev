@@ -15,6 +15,10 @@ $this->assign('title', 'Editar Recomendación');
             <div id="collapse1" class="panel-collapse collapse in">
                 <div class="panel-body">
                     <div class="form-group">
+                        <label for="inputCodigo">Estado de Recomendacion</label>
+                        <input type="text" class="form-control" id="inputEstado" name="inputEstado" placeholder="" readonly="readonly" value="<?= h($recomendacion->estado->descripcion) ?>"></input>
+                    </div>
+                    <div class="form-group">
                         <label for="inputCodigo">Codigo</label>
                         <input type="text" class="form-control" id="inputCodigo" name="inputCodigo" placeholder="" readonly="readonly" value="<?= h($recomendacion->codigo) ?>"></input>
                     </div>
@@ -79,7 +83,12 @@ $this->assign('title', 'Editar Recomendación');
 
     
 </fieldset>
-<?= $this->Form->button('Grabar',array('name'=>'btnGuardar'));?>
-<?= $this->Form->button('Grabar y Publicar',array('name'=>'btnPublicar'));?>
+<?= $this->Form->button('Grabar',array('name'=>'btnGuardar','class'=>'btn btn-primary'));?>
+<?= $this->Form->button('Grabar y Publicar',array('name'=>'btnPublicar','class'=>'btn btn-danger'));?>
+<?php 
+if($recomendacion->estado_id == '9'){ 
+    echo $this->Form->button('Grabar y Despublicar',array('name'=>'btnDespublicar','class'=>'btn btn-warning'));
+    }  
+?>
 <?= $this->Form->end() ?>
 

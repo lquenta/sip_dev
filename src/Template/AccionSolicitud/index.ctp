@@ -11,6 +11,7 @@ $this->assign('title', 'Responder Solicitud');
             <th><a href="#">Codigo</a></th>
             <th><?= $this->Paginator->sort('accion_id','Accion'); ?></th>
             <th><?= $this->Paginator->sort('fecha'); ?></th>
+             <th><?= $this->Paginator->sort('usuario_id'); ?></th>
             <th class="actions"><?= __('Responder'); ?></th>
         </tr>
     </thead>
@@ -26,7 +27,9 @@ $this->assign('title', 'Responder Solicitud');
             </td>
            
             <td><?= h($accionSolicitud->fecha) ?></td>
-           
+            <td>
+                <?= $accionSolicitud->has('user') ? h($accionSolicitud->user->nombre_usuario) : '' ?>
+            </td>
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'responderSolicitud', $accionSolicitud->id], ['title' => __('Responder'), 'class' => 'btn btn-default glyphicon glyphicon-ok']) ?>
             </td>

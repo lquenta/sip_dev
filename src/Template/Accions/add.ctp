@@ -29,7 +29,7 @@ $this->assign('title', 'Añadir Seguimiento');
                         <textarea type="text" class="form-control" id="inputDetalle" placeholder="" readonly="readonly" rows="5"><?= h($recomendacion->descripcion) ?></textarea>
                     </div>
                      <div class="form-group">
-                          <?php echo $this->Form->input('Comite', array('label'=>'Comité de Protección','multiple' => 'checkbox', 'options' => $comites,'readonly' => 'readonly','disabled'=>'disabled','value'=>array_keys($comites)));
+                          <?php echo $this->Form->input('Comite', array('label'=>'Mecanismos de Protección','multiple' => 'checkbox', 'options' => $comites,'readonly' => 'readonly','disabled'=>'disabled','value'=>array_keys($comites)));
                           ?>
                     </div>
                 </div>

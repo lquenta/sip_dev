@@ -1,0 +1,2038 @@
+2016-09-08 01:36:28 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Filter\AssetFilter.php:149
+2016-09-08 05:15:04 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\basics.php:96
+2016-09-08 05:15:04 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'descripcion' in where clause is ambiguous
+Request URL: /sip_dev/busquedas/simple.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(172): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(276): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#9 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(67): Cake\ORM\Query->getIterator()
+#10 [internal function]: App\Controller\BusquedasController->simple()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#14 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#15 {main}
+
+
+2016-09-08 05:15:49 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\basics.php:96
+2016-09-08 05:20:59 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\basics.php:96
+2016-09-08 05:21:13 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\basics.php:96
+2016-09-08 05:22:16 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\basics.php:96
+2016-09-08 06:04:38 Error: Fatal Error (1): Call to a member function highlight() on boolean in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 103]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-09-08 06:04:38 Error: [Cake\Error\FatalErrorException] Call to a member function highlight() on boolean
+Request URL: /sip_dev/busquedas/simple.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\sip...', 103)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-09-08 06:05:00 Error: Fatal Error (1): Call to a member function highlight() on boolean in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 105]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-09-08 06:05:00 Error: [Cake\Error\FatalErrorException] Call to a member function highlight() on boolean
+Request URL: /sip_dev/busquedas/simple.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\sip...', 105)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-09-08 06:09:55 Warning: Warning (2): str_replace() expects at least 3 parameters, 2 given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 105]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+str_replace - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 105
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 06:09:55 Warning: Warning (2): str_replace() expects at least 3 parameters, 2 given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 106]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+str_replace - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 106
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 06:09:55 Warning: Warning (2): str_replace() expects at least 3 parameters, 2 given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 107]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+str_replace - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 107
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 06:09:55 Warning: Warning (2): str_replace() expects at least 3 parameters, 2 given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 105]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+str_replace - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 105
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 06:09:55 Warning: Warning (2): str_replace() expects at least 3 parameters, 2 given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 106]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+str_replace - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 106
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 06:09:55 Warning: Warning (2): str_replace() expects at least 3 parameters, 2 given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 107]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+str_replace - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 107
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 06:09:55 Warning: Warning (2): str_replace() expects at least 3 parameters, 2 given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 105]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+str_replace - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 105
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 06:09:55 Warning: Warning (2): str_replace() expects at least 3 parameters, 2 given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 106]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+str_replace - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 106
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 06:09:55 Warning: Warning (2): str_replace() expects at least 3 parameters, 2 given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 107]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+str_replace - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 107
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 06:09:55 Warning: Warning (2): str_replace() expects at least 3 parameters, 2 given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 105]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+str_replace - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 105
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 06:09:55 Warning: Warning (2): str_replace() expects at least 3 parameters, 2 given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 106]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+str_replace - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 106
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 06:09:55 Warning: Warning (2): str_replace() expects at least 3 parameters, 2 given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 107]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+str_replace - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 107
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 06:09:55 Warning: Warning (2): str_replace() expects at least 3 parameters, 2 given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 105]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+str_replace - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 105
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 06:09:55 Warning: Warning (2): str_replace() expects at least 3 parameters, 2 given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 106]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+str_replace - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 106
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 06:09:55 Warning: Warning (2): str_replace() expects at least 3 parameters, 2 given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 107]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+str_replace - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 107
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 06:09:55 Warning: Warning (2): str_replace() expects at least 3 parameters, 2 given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 105]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+str_replace - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 105
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 06:09:55 Warning: Warning (2): str_replace() expects at least 3 parameters, 2 given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 106]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+str_replace - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 106
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 06:09:55 Warning: Warning (2): str_replace() expects at least 3 parameters, 2 given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 107]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+str_replace - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 107
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 06:09:55 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-09-08 07:03:53 Warning: Warning (2): explode() expects parameter 2 to be string, array given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 108]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+explode - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 108
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 07:03:53 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 109]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 109
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 07:03:53 Warning: Warning (2): explode() expects parameter 2 to be string, array given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 108]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+explode - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 108
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 07:03:53 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 109]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 109
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 07:03:53 Warning: Warning (2): explode() expects parameter 2 to be string, array given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 108]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+explode - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 108
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 07:03:53 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 109]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 109
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 07:03:53 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-09-08 07:04:09 Warning: Warning (2): explode() expects parameter 2 to be string, array given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 108]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+explode - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 108
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 07:04:09 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 109]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 109
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 07:04:09 Warning: Warning (2): explode() expects parameter 2 to be string, array given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 108]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+explode - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 108
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 07:04:09 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 109]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 109
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 07:04:09 Warning: Warning (2): explode() expects parameter 2 to be string, array given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 108]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+explode - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 108
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 07:04:09 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 109]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 109
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 07:04:10 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-09-08 07:04:54 Warning: Warning (2): explode() expects parameter 2 to be string, array given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 108]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+explode - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 108
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 07:04:54 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 109]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 109
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 07:04:54 Warning: Warning (2): explode() expects parameter 2 to be string, array given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 108]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+explode - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 108
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 07:04:54 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 109]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 109
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 07:04:54 Warning: Warning (2): explode() expects parameter 2 to be string, array given in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 108]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+explode - [internal], line ??
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 108
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 07:04:54 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 109]
+Request URL: /sip_dev/busquedas/simple.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+App\Controller\BusquedasController::simple() - APP/Controller\BusquedasController.php, line 109
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-08 07:04:55 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-09-08 07:05:48 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-09-08 08:33:54 Error: [InvalidArgumentException] Cannot convert value to string
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\TypeConverterTrait.php(37): Cake\Database\Type\StringType->toDatabase(Array, Object(Cake\Database\Driver\Mysql))
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\PDOStatement.php(70): Cake\Database\Statement\StatementDecorator->cast(Array, 'string')
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(105): Cake\Database\Statement\PDOStatement->bindValue('c0', Array, NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(98): Cake\Database\Statement\StatementDecorator->bindValue('c0', Array, NULL)
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(292): Cake\Database\Log\LoggingStatement->bindValue('c0', Array, NULL)
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\ValueBinder.php(126): Cake\Database\Statement\StatementDecorator->bind(Array, Array)
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(275): Cake\Database\ValueBinder->attachTo(Object(Cake\Database\Log\LoggingStatement))
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#12 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(252): Cake\ORM\Query->getIterator()
+#13 [internal function]: App\Controller\BusquedasController->avanzada()
+#14 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#15 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#16 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#17 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#18 {main}
+
+
+2016-09-08 08:34:37 Error: [InvalidArgumentException] Cannot convert value to string
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\TypeConverterTrait.php(37): Cake\Database\Type\StringType->toDatabase(Array, Object(Cake\Database\Driver\Mysql))
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\PDOStatement.php(70): Cake\Database\Statement\StatementDecorator->cast(Array, 'string')
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(105): Cake\Database\Statement\PDOStatement->bindValue('c0', Array, NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(98): Cake\Database\Statement\StatementDecorator->bindValue('c0', Array, NULL)
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(292): Cake\Database\Log\LoggingStatement->bindValue('c0', Array, NULL)
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\ValueBinder.php(126): Cake\Database\Statement\StatementDecorator->bind(Array, Array)
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(275): Cake\Database\ValueBinder->attachTo(Object(Cake\Database\Log\LoggingStatement))
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#12 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(253): Cake\ORM\Query->getIterator()
+#13 [internal function]: App\Controller\BusquedasController->avanzada()
+#14 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#15 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#16 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#17 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#18 {main}
+
+
+2016-09-08 08:34:57 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''[\"2016\"]')' at line 1
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(172): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(276): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#9 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(253): Cake\ORM\Query->getIterator()
+#10 [internal function]: App\Controller\BusquedasController->avanzada()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#14 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#15 {main}
+
+
+2016-09-09 05:32:32 Error: [Cake\Controller\Exception\MissingActionException] Action NoticiasController::todas.json() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'NoticiasController',
+  'action' => 'todas.json',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /sip_dev/noticias/todas.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\NoticiasController))
+#2 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-09-09 05:48:47 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Img could not be found.
+Exception Attributes: array (
+  'class' => 'Img',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /sip_dev/img/noticia1.jpg
+Stack Trace:
+#0 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-09-09 05:48:47 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Filter\AssetFilter.php:149
+2016-09-09 05:48:58 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Images could not be found.
+Exception Attributes: array (
+  'class' => 'Images',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /sip_dev/images/noticia1.jpg
+Stack Trace:
+#0 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-09-09 05:49:13 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Img could not be found.
+Exception Attributes: array (
+  'class' => 'Img',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /sip_dev/Img/noticia1.jpg
+Stack Trace:
+#0 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-09-11 01:38:03 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\wamp\www\sip_dev\src\Controller\AccionSolicitudController.php, line 84]
+Request URL: /sip_dev/accion-solicitud/responder-solicitud/44
+Referer URL: http://localhost/sip_dev/accion-solicitud/responder-solicitud/44
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+App\Controller\AccionSolicitudController::responderSolicitud() - APP/Controller\AccionSolicitudController.php, line 84
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-11 01:38:03 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-09-11 02:02:43 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-09-12 02:56:19 Error: [Cake\Controller\Exception\MissingActionException] Action BusquedasController::parametrosBusqueda.json() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'BusquedasController',
+  'action' => 'parametrosBusqueda.json',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /sip_dev/busquedas/parametrosBusqueda.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#2 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-09-12 02:56:30 Error: [Cake\Controller\Exception\MissingActionException] Action BusquedasController::parametrosBusqueda.json() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'BusquedasController',
+  'action' => 'parametrosBusqueda.json',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /sip_dev/busquedas/parametrosBusqueda.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#2 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-09-12 02:57:12 Warning: Warning (2): Missing argument 1 for Cake\ORM\Query::find(), called in C:\wamp\www\sip_dev\src\Controller\BusquedasController.php on line 30 and defined in [C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php, line 1034]
+Request URL: /sip_dev/busquedas/parametricas.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\ORM\Query::find() - CORE\src\ORM\Query.php, line 1034
+App\Controller\BusquedasController::parametrosBusqueda() - APP/Controller\BusquedasController.php, line 30
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-12 02:57:12 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-09-12 02:57:12 Error: [BadMethodCallException] Unknown finder method "SELECT Recomendacions.id AS `Recomendacions__id`, Recomendacions.descripcion AS `Recomendacions__descripcion`, Recomendacions.fecha_creacion AS `Recomendacions__fecha_creacion`, Recomendacions.fecha_modificacion AS `Recomendacions__fecha_modificacion`, Recomendacions.usuario_id AS `Recomendacions__usuario_id`, Recomendacions.estado_id AS `Recomendacions__estado_id`, Recomendacions.codigo AS `Recomendacions__codigo`, Users.id AS `Users__id`, Users.nombre_usuario AS `Users__nombre_usuario`, Users.password AS `Users__password`, Users.fecha_creacion AS `Users__fecha_creacion`, Users.fecha_modificacion AS `Users__fecha_modificacion`, Users.rol_id AS `Users__rol_id`, Estados.id AS `Estados__id`, Estados.descripcion AS `Estados__descripcion` FROM recomendacions Recomendacions INNER JOIN users Users ON Users.id = (Recomendacions.usuario_id) INNER JOIN estados Estados ON Estados.id = (Recomendacions.estado_id)"
+Request URL: /sip_dev/busquedas/parametricas.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Table.php(961): Cake\ORM\Table->callFinder(Object(Cake\ORM\Query), Object(Cake\ORM\Query), Array)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Table.php(1911): Cake\ORM\Table->find(Object(Cake\ORM\Query), Array)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(1036): Cake\ORM\Table->callFinder(NULL, Object(Cake\ORM\Query), Array)
+#3 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(30): Cake\ORM\Query->find()
+#4 [internal function]: App\Controller\BusquedasController->parametrosBusqueda()
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#8 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#9 {main}
+
+
+2016-09-12 02:58:38 Error: [BadMethodCallException] Unknown finder method "DerechoRecomendacion.Derechos.descripcion"
+Request URL: /sip_dev/busquedas/parametricas.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(1036): Cake\ORM\Table->callFinder('DerechoRecomend...', Object(Cake\ORM\Query), Array)
+#1 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(30): Cake\ORM\Query->find('DerechoRecomend...')
+#2 [internal function]: App\Controller\BusquedasController->parametrosBusqueda()
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#6 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#7 {main}
+
+
+2016-09-12 03:20:37 Error: Fatal Error (1): Call to a member function find() on boolean in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 26]
+Request URL: /sip_dev/busquedas/parametricas.json
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-09-12 03:20:38 Error: [Cake\Error\FatalErrorException] Call to a member function find() on boolean
+Request URL: /sip_dev/busquedas/parametricas.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\sip...', 26)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-09-12 03:21:00 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\basics.php:96
+2016-09-12 03:21:42 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(`Recomendacions__fecha_creacion`) FROM recomendacions Recomendacions INNER JOIN' at line 1
+Request URL: /sip_dev/busquedas/parametricas.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(172): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(276): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#8 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(35): Cake\ORM\Query->all()
+#9 [internal function]: App\Controller\BusquedasController->parametrosBusqueda()
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#13 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#14 {main}
+
+
+2016-09-12 03:23:30 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(`Recomendacions__fecha_creacion`) FROM recomendacions Recomendacions INNER JOIN' at line 1
+Request URL: /sip_dev/busquedas/parametricas.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(172): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(276): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#8 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(35): Cake\ORM\Query->all()
+#9 [internal function]: App\Controller\BusquedasController->parametrosBusqueda()
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#13 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#14 {main}
+
+
+2016-09-12 03:24:16 Error: [BadMethodCallException] Unknown method "list"
+Request URL: /sip_dev/busquedas/parametricas.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(1114): Cake\ORM\Query->_call('list', Array)
+#1 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(35): Cake\ORM\Query->__call('list', Array)
+#2 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(35): Cake\ORM\Query->list()
+#3 [internal function]: App\Controller\BusquedasController->parametrosBusqueda()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#7 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#8 {main}
+
+
+2016-09-12 03:29:11 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'EXTRACT(`YEAR FROM Recomendacions__fecha_creacion`) FROM recomendacions Recomend' at line 1
+Request URL: /sip_dev/busquedas/parametricas.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(172): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(276): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#8 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(35): Cake\ORM\Query->all()
+#9 [internal function]: App\Controller\BusquedasController->parametrosBusqueda()
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#13 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#14 {main}
+
+
+2016-09-12 03:30:26 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\basics.php:96
+2016-09-12 03:35:23 Error: Fatal Error (1): Call to a member function find() on boolean in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 30]
+Request URL: /sip_dev/busquedas/parametricas.json
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-09-12 03:35:24 Error: [Cake\Error\FatalErrorException] Call to a member function find() on boolean
+Request URL: /sip_dev/busquedas/parametricas.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\sip...', 30)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-09-12 04:13:30 Error: Fatal Error (1): Function name must be a string in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 271]
+Request URL: /sip_dev/busquedas/avanzada.json
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-09-12 04:13:30 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-09-12 04:13:30 Error: [Cake\Error\FatalErrorException] Function name must be a string
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Function name m...', 'C:\\wamp\\www\\sip...', 271)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-09-12 04:13:43 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'DerechoRecomendacion.Derechos.id' in 'where clause'
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(172): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(276): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#9 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(280): Cake\ORM\Query->getIterator()
+#10 [internal function]: App\Controller\BusquedasController->avanzada()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#14 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#15 {main}
+
+
+2016-09-12 04:14:43 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'DerechoRecomendacion.Derechos' in 'where clause'
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(172): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(276): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#9 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(280): Cake\ORM\Query->getIterator()
+#10 [internal function]: App\Controller\BusquedasController->avanzada()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#14 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#15 {main}
+
+
+2016-09-12 04:15:08 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'DerechoRecomendacion.Derechos.id' in 'where clause'
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(172): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(276): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#9 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(280): Cake\ORM\Query->getIterator()
+#10 [internal function]: App\Controller\BusquedasController->avanzada()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#14 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#15 {main}
+
+
+2016-09-12 04:18:39 Warning: Warning (2): Missing argument 1 for Cake\ORM\Query::find(), called in C:\wamp\www\sip_dev\src\Controller\BusquedasController.php on line 273 and defined in [C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php, line 1034]
+Request URL: /sip_dev/busquedas/avanzada.json
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\ORM\Query::find() - CORE\src\ORM\Query.php, line 1034
+App\Controller\BusquedasController::avanzada() - APP/Controller\BusquedasController.php, line 273
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-12 04:18:40 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-09-12 04:18:40 Error: [BadMethodCallException] Unknown finder method "SELECT Recomendacions.id AS `Recomendacions__id`, Recomendacions.descripcion AS `Recomendacions__descripcion`, Recomendacions.fecha_creacion AS `Recomendacions__fecha_creacion`, Recomendacions.fecha_modificacion AS `Recomendacions__fecha_modificacion`, Recomendacions.usuario_id AS `Recomendacions__usuario_id`, Recomendacions.estado_id AS `Recomendacions__estado_id`, Recomendacions.codigo AS `Recomendacions__codigo`, Users.id AS `Users__id`, Users.nombre_usuario AS `Users__nombre_usuario`, Users.password AS `Users__password`, Users.fecha_creacion AS `Users__fecha_creacion`, Users.fecha_modificacion AS `Users__fecha_modificacion`, Users.rol_id AS `Users__rol_id`, Estados.id AS `Estados__id`, Estados.descripcion AS `Estados__descripcion` FROM recomendacions Recomendacions INNER JOIN users Users ON Users.id = (Recomendacions.usuario_id) INNER JOIN estados Estados ON Estados.id = (Recomendacions.estado_id) WHERE MATCH(Recomendacions.descripcion) AGAINST(:search)"
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Table.php(961): Cake\ORM\Table->callFinder(Object(Cake\ORM\Query), Object(Cake\ORM\Query), Array)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Table.php(1911): Cake\ORM\Table->find(Object(Cake\ORM\Query), Array)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(1036): Cake\ORM\Table->callFinder(NULL, Object(Cake\ORM\Query), Array)
+#3 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(273): Cake\ORM\Query->find()
+#4 [internal function]: App\Controller\BusquedasController->avanzada()
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#8 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#9 {main}
+
+
+2016-09-12 04:18:57 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\basics.php:96
+2016-09-12 04:18:57 Error: [Cake\Database\Exception] Impossible to generate condition with empty list of values for field (Derechos.id)
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Expression\Comparison.php(133): Cake\Database\Expression\Comparison->_stringExpression(Object(Cake\Database\ValueBinder))
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Expression\QueryExpression.php(524): Cake\Database\Expression\Comparison->sql(Object(Cake\Database\ValueBinder))
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\QueryCompiler.php(234): Cake\Database\Expression\QueryExpression->sql(Object(Cake\Database\ValueBinder))
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\QueryCompiler.php(139): Cake\Database\QueryCompiler->_buildJoinPart(Array, Object(Cake\ORM\Query), Object(Cake\Database\ValueBinder))
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(256): Cake\Database\QueryCompiler->Cake\Database\{closure}(Array, 'join')
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\QueryCompiler.php(99): Cake\Database\Query->traverse(Object(Closure), Array)
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Driver.php(324): Cake\Database\QueryCompiler->compile(Object(Cake\ORM\Query), Object(Cake\Database\ValueBinder))
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(262): Cake\Database\Driver->compileQuery(Object(Cake\ORM\Query), Object(Cake\Database\ValueBinder))
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(227): Cake\Database\Connection->compileQuery(Object(Cake\ORM\Query), Object(Cake\Database\ValueBinder))
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(933): Cake\Database\Query->sql(NULL)
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(122): Cake\ORM\Query->sql()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(221): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(274): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#14 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#15 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#16 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#17 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#18 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(286): Cake\ORM\Query->getIterator()
+#19 [internal function]: App\Controller\BusquedasController->avanzada()
+#20 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#21 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#22 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#23 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#24 {main}
+
+
+2016-09-12 04:19:50 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\basics.php:96
+2016-09-12 04:20:56 Error: [Cake\Controller\Exception\MissingActionException] Action BusquedasController::avanzada.json() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'BusquedasController',
+  'action' => 'avanzada.json',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#2 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-09-12 04:21:37 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\basics.php:96
+2016-09-12 04:22:03 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\basics.php:96
+2016-09-12 04:22:52 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\basics.php:96
+2016-09-12 04:23:08 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\basics.php:96
+2016-09-12 04:23:42 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\basics.php:96
+2016-09-12 04:28:16 Error: [Cake\Database\Exception] Impossible to generate condition with empty list of values for field (Derechos.id)
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Expression\Comparison.php(133): Cake\Database\Expression\Comparison->_stringExpression(Object(Cake\Database\ValueBinder))
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Expression\QueryExpression.php(524): Cake\Database\Expression\Comparison->sql(Object(Cake\Database\ValueBinder))
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\QueryCompiler.php(234): Cake\Database\Expression\QueryExpression->sql(Object(Cake\Database\ValueBinder))
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\QueryCompiler.php(139): Cake\Database\QueryCompiler->_buildJoinPart(Array, Object(Cake\ORM\Query), Object(Cake\Database\ValueBinder))
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(256): Cake\Database\QueryCompiler->Cake\Database\{closure}(Array, 'join')
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\QueryCompiler.php(99): Cake\Database\Query->traverse(Object(Closure), Array)
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Driver.php(324): Cake\Database\QueryCompiler->compile(Object(Cake\ORM\Query), Object(Cake\Database\ValueBinder))
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(262): Cake\Database\Driver->compileQuery(Object(Cake\ORM\Query), Object(Cake\Database\ValueBinder))
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(227): Cake\Database\Connection->compileQuery(Object(Cake\ORM\Query), Object(Cake\Database\ValueBinder))
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(933): Cake\Database\Query->sql(NULL)
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(122): Cake\ORM\Query->sql()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(221): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(274): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#14 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#15 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#16 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#17 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#18 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(286): Cake\ORM\Query->getIterator()
+#19 [internal function]: App\Controller\BusquedasController->avanzada()
+#20 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#21 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#22 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#23 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#24 {main}
+
+
+2016-09-12 05:15:44 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Notificacions.recomendacion_id' in 'where clause'
+Request URL: /sip_dev/recomendacions/edit/1
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(172): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(276): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Association\ExternalAssociationTrait.php(116): Cake\ORM\Query->all()
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Association\SelectableAssociationTrait.php(49): Cake\ORM\Association\HasMany->_buildResultMap(Object(Cake\ORM\Query), Array)
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(592): Cake\ORM\Association\HasMany->eagerLoader(Array)
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\ORM\EagerLoader->loadExternal(Object(Cake\ORM\Query), Object(Cake\Database\Statement\CallbackStatement))
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#14 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(405): Cake\ORM\Query->all()
+#15 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(416): Cake\ORM\Query->first()
+#16 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Table.php(1217): Cake\ORM\Query->firstOrFail()
+#17 C:\wamp\www\sip_dev\src\Controller\RecomendacionsController.php(264): Cake\ORM\Table->get('1', Array)
+#18 [internal function]: App\Controller\RecomendacionsController->edit('1')
+#19 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#20 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#21 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\RecomendacionsController))
+#22 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#23 {main}
+
+
+2016-09-12 06:08:59 Error: [InvalidArgumentException] Recomendacions is not associated with ComiteRecomendacions
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(255): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\RecomendacionsTable), 'ComiteRecomenda...', Array, Array)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(380): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\RecomendacionsTable))
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(351): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\RecomendacionsTable))
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(981): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\RecomendacionsTable), true)
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(932): Cake\ORM\Query->_transformQuery()
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(122): Cake\ORM\Query->sql()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(221): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(274): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#13 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(317): Cake\ORM\Query->getIterator()
+#14 [internal function]: App\Controller\BusquedasController->avanzada()
+#15 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#16 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#17 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#18 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#19 {main}
+
+
+2016-09-12 06:09:11 Error: [InvalidArgumentException] Recomendacions is not associated with ComiteRecomendacions
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(255): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\RecomendacionsTable), 'ComiteRecomenda...', Array, Array)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(380): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\RecomendacionsTable))
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(351): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\RecomendacionsTable))
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(981): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\RecomendacionsTable), true)
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(932): Cake\ORM\Query->_transformQuery()
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(122): Cake\ORM\Query->sql()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(221): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(274): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#13 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(317): Cake\ORM\Query->getIterator()
+#14 [internal function]: App\Controller\BusquedasController->avanzada()
+#15 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#16 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#17 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#18 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#19 {main}
+
+
+2016-09-12 06:10:06 Error: [InvalidArgumentException] Recomendacions is not associated with ComiteRecomendacions
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(255): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\RecomendacionsTable), 'ComiteRecomenda...', Array, Array)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(380): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\RecomendacionsTable))
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(351): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\RecomendacionsTable))
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(981): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\RecomendacionsTable), true)
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(932): Cake\ORM\Query->_transformQuery()
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(122): Cake\ORM\Query->sql()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(221): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(274): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#13 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(317): Cake\ORM\Query->getIterator()
+#14 [internal function]: App\Controller\BusquedasController->avanzada()
+#15 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#16 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#17 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#18 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#19 {main}
+
+
+2016-09-12 06:10:09 Error: [InvalidArgumentException] Recomendacions is not associated with ComiteRecomendacions
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(255): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\RecomendacionsTable), 'ComiteRecomenda...', Array, Array)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(380): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\RecomendacionsTable))
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(351): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\RecomendacionsTable))
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(981): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\RecomendacionsTable), true)
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(932): Cake\ORM\Query->_transformQuery()
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(122): Cake\ORM\Query->sql()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(221): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(274): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#13 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(317): Cake\ORM\Query->getIterator()
+#14 [internal function]: App\Controller\BusquedasController->avanzada()
+#15 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#16 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#17 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#18 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#19 {main}
+
+
+2016-09-12 06:10:26 Error: [InvalidArgumentException] Recomendacions is not associated with ComiteRecomendacions
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(255): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\RecomendacionsTable), 'ComiteRecomenda...', Array, Array)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(380): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\RecomendacionsTable))
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(351): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\RecomendacionsTable))
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(981): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\RecomendacionsTable), true)
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(932): Cake\ORM\Query->_transformQuery()
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(122): Cake\ORM\Query->sql()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(221): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(274): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#13 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(317): Cake\ORM\Query->getIterator()
+#14 [internal function]: App\Controller\BusquedasController->avanzada()
+#15 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#16 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#17 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#18 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#19 {main}
+
+
+2016-09-12 06:10:30 Error: [InvalidArgumentException] Recomendacions is not associated with ComiteRecomendacions
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(255): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\RecomendacionsTable), 'ComiteRecomenda...', Array, Array)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(380): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\RecomendacionsTable))
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(351): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\RecomendacionsTable))
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(981): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\RecomendacionsTable), true)
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(932): Cake\ORM\Query->_transformQuery()
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(122): Cake\ORM\Query->sql()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(221): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(274): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#13 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(317): Cake\ORM\Query->getIterator()
+#14 [internal function]: App\Controller\BusquedasController->avanzada()
+#15 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#16 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#17 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#18 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#19 {main}
+
+
+2016-09-12 06:11:14 Error: [InvalidArgumentException] Recomendacions is not associated with ComiteRecomendacions
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(255): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\RecomendacionsTable), 'ComiteRecomenda...', Array, Array)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(380): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\RecomendacionsTable))
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(351): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\RecomendacionsTable))
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(981): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\RecomendacionsTable), true)
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(932): Cake\ORM\Query->_transformQuery()
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(122): Cake\ORM\Query->sql()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(221): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(274): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#13 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(317): Cake\ORM\Query->getIterator()
+#14 [internal function]: App\Controller\BusquedasController->avanzada()
+#15 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#16 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#17 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#18 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#19 {main}
+
+
+2016-09-12 06:11:17 Error: [InvalidArgumentException] Recomendacions is not associated with ComiteRecomendacions
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(255): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\RecomendacionsTable), 'ComiteRecomenda...', Array, Array)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(380): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\RecomendacionsTable))
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(351): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\RecomendacionsTable))
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(981): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\RecomendacionsTable), true)
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(932): Cake\ORM\Query->_transformQuery()
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(122): Cake\ORM\Query->sql()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(221): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(274): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#13 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(317): Cake\ORM\Query->getIterator()
+#14 [internal function]: App\Controller\BusquedasController->avanzada()
+#15 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#16 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#17 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#18 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#19 {main}
+
+
+2016-09-12 16:24:26 Error: [Cake\Controller\Exception\MissingActionException] Action BusquedasController::parametrosBusqueda.json() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'BusquedasController',
+  'action' => 'parametrosBusqueda.json',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /sip_dev/busquedas/parametrosBusqueda.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#2 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-09-12 16:24:38 Error: Fatal Error (1): Call to a member function obtenerAñosRecomendaciones() on boolean in [C:\wamp\www\sip_dev\src\Controller\BusquedasController.php, line 33]
+Request URL: /sip_dev/busquedas/parametricas.json
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-09-12 16:24:38 Error: [Cake\Error\FatalErrorException] Call to a member function obtenerAñosRecomendaciones() on boolean
+Request URL: /sip_dev/busquedas/parametricas.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\sip...', 33)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-09-12 17:04:46 Error: [InvalidArgumentException] Cannot convert value to string
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\TypeConverterTrait.php(37): Cake\Database\Type\StringType->toDatabase(Array, Object(Cake\Database\Driver\Mysql))
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\PDOStatement.php(70): Cake\Database\Statement\StatementDecorator->cast(Array, 'string')
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(105): Cake\Database\Statement\PDOStatement->bindValue('c0', Array, NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(98): Cake\Database\Statement\StatementDecorator->bindValue('c0', Array, NULL)
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(292): Cake\Database\Log\LoggingStatement->bindValue('c0', Array, NULL)
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\ValueBinder.php(126): Cake\Database\Statement\StatementDecorator->bind(Array, Array)
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(275): Cake\Database\ValueBinder->attachTo(Object(Cake\Database\Log\LoggingStatement))
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#11 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(268): Cake\ORM\Query->all()
+#12 [internal function]: App\Controller\BusquedasController->avanzada()
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#14 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#15 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#16 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#17 {main}
+
+
+2016-09-12 17:05:05 Error: [InvalidArgumentException] Cannot convert value to string
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\TypeConverterTrait.php(37): Cake\Database\Type\StringType->toDatabase(Array, Object(Cake\Database\Driver\Mysql))
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\PDOStatement.php(70): Cake\Database\Statement\StatementDecorator->cast(Array, 'string')
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(105): Cake\Database\Statement\PDOStatement->bindValue('c0', Array, NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(98): Cake\Database\Statement\StatementDecorator->bindValue('c0', Array, NULL)
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(292): Cake\Database\Log\LoggingStatement->bindValue('c0', Array, NULL)
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\ValueBinder.php(126): Cake\Database\Statement\StatementDecorator->bind(Array, Array)
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(275): Cake\Database\ValueBinder->attachTo(Object(Cake\Database\Log\LoggingStatement))
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#12 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(317): Cake\ORM\Query->getIterator()
+#13 [internal function]: App\Controller\BusquedasController->avanzada()
+#14 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#15 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#16 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#17 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#18 {main}
+
+
+2016-09-12 17:05:45 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'fecha_creacion' in where clause is ambiguous
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(172): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(276): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#9 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(317): Cake\ORM\Query->getIterator()
+#10 [internal function]: App\Controller\BusquedasController->avanzada()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#14 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#15 {main}
+
+
+2016-09-14 11:58:07 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Comites.id' in 'on clause'
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(172): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(276): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#9 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(317): Cake\ORM\Query->getIterator()
+#10 [internal function]: App\Controller\BusquedasController->avanzada()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#14 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#15 {main}
+
+
+2016-09-14 11:58:59 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Comite.id' in 'on clause'
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(172): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(276): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#9 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(317): Cake\ORM\Query->getIterator()
+#10 [internal function]: App\Controller\BusquedasController->avanzada()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#14 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#15 {main}
+
+
+2016-09-14 11:59:14 Error: [InvalidArgumentException] ComiteRecomendacions is not associated with Comite
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(464): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\ComiteRecomendacionsTable), 'Comite', Array, Array)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(255): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\RecomendacionsTable), 'ComiteRecomenda...', Array, Array)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(381): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\RecomendacionsTable))
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(351): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\RecomendacionsTable))
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(981): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\RecomendacionsTable), true)
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(932): Cake\ORM\Query->_transformQuery()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(122): Cake\ORM\Query->sql()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(221): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(274): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#14 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(317): Cake\ORM\Query->getIterator()
+#15 [internal function]: App\Controller\BusquedasController->avanzada()
+#16 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#17 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#18 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#19 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#20 {main}
+
+
+2016-09-14 11:59:30 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Comites.id' in 'on clause'
+Request URL: /sip_dev/busquedas/avanzada.json
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(172): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(276): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(133): Cake\ORM\Query->all()
+#9 C:\wamp\www\sip_dev\src\Controller\BusquedasController.php(317): Cake\ORM\Query->getIterator()
+#10 [internal function]: App\Controller\BusquedasController->avanzada()
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\BusquedasController))
+#14 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#15 {main}
+
+
+2016-09-15 06:33:11 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Notificacions.recomendacion_id' in 'where clause'
+Request URL: /sip_dev/recomendacions/edit/19
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(172): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(276): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Association\ExternalAssociationTrait.php(116): Cake\ORM\Query->all()
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Association\SelectableAssociationTrait.php(49): Cake\ORM\Association\HasMany->_buildResultMap(Object(Cake\ORM\Query), Array)
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(592): Cake\ORM\Association\HasMany->eagerLoader(Array)
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\ORM\EagerLoader->loadExternal(Object(Cake\ORM\Query), Object(Cake\Database\Statement\CallbackStatement))
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#14 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(405): Cake\ORM\Query->all()
+#15 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(416): Cake\ORM\Query->first()
+#16 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Table.php(1217): Cake\ORM\Query->firstOrFail()
+#17 C:\wamp\www\sip_dev\src\Controller\RecomendacionsController.php(264): Cake\ORM\Table->get('19', Array)
+#18 [internal function]: App\Controller\RecomendacionsController->edit('19')
+#19 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#20 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#21 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\RecomendacionsController))
+#22 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#23 {main}
+
+
+2016-09-15 06:34:19 Error: [Cake\Database\Exception] Impossible to generate condition with empty list of values for field (id)
+Request URL: /sip_dev/recomendacions/edit/19
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Expression\Comparison.php(133): Cake\Database\Expression\Comparison->_stringExpression(Object(Cake\Database\ValueBinder))
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Expression\QueryExpression.php(524): Cake\Database\Expression\Comparison->sql(Object(Cake\Database\ValueBinder))
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\QueryCompiler.php(131): Cake\Database\Expression\QueryExpression->sql(Object(Cake\Database\ValueBinder))
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(256): Cake\Database\QueryCompiler->Cake\Database\{closure}(Object(Cake\Database\Expression\QueryExpression), 'where')
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\QueryCompiler.php(99): Cake\Database\Query->traverse(Object(Closure), Array)
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Driver.php(324): Cake\Database\QueryCompiler->compile(Object(Cake\ORM\Query), Object(Cake\Database\ValueBinder))
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(262): Cake\Database\Driver->compileQuery(Object(Cake\ORM\Query), Object(Cake\Database\ValueBinder))
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(227): Cake\Database\Connection->compileQuery(Object(Cake\ORM\Query), Object(Cake\Database\ValueBinder))
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(933): Cake\Database\Query->sql(NULL)
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(122): Cake\ORM\Query->sql()
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(221): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(274): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#14 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#15 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#16 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(294): Cake\ORM\Query->all()
+#17 C:\wamp\www\sip_dev\src\Controller\RecomendacionsController.php(307): Cake\ORM\Query->toArray()
+#18 [internal function]: App\Controller\RecomendacionsController->edit('19')
+#19 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#20 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#21 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\RecomendacionsController))
+#22 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#23 {main}
+
+
+2016-09-15 06:44:05 Error: Fatal Error (1): Call to a member function find() on boolean in [C:\wamp\www\sip_dev\src\Controller\RecomendacionsController.php, line 299]
+Request URL: /sip_dev/recomendacions/edit/19
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-09-15 06:44:05 Error: [Cake\Error\FatalErrorException] Call to a member function find() on boolean
+Request URL: /sip_dev/recomendacions/edit/19
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\sip...', 299)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-09-15 06:44:30 Error: Fatal Error (1): Call to a member function find() on boolean in [C:\wamp\www\sip_dev\src\Controller\RecomendacionsController.php, line 306]
+Request URL: /sip_dev/recomendacions/edit/19
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-09-15 06:44:31 Error: [Cake\Error\FatalErrorException] Call to a member function find() on boolean
+Request URL: /sip_dev/recomendacions/edit/19
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\sip...', 306)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-09-15 06:54:42 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-09-15 06:54:52 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-09-15 06:55:30 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-09-15 07:05:53 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-09-15 07:09:07 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-09-16 01:43:55 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Filter\AssetFilter.php:149
+2016-09-16 02:51:41 Error: [Cake\Controller\Exception\MissingActionException] Action RolsController::user() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'RolsController',
+  'action' => 'user',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /sip_dev/rols/user/add
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\RolsController))
+#2 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-09-16 02:51:44 Error: [Cake\Controller\Exception\MissingActionException] Action RolsController::users() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'RolsController',
+  'action' => 'users',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /sip_dev/rols/users/add
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\RolsController))
+#2 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-09-16 03:24:53 Warning: Warning (4096): Argument 2 passed to Cake\ORM\Table::patchEntity() must be of the type array, string given, called in C:\wamp\www\sip_dev\src\Controller\UsersController.php on line 91 and defined in [C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Table.php, line 2199]
+Request URL: /sip_dev/users/add
+Referer URL: http://localhost/sip_dev/users/add
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\ORM\Table::patchEntity() - CORE\src\ORM\Table.php, line 2199
+App\Controller\UsersController::add() - APP/Controller\UsersController.php, line 91
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-16 03:24:53 Warning: Warning (4096): Argument 2 passed to Cake\ORM\Marshaller::merge() must be of the type array, string given, called in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Table.php on line 2206 and defined in [C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Marshaller.php, line 486]
+Request URL: /sip_dev/users/add
+Referer URL: http://localhost/sip_dev/users/add
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\ORM\Marshaller::merge() - CORE\src\ORM\Marshaller.php, line 486
+Cake\ORM\Table::patchEntity() - CORE\src\ORM\Table.php, line 2206
+App\Controller\UsersController::add() - APP/Controller\UsersController.php, line 91
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-09-16 03:24:53 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-09-16 03:24:53 Error: [InvalidArgumentException] Passed variable is not an array or object, using empty array instead
+Request URL: /sip_dev/users/add
+Referer URL: http://localhost/sip_dev/users/add
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Marshaller.php(235): ArrayObject->__construct('user_add')
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Marshaller.php(488): Cake\ORM\Marshaller->_prepareDataAndOptions('user_add', Array)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Table.php(2206): Cake\ORM\Marshaller->merge(Object(App\Model\Entity\User), 'user_add', Array)
+#3 C:\wamp\www\sip_dev\src\Controller\UsersController.php(91): Cake\ORM\Table->patchEntity(Object(App\Model\Entity\User), 'user_add')
+#4 [internal function]: App\Controller\UsersController->add()
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UsersController))
+#8 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#9 {main}
+
+
+2016-09-16 04:52:53 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Derechos.indicador_id' in 'on clause'
+Request URL: /sip_dev/derechos
+Referer URL: http://localhost/sip_dev/users/edit/1
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(172): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(276): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Component\PaginatorComponent.php(171): Cake\ORM\Query->all()
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(698): Cake\Controller\Component\PaginatorComponent->paginate(Object(App\Model\Table\DerechosTable), Array)
+#10 C:\wamp\www\sip_dev\src\Controller\DerechosController.php(24): Cake\Controller\Controller->paginate(Object(App\Model\Table\DerechosTable))
+#11 [internal function]: App\Controller\DerechosController->index()
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#14 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\DerechosController))
+#15 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-09-16 05:02:28 Error: [Cake\Datasource\Exception\InvalidPrimaryKeyException] Record not found in table "derechos" with primary key [NULL]
+Request URL: /sip_dev/derechos/edit/
+Stack Trace:
+#0 C:\wamp\www\sip_dev\src\Controller\DerechosController.php(78): Cake\ORM\Table->get(NULL, Array)
+#1 [internal function]: App\Controller\DerechosController->edit()
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\DerechosController))
+#5 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#6 {main}
+
+
+2016-09-16 05:04:14 Error: [Cake\Datasource\Exception\InvalidPrimaryKeyException] Record not found in table "derechos" with primary key [NULL]
+Request URL: /sip_dev/derechos/edit/
+Stack Trace:
+#0 C:\wamp\www\sip_dev\src\Controller\DerechosController.php(76): Cake\ORM\Table->get(NULL)
+#1 [internal function]: App\Controller\DerechosController->edit()
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\DerechosController))
+#5 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#6 {main}
+
+
+2016-09-16 05:04:25 Error: [Cake\Datasource\Exception\InvalidPrimaryKeyException] Record not found in table "derechos" with primary key [NULL]
+Request URL: /sip_dev/derechos/edit/
+Stack Trace:
+#0 C:\wamp\www\sip_dev\src\Controller\DerechosController.php(76): Cake\ORM\Table->get(NULL)
+#1 [internal function]: App\Controller\DerechosController->edit()
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\DerechosController))
+#5 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#6 {main}
+
+
+2016-09-16 05:04:45 Error: [Cake\Datasource\Exception\InvalidPrimaryKeyException] Record not found in table "derechos" with primary key [NULL]
+Request URL: /sip_dev/derechos/edit/
+Stack Trace:
+#0 C:\wamp\www\sip_dev\src\Controller\DerechosController.php(76): Cake\ORM\Table->get(NULL)
+#1 [internal function]: App\Controller\DerechosController->edit()
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\DerechosController))
+#5 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#6 {main}
+
+
+2016-09-19 10:24:56 Error: Fatal Error (1): Call to a member function find() on boolean in [C:\wamp\www\sip_dev\src\Controller\AccionSolicitudController.php, line 203]
+Request URL: /sip_dev/accion-solicitud
+Referer URL: http://localhost/sip_dev/users/login
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-09-19 10:24:57 Error: [Cake\Error\FatalErrorException] Call to a member function find() on boolean
+Request URL: /sip_dev/accion-solicitud
+Referer URL: http://localhost/sip_dev/users/login
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\sip...', 203)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-09-19 10:27:32 Error: [Cake\Datasource\Exception\RecordNotFoundException] Record not found in table "accion_solicitud"
+Request URL: /sip_dev/accion-solicitud/view/10
+Referer URL: http://localhost/sip_dev/accion-solicitud
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Table.php(1217): Cake\ORM\Query->firstOrFail()
+#1 C:\wamp\www\sip_dev\src\Controller\AccionSolicitudController.php(221): Cake\ORM\Table->get('10', Array)
+#2 [internal function]: App\Controller\AccionSolicitudController->view('10')
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AccionSolicitudController))
+#6 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#7 {main}
+
+
+2016-09-19 10:41:38 Error: [Cake\Datasource\Exception\RecordNotFoundException] Record not found in table "solicitud_informacions"
+Request URL: /sip_dev/solicitud-respuestas/add/2
+Referer URL: http://localhost/sip_dev/accion-solicitud
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Table.php(1217): Cake\ORM\Query->firstOrFail()
+#1 C:\wamp\www\sip_dev\src\Controller\SolicitudRespuestasController.php(62): Cake\ORM\Table->get('2', Array)
+#2 [internal function]: App\Controller\SolicitudRespuestasController->add('2')
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SolicitudRespuestasController))
+#6 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#7 {main}
+
+
+2016-09-19 11:08:56 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'usuario_id' in where clause is ambiguous
+Request URL: /sip_dev/accion-solicitud
+Referer URL: http://localhost/sip_dev/users/login
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(172): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(276): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Component\PaginatorComponent.php(171): Cake\ORM\Query->all()
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(698): Cake\Controller\Component\PaginatorComponent->paginate(Object(Cake\ORM\Query), Array)
+#10 C:\wamp\www\sip_dev\src\Controller\AccionSolicitudController.php(205): Cake\Controller\Controller->paginate(Object(Cake\ORM\Query))
+#11 [internal function]: App\Controller\AccionSolicitudController->index()
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#14 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AccionSolicitudController))
+#15 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-09-19 11:15:09 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'AccionSeg_Activo' in 'where clause'
+Request URL: /sip_dev/accions/add/19
+Referer URL: http://localhost/sip_dev/recomendacions
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(172): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(276): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#8 C:\wamp\www\sip_dev\src\Controller\AccionsController.php(76): Cake\ORM\Query->all()
+#9 [internal function]: App\Controller\AccionsController->add('19')
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AccionsController))
+#13 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#14 {main}
+
+
+2016-09-30 04:46:33 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Filter\AssetFilter.php:149
+2016-10-11 03:18:50 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Filter\AssetFilter.php:149
+2016-10-11 03:20:47 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'AccionSeg_Activo' in 'where clause'
+Request URL: /sip_dev/accions/add/19
+Referer URL: http://localhost/sip_dev/recomendacions
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(172): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(276): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Query.php(189): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(954): Cake\Database\Query->execute()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(277): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(902): Cake\ORM\Query->_all()
+#8 C:\wamp\www\sip_dev\src\Controller\AccionsController.php(76): Cake\ORM\Query->all()
+#9 [internal function]: App\Controller\AccionsController->add('19')
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AccionsController))
+#13 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#14 {main}
+
+
+2016-11-30 00:53:48 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Filter\AssetFilter.php:149
+2016-11-30 01:44:33 Error: [Cake\View\Exception\MissingTemplateException] Template file "Pages\edit\554.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Pages\\edit\\554.ctp',
+)
+Request URL: /sip_dev/pages/edit/554
+Referer URL: http://localhost/sip_dev/
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\View\View.php(585): Cake\View\View->_getViewFileName('edit/554')
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(617): Cake\View\View->render('edit/554', NULL)
+#2 C:\wamp\www\sip_dev\src\Controller\PagesController.php(58): Cake\Controller\Controller->render('edit/554')
+#3 [internal function]: App\Controller\PagesController->display('edit', '554')
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\PagesController))
+#7 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#8 {main}
+
+
+2016-11-30 01:45:33 Error: [Cake\View\Exception\MissingTemplateException] Template file "Pages\edit\554.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Pages\\edit\\554.ctp',
+)
+Request URL: /sip_dev/pages/edit/554
+Referer URL: http://localhost/sip_dev/
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\View\View.php(585): Cake\View\View->_getViewFileName('edit/554')
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(617): Cake\View\View->render('edit/554', NULL)
+#2 C:\wamp\www\sip_dev\src\Controller\PagesController.php(58): Cake\Controller\Controller->render('edit/554')
+#3 [internal function]: App\Controller\PagesController->display('edit', '554')
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(115): Cake\Controller\Controller->invokeAction()
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(88): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\PagesController))
+#7 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#8 {main}
+
+
+2016-11-30 01:46:25 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Recomendacion could not be found.
+Exception Attributes: array (
+  'class' => 'Recomendacion',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /sip_dev/recomendacion/edit/554
+Referer URL: http://localhost/sip_dev/
+Stack Trace:
+#0 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-12-18 02:55:33 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Filter\AssetFilter.php:149
+2016-12-18 03:01:16 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-12-18 03:02:16 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-12-18 03:02:48 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-12-18 03:03:36 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-12-18 03:10:30 Error: Fatal Error (1): Call to a member function format() on integer in [C:\wamp\www\sip_dev\src\Controller\RecomendacionsController.php, line 89]
+Request URL: /sip_dev/recomendacions/add
+Referer URL: http://localhost/sip_dev/recomendacions/add
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-12-18 03:10:30 Error: [Cake\Error\FatalErrorException] Call to a member function format() on integer
+Request URL: /sip_dev/recomendacions/add
+Referer URL: http://localhost/sip_dev/recomendacions/add
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\sip...', 89)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-12-18 03:11:21 Warning: Warning (2): date_format() expects parameter 1 to be DateTimeInterface, integer given in [C:\wamp\www\sip_dev\src\Controller\RecomendacionsController.php, line 89]
+Request URL: /sip_dev/recomendacions/add
+Referer URL: http://localhost/sip_dev/recomendacions/add
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+date_format - [internal], line ??
+App\Controller\RecomendacionsController::add() - APP/Controller\RecomendacionsController.php, line 89
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-12-18 03:11:22 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-12-18 03:11:41 Warning: Warning (2): date_format() expects parameter 1 to be DateTimeInterface, string given in [C:\wamp\www\sip_dev\src\Controller\RecomendacionsController.php, line 89]
+Request URL: /sip_dev/recomendacions/add
+Referer URL: http://localhost/sip_dev/recomendacions/add
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+date_format - [internal], line ??
+App\Controller\RecomendacionsController::add() - APP/Controller\RecomendacionsController.php, line 89
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-12-18 03:11:41 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-12-18 03:11:56 Warning: Warning (2): date_format() expects parameter 1 to be DateTimeInterface, string given in [C:\wamp\www\sip_dev\src\Controller\RecomendacionsController.php, line 90]
+Request URL: /sip_dev/recomendacions/add
+Referer URL: http://localhost/sip_dev/recomendacions/add
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+date_format - [internal], line ??
+App\Controller\RecomendacionsController::add() - APP/Controller\RecomendacionsController.php, line 90
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-12-18 03:11:56 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-12-18 03:12:48 Error: Fatal Error (1): Class 'App\Controller\DateTime' not found in [C:\wamp\www\sip_dev\src\Controller\RecomendacionsController.php, line 86]
+Request URL: /sip_dev/recomendacions/add
+Referer URL: http://localhost/sip_dev/recomendacions/add
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-12-18 03:12:48 Error: [Cake\Error\FatalErrorException] Class 'App\Controller\DateTime' not found
+Request URL: /sip_dev/recomendacions/add
+Referer URL: http://localhost/sip_dev/recomendacions/add
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Class 'App\\Cont...', 'C:\\wamp\\www\\sip...', 86)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-12-18 03:14:03 Warning: Warning (2): date_format() expects parameter 1 to be DateTimeInterface, array given in [C:\wamp\www\sip_dev\src\Controller\RecomendacionsController.php, line 90]
+Request URL: /sip_dev/recomendacions/add
+Referer URL: http://localhost/sip_dev/recomendacions/add
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+date_format - [internal], line ??
+App\Controller\RecomendacionsController::add() - APP/Controller\RecomendacionsController.php, line 90
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 435
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 115
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 88
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-12-18 03:14:04 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-12-18 03:15:28 Warning: Headers already sent in C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\Debugger.php:753
+2016-12-18 04:11:10 Error: Fatal Error (1): Call to a member function add() on array in [C:\wamp\www\sip_dev\src\Controller\RecomendacionsController.php, line 86]
+Request URL: /sip_dev/recomendacions/add
+Referer URL: http://localhost/sip_dev/recomendacions/add
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-12-18 04:11:10 Error: [Cake\Error\FatalErrorException] Call to a member function add() on array
+Request URL: /sip_dev/recomendacions/add
+Referer URL: http://localhost/sip_dev/recomendacions/add
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', 'C:\\wamp\\www\\sip...', 86)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-12-18 04:27:40 Error: Fatal Error (1): Class 'App\Controller\Time' not found in [C:\wamp\www\sip_dev\src\Controller\RecomendacionsController.php, line 85]
+Request URL: /sip_dev/recomendacions/add
+Referer URL: http://localhost/sip_dev/recomendacions/add
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-12-18 04:27:41 Error: [Cake\Error\FatalErrorException] Class 'App\Controller\Time' not found
+Request URL: /sip_dev/recomendacions/add
+Referer URL: http://localhost/sip_dev/recomendacions/add
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Class 'App\\Cont...', 'C:\\wamp\\www\\sip...', 85)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2017-01-20 14:51:08 Error: [PDOException] SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+Request URL: /sip_dev/users/login
+Referer URL: http://localhost/sip_dev/users/login
+Stack Trace:
+#0 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Driver\PDODriverTrait.php(48): PDO->__construct('mysql:host=loca...', 'root', 'GerminalVRTX', Array)
+#1 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(104): Cake\Database\Driver\Mysql->_connect('mysql:host=loca...', Array)
+#2 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Schema\BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Dialect\MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Database\Connection.php(322): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Table.php(439): Cake\Database\Connection->schemaCollection()
+#8 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(212): Cake\ORM\Table->schema()
+#9 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(App\Model\Table\UsersTable))
+#10 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Table.php(1336): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(App\Model\Table\UsersTable))
+#11 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\ORM\Table.php(964): Cake\ORM\Table->query()
+#12 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Auth\BaseAuthenticate.php(159): Cake\ORM\Table->find('all', Array)
+#13 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Auth\BaseAuthenticate.php(107): Cake\Auth\BaseAuthenticate->_query('admin')
+#14 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Auth\FormAuthenticate.php(79): Cake\Auth\BaseAuthenticate->_findUser('admin', 'usuario')
+#15 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Component\AuthComponent.php(786): Cake\Auth\FormAuthenticate->authenticate(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 C:\wamp\www\sip_dev\src\Controller\UsersController.php(27): Cake\Controller\Component\AuthComponent->identify()
+#17 [internal function]: App\Controller\UsersController->login()
+#18 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#19 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(122): Cake\Controller\Controller->invokeAction()
+#20 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(96): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#21 C:\wamp\www\sip_dev\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(60): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#22 C:\wamp\www\sip_dev\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#23 {main}
+
+
